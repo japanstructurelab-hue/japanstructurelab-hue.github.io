@@ -149,8 +149,16 @@
   .s2 .kanji{color:#b58a55;}
   .s3 .kanji{color:var(--crimson);}
 
+  .hero-primary{
+    display:inline-flex;align-items:center;gap:8px;margin-top:40px;
+    background:var(--gold);color:#0b0b0d;
+    font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:500;letter-spacing:0.03em;
+    padding:14px 28px;border:1px solid var(--gold);
+    transition:background .25s,color .25s;
+  }
+  .hero-primary:hover{background:transparent;color:var(--gold);}
   .hero-links{
-    display:flex;gap:26px;margin-top:44px;font-size:13px;
+    display:flex;gap:26px;margin-top:22px;font-size:13px;flex-wrap:wrap;
   }
   .hero-links a{
     color:var(--text-secondary);
@@ -360,7 +368,13 @@
   #series .sf-arw{color:var(--gold-dim);font-family:'JetBrains Mono',monospace;}
   #series .series-go{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
   #series .series-count{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:var(--text-tertiary);}
-  #series .series-go .arrow{color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:13px;}
+  #series .series-go .arrow{
+    color:#0b0b0d;background:var(--gold);
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:0.03em;
+    padding:10px 20px;border:1px solid var(--gold);
+    transition:background .25s,color .25s;
+  }
+  #series .series-card:hover .arrow{background:transparent;color:var(--gold);}
 </style>
 </head>
 <body>
@@ -402,6 +416,7 @@
       </div>
     </div>
 
+    <a class="hero-primary" href="reports/">構造学シリーズを読む →</a>
     <div class="hero-links">
       <a href="#tools">ツールを見る</a>
       <a href="#reports">レポートを読む</a>
