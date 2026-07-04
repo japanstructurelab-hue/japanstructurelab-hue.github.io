@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【構造学 第2回】構造レイヤー総論 ─ 国家を制約する力｜Japan Structure Lab</title>
+<meta name="description" content="国家も市場も、地勢が与える制約の枠内でしか動けない。地勢・資源・人口・技術・文明圏・安全保障――構造レイヤーが決める“世界の最初の因果”を読む。構造学シリーズ 第2回。">
+<meta property="og:title" content="【構造学 第2回】構造レイヤー総論 ─ 国家を制約する力">
+<meta property="og:description" content="国家は構造が引く境界線の内側でしか動けない。地図に刻まれた“最初の因果”を読む。">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">STRUCTURE SERIES ── 第 2 回</div>
+  <h1 class="art-title">構造レイヤー総論 ── 国家を制約する力</h1>
+  <div class="art-meta">
+    <span>構造レイヤー総論</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">世界は自由に動いているように見える。だが、国家も市場も企業も、地勢が与える制約の枠内でしか動けない。その範囲を決めるのが構造レイヤーであり、これこそが世界の“最初の因果”となる。</p>
+
+  <div class="body">
+
+    <h2>序章：なぜ「構造」から始めるのか</h2>
+    <p>世界は自由に動いているように見える。だが、国家も市場も企業も、<strong>地勢が与える制約の枠内でしか動けない。</strong>ハルフォード・マッキンダーが「地理は歴史の母である」と述べたように、国家は地勢が与える制約から逃れられない。</p>
+    <p>その範囲を決めるのが、<strong>構造レイヤー（地勢・資源・人口・技術・文明圏・安全保障）</strong> である。構造は、国家の意思では変えられない。市場の期待でも動かない。心理の揺らぎにも影響されない。だからこそ構造は、世界の“最初の因果”となる。</p>
+
+    <h2>第1章：構造が「選択肢の範囲」を決める</h2>
+    <p>国家は自由に動いているように見える。だが実際には、構造が国家の“選択肢の範囲”を決めている。ニコラス・スパイクマンが定義したように、<strong>国家の選択肢は構造が引く“境界線”の内側にしか存在しない。</strong></p>
+    <ul>
+      <li>山に囲まれた国は防衛が強くなる</li>
+      <li>平野が広い国は侵攻されやすい</li>
+      <li>海に囲まれた国は海運に依存する</li>
+      <li>海峡を持つ国は世界の喉元を握る</li>
+    </ul>
+    <p>国家の行動は自由ではない。<strong>構造が許す範囲でしか動けない。</strong></p>
+
+    <h2>第2章：構造は「資源の流れ」を決める</h2>
+    <p>構造は国家の形だけでなく、<strong>資源の流れ</strong> を決める。</p>
+    <ul>
+      <li>原油がどこから運ばれるか</li>
+      <li>食料がどこを通るか</li>
+      <li>鉱物がどこに埋まっているか</li>
+      <li>物流がどこで詰まるか</li>
+    </ul>
+    <p>資源の流れは、国家の経済・軍事・外交の“血流”である。構造が変わらない限り、資源の流れも変わらない。</p>
+
+    <h2>第3章：構造は「人口と文明圏」を形づくる</h2>
+    <p>人口は偶然ではない。文明圏も偶然ではない。</p>
+    <ul>
+      <li>肥沃な土地には人口が集まる</li>
+      <li>河川文明は交易を生む</li>
+      <li>山脈は文明圏を分断する</li>
+      <li>海は文化を混ぜ合わせる</li>
+    </ul>
+    <p>人口と文明圏は、<strong>地勢と資源が生み出した“長期の構造”</strong> である。国家の価値観も、外交姿勢も、経済モデルも、この構造の上に築かれる。</p>
+
+    <h2>第4章：構造は「技術と安全保障」を制約する</h2>
+    <p>技術は自由に発展するように見える。だがその基盤には、必ず構造がある。</p>
+    <ul>
+      <li>資源がなければ産業は育たない</li>
+      <li>海運がなければ輸出はできない</li>
+      <li>人口がなければ市場は生まれない</li>
+      <li>地勢が不利なら軍事は防衛型になる</li>
+    </ul>
+    <p>技術も安全保障も、<strong>構造が許す範囲でしか発展しない。</strong></p>
+
+    <h2>第5章：構造は「国家の恐怖」を決める</h2>
+    <p>国家は“恐怖”で動く。そしてその恐怖の正体は、歴史ではなく、<strong>構造が刻み込んだ“国家のトラウマ”</strong> である。ハウスホーファーが言う「生存空間の記憶」は、まさにこのトラウマの構造的表現である。</p>
+    <ul>
+      <li>ロシアの恐怖：平原の侵攻</li>
+      <li>中国の恐怖：海洋封鎖</li>
+      <li>イランの恐怖：ホルムズ海峡</li>
+      <li>日本の恐怖：海運依存とエネルギー</li>
+    </ul>
+    <div class="callout">
+      <p>国家の恐怖は、ニュースではなく <strong>地図</strong> に書かれている。</p>
+    </div>
+
+    <h2>第6章：構造は「不可逆化」の最初のシグナルを生む</h2>
+    <p>構造は変わらない。だからこそ、構造が揺らいだときは <strong>世界が不可逆化する瞬間</strong> である。</p>
+    <ul>
+      <li>海峡が封鎖される</li>
+      <li>国境が書き換わる</li>
+      <li>資源ルートが変わる</li>
+      <li>海運の流れが逆転する</li>
+    </ul>
+    <p>これらはすべて、世界の構造が“元に戻らない方向”へ動いたサイン。不可逆化の最初のシグナルは、ニュースではなく <strong>地図</strong> に現れる。</p>
+
+    <h2>第7章：構造の因果は「未来の形」を示す</h2>
+    <p>構造は未来を予測しない。だが、未来の“形”を示す。未来の形は構造が国家を制約することで生まれる。</p>
+    <h3>■ 中国は海へ出る</h3>
+    <p>内陸包囲と海洋封鎖のトラウマが、南シナ海と第一列島線突破を強制する。</p>
+    <h3>■ ロシアは西へ押す</h3>
+    <p>平原から侵攻され続けた地勢的トラウマが、西方緩衝地帯の確保を強制する。</p>
+    <h3>■ 米国は海を握る</h3>
+    <p>二つの大洋に守られた地勢が、海上覇権を安全保障の中核として強制する。</p>
+    <h3>■ 中東は揺れ続ける</h3>
+    <p>資源の偏在と海峡依存が、外部介入と内部対立を構造的に生み続ける。</p>
+    <h3>■ 日本は海運に依存し続ける</h3>
+    <p>資源ゼロの島国という構造が、海運ルート維持を“国家存続条件”として強制する。</p>
+    <p>これらは予測ではなく、<strong>構造が強制する“未来の形”</strong> である。構造学とは、この“形”を読むためのOSである。</p>
+
+    <h2>結語</h2>
+    <p>世界はこれからも揺れ続ける。だが、揺れの奥には必ず因果がある。その最初の因果が、<strong>構造レイヤー</strong> である。</p>
+    <p>構造を読むことは、国家の行動原理を読み、未来の形を理解することだ。構造の因果を読む者だけが、“世界の初動”を捉えることができる。</p>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">STRUCTURE SERIES</span>
+    <h3>構造学シリーズを読む</h3>
+    <p>第2回は三層の最下層＝構造レイヤー。続く第3回は因果、第4回は心理と、各レイヤーを掘り下げ、原油・海運・為替・金といった現実のテーマへ接続していきます。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821" target="_blank" rel="noopener">noteで続きを読む</a>
+      <a class="cta-btn" href="/">ハブに戻る</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

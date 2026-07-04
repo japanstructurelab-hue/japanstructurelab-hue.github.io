@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>構造学シリーズ ─ 記事一覧｜Japan Structure Lab</title>
+<meta name="description" content="世界を構造・因果・心理の三層で読み解く構造学シリーズ。序論・各論・実践編の全9回。ニュースの意図を無効化し、世界を因果で読み直すためのOS。">
+<meta property="og:title" content="構造学シリーズ ─ 記事一覧｜Japan Structure Lab">
+<meta property="og:description" content="構造・因果・心理の三層で世界を読む。構造学シリーズ 全9回の記事一覧。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .hero{
+    max-width:860px;margin:0 auto;padding:132px 32px 20px;
+  }
+  @media(max-width:640px){.hero{padding:104px 22px 12px;}}
+  .hero-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.16em;color:var(--gold);margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(30px,5vw,44px);line-height:1.4;letter-spacing:0.01em;
+    margin-bottom:24px;
+  }
+  .hero p{
+    font-size:16px;color:var(--text-secondary);line-height:2;max-width:680px;
+  }
+  .hero .flow{
+    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.08em;color:var(--text-tertiary);
+    margin-top:26px;padding-top:26px;border-top:1px solid var(--line);
+  }
+  .hero .flow b{color:var(--gold);font-weight:500;}
+  .hero .flow .arw{color:var(--gold-dim);}
+
+  .container{max-width:860px;margin:0 auto;padding:20px 32px 40px;}
+  @media(max-width:640px){.container{padding:16px 22px 30px;}}
+
+  .section-head{
+    display:flex;align-items:baseline;gap:16px;
+    margin:52px 0 22px;padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head .sh-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;
+  }
+  .section-head .sh-jp{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:20px;
+  }
+  .section-head .sh-note{
+    margin-left:auto;font-size:12.5px;color:var(--text-tertiary);
+  }
+  @media(max-width:560px){.section-head .sh-note{display:none;}}
+
+  .cards{display:grid;gap:14px;}
+  .card{
+    display:block;background:var(--bg-card);border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+    padding:22px 26px;transition:border-color .25s,transform .25s,background .25s;
+  }
+  .card:hover{
+    border-color:var(--line-strong);border-left-color:var(--gold);
+    background:#1c1b20;transform:translateX(3px);
+  }
+  .card .c-top{
+    display:flex;align-items:center;gap:12px;margin-bottom:8px;
+  }
+  .card .c-ep{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.06em;color:var(--gold);
+    border:1px solid var(--line-strong);padding:2px 9px;border-radius:2px;
+  }
+  .card .c-role{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.05em;color:var(--text-tertiary);
+  }
+  .card .c-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:18px;line-height:1.55;margin-bottom:6px;color:var(--text-primary);
+  }
+  .card .c-desc{font-size:13.5px;color:var(--text-secondary);line-height:1.85;}
+  .card .c-go{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    color:var(--gold);margin-top:12px;display:inline-block;
+  }
+  .card .c-go::after{content:' →';}
+
+  /* section accent colors on the left border */
+  .cards.g-causality .card{border-left-color:var(--mid);}
+  .cards.g-causality .card .c-ep{color:var(--mid);}
+  .cards.g-causality .card .c-go{color:var(--mid);}
+  .cards.g-practice .card{border-left-color:var(--crimson);}
+  .cards.g-practice .card .c-ep{color:#c46a6a;}
+  .cards.g-practice .card .c-go{color:#c46a6a;}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:70px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:860px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none!important}
+    .card:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-eyebrow">STRUCTURE SERIES</div>
+  <h1>構造学シリーズ</h1>
+  <p>ニュースの意図を無効化し、世界を因果で読み直すためのOS。世界を「構造・因果・心理」の三層で捉え、原油・海運・為替・金といった現実のテーマまで一貫して読み解く、全9回のシリーズです。</p>
+  <div class="flow">
+    <b>構造</b><span class="arw">→</span><b>因果</b><span class="arw">→</span><b>心理</b>
+    <span style="margin:0 6px;opacity:.4;">｜</span>
+    序論 → 各論 → 実践編
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ── 序論 ── -->
+  <div class="section-head">
+    <span class="sh-en">Introduction</span>
+    <span class="sh-jp">序論 ── OS</span>
+    <span class="sh-note">世界を読むための土台</span>
+  </div>
+  <div class="cards g-intro">
+    <a class="card" href="structure-00.html">
+      <div class="c-top"><span class="c-ep">第 0 回</span><span class="c-role">OSの原点</span></div>
+      <div class="c-title">ニュースの意図を無効化し、世界を因果で読み直すためのOS</div>
+      <div class="c-desc">ニュースには必ず意図がある。5レイヤー→3層構造の圧縮モデルで、世界を因果として読み直す出発点。</div>
+      <span class="c-go">読む</span>
+    </a>
+    <a class="card" href="structure-01.html">
+      <div class="c-top"><span class="c-ep">第 1 回</span><span class="c-role">OSの全体像</span></div>
+      <div class="c-title">世界は三層構造で動く ── 構造 → 因果 → 心理</div>
+      <div class="c-desc">構造・因果・心理という三層の地図。世界のあらゆる事象を、この三層のどこで起きているかとして捉える。</div>
+      <span class="c-go">読む</span>
+    </a>
+  </div>
+
+  <!-- ── 各論 ── -->
+  <div class="section-head">
+    <span class="sh-en">Layers</span>
+    <span class="sh-jp">各論 ── 三層</span>
+    <span class="sh-note">構造・因果・心理を掘り下げる</span>
+  </div>
+  <div class="cards g-causality">
+    <a class="card" href="structure-02.html">
+      <div class="c-top"><span class="c-ep">第 2 回</span><span class="c-role">構造レイヤー総論</span></div>
+      <div class="c-title">構造レイヤー総論 ── 国家を制約する力</div>
+      <div class="c-desc">地勢・資源・人口・安全保障。国家は構造が引く境界線の内側でしか動けない。世界の“最初の因果”。</div>
+      <span class="c-go">読む</span>
+    </a>
+    <a class="card" href="structure-03.html">
+      <div class="c-top"><span class="c-ep">第 3 回</span><span class="c-role">因果レイヤー総論</span></div>
+      <div class="c-title">因果レイヤー総論 ── 世界を動かす力</div>
+      <div class="c-desc">供給・需要・物流・制度。構造が地図なら因果は風。短期では強く、長期では構造に従う力の総体。</div>
+      <span class="c-go">読む</span>
+    </a>
+    <a class="card" href="structure-04.html">
+      <div class="c-top"><span class="c-ep">第 4 回</span><span class="c-role">心理レイヤー総論</span></div>
+      <div class="c-title">心理レイヤー総論 ── 世界の揺らぎを読む</div>
+      <div class="c-desc">期待と恐怖の非対称性、群衆心理、ナラティブ。世界の“揺らぎ”を生む見えない力を読み解く。</div>
+      <span class="c-go">読む</span>
+    </a>
+  </div>
+
+  <!-- ── 実践編 ── -->
+  <div class="section-head">
+    <span class="sh-en">Practice</span>
+    <span class="sh-jp">実践編 ── 現実へ</span>
+    <span class="sh-note">三層構造を市場で使う</span>
+  </div>
+  <div class="cards g-practice">
+    <a class="card" href="structure-05.html">
+      <div class="c-top"><span class="c-ep">第 5 回</span><span class="c-role">原油（供給）</span></div>
+      <div class="c-title">原油スプレッドで世界のリスクを読む</div>
+      <div class="c-desc">Brent−WTI が示す“供給不安の量”。海上供給リスクのセンサーとして、世界の揺れを株より先に察知する。</div>
+      <span class="c-go">読む</span>
+    </a>
+    <a class="card" href="structure-06.html">
+      <div class="c-top"><span class="c-ep">第 6 回</span><span class="c-role">海運（物流）</span></div>
+      <div class="c-title">海運指数で“事件化の前兆”を読む</div>
+      <div class="c-desc">BDI・SCFI・CCFI。世界の血流＝物流の脈動を数値で読み、事件化の入口を捉えるOS。</div>
+      <span class="c-go">読む</span>
+    </a>
+    <a class="card" href="structure-07.html">
+      <div class="c-top"><span class="c-ep">第 7 回</span><span class="c-role">為替（心理）</span></div>
+      <div class="c-title">為替は“心理の鏡”である</div>
+      <div class="c-desc">円高＝恐怖、円安安定＝安心。株より早く、ニュースより正直に、世界の心理が最初に現れる市場。</div>
+      <span class="c-go">読む</span>
+    </a>
+    <a class="card" href="structure-08.html">
+      <div class="c-top"><span class="c-ep">第 8 回</span><span class="c-role">金（統合）</span></div>
+      <div class="c-title">金は“世界の不安”を映す鏡</div>
+      <div class="c-desc">金は恐怖の合成ベクトル。国家OSの裏側であり、未来の秩序を読み解くシリーズの結節点。</div>
+      <span class="c-go">読む</span>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

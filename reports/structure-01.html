@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【構造学 第1回】世界は三層構造で動く──構造 → 因果 → 心理｜Japan Structure Lab</title>
+<meta name="description" content="世界は“構造 → 因果 → 心理”の三層構造で動いている。この三層を理解すると、ニュースの揺らぎに振り回されず、世界の深い流れが見えるようになる。構造学が手渡す、世界を読むための地図。">
+<meta property="og:title" content="【構造学 第1回】世界は三層構造で動く──構造 → 因果 → 心理">
+<meta property="og:description" content="世界は構造→因果→心理の三層で動く。ニュースの揺らぎの奥にある必然を読む地図。">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">STRUCTURE SERIES ── 第 1 回</div>
+  <h1 class="art-title">世界は三層構造で動く──構造 → 因果 → 心理</h1>
+  <div class="art-meta">
+    <span>OSの全体像</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">世界は複雑に見える。だが、その動きは本来もっとシンプルだ。世界は“構造 → 因果 → 心理”の三層で動いている。第1回は、その三層という「世界を読むための地図」を手渡す回である。</p>
+
+  <div class="body">
+
+    <h2>第0章：なぜ「三層構造」で世界を読むのか</h2>
+    <p>世界は複雑に見える。ニュースは毎日、事件・対立・混乱を伝え続ける。だが、世界の動きは本来もっとシンプルだ。<strong>世界は“構造 → 因果 → 心理”の三層構造で動いている。</strong></p>
+    <p>この三層を理解すると、ニュースの揺らぎに振り回されず、世界の“深い流れ”が見えるようになる。構造学の第1回は、この三層構造という「世界を読むための地図」を手渡す回である。</p>
+
+    <h2>第1章：最上位レイヤー ── 構造（Structure）</h2>
+    <h3>世界の“動ける範囲”を決めるもの</h3>
+    <p>構造とは、世界の動きを決める<strong>最も深いレイヤー</strong>である。</p>
+    <ul>
+      <li>地勢</li>
+      <li>資源</li>
+      <li>人口</li>
+      <li>文明</li>
+      <li>技術基盤</li>
+      <li>安全保障の枠組み</li>
+    </ul>
+    <p>これらは国家や市場の“動ける範囲”を決める。構造はゆっくり動き、めったに変わらない。だからこそ<strong>未来の方向性を決める力</strong>を持つ。構造は「世界の骨格」であり、すべての因果の出発点である。</p>
+
+    <h2>第2章：中間レイヤー ── 因果（Causality）</h2>
+    <h3>世界の“動き方”を決めるもの</h3>
+    <p>構造の上に生まれるのが<strong>因果</strong>である。</p>
+    <ul>
+      <li>供給 → 価格</li>
+      <li>物流 → ボトルネック</li>
+      <li>金利 → 通貨</li>
+      <li>地政 → 市場心理</li>
+    </ul>
+    <p>因果とは、構造が現実の動きとして表面化する“流れ”である。構造が方向を決め、因果がその方向に沿って世界を動かす。因果は「世界の動線」であり、ニュースを“線”として読み直すためのレイヤーである。</p>
+
+    <h2>第3章：最下層レイヤー ── 心理（Psychology）</h2>
+    <h3>世界の“揺らぎ”を決めるもの</h3>
+    <p>心理とは、構造と因果に反応して生まれる<strong>人間の感情の層</strong>である。</p>
+    <ul>
+      <li>恐怖</li>
+      <li>安心</li>
+      <li>群衆心理</li>
+      <li>投資家心理</li>
+      <li>世論の波</li>
+    </ul>
+    <p>心理は最も速く動く。だからニュースは心理を強調し、世界は“揺れているように”見える。だが心理は因果の結果であり、構造の影にすぎない。心理は「世界のノイズ」であり、最も誤読を生むレイヤーである。</p>
+
+    <h2>第4章：三層構造でニュースを読み直す</h2>
+    <p>ニュースは心理（揺らぎ）を伝える。だが世界を動かすのは構造（骨格）である。</p>
+    <p>例えばエネルギー問題なら、「原油価格が急騰した」というニュース（心理）の背後には、供給制約や中東情勢という因果があり、さらにその奥には“中東に資源が集中する”という構造がある。</p>
+    <p>三層構造で読むと、ニュースは次のように“因果の階層”に戻る。</p>
+    <div class="code-model"><span class="cm-gold">事件（心理）</span>
+    ↓
+<span class="cm-gold">背景の因果</span>（供給・物流・制度）
+    ↓
+<span class="cm-gold">さらに奥の構造</span>（地勢・資源・人口）</div>
+    <p>この順番で読むと、ニュースの煽りは消え、世界の“必然”だけが残る。</p>
+
+    <h2>第5章：三層構造は「未来の形」を示す</h2>
+    <p>未来は予測するものではない。未来は<strong>構造が決める方向性</strong>を読むものだ。</p>
+    <ul>
+      <li>構造が方向を決め</li>
+      <li>因果がその方向に沿って動き</li>
+      <li>心理が揺れながら反応する</li>
+    </ul>
+    <p>この三層構造を理解すると、未来は“形”として見えてくる。構造を読む者は、未来を恐れない。</p>
+
+    <h2>第6章：三層構造は“知識がなくても使えるOS”である</h2>
+    <p>三層構造は、専門知識を前提にした分析手法ではない。</p>
+    <ul>
+      <li>心理は「揺らぎ」</li>
+      <li>因果は「なぜ？」の一段掘り</li>
+      <li>構造は「世界が勝手に動けない理由」</li>
+    </ul>
+    <p>この三つを順番にたどるだけで、どんなニュースでも“因果の階層”に戻せる。つまり三層構造は、<strong>知識ではなく“視点（OS）”である。</strong>読者は今日のニュースでも、このOSをそのまま使うことができる。</p>
+
+    <div class="three-layer">
+      <div class="tl-cell tl-s">
+        <div class="tl-kanji">構造</div>
+        <div class="tl-en">STRUCTURE</div>
+        <div class="tl-desc">世界が勝手に動けない理由。地勢・資源・人口が決める骨格。</div>
+      </div>
+      <div class="tl-cell tl-c">
+        <div class="tl-kanji">因果</div>
+        <div class="tl-en">CAUSALITY</div>
+        <div class="tl-desc">「なぜ？」の一段掘り。構造が現実に表面化する動線。</div>
+      </div>
+      <div class="tl-cell tl-p">
+        <div class="tl-kanji">心理</div>
+        <div class="tl-en">PSYCHOLOGY</div>
+        <div class="tl-desc">揺らぎ。最も速く動き、最も誤読を生むノイズの層。</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>三層構造を実際に使うための“実践編”は、別記事で詳しく解説する。</p>
+    </div>
+
+    <h2>結語</h2>
+    <p>世界は“構造 → 因果 → 心理”の三層で動く。心理は構造の影であり、因果はその影を導く流れである。そして構造の惰性こそが、未来の方向性を静かに決めていく。揺らぎに惑わされず、流れの奥にある構造を読む者だけが、世界の“本当の動き”を理解できる。</p>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">STRUCTURE SERIES</span>
+    <h3>構造学シリーズを読む</h3>
+    <p>第1回は三層構造という「地図」。第2回以降は、構造・因果・心理の各レイヤーを掘り下げ、原油・海運・為替・金といった現実のテーマで読み解いていきます。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821" target="_blank" rel="noopener">noteで続きを読む</a>
+      <a class="cta-btn" href="/">ハブに戻る</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【構造学 第6回】海運指数で“事件化の前兆”を読む ─ 世界の血流が詰まり始める瞬間を捉えるOS｜Japan Structure Lab</title>
+<meta name="description" content="世界の構造は“海”から揺れ始める。BDI・SCFI・CCFI――三つの海運指数を数値×因果×歴史で読み、事件化の前兆を捉える。構造学シリーズ 第6回・実践編。">
+<meta property="og:title" content="【構造学 第6回】海運指数で“事件化の前兆”を読む">
+<meta property="og:description" content="BDI・SCFI・CCFI。世界の血流＝物流の脈動を数値で読み、事件化の入口を察知する。">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body a.inline{color:var(--gold);border-bottom:1px solid var(--line-strong);}
+  .body a.inline:hover{border-color:var(--gold);}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">STRUCTURE SERIES ── 第 6 回</div>
+  <h1 class="art-title">海運指数で“事件化の前兆”を読む ── 世界の血流が詰まり始める瞬間を捉えるOS</h1>
+  <div class="art-meta">
+    <span>実践編 ／ 海運（物流）</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">世界の構造は、まず“海”で揺れる。原油スプレッドが動くとき、それはまだ「予兆」にすぎない。だが、海運指数――BDI・SCFI・CCFI――が跳ねるとき、世界はすでに“事件化”の入口に立っている。</p>
+
+  <div class="body">
+
+    <h2>序：世界の構造は「海」から揺れ始める</h2>
+    <p>海は世界経済の血管であり、物流はその血流だ。血流が詰まれば、国家OSは酸欠を起こす。ニュースよりも早く世界の変化を察知するには、この「海の脈動」を読むことが最も確実な方法となる。</p>
+
+    <h2>第一章：三つの海運指数の正式名称と“構造の階層”</h2>
+    <p>略称だけでは迷いやすいため、正式名称と日本語訳を明記する。</p>
+    <h3>● BDI（Baltic Dry Index：バルチック海運指数）</h3>
+    <p>＝ <strong>乾貨物指数</strong>。鉄鉱石・穀物・石炭など、世界の基礎資源の運賃。→ 世界の“基礎資源の血流”。</p>
+    <h3>● SCFI（Shanghai Containerized Freight Index：上海コンテナ運賃指数）</h3>
+    <p>＝ <strong>中国・上海発のコンテナ輸出指数</strong>。→ 世界の“製造業の体温”。</p>
+    <h3>● CCFI（China Containerized Freight Index：中国コンテナ運賃指数）</h3>
+    <p>＝ <strong>世界全体のコンテナ運賃総合指数（契約ベース）</strong>。→ 世界の“物流コストの総量”。</p>
+
+    <h2>第二章：数値で読む“世界の揺れ”</h2>
+    <p>構造学は「因果を定量で読むOS」である。だからこそ、数値基準を明確に定めることで再現性が生まれる。</p>
+
+    <h3>● BDI（世界の乾貨物の血流）</h3>
+    <h4>上昇（プラス）の読み方</h4>
+    <ul>
+      <li>＋20％（1〜2週間）→ 世界の供給網が揺れ始める</li>
+      <li>＋50％（1ヶ月）→ 事件化の前兆</li>
+      <li>＋100％（3ヶ月）＝コロナ初期（2020年Q2）→ 世界的物流危機</li>
+      <li>＋150％以上 → 世界的供給網の断裂</li>
+    </ul>
+    <h4>下降（マイナス）の読み方</h4>
+    <ul>
+      <li>−20％（1〜2週間）→ 世界の資源需要が鈍化</li>
+      <li>−30〜40％（1ヶ月）→ 景気後退の初動</li>
+      <li>−50％以上（数ヶ月）→ 世界的な需要収縮（例：2022年後半の世界景気減速）</li>
+    </ul>
+    <div class="callout">
+      <p>BDIが20％動いたら、世界の血流が詰まり始めるか、冷え込み始めている。</p>
+    </div>
+
+    <h3>● SCFI（中国発の物流体温）</h3>
+    <h4>上昇（プラス）の読み方</h4>
+    <ul>
+      <li>＋10％（週次）→ 中国発の物流が詰まり始める</li>
+      <li>＋20〜30％（週次）＝上海ロックダウン（2022年）→ 事件化の初動</li>
+      <li>＋50％（数週間）→ 世界の製造業に実害</li>
+    </ul>
+    <h4>下降（マイナス）の読み方</h4>
+    <ul>
+      <li>−10％（週次）→ 中国の輸出需要が弱まる</li>
+      <li>−20〜30％（週次）→ 世界の消費が冷え始める</li>
+      <li>−40％以上（数週間）→ 世界的な在庫調整（例：2023年の世界的在庫調整局面）</li>
+    </ul>
+    <div class="callout">
+      <p>SCFIは“世界の製造業の体温計”。上昇は発熱、下降は冷え込み。</p>
+    </div>
+
+    <h3>● CCFI（世界全体の物流コストの総量）</h3>
+    <h4>上昇（プラス）の読み方</h4>
+    <ul>
+      <li>＋5％（週次）→ 世界全体の物流圧力が高まり始める</li>
+      <li>＋10％（1ヶ月）＝2021年の世界的コンテナ不足 → 構造的な供給網の歪み</li>
+      <li>＋20％（1〜2ヶ月）→ 世界的物流危機</li>
+    </ul>
+    <h4>下降（マイナス）の読み方</h4>
+    <ul>
+      <li>−5％（週次）→ 物流圧力の緩和</li>
+      <li>−10％（1ヶ月）→ 世界的な需要減速</li>
+      <li>−20％以上（1〜2ヶ月）→ 世界景気の後退（例：2022〜2023年の世界景気減速）</li>
+    </ul>
+    <div class="callout">
+      <p>CCFIは“世界の呼吸の深さ”。上昇は息苦しさ、下降は呼吸の浅さ。</p>
+    </div>
+
+    <h2>第三章：指数の“階層構造”とタイムラグを読む</h2>
+    <p>海運指数には、構造的な先行・遅行の関係がある。</p>
+    <h3>● ① BDI → SCFI のタイムラグ</h3>
+    <p>BDI（乾貨物指数）は、鉄鉱石・穀物・石炭など原材料の血流を示す。一方、SCFI（上海コンテナ指数）は製品の出荷を示す。原材料の揺れは、通常1〜3ヶ月遅れて製品出荷に波及するため、<strong>BDIが先に動き、SCFIが後から追随する</strong>。これは供給網の階層構造そのものだ。</p>
+    <h3>● ② SCFI（スポット）→ CCFI（契約）の遅行性</h3>
+    <p>SCFIはスポット運賃であり、需給の変化に即座に反応する。一方、CCFIは契約運賃であり、数週間〜数ヶ月遅れて動く。そのため「SCFIが急騰しているのに、CCFIが横ばい」という現象は、海運市場の構造的に自然な姿である。スポットが先に跳ね、契約が後から追随する。この遅行性を理解すると、世界の揺れの順番が見えてくる。</p>
+
+    <h2>第四章：観測の実例（上海航運交易所のデータ）</h2>
+    <p>2026年5月時点のデータでは：</p>
+    <ul>
+      <li>SCFI総合指数：1954 → 2140（＋9.5％）</li>
+      <li>CCFI総合指数：1278 → 1280（＋0.1％）</li>
+    </ul>
+    <p>この乖離が示すのは、<strong>中国発の物流が急激に詰まり始めたが、世界全体はまだ追随していない</strong>という構造的ズレである。これは「事件化の初動」が中国から発生している典型パターンだ。</p>
+
+    <h2>第五章：BDI／SCFI／CCFI の確認方法（読者向けガイド）</h2>
+    <h3>● ① BDI（バルチック海運指数）</h3>
+    <p>BDIは毎日更新される。最も見やすい参照先は Trading Economics（<a class="inline" href="https://tradingeconomics.com/commodity/baltic" target="_blank" rel="noopener">tradingeconomics.com/commodity/baltic</a>）。日次チャート・過去データ・長期推移・ニュースが揃う。公式は Baltic Exchange（<a class="inline" href="https://www.balticexchange.com/" target="_blank" rel="noopener">balticexchange.com</a>／詳細は有料）。</p>
+    <h3>● ② SCFI／CCFI（上海航運交易所）</h3>
+    <p>SCFI（スポット運賃）は <a class="inline" href="https://en.sse.net.cn/indices/scfinew.jsp" target="_blank" rel="noopener">en.sse.net.cn/indices/scfinew.jsp</a>。CCFIも同じく「Indices」メニューから選択できる。Comprehensive Index（総合指数）・航路別指数・Weekly Growth（週次変化率）を確認する。更新頻度は SCFI／CCFI が週1回（金曜）、BDI が毎日。</p>
+
+    <h2>第六章：世界予兆OSとしての観測ルール</h2>
+    <div class="code-model"><span class="cm-gold">① BDI が ±20％ 動く</span>　→ 世界の供給網が揺れ始める／冷え始める
+<span class="cm-gold">② SCFI が ±10％ 動く</span>　→ 中国発の物流が詰まり始める／弱まり始める
+<span class="cm-gold">③ CCFI が ±5％ 動く</span>　→ 世界全体の物流が重くなる／軽くなる</div>
+    <p>この三つを同時に観測するだけで、ニュースより先に“世界の揺れ”を察知できる。</p>
+
+    <h2>終章：構造を読む者が未来を先取る</h2>
+    <p>海運指数は、世界の“呼吸”を映す鏡だ。その波形を読む者は、未来の構造を先取りできる。構造学第6回は、世界の揺れを「数値 × 因果 × 歴史」で読み解くためのOSである。</p>
+    <p>次回、第7回では「為替は心理の鏡」と題し、人間の集団心理がどのように構造化され、市場を動かす“見えないOS”として働くのかを解き明かしていく。</p>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">STRUCTURE SERIES</span>
+    <h3>構造学シリーズを読む</h3>
+    <p>第6回は海運（物流）。世界の血流を数値で読むOSでした。続く第7回は為替（心理）、第8回は金（統合）へと、世界を読むOSを完成させていきます。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821" target="_blank" rel="noopener">noteで続きを読む</a>
+      <a class="cta-btn" href="/">ハブに戻る</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

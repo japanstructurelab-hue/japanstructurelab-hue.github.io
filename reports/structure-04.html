@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【構造学 第4回】心理レイヤー総論 ─ 世界の揺らぎを読む｜Japan Structure Lab</title>
+<meta name="description" content="世界を揺らすのは、構造でも因果でもなく人間の心理である。期待と恐怖の非対称性、群衆心理、ナラティブ――世界の“揺らぎ”を読み解く心理レイヤー。構造学シリーズ 第4回。">
+<meta property="og:title" content="【構造学 第4回】心理レイヤー総論 ─ 世界の揺らぎを読む">
+<meta property="og:description" content="期待はゆっくり積み上がり、恐怖は一瞬で広がる。世界の揺らぎをつくる心理を読む。">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">STRUCTURE SERIES ── 第 4 回</div>
+  <h1 class="art-title">心理レイヤー総論 ── 世界の揺らぎを読む</h1>
+  <div class="art-meta">
+    <span>心理レイヤー総論</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">世界は揺れている。構造は静かで、因果は動く。しかし、世界の“揺らぎ”を生むのはそのどちらでもない。揺らぎの正体は、人間の心理である。その揺らぎを読み解くことこそ、心理レイヤーの役割である。</p>
+
+  <div class="body">
+
+    <p>期待と恐怖がつくる微細な波紋が、構造と因果の上に影を落とし、世界の動きをわずかに、しかし確実に変えていく。<strong>その“揺らぎ”を読み解くことこそ、心理レイヤーの役割である。</strong></p>
+
+    <h2>1. 心理レイヤーとは何か ── 世界を揺らす“見えない力”</h2>
+    <p>心理レイヤーとは、<strong>期待と恐怖がつくる“集団心理”</strong>である。</p>
+    <ul>
+      <li>市場の期待</li>
+      <li>群衆の恐怖</li>
+      <li>国家の自信</li>
+      <li>社会の不安</li>
+      <li>投資家の欲望</li>
+      <li>消費者の安心感</li>
+    </ul>
+    <p>これらは数値化しにくいが、世界の動きを決める最終的な“トリガー”になる。構造は枠を決め、因果は力を生む。しかし心理は、その力に“方向”を与える。</p>
+
+    <h2>2. 心理はなぜ強いのか ── 期待と恐怖の非対称性</h2>
+    <p>心理レイヤーの本質は、<strong>期待と恐怖の非対称性</strong>にある。</p>
+    <ul>
+      <li>期待はゆっくり積み上がる</li>
+      <li>恐怖は一瞬で広がる</li>
+    </ul>
+    <p>この時間軸の非対称性が、世界の揺らぎを大きくする。</p>
+    <ul>
+      <li>株価はゆっくり上がり、急に落ちる</li>
+      <li>通貨は安定し、突然暴落する</li>
+      <li>社会は静かで、ある日暴発する</li>
+    </ul>
+    <p>心理は、世界の“速度”を決めるレイヤーである。</p>
+
+    <h2>3. 群衆心理 ── 個人ではなく“集団”が世界を動かす</h2>
+    <p>心理レイヤーが扱うのは、個人の心理ではなく <strong>“集団としての心理”</strong> である。その特徴は──</p>
+    <ul>
+      <li>恐怖には過敏に反応し、</li>
+      <li>期待には鈍く、</li>
+      <li>一方向に流れやすく、</li>
+      <li>心理の向きが反転するとき、一気に動く。</li>
+    </ul>
+    <p>市場も国家も社会も、最終的には“群衆心理”として振る舞う。心理レイヤーとは、<strong>集団の心理がどちらへ向かおうとしているのか</strong>、その“向き”を読むレイヤーである。</p>
+
+    <h2>4. 心理レイヤーが生む“歪み” ── 世界の事件の前兆</h2>
+    <p>心理は、構造と因果の上に“歪み”をつくる。</p>
+    <ul>
+      <li>恐怖が過剰に増幅される</li>
+      <li>期待が必要以上に膨らむ</li>
+      <li>群衆心理が一方向に偏る</li>
+      <li>不安が静かに蓄積していく</li>
+      <li>社会の自信がゆっくりと崩れていく</li>
+    </ul>
+    <p>この歪みが臨界点を超えると、世界は“事件”として噴き出す。</p>
+    <ul>
+      <li>バブル崩壊</li>
+      <li>通貨危機</li>
+      <li>金利ショック</li>
+      <li>社会不安</li>
+      <li>戦争の引き金</li>
+      <li>国家の崩壊</li>
+    </ul>
+    <div class="callout">
+      <p>事件は偶然ではない。<strong>心理レイヤーの歪みが臨界点を超えた結果</strong>である。</p>
+    </div>
+
+    <h2>5. 心理レイヤーの4つの構成要素</h2>
+    <h3>① 期待（Expectation）</h3>
+    <p>未来への“希望”が市場や国家を動かす。</p>
+    <h3>② 恐怖（Fear）</h3>
+    <p>未来への“不安”が世界を急激に揺らす。</p>
+    <h3>③ 群衆心理（Herding）</h3>
+    <p>集団が一方向に動くことで、揺らぎが増幅される。</p>
+    <h3>④ ナラティブ（物語）</h3>
+    <p>人々が信じる“物語”が、心理を方向づける。</p>
+    <p>心理レイヤーとは、この4つの力が交差する場所である。</p>
+
+    <h2>6. 心理レイヤーは“為替”に最も強く現れる（第7回への接続）</h2>
+    <p>心理レイヤーの影響が最も強く現れるのが、<strong>為替</strong>である。</p>
+    <ul>
+      <li>期待</li>
+      <li>恐怖</li>
+      <li>リスクオン／オフ</li>
+      <li>ナラティブ</li>
+      <li>群衆心理</li>
+    </ul>
+    <p>これらの心理が最も早く、最も鋭く反映される市場。だから第7回は「為替」を扱う。心理レイヤーの“実践編”として最適だからだ。</p>
+
+    <h2>7. 結語 ── 心理は世界の“揺らぎ”をつくる</h2>
+    <p>構造は世界の枠を決め、因果は世界に力を与える。しかし世界を揺らすのは、人間の心理である。期待が風を起こし、恐怖が波を立て、群衆がその波を増幅する。</p>
+    <p>心理レイヤーとは、世界の揺らぎのリズムを聴き取るための感性である。そしてこの“揺らぎ”を、どこまで定量化できるのか──その問いから、構造学の外縁として FCI をはじめとする新しい指標づくりが動き始めている。</p>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">STRUCTURE SERIES</span>
+    <h3>構造学シリーズを読む</h3>
+    <p>第4回で三層（構造・因果・心理）の各論が完結。第5回以降は原油・海運・為替・金という現実のテーマで、三層構造を実際に使う“実践編”へ入っていきます。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821" target="_blank" rel="noopener">noteで続きを読む</a>
+      <a class="cta-btn" href="/">ハブに戻る</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

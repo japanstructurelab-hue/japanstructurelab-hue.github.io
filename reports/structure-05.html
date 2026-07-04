@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【構造学 第5回】原油スプレッドで世界のリスクを読む ─ Brent−WTI が示す“供給不安の量”｜Japan Structure Lab</title>
+<meta name="description" content="日本株は原油の影響を最も受けやすい国。Brent−WTI スプレッドは“海上供給リスクの量”をそのまま数値化し、世界の揺れをニュースより先に示す。構造学シリーズ 第5回・実践編。">
+<meta property="og:title" content="【構造学 第5回】原油スプレッドで世界のリスクを読む ─ Brent−WTI が示す供給不安の量">
+<meta property="og:description" content="Brent−WTI は海上供給リスクのセンサー。世界の揺れを株より先に察知する。">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body a.inline{color:var(--gold);border-bottom:1px solid var(--line-strong);}
+  .body a.inline:hover{border-color:var(--gold);}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">STRUCTURE SERIES ── 第 5 回</div>
+  <h1 class="art-title">原油スプレッドで世界のリスクを読む ── Brent−WTI が示す“供給不安の量”</h1>
+  <div class="art-meta">
+    <span>実践編 ／ 原油（供給）</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">日本株は、世界の中でも原油価格の影響を最も受けやすい国だ。日本はエネルギーの約90％を輸入し、その大半が中東から海上輸送されている。だからこそ、その原油リスクを最速で教えてくれる Brent−WTI スプレッドが、世界の揺れを読む実践編の入口になる。</p>
+
+  <div class="body">
+
+    <h2>なぜ原油高が日本株安になるのか（構造の問題）</h2>
+    <p>日本はエネルギーの約90％を輸入し、その大半を中東からの海上輸送に依存している。そのため原油価格が上がると、</p>
+    <ul>
+      <li>輸入コストが増え、貿易収支が悪化する</li>
+      <li>企業利益が圧迫される（製造業・運輸・化学など）</li>
+      <li>家計負担が増え、消費が弱くなる</li>
+    </ul>
+    <p>という“構造的な逆風”が日本経済に直撃する。つまり、<strong>原油高＝日本株安になりやすいのは心理ではなく構造の問題</strong>だ。そして、その原油リスクを最速で教えてくれるのが <strong>原油スプレッド（Brent−WTI）</strong> である。</p>
+
+    <h2>なぜスプレッドがリスクを示すのか（構造で理解する）</h2>
+    <p>原油スプレッドは、<strong>「海上供給リスクの量」＝ Brent に乗るリスクプレミアム</strong> をそのまま数値化したものだ。ここで言う「海が揺れる」とは、物理的な波ではなく“地政学的な波”のことである。</p>
+    <p>航路が危険になると、タンカーの保険料が上がり、Brent にリスクプレミアムが乗る。これがスプレッド拡大の本質だ。</p>
+
+    <h2>構造でケース分けする</h2>
+
+    <h3>ケース①：Brent に“地政学リスク”が乗る → スプレッド拡大</h3>
+    <p>Brent は海上輸送される原油の代表価格。中東・紅海・ホルムズ海峡が揺れると、海上輸送にリスクプレミアムが上乗せされる。</p>
+    <ul>
+      <li>航路が危険になる</li>
+      <li>保険料が上がる</li>
+      <li>Brent が上がる</li>
+      <li>WTI との差が広がる</li>
+    </ul>
+    <p><strong>Brent−WTI ＝ 海上供給リスクの大きさ</strong> である。</p>
+
+    <h3>ケース②：WTI は“海上リスクが乗らない” → スプレッドの基準点</h3>
+    <p>WTI はアメリカ国内の陸上輸送が中心で、海上リスクの影響をほぼ受けない。だから、世界のリスクを見るときは Brent の動きだけが重要、という構造になる。</p>
+
+    <h3>ケース③：地政学リスクが後退 → スプレッド縮小</h3>
+    <p>航路が安定し、保険料が下がると、Brent のリスクプレミアムが消える。</p>
+    <ul>
+      <li>海上が安全になる</li>
+      <li>Brent が WTI に近づく</li>
+      <li>スプレッドが縮小する</li>
+    </ul>
+    <p><strong>スプレッド縮小＝供給不安の後退＝リスクオン</strong> である。</p>
+
+    <h3>ケース④：事件化 → スプレッド10ドル超</h3>
+    <p>航路封鎖、攻撃、制裁、迂回ルート強制など“実害”が出ると、Brent に巨大なプレミアムが乗る。<strong>スプレッド10ドル超＝事件化の可能性</strong> だ。</p>
+
+    <h3>● 歴史的な例</h3>
+    <ul>
+      <li><strong>2022年：ロシア・ウクライナ侵攻前後</strong> ── Brent が急騰し、スプレッドは10ドルを大きく超えた。海上供給リスクが現実化した典型例。</li>
+      <li><strong>2019年：サウジ・アラムコ石油施設攻撃</strong> ── 中東の供給不安が一気に高まり、Brent が急騰。</li>
+    </ul>
+    <p>これらの局面では、スプレッドが“世界の揺れ”をニュースより先に示していた。</p>
+
+    <h2>例外：WTI のほうが高くなるケースはあるのか</h2>
+    <p>ある。ただし、世界リスクとは無関係の“アメリカ国内の特殊事情”に限られる。</p>
+    <ul>
+      <li>ハリケーンでメキシコ湾の生産が停止</li>
+      <li>パイプライン事故で供給が止まる</li>
+      <li>寒波・熱波で国内需要が急増</li>
+      <li>SPR（戦略備蓄）の買い戻し</li>
+      <li>輸出制限などの政策要因</li>
+    </ul>
+    <div class="callout">
+      <p><strong>Brent が高い＝世界のリスク。WTI が高い＝アメリカ国内の事情。</strong>この区別が、スプレッドを読む出発点になる。</p>
+    </div>
+
+    <h2>スプレッドの現在地（例示としての水準帯）</h2>
+    <p>執筆時点では、スプレッドは8ドル台に位置していた。これは構造学でいう「緊張フェーズ」にあたり、中東・紅海・ホルムズ海峡の地政学的な波が意識されやすい水準だ。現在の水準は観測ツール（<a class="inline" href="https://nikkei225jp.com/oil" target="_blank" rel="noopener">nikkei225jp.com/oil</a>）で確認してほしい。</p>
+
+    <h2>スプレッドの4段階（世界予兆OSの基準値）</h2>
+    <h3>● 5ドル台：リスクオンが強まる（正常圏）</h3>
+    <p>海上リスクが後退し、世界の資金がリスク資産へ戻りやすい。日本株にとって最も追い風。</p>
+    <h3>● 6ドル台：警戒は残るが安定圏</h3>
+    <p>航路は不安定だが、世界は落ち着きつつある。</p>
+    <h3>● 8ドル台：緊張フェーズ</h3>
+    <p>中東・紅海・海運保険料の上昇。株式市場は揺れやすく、日本株は特に敏感。</p>
+    <h3>● 10ドル超：事件化の可能性</h3>
+    <p>航路封鎖・攻撃・制裁など“実害”が発生。世界の物流が揺れ、株式市場は恐怖モードへ。</p>
+
+    <h2>スプレッドは“株より先に動く”</h2>
+    <ul>
+      <li>株価は、心理で揺れる</li>
+      <li>ニュースは、後追いで騒ぐ</li>
+      <li>スプレッドは、構造が揺れた瞬間に動く</li>
+    </ul>
+    <p>だから、スプレッドは世界のリスクを最速で教えてくれる。</p>
+
+    <h2>今日からできる“世界の読み方”</h2>
+    <ol>
+      <li>Brent と WTI の価格を毎日1回だけ見る</li>
+      <li>差が5〜6ドル台ならリスクオン方向</li>
+      <li>8ドル台なら緊張フェーズ</li>
+      <li>10ドル超なら事件化の可能性</li>
+      <li>ニュースより先に世界の変化を察知できる</li>
+    </ol>
+
+    <h2>結論</h2>
+    <p>原油スプレッドは、世界のリスクを最速で教えてくれる“海上供給リスクのセンサー”だ。日本株は原油に弱い国。だからこそ Brent−WTI を読むことは、世界の揺れ（＝地政学的な波）を先に察知し、ニュースのノイズを無効化する最強の方法になる。</p>
+    <p><strong>構造学の実践編は、ここから始まる。</strong></p>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">STRUCTURE SERIES</span>
+    <h3>構造学シリーズを読む</h3>
+    <p>第5回は実践編の起点＝原油（供給）。続く第6回は海運（物流）、第7回は為替（心理）、第8回は金（統合）と、三層構造を現実の市場で読み解いていきます。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821" target="_blank" rel="noopener">noteで続きを読む</a>
+      <a class="cta-btn" href="/">ハブに戻る</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

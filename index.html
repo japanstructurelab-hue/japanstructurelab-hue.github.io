@@ -13,9 +13,9 @@
     --bg:#0b0b0d;
     --bg-elevated:#141317;
     --bg-card:#18171b;
-    --text-primary:#ece7db;
-    --text-secondary:#8f8b82;
-    --text-tertiary:#5c5952;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#726d64;
     --gold:#c6a15b;
     --gold-dim:#8a7442;
     --crimson:#8a3a3a;
@@ -79,7 +79,7 @@
   }
   .eyebrow{
     font-family:'JetBrains Mono',monospace;
-    font-size:12px;
+    font-size:13px;
     letter-spacing:0.22em;
     color:var(--gold);
     text-transform:uppercase;
@@ -126,7 +126,7 @@
   .stratum:hover{background:var(--bg-elevated);padding-left:34px;}
   .stratum .label{
     font-family:'JetBrains Mono',monospace;
-    font-size:11px;
+    font-size:12px;
     letter-spacing:0.14em;
     color:var(--text-tertiary);
   }
@@ -192,7 +192,7 @@
   .tool-card:hover{background:var(--bg-elevated);}
   .tool-num{
     font-family:'JetBrains Mono',monospace;
-    font-size:11px;color:var(--gold);letter-spacing:0.1em;margin-bottom:20px;
+    font-size:12px;color:var(--gold);letter-spacing:0.1em;margin-bottom:20px;
   }
   .tool-card h3{
     font-family:'Shippori Mincho',serif;
@@ -203,7 +203,7 @@
   }
   .tool-card .go{
     font-family:'JetBrains Mono',monospace;
-    font-size:11.5px;letter-spacing:0.08em;color:var(--text-primary);
+    font-size:12.5px;letter-spacing:0.08em;color:var(--text-primary);
     display:inline-flex;align-items:center;gap:8px;
     border-top:1px solid var(--line);padding-top:16px;
   }
@@ -226,11 +226,11 @@
   .archive-row:hover{padding-left:10px;}
   .archive-row h4{font-size:15px;font-weight:500;margin-bottom:6px;}
   .archive-row .tag{
-    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gold);
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--gold);
     letter-spacing:0.08em;
   }
   .archive-row .go{
-    font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-secondary);
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text-secondary);
     white-space:nowrap;
   }
   .archive-row:hover .go{color:var(--gold);}
@@ -245,17 +245,65 @@
     background:var(--bg-card);padding:40px 34px;
   }
   .follow-card .mono-label{
-    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
     letter-spacing:0.12em;margin-bottom:16px;display:block;
   }
   .follow-card h3{font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:14px;}
   .follow-card p{color:var(--text-secondary);font-size:13.5px;margin-bottom:22px;}
   .follow-card .link-btn{
-    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;
+    font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.06em;
     border:1px solid var(--line-strong);padding:11px 20px;display:inline-block;
     transition:border-color .25s, color .25s;
   }
   .follow-card .link-btn:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* ---------- books / recommended ---------- */
+  .books-acc{border:1px solid var(--line);}
+  .books-acc summary{
+    list-style:none;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:28px 32px;background:var(--bg-card);transition:background .3s;
+  }
+  .books-acc summary::-webkit-details-marker{display:none;}
+  .books-acc summary:hover{background:var(--bg-elevated);}
+  .books-acc summary .acc-label{
+    font-family:'Shippori Mincho',serif;font-size:17px;font-weight:800;
+  }
+  .books-acc summary .acc-icon{
+    font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--gold);
+    transition:transform .3s;
+  }
+  .books-acc[open] summary .acc-icon{transform:rotate(45deg);}
+  .books-body{padding:8px 32px 34px;}
+  .layer{margin-top:34px;}
+  .layer:first-child{margin-top:20px;}
+  .layer-head{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;
+    color:var(--gold);margin-bottom:8px;
+  }
+  .layer-lead{
+    font-size:13.5px;color:var(--text-secondary);line-height:1.9;
+    margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line);
+  }
+  .book{padding:18px 0;border-bottom:1px solid var(--line);}
+  .book:last-child{border-bottom:none;}
+  .book h4{
+    font-family:'Shippori Mincho',serif;font-size:16px;font-weight:800;margin-bottom:10px;
+  }
+  .book p{font-size:13px;color:var(--text-secondary);line-height:1.95;margin-bottom:14px;}
+  .book .amazon-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;
+    color:var(--text-primary);border:1px solid var(--line-strong);
+    padding:8px 16px;display:inline-flex;align-items:center;gap:7px;
+    transition:border-color .25s,color .25s;
+  }
+  .book .amazon-btn::after{content:'\2197';}
+  .book .amazon-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .books-note{font-size:12px;color:#918b7f;line-height:1.8;margin-top:20px;}
+  @media(max-width:640px){
+    .books-acc summary{padding:22px 20px;}
+    .books-body{padding:8px 20px 26px;}
+  }
 
   /* ---------- footer ---------- */
   footer{
@@ -267,10 +315,10 @@
     margin-bottom:32px;
   }
   footer .foot-brand{font-family:'Shippori Mincho',serif;font-weight:800;font-size:15px;}
-  footer nav.foot-nav{display:flex;gap:22px;font-size:12.5px;color:var(--text-secondary);}
+  footer nav.foot-nav{display:flex;gap:22px;font-size:13.5px;color:var(--text-secondary);}
   footer nav.foot-nav a:hover{color:var(--gold);}
   .disclosure{
-    font-size:11.5px;color:var(--text-tertiary);line-height:1.8;
+    font-size:12.5px;color:#918b7f;line-height:1.8;
     border-top:1px solid var(--line);padding-top:24px;
   }
 
@@ -290,10 +338,29 @@
   .modal p, .modal li{font-size:13px;color:var(--text-secondary);line-height:1.8;}
   .modal ul{padding-left:20px;margin-top:6px;}
   .modal-close{
-    margin-top:28px;font-family:'JetBrains Mono',monospace;font-size:12px;
+    margin-top:28px;font-family:'JetBrains Mono',monospace;font-size:13px;
     border:1px solid var(--line-strong);padding:9px 18px;display:inline-block;cursor:pointer;
   }
   .modal-close:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* ---------- structure series ---------- */
+  #series .series-card{
+    display:block;background:var(--bg-card);border:1px solid var(--line);
+    border-left:3px solid var(--gold);padding:30px 32px;
+    transition:border-color .25s,background .25s,transform .25s;
+  }
+  #series .series-card:hover{border-color:var(--line-strong);background:#1c1b20;transform:translateX(3px);}
+  #series .series-flow{
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--line);
+  }
+  #series .sf-item{display:flex;flex-direction:column;gap:3px;}
+  #series .sf-item b{font-family:'Shippori Mincho',serif;font-weight:800;font-size:17px;color:var(--gold);}
+  #series .sf-item span{font-size:11.5px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;letter-spacing:0.02em;}
+  #series .sf-arw{color:var(--gold-dim);font-family:'JetBrains Mono',monospace;}
+  #series .series-go{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  #series .series-count{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:var(--text-tertiary);}
+  #series .series-go .arrow{color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:13px;}
 </style>
 </head>
 <body>
@@ -303,8 +370,10 @@
     <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
     <div class="nav-links">
       <a href="#tools">TOOLS</a>
+      <a href="#series">SERIES</a>
       <a href="#reports">REPORTS</a>
       <a href="#follow">FOLLOW</a>
+      <a href="#books">BOOKS</a>
     </div>
   </div>
 </nav>
@@ -336,7 +405,7 @@
     <div class="hero-links">
       <a href="#tools">ツールを見る</a>
       <a href="#reports">レポートを読む</a>
-      <a href="https://x.com/safe_crane821" target="_blank" rel="noopener">Xで最新分析</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">Xで最新分析</a>
     </div>
   </div>
 </header>
@@ -354,7 +423,7 @@
       <a class="tool-card" href="https://bespoke-frangipane-872317.netlify.app" target="_blank" rel="noopener">
         <div class="tool-num">TOOL 01</div>
         <h3>投資家タイプ診断</h3>
-        <p>15問の診断で、あなたの投資スタイルを6タイプ×5レベルで判定。水見式をモチーフにした構造学的自己分析。</p>
+        <p>15問の診断で、あなたの投資スタイルを6タイプ×5レベルで判定。独自の構造学フレームワークによる投資タイプ分析。</p>
         <div class="go">診断してみる</div>
       </a>
 
@@ -372,6 +441,31 @@
         <span class="badge-soon">近日公開</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ STRUCTURE SERIES (全９回) ============ -->
+<section id="series">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Structure Series</div>
+      <h2>構造学シリーズ ── 全９回で世界を読む。</h2>
+      <p>ニュースの意図を無効化し、世界を「構造・因果・心理」の三層で読み直す。序論から実践編まで、一貫したOSとして体系化した連載。</p>
+    </div>
+
+    <a class="series-card" href="reports/">
+      <div class="series-flow">
+        <span class="sf-item"><b>序論</b><span>OSの原点・全体像</span></span>
+        <span class="sf-arw">→</span>
+        <span class="sf-item"><b>各論</b><span>構造・因果・心理</span></span>
+        <span class="sf-arw">→</span>
+        <span class="sf-item"><b>実践編</b><span>原油・海運・為替・金</span></span>
+      </div>
+      <div class="series-go">
+        <span class="series-count">STRUCTURE SERIES ／ 第0回〜第8回</span>
+        <span class="arrow">シリーズ一覧を見る →</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -444,7 +538,7 @@
         <span class="mono-label">MARKET STRUCTURE REPORT</span>
         <h3>X（旧Twitter）で毎朝配信</h3>
         <p>VIX・日経VI・Brent-WTI・株主還元情報を5セクション固定フォーマットで発信。</p>
-        <a class="link-btn" href="https://x.com/safe_crane821" target="_blank" rel="noopener">@safe_crane821 をフォロー</a>
+        <a class="link-btn" href="https://x.com/StructureLabJP" target="_blank" rel="noopener">@StructureLabJP をフォロー</a>
       </div>
       <div class="follow-card">
         <span class="mono-label">NOTE ARCHIVE</span>
@@ -456,6 +550,80 @@
   </div>
 </section>
 
+<!-- ============ BOOKS ============ -->
+<section id="books">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Recommended Books</div>
+      <h2>構造学で読み解く、推薦図書</h2>
+      <p>「構造・因果・心理」の三層をそれぞれ深めるための6冊。各層の視点から、なぜこの本を薦めるのかを添えています。</p>
+    </div>
+
+    <details class="books-acc">
+      <summary>
+        <span class="acc-label">推薦図書ガイドを開く</span>
+        <span class="acc-icon">＋</span>
+      </summary>
+      <div class="books-body">
+
+        <div class="layer">
+          <div class="layer-head">LAYER 01 ── 構造</div>
+          <p class="layer-lead">企業という構造物の土台＝財務を読み解く。数字の裏にある事業の骨格を掴むための2冊。</p>
+
+          <div class="book">
+            <h4>バフェットの財務諸表を読む力</h4>
+            <p>損益計算書・貸借対照表・キャッシュフロー計算書を、暗記の対象ではなく「企業の構造を映す設計図」として読み直させてくれる一冊。構造学でいう第一層＝構造を鍛えるための出発点になります。</p>
+            <a class="amazon-btn" href="https://www.amazon.co.jp/s?k=バフェットの財務諸表を読む力" target="_blank" rel="noopener sponsored">Amazonで見る</a>
+          </div>
+
+          <div class="book">
+            <h4>財務3表一体理解法</h4>
+            <p>3つの財務諸表がバラバラの書類ではなく、一つの循環としてつながっていることを腹落ちさせる本。お金がどこから来てどこに溜まるか——企業内部の「配管」を可視化してくれます。数字が読めない状態から一段抜けたい人へ。</p>
+            <a class="amazon-btn" href="https://www.amazon.co.jp/s?k=財務3表一体理解法" target="_blank" rel="noopener sponsored">Amazonで見る</a>
+          </div>
+        </div>
+
+        <div class="layer">
+          <div class="layer-head">LAYER 02 ── 因果</div>
+          <p class="layer-lead">なぜその株価がつくのか。企業価値と市場価格を結ぶ因果の鎖をたどる2冊。</p>
+
+          <div class="book">
+            <h4>株式投資の未来</h4>
+            <p>配当再投資と長期リターンの関係を、膨大なデータで検証した古典。「成長株が必ずしも報われない」という直感に反する事実を、因果の構造から説明してくれます。短期の値動きではなく、長期で効いてくるメカニズムを学べる一冊。</p>
+            <a class="amazon-btn" href="https://www.amazon.co.jp/s?k=株式投資の未来" target="_blank" rel="noopener sponsored">Amazonで見る</a>
+          </div>
+
+          <div class="book">
+            <h4>バリュー投資の教科書</h4>
+            <p>価格と価値のギャップがなぜ生まれ、なぜ埋まるのか。バリュー投資の核心である「市場の誤値付け」を、感覚ではなく論理で捉えるための一冊。シナリオが崩れない限り握るという発想の土台にもなります。</p>
+            <a class="amazon-btn" href="https://www.amazon.co.jp/s?k=バリュー投資の教科書" target="_blank" rel="noopener sponsored">Amazonで見る</a>
+          </div>
+        </div>
+
+        <div class="layer">
+          <div class="layer-head">LAYER 03 ── 心理</div>
+          <p class="layer-lead">最後に相場を動かすのは人間の心理。恐怖と欲望のパターンを読む2冊。</p>
+
+          <div class="book">
+            <h4>マーケットの魔術師</h4>
+            <p>一流トレーダーへのインタビュー集。手法はバラバラでも、彼らに共通する「規律」と「損失への向き合い方」が浮かび上がります。構造学の第三層＝心理を、成功者の肉声から逆算して学べる稀有な本。</p>
+            <a class="amazon-btn" href="https://www.amazon.co.jp/s?k=マーケットの魔術師" target="_blank" rel="noopener sponsored">Amazonで見る</a>
+          </div>
+
+          <div class="book">
+            <h4>世界一やさしい高配当株投資の教科書1年生</h4>
+            <p>これから投資を始める人が、最初の心理的ハードルを越えるための入門書。高配当株という「続けやすい」テーマを入り口に、相場と長く付き合う習慣を作る。構造・因果を学ぶ前の、最初の一歩として。</p>
+            <a class="amazon-btn" href="https://www.amazon.co.jp/s?k=世界一やさしい高配当株投資の教科書1年生" target="_blank" rel="noopener sponsored">Amazonで見る</a>
+          </div>
+        </div>
+
+      </div>
+    </details>
+
+    <p class="books-note">※ 掲載リンクは書籍検索ページへ遷移します。Amazonアソシエイト提携の承認後、正式なアソシエイトリンクに差し替えます。</p>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
@@ -464,7 +632,7 @@
       <nav class="foot-nav">
         <a href="#tools">Tools</a>
         <a href="#reports">Reports</a>
-        <a href="https://x.com/safe_crane821" target="_blank" rel="noopener">X</a>
+        <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
         <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
         <a href="javascript:void(0)" onclick="document.getElementById('privacy-modal').classList.add('active')">プライバシーポリシー</a>
       </nav>
@@ -496,7 +664,7 @@
     <p>当サイトのコンテンツは情報提供を目的としており、投資勧誘・助言を目的としたものではありません。掲載情報の正確性・完全性を保証するものではなく、これらの情報に基づいて被ったいかなる損害についても、当サイトは責任を負いません。投資に関する最終決定はご自身の判断と責任において行ってください。</p>
 
     <h4>お問い合わせ</h4>
-    <p>本ポリシーに関するお問い合わせは、Xアカウント（@safe_crane821）宛にご連絡ください。</p>
+    <p>本ポリシーに関するお問い合わせは、Xアカウント（@StructureLabJP）宛にご連絡ください。</p>
 
     <div class="modal-close" onclick="document.getElementById('privacy-modal').classList.remove('active')">閉じる</div>
   </div>

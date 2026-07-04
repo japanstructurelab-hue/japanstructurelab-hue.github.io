@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【構造学 第3回】因果レイヤー総論 ─ 世界を動かす力｜Japan Structure Lab</title>
+<meta name="description" content="構造が「地図」なら、因果は「風」である。供給・需要・物流・制度――構造の上を走る力の流れを読む。短期では強く、長期では構造に従う因果の本質。構造学シリーズ 第3回。">
+<meta property="og:title" content="【構造学 第3回】因果レイヤー総論 ─ 世界を動かす力">
+<meta property="og:description" content="供給・需要・物流・制度。構造の上を走る“風”の流れが世界を動かす。">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">STRUCTURE SERIES ── 第 3 回</div>
+  <h1 class="art-title">因果レイヤー総論 ── 世界を動かす力</h1>
+  <div class="art-meta">
+    <span>因果レイヤー総論</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">世界は構造の上で動く。しかし構造そのものはめったに動かない。では、私たちが日々目にする“世界の変化”はどこから生まれるのか。その答えが因果レイヤーである。構造が「地図」なら、因果は「風」だ。</p>
+
+  <div class="body">
+
+    <p>構造が「地図」だとすれば、因果は「風」である。地図は動かないが、風は世界を動かす。そしてこの風の流れを読むことこそ、世界の動き方を理解するための <strong>OS</strong> になる。</p>
+
+    <h2>1. 因果レイヤーとは何か ── 世界を動かす“力”の総体</h2>
+    <p>因果レイヤーとは、<strong>構造の上で動く力学の集合</strong>である。</p>
+    <ul>
+      <li>供給</li>
+      <li>需要</li>
+      <li>物流</li>
+      <li>制度</li>
+    </ul>
+    <p>これらはすべて、世界を動かす“力”として働く。構造は国家を拘束する枠組みだが、因果はその枠の中で世界を揺らし、動かし、変化を生む。構造は静的。因果は動的。この二つのレイヤーが重なり合うことで、世界は初めて「動き」を持つ。</p>
+
+    <h2>2. 供給 ── 世界の“量”を決める力</h2>
+    <p>供給は、世界の“量”を決める力である。</p>
+    <ul>
+      <li>原油の産出量</li>
+      <li>穀物の収穫量</li>
+      <li>半導体の生産能力</li>
+      <li>労働力の人口構造</li>
+    </ul>
+    <p>供給は、構造の影響を強く受ける。中東の地勢が原油供給を規定し、ウクライナの黒土地帯が穀物供給を規定するように。供給は変動するが、その変動の“幅”は構造によって決まっている。</p>
+
+    <h2>3. 需要 ── 世界の“欲望”を決める力</h2>
+    <p>需要は、世界の“欲望”を決める力である。</p>
+    <ul>
+      <li>景気</li>
+      <li>金利</li>
+      <li>消費</li>
+      <li>投資</li>
+      <li>技術革新</li>
+    </ul>
+    <p>需要は供給よりも変動が大きい。景気は波打ち、投資は偏り、技術は突然世界を変える。しかし需要もまた、構造の枠を超えることはできない。</p>
+    <p>人口が縮む国でも、生産性向上や技術革新によって需要は伸び得る。だがその“上限”は、人口構造という構造レイヤーによって強く制約される。金融緩和は風を起こせるが、人口構造という地形そのものを変えることはできない。<strong>これが、因果が構造に従う典型例である。</strong></p>
+
+    <h2>4. 物流 ── 世界の“血流”を決める力</h2>
+    <p>物流は、世界の“血流”である。</p>
+    <ul>
+      <li>海運</li>
+      <li>陸運</li>
+      <li>空輸</li>
+      <li>港湾</li>
+      <li>サプライチェーン</li>
+    </ul>
+    <p>物流は、供給と需要をつなぐ“動脈”であり、世界経済の生命線そのもの。物流が止まれば、供給も需要も意味を失う。そして物流は、構造の影響を最も強く受けるレイヤーである。</p>
+    <ul>
+      <li>海峡</li>
+      <li>海路</li>
+      <li>港湾</li>
+      <li>地勢</li>
+      <li>海軍力</li>
+    </ul>
+    <p>これらはすべて、物流の“構造的制約”である。だからこそ、<strong>第6回「海運指数」</strong> は因果レイヤーの中でも最も“構造に近い因果”として扱うことになる。</p>
+
+    <h2>5. 制度 ── 世界の“ルール”を決める力</h2>
+    <p>制度は、世界の“ルール”を決める力である。</p>
+    <ul>
+      <li>法律</li>
+      <li>規制</li>
+      <li>関税</li>
+      <li>金融政策</li>
+      <li>国際ルール</li>
+    </ul>
+    <p>制度は、因果レイヤーの中で最も“人間が作る力”である。しかし制度もまた、構造の影響を逃れられない。</p>
+    <ul>
+      <li>島国は自由貿易を好む</li>
+      <li>大陸国家は保護主義に傾く</li>
+      <li>海洋国家は海のルールを作りたがる</li>
+      <li>資源国は資源を武器にする</li>
+    </ul>
+    <p>制度は人間が作るが、その方向性は構造によって決まる。</p>
+
+    <h2>6. 因果レイヤーの本質 ── 短期では強く、長期では構造に従う</h2>
+    <div class="callout">
+      <p>因果は<strong>短期では強いが、長期では構造に従う</strong>。ここに因果レイヤーの最大の特徴がある。</p>
+    </div>
+    <ul>
+      <li>原油価格は暴騰する</li>
+      <li>金利は急上昇する</li>
+      <li>通貨は暴落する</li>
+      <li>技術は世界を変える</li>
+      <li>戦争は地図を書き換える</li>
+    </ul>
+    <p>しかし、これらの因果の動きはすべて、構造の枠の中で起きている。因果は世界を揺らすが、構造は世界を拘束する。この二つのレイヤーの交差点にこそ、世界の“動き方”が現れる。</p>
+
+    <h2>7. 因果レイヤーは“歪み”を生み、構造を揺らす</h2>
+    <p>因果レイヤーは、ときに構造を揺らすほどの“歪み”を生む。</p>
+    <ul>
+      <li>原油価格の暴騰</li>
+      <li>金利ショック</li>
+      <li>通貨危機</li>
+      <li>技術革命</li>
+      <li>戦争</li>
+      <li>制裁</li>
+    </ul>
+    <p>これらはすべて、構造の“粘性”を超える力を持つ。そしてこの歪みが蓄積すると、構造は揺らぎ、世界は不可逆化へと向かう。次回、心理レイヤーが生む“歪み”の話へとつながるのはこのためである。</p>
+
+    <h2>8. 結語 ── 因果レイヤーは世界の“動力”である</h2>
+    <p>構造は世界の“枠”を決める。因果はその枠の中で、世界に“動き”を与える。構造が地図なら、因果は風である。地図は動かない。しかし風は、世界を絶えず揺らし続ける。</p>
+    <p>因果レイヤーとは、構造の上を走る無数の力の流れである。その風の向きと強さを読み取れたとき、世界の輪郭は、静かに立ち上がる。</p>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">STRUCTURE SERIES</span>
+    <h3>構造学シリーズを読む</h3>
+    <p>第3回は世界に動きを与える因果レイヤー。続く第4回は心理レイヤーで“揺らぎ”を扱い、以降は原油・海運・為替・金という現実のテーマへ落とし込んでいきます。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821" target="_blank" rel="noopener">noteで続きを読む</a>
+      <a class="cta-btn" href="/">ハブに戻る</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
