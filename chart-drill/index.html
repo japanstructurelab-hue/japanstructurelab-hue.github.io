@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>チャートパターン構造学 | Japan Structure Lab</title>
+<meta property="og:title" content="チャートパターン構造学ドリル | Japan Structure Lab">
+<meta property="og:description" content="価格形状の「なぜ」を三層で読み解く。需給構造・因果・心理から本質を掴む構造学ドリル。">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --bg:#0a0a0a;
+  --panel:#131313;
+  --panel2:#1a1a1a;
+  --gold:#c9a84c;
+  --gold-dim:#7a6428;
+  --gold-pale:rgba(201,168,76,0.08);
+  --line:#222;
+  --line2:#2c2c2c;
+  --text:#e4e0d4;
+  --text-dim:#7a7668;
+  --text-mid:#a09880;
+  --c-struct:rgba(79,130,180,0.18);
+  --c-struct-border:#4f82b4;
+  --c-cause:rgba(180,140,60,0.18);
+  --c-cause-border:#c9a84c;
+  --c-psych:rgba(160,80,100,0.18);
+  --c-psych-border:#c06070;
+  --green:#4f8f6b;
+  --red:#b5483f;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Yu Gothic','Hiragino Sans',sans-serif;
+  min-height:100vh;
+}
+
+/* ── SCREEN SYSTEM ── */
+.screen{display:none;flex-direction:column;align-items:center;padding:28px 16px 72px;min-height:100vh;}
+.screen.active{display:flex;}
+.wrap{width:100%;max-width:560px;}
+
+/* ── HEADER ── */
+.site-header{
+  text-align:center;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:0;
+}
+.eyebrow{
+  font-size:10px;letter-spacing:0.38em;color:var(--gold-dim);
+  text-transform:uppercase;margin-bottom:10px;display:block;
+}
+.app-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--gold-pale);border:1px solid var(--gold-dim);
+  padding:3px 10px;border-radius:1px;margin-bottom:14px;
+}
+.app-badge span{font-size:10px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;}
+h1{
+  font-size:26px;font-weight:700;letter-spacing:0.04em;
+  color:var(--gold);line-height:1.3;
+}
+.h1-sub{font-size:12px;color:var(--text-dim);margin-top:7px;letter-spacing:0.04em;}
+
+/* ── START SCREEN ── */
+.start-chart-demo{
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:12px;
+  margin:24px 0;
+  overflow:hidden;
+}
+.start-chart-demo canvas{display:block;width:100%;height:140px;}
+.demo-label{
+  position:absolute;top:10px;left:14px;
+  font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:var(--text-dim);
+}
+
+.concept-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  margin-bottom:24px;
+}
+.concept-cell{
+  background:var(--panel);border:1px solid var(--line);
+  padding:14px 10px;text-align:center;
+}
+.concept-cell .badge{
+  font-size:9px;letter-spacing:0.2em;font-weight:700;
+  text-transform:uppercase;display:block;margin-bottom:6px;
+}
+.concept-cell.struct .badge{color:var(--c-struct-border);}
+.concept-cell.cause .badge{color:var(--c-cause-border);}
+.concept-cell.psych .badge{color:var(--c-psych-border);}
+.concept-cell p{font-size:11px;color:var(--text-dim);line-height:1.6;}
+
+.info-row{
+  display:flex;gap:12px;margin-bottom:28px;
+}
+.info-cell{
+  flex:1;background:var(--panel);border:1px solid var(--line);
+  padding:12px;text-align:center;
+}
+.info-cell .num{font-size:28px;font-weight:700;color:var(--gold);}
+.info-cell .lbl{font-size:10px;color:var(--text-dim);margin-top:3px;}
+
+.start-btn{
+  display:block;width:100%;
+  background:var(--gold);color:#0f0c04;
+  border:none;padding:17px;
+  font-size:15px;font-weight:700;letter-spacing:0.12em;
+  cursor:pointer;border-radius:1px;
+  transition:opacity .15s;
+}
+.start-btn:hover{opacity:0.88;}
+
+/* ── QUIZ SCREEN ── */
+.progress-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;
+}
+.progress-text{font-size:11px;color:var(--text-dim);letter-spacing:0.06em;}
+.progress-text b{color:var(--gold);}
+.progress-bar-wrap{
+  flex:1;height:2px;background:var(--line2);
+  margin:0 14px;
+}
+.progress-bar-fill{
+  height:2px;background:var(--gold);
+  transition:width .4s cubic-bezier(.4,0,.2,1);
+}
+.score-label{font-size:11px;color:var(--text-dim);letter-spacing:0.04em;}
+.score-label b{color:var(--gold);}
+
+.chart-wrap{
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:14px 12px 10px;
+  position:relative;
+  margin-bottom:14px;
+}
+.chart-ticker{
+  position:absolute;top:10px;left:14px;
+  font-size:9px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--text-dim);
+}
+.chart-canvas{display:block;width:100%;height:220px;}
+
+.question-line{
+  text-align:center;font-size:13px;color:var(--text-mid);
+  margin-bottom:12px;letter-spacing:0.02em;
+}
+.question-line strong{color:var(--text);font-size:15px;}
+
+.choices-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:9px;margin-bottom:14px;
+}
+.choice-btn{
+  background:var(--panel);border:1px solid var(--line2);
+  color:var(--text);padding:14px 8px;font-size:12.5px;
+  border-radius:1px;cursor:pointer;text-align:center;
+  line-height:1.4;transition:border-color .12s,background .12s;
+  letter-spacing:0.01em;
+}
+.choice-btn:hover:not([disabled]){border-color:var(--gold-dim);}
+.choice-btn.correct{border-color:var(--green);background:rgba(79,143,107,0.1);color:var(--green);}
+.choice-btn.wrong{border-color:var(--red);background:rgba(181,72,63,0.1);color:var(--red);}
+.choice-btn[disabled]{cursor:default;}
+
+/* ── THREE-LAYER REVEAL ── */
+.three-layer{
+  display:none;
+  flex-direction:column;gap:8px;
+  margin-bottom:14px;
+  animation:fadeUp .3s ease;
+}
+.three-layer.show{display:flex;}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.layer-block{
+  padding:12px 14px;
+  border-left:3px solid;
+  border-radius:0 1px 1px 0;
+}
+.layer-block.struct{background:var(--c-struct);border-color:var(--c-struct-border);}
+.layer-block.cause{background:var(--c-cause);border-color:var(--c-cause-border);}
+.layer-block.psych{background:var(--c-psych);border-color:var(--c-psych-border);}
+.layer-tag{
+  font-size:9px;letter-spacing:0.24em;font-weight:700;
+  text-transform:uppercase;margin-bottom:5px;display:block;
+}
+.layer-block.struct .layer-tag{color:var(--c-struct-border);}
+.layer-block.cause .layer-tag{color:var(--c-cause-border);}
+.layer-block.psych .layer-tag{color:var(--c-psych-border);}
+.layer-text{font-size:12px;line-height:1.75;color:var(--text-dim);}
+
+.pattern-name-bar{
+  display:none;
+  align-items:center;gap:10px;
+  padding:10px 14px;
+  background:var(--panel2);
+  border:1px solid var(--line2);
+  border-left:3px solid var(--gold);
+  margin-bottom:8px;
+}
+.pattern-name-bar.show{display:flex;}
+.pattern-name-bar .pn{font-size:14px;font-weight:700;color:var(--gold);}
+.pattern-name-bar .result-tag{
+  font-size:10px;letter-spacing:0.06em;padding:2px 7px;
+  border-radius:1px;font-weight:700;
+}
+.result-tag.ok{background:rgba(79,143,107,0.2);color:var(--green);}
+.result-tag.ng{background:rgba(181,72,63,0.2);color:var(--red);}
+
+.next-btn{
+  display:none;width:100%;
+  background:var(--gold);color:#0f0c04;
+  border:none;padding:14px;
+  font-size:13px;font-weight:700;letter-spacing:0.1em;
+  cursor:pointer;border-radius:1px;
+}
+.next-btn.show{display:block;}
+
+/* ── RESULT SCREEN ── */
+.result-header{
+  text-align:center;padding:28px 0 22px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:24px;
+}
+.result-header .eyebrow{margin-bottom:10px;}
+.result-score-big{
+  font-size:64px;font-weight:700;color:var(--gold);
+  line-height:1;margin:14px 0 6px;
+  font-variant-numeric:tabular-nums;
+}
+.result-score-big span{font-size:28px;color:var(--gold-dim);}
+.stars-row{
+  font-size:26px;letter-spacing:4px;margin:10px 0 14px;
+}
+.rank-name{
+  font-size:18px;font-weight:700;color:var(--text);
+  letter-spacing:0.06em;margin-bottom:6px;
+}
+.rank-desc{font-size:12px;color:var(--text-dim);line-height:1.7;}
+
+.result-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;margin-bottom:28px;
+}
+.result-cell{
+  background:var(--panel);border:1px solid var(--line);
+  padding:14px 10px;text-align:center;
+}
+.result-cell .rc-num{font-size:24px;font-weight:700;color:var(--gold);}
+.result-cell .rc-lbl{font-size:10px;color:var(--text-dim);margin-top:4px;}
+
+.share-btn{
+  display:block;width:100%;
+  background:#000;border:1px solid #333;
+  color:var(--text);padding:14px;
+  font-size:13px;font-weight:700;letter-spacing:0.08em;
+  cursor:pointer;border-radius:1px;margin-bottom:10px;
+  transition:border-color .15s;
+}
+.share-btn:hover{border-color:var(--gold-dim);}
+
+.app-links{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;margin-bottom:28px;
+}
+.app-link{
+  display:flex;flex-direction:column;
+  background:var(--panel);border:1px solid var(--line);
+  padding:14px;text-decoration:none;
+  transition:border-color .15s;border-radius:1px;
+}
+.app-link:hover{border-color:var(--gold-dim);}
+.app-link .al-tag{font-size:9px;letter-spacing:0.24em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:6px;}
+.app-link .al-name{font-size:12.5px;color:var(--text);font-weight:700;line-height:1.4;margin-bottom:4px;}
+.app-link .al-desc{font-size:10.5px;color:var(--text-dim);line-height:1.5;}
+
+.retry-btn{
+  display:block;width:100%;
+  background:var(--panel);border:1px solid var(--line2);
+  color:var(--text-mid);padding:13px;
+  font-size:12px;letter-spacing:0.08em;
+  cursor:pointer;border-radius:1px;margin-bottom:28px;
+}
+.retry-btn:hover{border-color:var(--gold-dim);}
+
+.footer{
+  text-align:center;font-size:10px;color:#3a3830;
+  letter-spacing:0.1em;margin-top:8px;
+}
+.footer b{color:var(--gold-dim);}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════
+     START SCREEN
+════════════════════════════════ -->
+<div id="startScreen" class="screen active">
+<div class="wrap">
+
+  <div class="site-header">
+    <a href="/" style="display:inline-block;margin-bottom:14px;color:var(--gold,#c9a84c);text-decoration:none;font-size:12px;letter-spacing:0.04em;opacity:0.85;">← Japan Structure Lab に戻る</a>
+    <span class="eyebrow">Japan Structure Lab — Vol.3</span>
+    <div class="app-badge"><span>Chart Pattern Drill</span></div>
+    <h1>チャートパターン<br>構造学ドリル</h1>
+    <div class="h1-sub">価格形状の「なぜ」を三層で読み解く</div>
+  </div>
+
+  <div class="start-chart-demo">
+    <div class="demo-label">Sample — N225 日足</div>
+    <canvas id="demoCanvas" width="600" height="140"></canvas>
+  </div>
+
+  <div class="concept-row">
+    <div class="concept-cell struct">
+      <span class="badge">構造</span>
+      <p>需給の偏りが価格形状として可視化された結果</p>
+    </div>
+    <div class="concept-cell cause">
+      <span class="badge">因果</span>
+      <p>その偏りがなぜ生まれたか。資金移動の文脈</p>
+    </div>
+    <div class="concept-cell psych">
+      <span class="badge">心理</span>
+      <p>参加者の集団心理が行動として現れた痕跡</p>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-cell">
+      <div class="num">10</div>
+      <div class="lbl">問</div>
+    </div>
+    <div class="info-cell">
+      <div class="num">10</div>
+      <div class="lbl">パターン収録</div>
+    </div>
+    <div class="info-cell">
+      <div class="num">5</div>
+      <div class="lbl">ランク</div>
+    </div>
+  </div>
+
+  <button class="start-btn" id="startBtn">ドリルをはじめる</button>
+
+  <div class="footer" style="margin-top:24px;">Japan Structure Lab — <b>構造学ドリル</b> Series</div>
+</div>
+</div>
+
+<!-- ════════════════════════════════
+     QUIZ SCREEN
+════════════════════════════════ -->
+<div id="quizScreen" class="screen">
+<div class="wrap">
+
+  <div class="progress-header">
+    <div class="progress-text">Q<b id="qNum">1</b> / 10</div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div class="score-label">正解 <b id="scoreLive">0</b></div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-ticker" id="chartTicker">N225 — 日足</div>
+    <canvas class="chart-canvas" id="quizCanvas" width="600" height="220"></canvas>
+  </div>
+
+  <div class="question-line"><strong>このチャートパターンは何？</strong></div>
+
+  <div class="choices-grid" id="choicesGrid"></div>
+
+  <div class="pattern-name-bar" id="patternNameBar">
+    <span class="pn" id="patternNameText"></span>
+    <span class="result-tag" id="resultTag"></span>
+  </div>
+
+  <div class="three-layer" id="threeLayer">
+    <div class="layer-block struct">
+      <span class="layer-tag">構造層 — 需給の偏り</span>
+      <div class="layer-text" id="layerStruct"></div>
+    </div>
+    <div class="layer-block cause">
+      <span class="layer-tag">因果層 — なぜその形になったか</span>
+      <div class="layer-text" id="layerCause"></div>
+    </div>
+    <div class="layer-block psych">
+      <span class="layer-tag">心理層 — 参加者の集団心理</span>
+      <div class="layer-text" id="layerPsych"></div>
+    </div>
+  </div>
+
+  <button class="next-btn" id="nextBtn">次のチャート →</button>
+</div>
+</div>
+
+<!-- ════════════════════════════════
+     RESULT SCREEN
+════════════════════════════════ -->
+<div id="resultScreen" class="screen">
+<div class="wrap">
+
+  <div class="result-header">
+    <span class="eyebrow">Result — チャートパターン構造学</span>
+    <div class="result-score-big" id="finalScore">0<span>/10</span></div>
+    <div class="stars-row" id="starsRow"></div>
+    <div class="rank-name" id="rankName"></div>
+    <div class="rank-desc" id="rankDesc"></div>
+  </div>
+
+  <div class="result-grid">
+    <div class="result-cell">
+      <div class="rc-num" id="rcCorrect">0</div>
+      <div class="rc-lbl">正解数</div>
+    </div>
+    <div class="result-cell">
+      <div class="rc-num" id="rcWrong">0</div>
+      <div class="rc-lbl">不正解数</div>
+    </div>
+    <div class="result-cell">
+      <div class="rc-num" id="rcPct">0%</div>
+      <div class="rc-lbl">正答率</div>
+    </div>
+  </div>
+
+  <button class="share-btn" id="shareBtn">✕ でシェアする</button>
+
+  <div style="font-size:11px;color:var(--text-dim);margin-bottom:20px;text-align:center;letter-spacing:0.04em;">
+    ── 構造学シリーズの他のアプリ ──
+  </div>
+  <div class="app-links">
+    <a class="app-link" href="https://bespoke-frangipane-872317.netlify.app" target="_blank" rel="noopener">
+      <span class="al-tag">Vol.1 — 診断</span>
+      <span class="al-name">投資家タイプ<br>診断アプリ</span>
+      <span class="al-desc">15問で6タイプを判定。あなたの投資スタイルを構造的に分解。</span>
+    </a>
+    <a class="app-link" href="https://japanstructurelab-hue.github.io/investment-quiz/" target="_blank" rel="noopener">
+      <span class="al-tag">Vol.2 — 用語</span>
+      <span class="al-name">投資用語<br>マスター</span>
+      <span class="al-desc">4テーマ40問。構造学級を含む独自問題で本質理解を深める。</span>
+    </a>
+    <a class="app-link" href="/">
+      <span class="al-tag">HUB — 総合</span>
+      <span class="al-name">Japan Structure Lab<br>に戻る</span>
+      <span class="al-desc">構造学シリーズの記事・ツール・レポートの入口へ。</span>
+    </a>
+  </div>
+
+  <button class="retry-btn" id="retryBtn">もう一度チャレンジする</button>
+
+  <div class="footer">Japan Structure Lab — <b>構造学ドリル</b> Series</div>
+</div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════
+   DATA — 10 PATTERNS
+═══════════════════════════════════════ */
+const PATTERNS = [
+  {
+    id:'cup_handle',
+    name:'カップ・ウィズ・ハンドル',
+    struct:'底値圏で大量の売り物が出尽くし、なだらかなU字の支持帯が形成される。右肩の小さな下げで「やれやれ売り」を吸収した後、上値の板が急速に薄くなる需給構造。',
+    cause:'機関投資家が底値で少しずつ買い集め（アキュムレーション）する間、個人の損切り売りを吸収し続けた結果。右肩の調整は買い手にとっては最後の押し目になりやすい。',
+    psych:'含み損を抱えていた投資家が「元値に戻ったら売ろう」と待ち構える価格帯を上抜けた瞬間、その売り圧力が消えて「乗り遅れまい」という追随買いが加速する。',
+    gen:(n,rng)=>{
+      const arr=[];const cupLen=Math.floor(n*0.72);
+      for(let i=0;i<cupLen;i++){const t=i/cupLen;const u=Math.pow(2*t-1,2);arr.push(62-20*(1-u)+noise(rng,2.2));}
+      const handleLen=n-cupLen;const top=arr[arr.length-1];
+      for(let i=0;i<handleLen;i++){const t=i/handleLen;const dip=Math.sin(t*Math.PI)*7;const bo=t>0.78?(t-0.78)*55:0;arr.push(top-dip+bo+noise(rng,1.5));}
+      return arr;
+    }
+  },
+  {
+    id:'head_shoulders',
+    name:'ヘッド・アンド・ショルダーズ',
+    struct:'左肩・頭・右肩の三つの山を形成する過程で、高値を更新しようとする買い圧力が右肩で失われる。ネックライン割れで上値を支えていた需給の構造が崩落する。',
+    cause:'企業業績や金利環境の変化で機関投資家が売り転換し始めたが、最初は個人投資家の押し目買いが右肩を形成する。段階的な需給の移行が三峰の形として現れる。',
+    psych:'高値圏で買った参加者の損切り水準がネックライン付近に集中しており、割れを機に「みんなが売り始めた」という認識が連鎖的な売りを引き起こす。',
+    gen:(n,rng)=>{
+      const arr=[];
+      for(let i=0;i<n;i++){
+        let b=62+bump(i,n*0.2,n*0.13,16)+bump(i,n*0.5,n*0.14,26)+bump(i,n*0.8,n*0.13,15);
+        if(i>n*0.9)b-=(i-n*0.9)/(n*0.1)*22;
+        arr.push(b+noise(rng,2));
+      }return arr;
+    }
+  },
+  {
+    id:'inv_head_shoulders',
+    name:'逆ヘッド・アンド・ショルダーズ',
+    struct:'底値圏に三つの谷（左肩・頭・右肩）が形成される。頭の安値から売り物が枯渇し、買い手が少しずつ下値を切り上げ始める需給の転換が可視化される。',
+    cause:'バリュー投資家が段階的に買い集めており、最安値（頭）を境に売り圧力より買い意欲が上回り始める。セクターの見直しや政策変更が背景にある場合が多い。',
+    psych:'「まだ下がるかもしれない」という弱気心理が支配する中、右肩形成で「もう下がらない」という認識が広まり始め、ネックライン突破で買い遅れ資金が一気に流入する。',
+    gen:(n,rng)=>{
+      const arr=[];
+      for(let i=0;i<n;i++){
+        let b=78-bump(i,n*0.2,n*0.13,16)-bump(i,n*0.5,n*0.14,26)-bump(i,n*0.8,n*0.13,15);
+        if(i>n*0.9)b+=(i-n*0.9)/(n*0.1)*22;
+        arr.push(b+noise(rng,2));
+      }return arr;
+    }
+  },
+  {
+    id:'double_top',
+    name:'ダブルトップ',
+    struct:'ほぼ同水準の高値を二度試みるが超えられず、上値での売り需要が買い需要を継続的に上回っている状態が価格形状として現れる。アルファベットの「M」に近い形。',
+    cause:'同値撤退を待つ投資家や利益確定売りが特定の価格帯に集中しており、その水準を突破するだけの新規買いが枯渇している。需給の上限が価格帯として顕在化している。',
+    psych:'「一度高値で売り損ねた」参加者が二度目の高値で必ず売ろうとする記憶バイアスが機能し、売り圧力を自己成就的に強化する。',
+    gen:(n,rng)=>{
+      const arr=[];
+      for(let i=0;i<n;i++){
+        let b=58+bump(i,n*0.28,n*0.15,28)+bump(i,n*0.67,n*0.15,27);
+        if(i>n*0.85)b-=(i-n*0.85)/(n*0.15)*20;
+        arr.push(b+noise(rng,2.2));
+      }return arr;
+    }
+  },
+  {
+    id:'double_bottom',
+    name:'ダブルボトム',
+    struct:'ほぼ同水準の安値を二度試みるが割れず、下値での買い需要が売り需要を継続的に上回っている状態が可視化される。アルファベットの「W」に近い形。',
+    cause:'バリュー投資家が同水準に分散して指値を入れており、売り方の踏み上げ（ショートカバー）も重なって需給が反転する。支持線の信頼度が高いほど反発力も大きい。',
+    psych:'「一度底で買い損ねた」参加者が二度目の安値で買おうとする心理が買い圧力を強化する。W字の右上昇で「やはり底だった」という確信が買い遅れ資金を呼び込む。',
+    gen:(n,rng)=>{
+      const arr=[];
+      for(let i=0;i<n;i++){
+        let b=82-bump(i,n*0.28,n*0.15,28)-bump(i,n*0.67,n*0.15,27);
+        if(i>n*0.85)b+=(i-n*0.85)/(n*0.15)*20;
+        arr.push(b+noise(rng,2.2));
+      }return arr;
+    }
+  },
+  {
+    id:'asc_triangle',
+    name:'上昇トライアングル',
+    struct:'高値は一定の水平ライン（売りが集中する価格帯）で抑えられる一方、安値は切り上がり続ける。需給の均衡点が上方向にシフトし、最終的に上値抵抗を消化して放れる。',
+    cause:'機関投資家が指値買いを少しずつ引き上げて買い集めており、売り手の絶対量は変わらないのに買い手の値上がり許容度が上がり続けている状態。',
+    psych:'「壁を抜けるかもしれない」という期待が高まるほど買い方の粘りが増す。売り方は抵抗線での利確を繰り返すうちに弾薬を使い果たし、最終的に上放れが実現する。',
+    gen:(n,rng)=>{
+      const arr=[];const res=84;const startL=52;
+      for(let i=0;i<n;i++){
+        const t=i/n;const low=startL+t*28;
+        const cyc=Math.sin(t*Math.PI*5.5);
+        let v=cyc>0?res-(1-cyc)*5:low+(1+cyc)*(res-low)*0.5;
+        v=Math.min(v,res);v=Math.max(v,low);
+        if(i>n*0.9)v+=(i-n*0.9)/(n*0.1)*14;
+        arr.push(v+noise(rng,1.5));
+      }return arr;
+    }
+  },
+  {
+    id:'desc_triangle',
+    name:'下降トライアングル',
+    struct:'安値は一定の水平ライン（買いが集中する価格帯）で支えられるが、高値は切り下がり続ける。売り圧力が下方向に蓄積され、最終的にサポートラインが崩壊する。',
+    cause:'機関投資家やインサイダーが段階的に売り下がっており、買い需要は変わらないのに売りの量と価格許容度が増している。ファンダメンタルズの悪化が背景にある。',
+    psych:'「まだ支えられている」と買い方が安心しているうちに売り圧力が限界を超える。支持線割れの瞬間、大量の損切りが連鎖して下落が加速する。',
+    gen:(n,rng)=>{
+      const arr=[];const sup=44;const startH=80;
+      for(let i=0;i<n;i++){
+        const t=i/n;const high=startH-t*28;
+        const cyc=Math.sin(t*Math.PI*5.5);
+        let v=cyc>0?high-(1-cyc)*(high-sup)*0.5:sup+(1+cyc)*5;
+        v=Math.min(v,high);v=Math.max(v,sup);
+        if(i>n*0.9)v-=(i-n*0.9)/(n*0.1)*14;
+        arr.push(v+noise(rng,1.5));
+      }return arr;
+    }
+  },
+  {
+    id:'bull_flag',
+    name:'フラッグ（上昇旗）',
+    struct:'急騰（旗竿）で需給バランスが大きく崩れた後、緩やかな平行チャネルで調整する。下値への売り圧力は限定的で、需給の優位は依然として買い方にある継続パターン。',
+    cause:'強力なカタリスト（決算・政策）で買い手が急増したが、初動で入れなかった資金が押し目を待ち構えており、それが調整を浅くする。旗竿の傾きが強いほど継続力が高い。',
+    psych:'急騰を見逃した参加者の「乗り遅れた」焦りが、わずかな調整を絶好の押し目と認識させる。「次こそは」という心理が売り手を少なくしてトレンドを継続させる。',
+    gen:(n,rng)=>{
+      const arr=[];
+      const pL=Math.floor(n*0.34);
+      for(let i=0;i<pL;i++){arr.push(40+i/pL*36+noise(rng,1.5));}
+      const fL=Math.floor(n*0.4);const top=arr[arr.length-1];
+      for(let i=0;i<fL;i++){const t=i/fL;arr.push(top-t*9+Math.sin(t*Math.PI*4)*2.5+noise(rng,1.2));}
+      const rL=n-pL-fL;const base2=arr[arr.length-1];
+      for(let i=0;i<rL;i++){arr.push(base2+i/rL*24+noise(rng,1.8));}
+      return arr;
+    }
+  },
+  {
+    id:'rounding_bottom',
+    name:'ラウンディングボトム（鍋底）',
+    struct:'長期間かけてなだらかな半円を描きながら売り物が枯渇し、買い圧力が少しずつ積み上がる。一夜にして変わるのではなく、需給の構造が静かに入れ替わる反転パターン。',
+    cause:'業績悪化や金利逆風など根本的な要因が長期かけて解消されていく過程。ファンダメンタルズの底打ちが先行し、価格がそれに遅れて追いつくため弧が描かれる。',
+    psych:'「まだ下がるかもしれない」という慎重心理が長く続き、確信を持てないまま少しずつ買い手が増える。急騰ではなく「気づいたら上がっていた」という感覚を伴う。',
+    gen:(n,rng)=>{
+      const arr=[];
+      for(let i=0;i<n;i++){const t=i/n;const u=Math.pow(2*t-1,2);arr.push(76-26*(1-u)+noise(rng,1.8));}
+      return arr;
+    }
+  },
+  {
+    id:'rising_wedge',
+    name:'ライジングウェッジ（上昇ウェッジ）',
+    struct:'高値・安値ともに切り上がりながらも、上昇幅が収束していく。買い方の推進力が徐々に弱まる一方で売り方の参加が増えており、需給逆転の予兆が形状に現れている。',
+    cause:'上昇トレンド末期に「高値でも買う層」が現れているが、それ以上に利益確定売りが積み上がっている。価格は上がっているが出来高が伴わない局面に多い。',
+    psych:'見た目は上昇しているため楽観が続くが、「買ったのに思ったより上がらない」という違和感が蓄積する。下放れで一気に損切りが連鎖し、下落幅が大きくなりやすい。',
+    gen:(n,rng)=>{
+      const arr=[];
+      for(let i=0;i<n;i++){
+        const t=i/n;const w=22*(1-t*0.78);const c=46+t*30;
+        arr.push(c+Math.sin(t*Math.PI*6)*w*0.5+noise(rng,1.3));
+      }
+      for(let i=Math.floor(n*0.9);i<n;i++){arr[i]-=(i-n*0.9)/(n*0.1)*16;}
+      return arr;
+    }
+  }
+];
+
+const TICKERS=['N225 — 日足','TOPIX — 日足','米国ハイテク株 — 日足','銀行株指数 — 週足','半導体関連 — 日足','REIT指数 — 週足','新興市場指数 — 日足','エネルギー株 — 日足'];
+
+const RANKS=[
+  {min:0,max:3,stars:1,name:'見習いチャーティスト',desc:'まずは形を覚えることから。三層解説を読んで、形の「なぜ」を掴む段階。'},
+  {min:4,max:5,stars:2,name:'型認識者',desc:'形の識別はできている。次のステップは需給構造との紐付け。'},
+  {min:6,max:7,stars:3,name:'需給読解士',desc:'チャートを需給で読み始めている。構造学の視点が身についてきた。'},
+  {min:8,max:9,stars:4,name:'構造分析家',desc:'形と因果を繋いで読める段階。実際の銘柄でも応用できる水準。'},
+  {min:10,max:10,stars:5,name:'構造学マスター',desc:'全問正解。プライスアクションを三層で完全に読み解いている。'}
+];
+
+/* ═══════════════════════════════════════
+   UTILS
+═══════════════════════════════════════ */
+function mulberry32(seed){
+  return function(){
+    seed|=0;seed=seed+0x6D2B79F5|0;
+    let t=Math.imul(seed^seed>>>15,1|seed);
+    t=t+Math.imul(t^t>>>7,61|t)^t;
+    return((t^t>>>14)>>>0)/4294967296;
+  };
+}
+function noise(rng,amp){return(rng()-0.5)*2*amp;}
+function bump(i,center,width,height){const d=(i-center)/width;return height*Math.exp(-d*d);}
+function shuffle(arr,rng){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+/* ═══════════════════════════════════════
+   CHART DRAW (animated)
+═══════════════════════════════════════ */
+function drawChartStatic(canvas,data,animated,onDone){
+  const W=canvas.width,H=canvas.height;
+  const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+  const min=Math.min(...data),max=Math.max(...data);
+  const pad=16,range=max-min||1;
+  const xStep=(W-pad*2)/(data.length-1);
+  const sy=v=>H-pad-(v-min)/range*(H-pad*2);
+
+  // grid
+  ctx.strokeStyle='#1c1c1c';ctx.lineWidth=1;
+  for(let g=0;g<=4;g++){
+    const y=pad+g*(H-pad*2)/4;
+    ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(W-pad,y);ctx.stroke();
+  }
+
+  if(!animated){draw(data.length-1);if(onDone)onDone();return;}
+
+  let frame=0;const totalFrames=52;
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='#1c1c1c';ctx.lineWidth=1;
+    for(let g=0;g<=4;g++){
+      const y=pad+g*(H-pad*2)/4;
+      ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(W-pad,y);ctx.stroke();
+    }
+    const upTo=Math.floor((frame/totalFrames)*(data.length-1));
+    draw(upTo);
+    frame++;
+    if(frame<=totalFrames){requestAnimationFrame(tick);}else{draw(data.length-1);if(onDone)onDone();}
+  }
+  tick();
+
+  function draw(upTo){
+    if(upTo<1)return;
+    const sub=data.slice(0,upTo+1);
+    ctx.beginPath();
+    ctx.moveTo(pad,sy(sub[0]));
+    sub.forEach((v,i)=>ctx.lineTo(pad+i*xStep,sy(v)));
+    ctx.lineTo(pad+upTo*xStep,H-pad);ctx.lineTo(pad,H-pad);ctx.closePath();
+    const grad=ctx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,'rgba(201,168,76,0.14)');
+    grad.addColorStop(1,'rgba(201,168,76,0)');
+    ctx.fillStyle=grad;ctx.fill();
+
+    ctx.beginPath();ctx.moveTo(pad,sy(sub[0]));
+    sub.forEach((v,i)=>ctx.lineTo(pad+i*xStep,sy(v)));
+    ctx.strokeStyle='#c9a84c';ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
+  }
+}
+
+/* ═══════════════════════════════════════
+   DEMO CHART (start screen)
+═══════════════════════════════════════ */
+(function(){
+  const rng=mulberry32(2024);
+  const n=70;const data=PATTERNS[0].gen(n,rng);
+  const canvas=document.getElementById('demoCanvas');
+  canvas.width=600;canvas.height=140;
+  drawChartStatic(canvas,data,false,null);
+})();
+
+/* ═══════════════════════════════════════
+   GAME STATE
+═══════════════════════════════════════ */
+let questions=[],qIndex=0,score=0,answered=false;
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+document.getElementById('startBtn').onclick=startGame;
+document.getElementById('nextBtn').onclick=nextQuestion;
+document.getElementById('retryBtn').onclick=startGame;
+
+function startGame(){
+  const rng=mulberry32(Math.floor(Math.random()*1e9));
+  questions=shuffle([...PATTERNS],rng).slice(0,10);
+  qIndex=0;score=0;
+  showScreen('quizScreen');
+  loadQuestion();
+}
+
+function loadQuestion(){
+  answered=false;
+  document.getElementById('threeLayer').classList.remove('show');
+  document.getElementById('patternNameBar').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+
+  const p=questions[qIndex];
+  const qNum=qIndex+1;
+  document.getElementById('qNum').textContent=qNum;
+  document.getElementById('progressFill').style.width=((qNum-1)/10*100)+'%';
+  document.getElementById('scoreLive').textContent=score;
+  document.getElementById('chartTicker').textContent=TICKERS[Math.floor(Math.random()*TICKERS.length)];
+
+  // generate chart
+  const seed=Math.floor(Math.random()*1e9);
+  const rng=mulberry32(seed);
+  const n=68+Math.floor(rng()*18);
+  const data=p.gen(n,rng);
+  const canvas=document.getElementById('quizCanvas');
+  canvas.width=600;canvas.height=220;
+  drawChartStatic(canvas,data,true,()=>{
+    // enable choices after animation
+    document.querySelectorAll('.choice-btn').forEach(b=>b.disabled=false);
+  });
+
+  // choices
+  const pool=shuffle(PATTERNS.filter(x=>x.id!==p.id),rng);
+  const opts=shuffle([p,...pool.slice(0,3)],rng);
+  const grid=document.getElementById('choicesGrid');
+  grid.innerHTML='';
+  opts.forEach(opt=>{
+    const btn=document.createElement('button');
+    btn.className='choice-btn';
+    btn.textContent=opt.name;
+    btn.disabled=true; // enabled after animation
+    btn.onclick=()=>selectAnswer(opt,btn,p);
+    grid.appendChild(btn);
+  });
+}
+
+function selectAnswer(opt,btn,p){
+  if(answered)return;
+  answered=true;
+  const correct=opt.id===p.id;
+  if(correct){score++;btn.classList.add('correct');}
+  else{
+    btn.classList.add('wrong');
+    [...document.querySelectorAll('.choice-btn')].forEach(b=>{if(b.textContent===p.name)b.classList.add('correct');});
+  }
+  document.querySelectorAll('.choice-btn').forEach(b=>b.disabled=true);
+
+  // update live score
+  document.getElementById('scoreLive').textContent=score;
+
+  // pattern name bar
+  const bar=document.getElementById('patternNameBar');
+  document.getElementById('patternNameText').textContent=p.name;
+  const tag=document.getElementById('resultTag');
+  tag.textContent=correct?'正解':'不正解';
+  tag.className='result-tag '+(correct?'ok':'ng');
+  bar.classList.add('show');
+
+  // three layer
+  document.getElementById('layerStruct').textContent=p.struct;
+  document.getElementById('layerCause').textContent=p.cause;
+  document.getElementById('layerPsych').textContent=p.psych;
+  document.getElementById('threeLayer').classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+
+  if(qIndex===9){document.getElementById('nextBtn').textContent='結果を見る';}
+  else{document.getElementById('nextBtn').textContent='次のチャート →';}
+}
+
+function nextQuestion(){
+  qIndex++;
+  if(qIndex>=10){showResult();return;}
+  loadQuestion();
+}
+
+function showResult(){
+  const rank=RANKS.find(r=>score>=r.min&&score<=r.max)||RANKS[0];
+  document.getElementById('finalScore').innerHTML=score+'<span>/10</span>';
+  document.getElementById('starsRow').textContent='★'.repeat(rank.stars)+'☆'.repeat(5-rank.stars);
+  document.getElementById('rankName').textContent=rank.name;
+  document.getElementById('rankDesc').textContent=rank.desc;
+  document.getElementById('rcCorrect').textContent=score;
+  document.getElementById('rcWrong').textContent=10-score;
+  document.getElementById('rcPct').textContent=Math.round(score/10*100)+'%';
+  showScreen('resultScreen');
+  document.getElementById('progressFill').style.width='100%';
+
+  document.getElementById('shareBtn').onclick=()=>{
+    const text=`チャートパターン構造学ドリル\n\n${score}/10問正解（正答率${Math.round(score/10*100)}%）\n称号：${rank.name} ${'★'.repeat(rank.stars)}\n\n形の「なぜ」を三層で読む訓練アプリ\n#JapanStructureLab #構造学 #投資`;
+    const url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);
+    window.open(url,'_blank');
+  };
+}
+</script>
+</body>
+</html>
