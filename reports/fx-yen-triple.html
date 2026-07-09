@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【円安構造分析】円安を動かす三重構造──実質金利差・エネルギー赤字・デジタル赤字｜Japan Structure Lab</title>
+<meta name="description" content="円安は一時的な波ではない。実質金利差・エネルギー赤字・デジタル赤字という三重の構造が、円売り圧力を慢性化させている。地形そのものを数字で読み直す構造分析。">
+<meta property="og:title" content="【円安構造分析】円安を動かす三重構造──実質金利差・エネルギー赤字・デジタル赤字">
+<meta property="og:description" content="実質金利差・エネルギー赤字・デジタル赤字。円安を支配する三重の骨格を数字で描き出す。">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://note.com/safe_crane821/n/nb6888b739353">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  /* --- 追加①：数表（reportsトークン内で新設） --- */
+  .data-table{
+    width:100%;border-collapse:collapse;margin:26px 0 6px;font-size:13.5px;
+  }
+  .data-table caption{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.08em;
+    color:var(--gold);text-align:left;margin-bottom:12px;
+  }
+  .data-table th,.data-table td{
+    border:1px solid var(--line);padding:11px 14px;text-align:left;
+    color:var(--text-secondary);line-height:1.7;vertical-align:top;
+  }
+  .data-table thead th{
+    background:var(--bg-card);color:var(--gold);
+    font-family:'JetBrains Mono',monospace;font-weight:500;
+    font-size:12.5px;letter-spacing:0.03em;
+  }
+  .data-table tbody th{background:var(--bg-elevated);color:var(--text-primary);font-weight:500;}
+  .data-table strong{color:var(--text-primary);font-weight:500;}
+  .data-table .num{text-align:right;font-family:'JetBrains Mono',monospace;letter-spacing:0.02em;}
+  .table-note{font-size:12px;color:var(--text-tertiary);line-height:1.7;margin:0 0 26px;}
+
+  /* --- 追加②：外部ツールリンク枠 --- */
+  .tool-box{
+    background:var(--bg-card);border:1px solid var(--line-strong);
+    padding:26px 28px;margin:34px 0;
+  }
+  .tool-box .tb-label{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+    color:var(--gold);margin-bottom:10px;
+  }
+  .tool-box h3{font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;margin:0 0 10px;}
+  .tool-box p{font-size:13.5px;color:var(--text-secondary);line-height:1.95;margin:0 0 18px;}
+  .tool-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:10px 20px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .tool-link:hover{border-color:var(--gold);color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">MARKET STRUCTURE ── 為替 / FX</div>
+  <h1 class="art-title">円安を動かす三重構造──実質金利差・エネルギー赤字・デジタル赤字</h1>
+  <div class="art-meta">
+    <span>2026.06.21</span>
+    <span>為替 / FX</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">円安を「一時的な波」として読むと、必ず読み違える。介入で止まる、関税が緩めば戻る、日銀が利上げすれば終わる──そのどれもが、波と地形を取り違えた誤読だ。円安の正体は、実質金利差・エネルギー赤字・デジタル赤字という三重の構造にある。本稿は、その地形そのものを数字で描き出す。</p>
+
+  <div class="body">
+
+    <h2>構造（Structure）：円安を支配する三重の骨格</h2>
+
+    <h3>第一の柱：日米実質金利差</h3>
+    <p>為替レートを動かす最大の重力は「実質金利差」だ。</p>
+    <div class="code-model"><span class="cm-gold">実質金利 ＝ 名目金利 − インフレ率</span></div>
+    <p>この一行が為替のOSそのものだ。名目金利だけを見ていると本質を見誤る。重要なのは「インフレを差し引いた後の金利」がどちらの国で高いか、だ。実質金利が高い国の通貨には資金が集まる。投資家は実質的なリターンを求めて動くからだ。</p>
+    <p>2026年6月時点の数字を見てみよう。日銀は6月の金融政策決定会合で政策金利を1.0%に引き上げた。1995年以来31年ぶりの高水準だ。しかし日本のコアインフレ率は同時点で1.4%で推移している。差し引きすると、日本の実質金利は約<strong>▲0.4%</strong>。依然としてマイナス圏にある。</p>
+    <p>一方、米国はどうか。FRBは6月17日のFOMCで政策金利を3.5〜3.75%に据え置いた。米国のインフレ率は2%台前半で推移しており、実質金利は約<strong>+1.2%</strong>のプラス圏を維持している。</p>
+    <p><strong>日米の実質金利差は約1.6%ポイント。</strong>この差が「円を売ってドルを買う」という構造的なフローを生み続けている。日銀が名目金利を1.0%まで引き上げても、インフレ率との差が縮まらなければ実質金利はマイナスのままだ。円安の構造は変わらない。</p>
+
+    <h3>第二の柱：エネルギー赤字の構造化</h3>
+    <p>「中東リスクは一時的なノイズだ」──そう思っている人は多い。しかしエネルギーを巡る構造変化は、もはや一時的ではない。</p>
+    <p>日本はエネルギーの約9割を輸入に依存している。エネルギー価格の上昇は日本の貿易赤字を直撃する。エネルギーを輸入するたびに円を売ってドルを買う必要があるからだ。その規模は、2022年度の中東情勢緊迫化・資源高局面で約22兆円の貿易赤字を記録したことに端的に表れている。</p>
+    <p>2025年度は原油価格の一時的な下落と中東情勢の小康状態が重なり、貿易収支は1兆3631億円の黒字に転じた。しかし2026年に入り、中東情勢が再び緊迫化する中でエネルギー価格は上昇に転じており、ガソリン・灯油価格の大幅上昇が消費者物価を押し上げ始めている。</p>
+    <p>この「2025年度の貿易黒字転換」を「円安圧力の終焉」と読むのは危険だ。それは構造の変化ではなく、エネルギー価格の一時的な緩和にすぎない。地政学リスクが再び顕在化するたびに、この赤字は急拡大する。エネルギー赤字という円売り圧力は、慢性的な構造として定着している。</p>
+
+    <h3>第三の柱：デジタル赤字の拡大</h3>
+    <p>これが最も見落とされている構造的円安要因だ。</p>
+    <p>クラウドサービス（AWS・Azure・Google Cloud）、デジタル広告（Google・Meta）、動画・音楽配信（Netflix・Spotify）、ソフトウェアライセンス──日本企業や個人がこれらのデジタルサービスに支払う金額は、2024年実績で年間<strong>6.7兆円</strong>の赤字（デジタル関連収支）に達している。これはほぼすべてが海外企業への支払い、つまり円売り・ドル買いのフローだ。</p>
+    <p>さらに深刻なのはその拡大速度だ。2014年と比較すると、デジタル赤字はわずか10年で3倍以上に膨らんでいる。内訳を見ると、クラウドサービス関連の「コンピュータサービス」が3.3倍、ネット広告等の「専門・経営コンサルティングサービス」は5.4倍に急拡大している。2025年上半期だけで3.5兆円に達し、年換算では7兆円規模に迫る勢いだ。</p>
+    <p>将来予測はさらに厳しい。悲観シナリオでは2035年に年間28兆円に達し、鉱物性燃料の輸入額（約25兆円）を上回る可能性すら指摘されている。</p>
+    <p>貿易統計では「サービス収支」の赤字として計上されているが、一般メディアではほとんど取り上げられない。しかしデジタル化が加速するほど、この赤字は拡大し続ける。情報の非対称性が最も大きい領域がここだ。</p>
+
+    <h2>実証（Case Study）：三重赤字を数字で見る</h2>
+
+    <h3>日米実質金利差の現在地</h3>
+    <table class="data-table">
+      <caption>表1｜日米実質金利差（2026年6月時点）</caption>
+      <thead>
+        <tr><th>指標</th><th>日本</th><th>米国</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>名目政策金利</th><td>1.0%</td><td>3.5〜3.75%</td></tr>
+        <tr><th>コアインフレ率</th><td>1.4%</td><td>約2.4%</td></tr>
+        <tr><th>実質金利（概算）</th><td><strong>▲0.4%</strong></td><td><strong>+1.2%前後</strong></td></tr>
+        <tr><th>日米実質金利差</th><td colspan="2"><strong>約1.6%ポイント</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※2026年6月時点。日本の実質金利は名目金利1.0%からコアCPI1.4%を差し引いた概算値。</p>
+    <p>日銀は2024年のマイナス金利解除以降、段階的に利上げを進めてきた。それでも実質金利はいまだマイナス圏にある。米国の実質金利がプラス圏を維持する限り、この差は埋まらない。</p>
+
+    <h3>エネルギー収支の変化</h3>
+    <p>エネルギー価格が高騰した2022年度、日本の貿易赤字は約22兆円と過去最大を記録した。その後、資源価格の落ち着きと円高方向への修正で2025年度は黒字転換（+1兆3631億円）したが、これは一時的な緩和局面にすぎない。中東情勢が再び悪化した2026年に入ると、エネルギー価格の上昇が再び貿易収支を圧迫し始めている。エネルギー輸入への依存度（約9割）は変わっていない。価格が動くたびに、このレバレッジは貿易赤字として顕在化する。</p>
+
+    <h3>デジタル収支の拡大軌跡</h3>
+    <table class="data-table">
+      <caption>表2｜デジタル関連収支赤字の推移</caption>
+      <thead>
+        <tr><th>年</th><th>デジタル赤字規模</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>2014年</th><td>約2兆円台（推計）</td></tr>
+        <tr><th>2023年</th><td>約5.5兆円</td></tr>
+        <tr><th>2024年</th><td><strong>約6.7兆円</strong>（前年比+0.9兆円）</td></tr>
+        <tr><th>2025年上半期</th><td>約3.5兆円（年換算で7兆円規模）</td></tr>
+        <tr><th>2035年（悲観予測）</th><td>最大28兆円</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">※出典：日本銀行・財務省「国際収支統計」、総務省「情報通信白書（令和7年版）」、三菱総合研究所。</p>
+
+    <div class="tool-box">
+      <div class="tb-label">補助ツール ／ SCORER</div>
+      <h3>円安圧力 三重構造スコアラー</h3>
+      <p>本記事の補助ツールを無料で公開しています。日米の名目金利・コアCPI・ブレント原油価格を入力するだけで、三本柱それぞれの円安圧力スコアと総合ゲージをリアルタイムで確認できます。「もし日銀がさらに利上げしたら」「原油が130ドルに戻ったら」と数値を変えて、三重構造の相対的な重みを体感してみてください。</p>
+      <a class="tool-link" href="https://codepen.io/Lab-Japan-Structure/full/JoEWvVo" target="_blank" rel="noopener">ツールを使う ↗</a>
+    </div>
+
+    <h2>因果（Causality）：構造を動かす外生ショックとは何か</h2>
+    <p>三重の構造は静的ではない。それを動かす外生ショックが存在する。</p>
+    <h4>中東情勢の不安定化</h4>
+    <p>エネルギー価格の上昇 → 貿易赤字の拡大 → 円売り圧力の強化、という因果連鎖を作動させる。</p>
+    <h4>米国の財政拡張</h4>
+    <p>米国の財政赤字拡大は長期金利の高止まりをもたらし、日米実質金利差を維持する。トランプ政権の財政政策が円安を構造的に支えているという逆説がここにある。</p>
+    <h4>デジタル化の加速</h4>
+    <p>AIの普及・クラウド移行の深化がデジタル赤字をさらに拡大させる。これは不可逆的なトレンドだ。</p>
+    <p>これらの外生ショックが複合することで、「低金利・円高が当たり前」という前提そのものが崩れつつある。</p>
+
+    <h2>心理（Psychology）：為替で繰り返される誤読</h2>
+
+    <h3>誤読1：「トランプ関税が緩和されれば円高に戻る」</h3>
+    <p>→ 正解：関税は波であり、構造的な円安圧力（実質金利差▲1.6%pt・エネルギー赤字・デジタル赤字6.7兆円）は関税とは無関係に継続する。関税緩和で一時的に円高方向へ振れることはあっても、構造そのものは変わらない。</p>
+    <h3>誤読2：「介入で円安は止まる」</h3>
+    <p>→ 正解：為替介入は急激な変動のスピードを調整し、システムの破壊を防ぐバッファとして機能する。その意味では合理的だ。しかし日米実質金利差・エネルギー赤字・デジタル赤字という構造的な円売りフローを反転させる力はない。「介入＝円安終了」という読みは、波と地形を混同した誤読だ。</p>
+    <h3>誤読3：「円安は輸出企業だけの問題」</h3>
+    <p>→ 正解：エネルギー輸入コストの上昇は中小企業・家計に直撃する。デジタルサービスへの支払い（年間6.7兆円規模）は個人レベルで円安の影響を受けている。Netflixの利用料もAWSへのクラウド代も、円安が進むほど実質的な負担は増える。円安は輸出企業だけでなく、経済全体の構造問題だ。</p>
+    <h3>誤読4：「日銀が利上げすれば円安は終わる」</h3>
+    <p>→ 正解：名目金利を1.0%まで引き上げても、コアインフレ率1.4%との差（実質金利▲0.4%）が縮まらなければ円安圧力は変わらない。また利上げのペースがエネルギー赤字・デジタル赤字という構造を変えるわけでもない。数字が示す通り、利上げと円安は「終わり」ではなく、「縮小中の差」にすぎない。</p>
+    <h3>誤読5：「2025年度の貿易黒字転換で円安圧力は終わった」</h3>
+    <p>→ 正解：2025年度の貿易黒字（+1兆3631億円）は、エネルギー価格の一時的な低下と中東情勢の小康状態が重なった結果だ。2026年に中東情勢が再び悪化する中でエネルギー価格は上昇に転じており、黒字転換を「構造変化のシグナル」と読むのは早計だ。</p>
+
+    <h2>総括：構造変化の三つのシグナルと現在地</h2>
+    <p>円安は「トランプのせい」でも「日銀のせい」でもない。日米実質金利差・エネルギー赤字・デジタル赤字という三重の構造が、慢性的な円売りフローを生み出している。</p>
+    <p>では、構造が変化するシグナルは何か。そして今、それぞれはどこにあるか。</p>
+
+    <h3>シグナル①　日本の実質金利がプラス圏に浮上する</h3>
+    <p><strong>現状：遠い。</strong>名目金利1.0%に対してコアインフレ率1.4%で、実質金利は▲0.4%のマイナス圏。名目金利の追加引き上げか、インフレの鎮静化、またはその両方が必要だ。</p>
+    <h3>シグナル②　エネルギー自給率が構造的に改善する</h3>
+    <p><strong>現状：道半ば。</strong>2025年度は価格低下で一時的に貿易黒字転換したが、輸入依存度（約9割）という構造は変わっていない。原発の再稼働・再エネの拡大は進行中だが、この比率を動かすには数年単位の時間が必要だ。</p>
+    <h3>シグナル③　デジタル収支が改善する</h3>
+    <p><strong>現状：悪化中。</strong>2024年のデジタル赤字は6.7兆円と過去最大を更新。生成AIの本格普及で今後もさらなる拡大が続く見通しだ。国産クラウドや日本発デジタルサービスの競争力が米国等に追いつく展望は、現時点では描きにくい。</p>
+
+    <p>この三つのシグナルが揃わない限り、円安という地形は変わらない。多くの人が「今日の為替レート」を見ている中で、真に注視すべきは「この三つのシグナルが動き始めているかどうか」だ。為替を構造・因果・心理の三層で捉える視点は、ノイズだらけの嵐の中で、正確な羅針盤を手に入れることに等しい。</p>
+    <p>荒れ狂う波の下には、常に変わることのない、静かな構造の海が広がっている。</p>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">ORIGINAL ARTICLE ／ X</span>
+    <h3>この分析の元記事と、日々の構造分析</h3>
+    <p>本稿はnoteで公開した記事を、Japan Structure Lab のハブ用に再構成したものです。日々のMARKET STRUCTURE REPORTと最新の構造分析はXで発信しています。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821/n/nb6888b739353" target="_blank" rel="noopener">noteで元記事を読む</a>
+      <a class="cta-btn" href="https://x.com/StructureLabJP" target="_blank" rel="noopener">Xで最新分析</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="/reports/">REPORTS</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。記載の数値は執筆時点の一次資料（IR資料・決算短信・公的統計）等に基づく概算を含み、将来の成果を保証するものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

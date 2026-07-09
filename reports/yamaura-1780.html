@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>データセンター建設ラッシュの“陣取り合戦”──長野の中堅ゼネコン ヤマウラ(1780)が描く成長線｜Japan Structure Lab</title>
+<meta name="description" content="ヤマウラ(1780)が自社株買いを発表。増収増益の裏で自己資本比率は2.8pt低下、一方で株主還元は前期比260%増。DC建設という新しい陣地取りを、構造・因果・心理の三層で読む。">
+<meta property="og:title" content="データセンター建設ラッシュの“陣取り合戦”──長野の中堅ゼネコン ヤマウラ(1780)が描く成長線">
+<meta property="og:description" content="攻めと還元を同時に踏むヤマウラ(1780)。自己資本比率低下も還元急増も、成長線の一部として矛盾なく説明がつく。">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://note.com/safe_crane821/n/n22619d00bb7b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  /* --- 数表（reportsトークン内で新設） --- */
+  .data-table{
+    width:100%;border-collapse:collapse;margin:26px 0 6px;font-size:13.5px;
+  }
+  .data-table caption{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.08em;
+    color:var(--gold);text-align:left;margin-bottom:12px;
+  }
+  .data-table th,.data-table td{
+    border:1px solid var(--line);padding:11px 14px;text-align:left;
+    color:var(--text-secondary);line-height:1.7;vertical-align:top;
+  }
+  .data-table thead th{
+    background:var(--bg-card);color:var(--gold);
+    font-family:'JetBrains Mono',monospace;font-weight:500;
+    font-size:12.5px;letter-spacing:0.03em;
+  }
+  .data-table tbody th{background:var(--bg-elevated);color:var(--text-primary);font-weight:500;}
+  .data-table strong{color:var(--text-primary);font-weight:500;}
+  .data-table .num{text-align:right;font-family:'JetBrains Mono',monospace;letter-spacing:0.02em;}
+  .table-note{font-size:12px;color:var(--text-tertiary);line-height:1.7;margin:0 0 26px;}
+  .table-scroll{overflow-x:auto;margin:26px 0 6px;}
+  .table-scroll .data-table{margin:0;min-width:480px;}
+
+  /* --- 外部/関連リンク枠 --- */
+  .tool-box{
+    background:var(--bg-card);border:1px solid var(--line-strong);
+    padding:26px 28px;margin:34px 0;
+  }
+  .tool-box .tb-label{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+    color:var(--gold);margin-bottom:10px;
+  }
+  .tool-box h3{font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;margin:0 0 10px;}
+  .tool-box p{font-size:13.5px;color:var(--text-secondary);line-height:1.95;margin:0 0 18px;}
+  .tool-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:10px 20px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .tool-link:hover{border-color:var(--gold);color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">MARKET STRUCTURE ── 個別銘柄 / ヤマウラ 1780</div>
+  <h1 class="art-title">データセンター建設ラッシュの“陣取り合戦”──長野の中堅ゼネコンが描く成長線</h1>
+  <div class="art-meta">
+    <span>2026.07.01</span>
+    <span>個別銘柄 / 建設</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">2026年6月30日、ヤマウラ（1780）が自社株買いを発表した。地方の中堅ゼネコンの還元強化、というだけなら見過ごされそうなニュースだ。しかし決算短信を読み込むと、その裏に「攻めながら還元も増やす」という珍しい経営の重心が見えてくる。</p>
+
+  <div class="body">
+
+    <h2>① 構造：増収増益の裏で進む資産拡大</h2>
+    <p>2026年3月期、ヤマウラの売上高は405億2,600万円（前年同期比13.8%増）、営業利益は42億5,900万円（同9.4%増）と増収増益を達成した。建設事業の受注高増加、とりわけ大型工事の受注がこれを牽引している。</p>
+    <p>一方で、総資産は360億700万円（前期比+16.77%）まで膨らんだのに対し、株主資本の伸びは248億4,876万円（同+11.72%）にとどまった。結果として自己資本比率（総資産のうち自社のお金でまかなっている割合。高いほど財務が安定しているとされる指標）は75.5%から72.7%へ、1年で2.8ポイント低下している。</p>
+
+    <div class="table-scroll">
+    <table class="data-table">
+      <caption>表｜ヤマウラ 2026年3月期の主要数値</caption>
+      <thead>
+        <tr><th>項目</th><th>2026年3月期</th><th>前期比</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>売上高</th><td>405億2,600万円</td><td>+13.8%</td></tr>
+        <tr><th>営業利益</th><td>42億5,900万円</td><td>+9.4%</td></tr>
+        <tr><th>総資産</th><td>360億700万円</td><td>+16.77%</td></tr>
+        <tr><th>株主資本</th><td>248億4,876万円</td><td>+11.72%</td></tr>
+        <tr><th>自己資本比率</th><td><strong>72.7%</strong></td><td>75.5%→72.7%（▲2.8pt）</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-note">※出典：ヤマウラ決算短信（2026年5月13日）。</p>
+
+    <p>これだけを見れば「財務体質の悪化」と読む人もいるだろう。だが資産膨張の中身が、大型工事に伴う流動資産（工事関連の積み増し）であることを踏まえると、評価は変わる。</p>
+
+    <h2>② 因果：DC建設という新しい陣地</h2>
+    <p>2026年3月4日、ヤマウラは長野市の電気通信設備会社TOSYSとデータセンター事業で業務提携を結んだ。首都圏の地価上昇とBCP（事業継続計画。災害時にも事業を止めないための備え）需要を背景に、地方でのデータセンター開設を検討する企業の需要を取り込む狙いだ。</p>
+    <p>ヤマウラが掲げる強みは「地理的リスク回避・構造設計力・コスト抑制」の3点。長野県は活断層から離れた低災害リスクのエリアが多く、冷涼な気候は空調効率に優れ、水力・太陽光など再エネ活用の余地もある。建屋型DCに加え、独自開発のマイクロデータセンター（コンテナ1台分程度の小型設備で、分散配置しやすいのが特徴）も手掛けており、提携を機に大規模案件と小規模分散案件の両方に対応できる体制を整えた格好だ。</p>
+    <div class="callout">
+      <p>ただし、これはまだ「提携」の段階であり、受注実績や売上への寄与は決算短信に数字として現れていない。期待先行で読むべき材料ではなく、種をどう育てるかを見ていくべき段階にある。</p>
+    </div>
+
+    <h2>③ 心理：守りの後退をどう解釈するか</h2>
+    <p>自己資本比率の低下だけを切り出せば、警戒材料に見える。だが同じ決算で、自社株買い4億6,343万円・配当30円（当初予想26円から上方修正）という株主還元は前期比260%増、総還元性向（利益のうち配当と自社株買いに回した割合）は32.5%まで急伸している。</p>
+    <p>事業を拡大しながら、株主への配慮も同時に強める──この二択を両立させる経営判断は、単純な財務指標の良し悪しでは測れない。次期は資材価格・労務費高騰による減益予想も出ており、決して順風だけではない。それでも今、攻めと還元の両方にアクセルを踏んでいる構造を、どう評価するか。</p>
+
+    <div class="tool-box">
+      <div class="tb-label">RELATED ／ 投資家タイプ</div>
+      <h3>グロース型の視点で読む</h3>
+      <p>「攻めと還元の両立」をどう評価するか──グロース型の視点そのものについては、こちらでフレームワークを解説しています。</p>
+      <a class="tool-link" href="https://note.com/safe_crane821/n/n7eda923d0d5b" target="_blank" rel="noopener">グロース型フレームワークを読む ↗</a>
+    </div>
+
+    <h2>まとめ</h2>
+    <p>ヤマウラが今打っているのは、守りを固める一手ではなく、“陣取り合戦”に名乗りを上げる一手だ。自己資本比率の低下も、還元の急増も、その成長線の一部として矛盾なく説明がつく。長野の中堅ゼネコンがこの先も陣地を広げられるか──それを見極める視点を、今後も追っていきたい。</p>
+
+    <p class="table-note">データの出典：ヤマウラ決算短信（2026年5月13日）、日本経済新聞（TOSYS・ヤマウラ業務提携、2026年3月）。本記事は投資助言ではなく、企業の構造的な変化を読むための分析です。</p>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">ORIGINAL ARTICLE ／ X</span>
+    <h3>この分析の元記事と、日々の構造分析</h3>
+    <p>本稿はnoteで公開した記事を、Japan Structure Lab のハブ用に再構成したものです。日々のMARKET STRUCTURE REPORTと最新の構造分析はXで発信しています。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821/n/n22619d00bb7b" target="_blank" rel="noopener">noteで元記事を読む</a>
+      <a class="cta-btn" href="https://x.com/StructureLabJP" target="_blank" rel="noopener">Xで最新分析</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="/reports/">REPORTS</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。記載の数値は執筆時点の一次資料（決算短信・報道等）に基づく概算を含み、将来の成果を保証するものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

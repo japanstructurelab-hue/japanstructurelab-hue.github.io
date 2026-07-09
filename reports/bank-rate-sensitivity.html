@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金利+0.1%でみずほは+20円、MUFGは+6円──3.3倍の差を生む銀行株の構造を読む｜Japan Structure Lab</title>
+<meta name="description" content="金利+0.1%でみずほのEPSは約+20円、MUFGは+約6円。同じ利上げでも約3.3倍の差が生まれる理由を、株数差と国内貸出依存度から解剖。株価＝EPS×PERの時間差を構造・因果・心理で読む。">
+<meta property="og:title" content="金利+0.1%でみずほは+20円、MUFGは+6円──3.3倍の差を生む銀行株の構造を読む">
+<meta property="og:description" content="同じ利上げでもEPSの伸びは約3.3倍違う。株価はPERで先行し、EPSは1〜2年後に追いつく。銀行株の金利OSを数字で読み解く。">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://note.com/safe_crane821/n/n0d3c2015a211">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  /* --- 数表（reportsトークン内で新設） --- */
+  .data-table{
+    width:100%;border-collapse:collapse;margin:26px 0 6px;font-size:13.5px;
+  }
+  .data-table caption{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.08em;
+    color:var(--gold);text-align:left;margin-bottom:12px;
+  }
+  .data-table th,.data-table td{
+    border:1px solid var(--line);padding:11px 14px;text-align:left;
+    color:var(--text-secondary);line-height:1.7;vertical-align:top;
+  }
+  .data-table thead th{
+    background:var(--bg-card);color:var(--gold);
+    font-family:'JetBrains Mono',monospace;font-weight:500;
+    font-size:12.5px;letter-spacing:0.03em;
+  }
+  .data-table tbody th{background:var(--bg-elevated);color:var(--text-primary);font-weight:500;}
+  .data-table strong{color:var(--text-primary);font-weight:500;}
+  .data-table .num{text-align:right;font-family:'JetBrains Mono',monospace;letter-spacing:0.02em;}
+  .table-note{font-size:12px;color:var(--text-tertiary);line-height:1.7;margin:0 0 26px;}
+  .table-scroll{overflow-x:auto;margin:26px 0 6px;}
+  .table-scroll .data-table{margin:0;min-width:520px;}
+
+  /* --- 外部ツールリンク枠 --- */
+  .tool-box{
+    background:var(--bg-card);border:1px solid var(--line-strong);
+    padding:26px 28px;margin:34px 0;
+  }
+  .tool-box .tb-label{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+    color:var(--gold);margin-bottom:10px;
+  }
+  .tool-box h3{font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;margin:0 0 10px;}
+  .tool-box p{font-size:13.5px;color:var(--text-secondary);line-height:1.95;margin:0 0 18px;}
+  .tool-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:10px 20px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .tool-link:hover{border-color:var(--gold);color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">MARKET STRUCTURE ── 金利 / RATES</div>
+  <h1 class="art-title">金利+0.1%でみずほは+20円、MUFGは+6円──3.3倍の差を生む銀行株の構造を読む</h1>
+  <div class="art-meta">
+    <span>2026.06.21</span>
+    <span>金利 / RATES</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">金利+0.1%でみずほのEPSは約+20円増える。同条件でMUFGは+約6円。同じ金利上昇でも約3.3倍の差が生まれる理由を、構造・因果・心理の三層で解説する。</p>
+
+  <div class="body">
+
+    <h2>導入：金融ニュースのノイズを消す視点</h2>
+    <p>金融市場は、常にノイズに溢れている。「利下げ期待」「株高」「銀行破綻」「円安」──これらは構造という地形が作り出す“波”にすぎない。</p>
+    <p><strong>あなたは今、銀行株ニュースをどう読んでいるだろうか。</strong>2026年6月16日、日銀は政策金利を0.75%から1.0%に引き上げた。利上げ決定後数日間で、みずほの株価は7,563円から8,249円（6/18終値）へ約+9%上昇した。では、みずほの利益は同じだけ増えたのだろうか。</p>
+    <p>答えはNOだ。EPSは502.92円のまま、一切変わっていない。</p>
+    <div class="code-model"><span class="cm-gold">株価 ＝ EPS × PER</span></div>
+    <p>この式で考えると、急騰の正体は「EPSの上昇」ではなく「PERの切り上がり」だ。市場が将来のEPS上昇を先読みし、バリュエーションを引き上げた。この順序を知っているかどうかが、ノイズに踊らされるかどうかの分岐点になる。</p>
+
+    <h4>この記事で得られること</h4>
+    <ul>
+      <li>「金利ニュース」に一喜一憂しない視点。表面的なニュースの裏にある、銀行収益の“不変の法則”がわかる。</li>
+      <li>メガバンク3行の“稼ぎ方の違い”。なぜ同じ金利上昇でも、3行でEPSの反応が約3.3倍違うのか。その理由を数値で理解できる。</li>
+      <li>自分で計算できる武器。特典のスプレッドシートを使い、金利変化が利益に与える影響を自分で算出できるようになる。</li>
+    </ul>
+
+    <h4>この記事が向かない人</h4>
+    <ul>
+      <li>明日の株価の“正解”を知りたい人。短期的な値動きの予測ではなく、中長期的な“構造の変化”を解説するものだ。</li>
+    </ul>
+
+    <p>金融を本当に動かしているのは、「構造 → 因果 → 心理」という三層構造だ。この視点を持つと、決算の数字は単なる記録ではなく、OSが書き換わった“構造の結果”として読めるようになる。金融は景気産業ではない。金利・人口・通貨制度という“OS”で動く産業なのだ。</p>
+
+    <h2>構造（Structure）：金融を支配する“変わらない骨格”</h2>
+    <p>銀行の利益は景気ではなく長短金利差で決まる。長期金利（運用）− 短期金利（調達）という一行の式が、銀行のOSそのものだ。</p>
+    <p>ここで重要な時間軸を先に押さえておく。</p>
+    <div class="code-model"><span class="cm-gold">利上げ決定</span>
+　①↓ 即座に
+市場がEPS上昇を先読み → PERが切り上がる → <span class="cm-gold">株価が先行高</span>
+　②↓ 3〜6ヶ月後
+貸出金利に反映される
+　③↓ 1〜2年後
+EPSが実際に上昇してくる → <span class="cm-gold">株価をEPSが追いかける形で支える</span></div>
+    <p>株価は先行し、EPSは後からついてくる。この二段階構造が銀行株の本質だ。</p>
+    <p>日銀は2026年6月16日に政策金利を1.0%へ引き上げた。1995年以来31年ぶりの水準だ。市場エコノミストの多数見通しでは、2027年末の政策金利は「1.5〜1.6%」が最多回答となっており、正常化の方向性は変わっていない。</p>
+    <p>ただし日本では、短期金利が上がっても預金金利はほぼ動かない。つまり、</p>
+    <ul>
+      <li>調達コストの上昇が極めて緩やか</li>
+      <li>貸出金利だけ上がる → 利ざや（NIM：純利ざや）が拡大し、銀行の利益は自動的に積み上がる</li>
+    </ul>
+    <p>さらに銀行のOSは、信用創造・バーゼル規制・人口構造・通貨制度によって形づくられている。同じOSの上で動いていても、OSが“どれだけ効くか”は銀行ごとに大きく違う。国内金利への依存度、海外・信託・証券などの多角化、発行済株式数、貸出ポートフォリオ──これらの違いが、同じ金利上昇でもEPSの伸び方が<strong>約3.3倍</strong>変わる理由だ。</p>
+
+    <h2>実証（Case Study）：構造が“数字”に変わる瞬間</h2>
+
+    <h3>みずほFG：金利OSの効き方の鏡</h3>
+    <p>2026年3月期決算は、金利OSの変化がEPSにどう刻まれるかを最も鮮明に示す。</p>
+    <ul>
+      <li>最終利益：1兆2,486億円（前期比+41.0%）</li>
+      <li>EPS：502.92円</li>
+      <li>発行済株式数：24.43億株（2026年3月末・自己株式除く）</li>
+      <li>6/12終値：7,563円（利上げ決定前・基準日）</li>
+      <li>6/12時点PER：15.04倍</li>
+    </ul>
+    <p>特に重要なのは金利感応度だ。みずほは2026年5月のIR資料で、+25bpsあたり年間+1,200億円程度と開示している。</p>
+    <div class="code-model">+0.1%（10bps） → +480億円
+480億円 ÷ 24.43億株 ≒ <span class="cm-gold">+19.6円</span></div>
+    <p>金利+0.1%でEPSは約+20円増える。これはMUFG（+約6円）の<strong>約3.3倍</strong>の効き方だ。</p>
+    <p>なぜこれほどの差が生まれるのか。理由は主に2つだ。</p>
+    <p><strong>第一に、発行済株式数の違いだ。</strong>みずほの発行済株式数は24.43億株に対し、MUFGは118.68億株と約5倍の開きがある。金利感応度（増益額）はMUFGの方が大きいにもかかわらず、1株あたりに乗る金額（EPS）はみずほが圧倒的に大きくなる。同じパイを少ない人数で分けるか、多い人数で分けるかの違いだ。</p>
+    <p><strong>第二に、国内貸出への依存度だ。</strong>みずほはMUFGと比較して国内貸出の比率が高く、日銀の政策金利変動が貸出金利にストレートに反映されやすい構造を持つ。MUFGは海外貸出や信託・証券など多角化が進んでいるため、国内金利上昇の恩恵が分散される。</p>
+    <p>この2つの構造的な違いが、同じ金利上昇でも3.3倍の差を生む正体だ。</p>
+
+    <h3>メガバンク3行の比較表（金利+0.1%時）</h3>
+    <div class="table-scroll">
+    <table class="data-table">
+      <caption>表1｜メガバンク3行の金利感応度（基準日：2026年6月12日終値）</caption>
+      <thead>
+        <tr><th>項目</th><th>みずほFG</th><th>MUFG</th><th>SMFG</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>6/12終値（基準日）</th><td>7,563円</td><td>3,162円</td><td>6,406円</td></tr>
+        <tr><th>EPS（26/3期）</th><td>502.92円</td><td>212.34円</td><td>411.88円</td></tr>
+        <tr><th>発行済株式数</th><td>24.43億株</td><td>118.68億株</td><td>38.27億株</td></tr>
+        <tr><th>6/12時点PER</th><td>15.04倍</td><td>14.89倍</td><td>15.55倍</td></tr>
+        <tr><th>金利感応度（+25bps）</th><td>+1,200億円</td><td>+1,800億円</td><td>+1,100億円</td></tr>
+        <tr><th>EPS押上げ（+0.1%）</th><td><strong>+約20円</strong></td><td>+約6円</td><td>+約11円</td></tr>
+        <tr><th>特性</th><td>国内金利依存×株数少ない</td><td>海外比率高く多角化</td><td>感応度・株数とも中間</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-note">※基準日：2026年6月12日終値（利上げ決定前）。各社IR一次資料に基づく。</p>
+
+    <h3>利上げ後に何が起きたか：PER切り上がりの実証</h3>
+    <p>日銀が6/16に利上げを決定した後、3行の株価はどう動いたか。</p>
+    <div class="table-scroll">
+    <table class="data-table">
+      <caption>表2｜利上げ前後の株価とPER（6/12 → 6/19）</caption>
+      <thead>
+        <tr><th></th><th>みずほFG</th><th>MUFG</th><th>SMFG</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>6/12終値（利上げ前）</th><td>7,563円</td><td>3,162円</td><td>6,406円</td></tr>
+        <tr><th>6/19終値（利上げ後）</th><td>7,884円</td><td>3,278円</td><td>6,482円</td></tr>
+        <tr><th>EPS変化</th><td><strong>変わらず</strong></td><td><strong>変わらず</strong></td><td><strong>変わらず</strong></td></tr>
+        <tr><th>PER変化</th><td>15.04→15.68倍</td><td>14.89→15.44倍</td><td>15.55→15.74倍</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>EPSは一切変わっていない。上昇したのはPERだけだ。市場は「1〜2年後にEPSが上昇してくる」という構造変化を先読みし、バリュエーションを引き上げた。これが <strong>株価 ＝ EPS × PER</strong> という式の示す現実だ。</p>
+    <p class="table-note">※みずほは6/18に8,249円（利上げ前比+9%）を付けたのち、6/19は7,884円へ反落。上表は6/19終値ベース。導入で触れた急騰（6/18）と、数日後に落ち着いた水準（6/19）のいずれもEPSは502.92円で不変であり、動いたのはPERのみである点は共通している。</p>
+
+    <h3>金利感応度 → 利益 → EPSの計算ワークシート</h3>
+    <p>銀行株は「金利が動くとどれだけ利益が増えるのか」を3ステップで計算できる。</p>
+    <ol>
+      <li>金利感応度を確認（IR資料で開示）</li>
+      <li>金利変化幅を掛ける</li>
+      <li>発行済株式数で割る（EPSへの変換）</li>
+    </ol>
+    <p>これが金利OSの因果だ。</p>
+
+    <h3>【シナリオ】政策金利1.5%到達時のEPS試算</h3>
+    <p>巷の記事には「政策金利〇%で理論株価〇〇円！」という表現が多い。ただしその数字には、ほぼ必ず「1〜2年の時間的ずれ」が隠れている。本記事ではそれを正直に明記した上で試算する。</p>
+    <p><strong>基準：6/12終値（政策金利0.75%・利上げ決定前）／ シナリオ：0.75% → 1.5%（+75bps）の効果がフルに反映された場合</strong></p>
+    <div class="table-scroll">
+    <table class="data-table">
+      <caption>表3｜政策金利1.5%到達時のEPS・参考株価換算（試算）</caption>
+      <thead>
+        <tr><th>項目</th><th>みずほFG</th><th>MUFG</th><th>SMFG</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>現在EPS（基準）</th><td>502.92円</td><td>212.34円</td><td>411.88円</td></tr>
+        <tr><th>EPS押上げ（+75bps）</th><td>+約147円</td><td>+約45円</td><td>+約86円</td></tr>
+        <tr><th>フル反映後EPS（試算）</th><td><strong>約650円</strong></td><td>約257円</td><td>約498円</td></tr>
+        <tr><th>参考・株価換算（PER15倍）</th><td><strong>約9,750円</strong></td><td>約3,855円</td><td>約7,470円</td></tr>
+        <tr><th>6/12株価との差（参考）</th><td>+29%</td><td>+22%</td><td>+17%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout">
+      <p><strong>この試算について（重要）</strong><br>「参考・株価換算」は一般的な理論株価（現時点のEPS×PER）とは異なります。金利感応度のみを変数とし、効果がフルに反映された時点（利上げから概ね1〜2年後）のEPSにPER15倍を乗じた参考値です。「今すぐこの株価になる」ではなく、「構造変化が浸透した先の姿」として読んでください。信用コスト・マクロ環境・PER変動は考慮していません。</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="tb-label">補助ツール ／ SHEET</div>
+      <h3>金利感応度 → EPS → 参考株価 再現スプレッドシート</h3>
+      <p>この記事で扱ったメガバンク3行の「金利感応度 → EPS → 参考株価換算値」を、読者自身が再現できるGoogleスプレッドシートを用意しました。「金利変化幅」の欄に任意の値（例：0.25）を入力すると、EPS増加額と参考株価換算値が自動で更新され、金利OSがどの銀行にどれだけ効くかが一目でわかります。数式はすべて公開しているため、構造を追って自分の分析にも応用できます（地方銀行は感応度の開示形式が統一されていないため対象外）。現在無料公開中で、日銀の次回利上げ時にアップデート版を配布予定です。ご利用の際はメニューの「ファイル」→「コピーを作成」で自分のドライブにコピーしてからお使いください。</p>
+      <a class="tool-link" href="https://docs.google.com/spreadsheets/d/1Ufo8vbtfnWtX6yVwQi-rVpfCtsQG2EVIG2iRR_BahJY/edit?usp=sharing" target="_blank" rel="noopener">スプレッドシートを開く ↗</a>
+    </div>
+
+    <h2>因果（Causality）：構造を動かす“外生ショック”とは何か</h2>
+    <p>構造は不変ではない。銀行の利益構造を押し上げているのは、中立金利（景気を冷やしも熱しもしない“金利の定位置”）の切り上がりという外生ショックだ。中立金利が上がるとは、「経済がより高い金利を許容できる体質に変化した」ことを意味する。</p>
+    <h4>なぜ今、中立金利が切り上がっているのか（因果の連鎖）</h4>
+    <ul>
+      <li><strong>世界的なインフレ構造の変化</strong>──モノの価格が“元に戻らない”粘着性を持ち始めた。</li>
+      <li><strong>労働需給の逼迫</strong>──人手不足が恒常化し、賃金上昇が構造化している。</li>
+      <li><strong>サプライチェーン再編</strong>──地政学リスクにより、調達コストが恒常的に上昇。</li>
+      <li><strong>財政拡張の持続</strong>──各国が財政を引き締めず、総需要が高止まり。</li>
+      <li><strong>米国の高金利構造の定着</strong>──世界の基軸金利が高止まりし、日本だけ低金利を維持しにくくなった。</li>
+    </ul>
+    <p>これらが複合し、「低金利が当たり前」という前提そのものが崩れつつある。その結果として、政策金利の正常化 → 長短金利差の拡大 → 銀行の利益構造の改善という“構造の更新”が起きている。</p>
+
+    <h2>心理（Psychology）：金融で繰り返される誤読</h2>
+
+    <h3>誤読1：利下げ＝銀行株安、利上げ＝銀行株高</h3>
+    <p>→ 正解：銀行株は“金利の方向”ではなく“利ざや（NIM）の構造”で動く。</p>
+    <h3>誤読2：銀行株はどれも同じように金利で動く</h3>
+    <p>→ 正解：金利感応度 × 発行株数 × 貸出構造で効き方は全く違う。</p>
+    <h3>誤読3：銀行株は景気敏感株である</h3>
+    <p>→ 正解：銀行は“景気”ではなく“金利OS”で動く産業。</p>
+    <h3>誤読4：金利上昇は倒産を増やし、銀行利益を圧迫する</h3>
+    <p>→ 正解：信用コストは増えるが、NIM拡大の利益が圧倒的に勝つ。</p>
+    <p>金利上昇局面では信用コストが増えるが、日本の銀行は預金金利の上昇が極めて緩やかなため、金利上昇＝NIM拡大がストレートに利益へ反映される。NIMが0.1%改善するだけで数千億円規模の増益要因となる。多少の倒産増加は十分に吸収可能で、差し引きでは“プラスが圧倒的に勝つ”構造だ。</p>
+    <p>金利上昇局面では、NIM拡大が利益を押し上げる一方で、保有債券の評価損（含み損）が一時的に膨らむというリスクも存在する。ただし日本のメガバンクは以下の3つのリスク管理を徹底しており、評価損が“構造的な利益成長”を揺るがす水準に達する可能性は低い。</p>
+    <ul>
+      <li>デュレーションを短く管理（※デュレーション＝債券の価格が金利変動に反応する敏感さの指標。短いほど金利上昇時の価格下落が小さい）</li>
+      <li>外債ヘッジ比率を調整（※為替や金利変動リスクを先物等で相殺し、評価損の拡大を抑制）</li>
+      <li>自己資本比率（CET1）を十分に確保（※CET1＝普通株式等Tier1比率。銀行の財務的な体力を示す国際基準の指標。高いほど損失への耐性が強い）</li>
+    </ul>
+    <p>評価損はあくまで“帳簿上の含み損”に過ぎず、満期まで保有すれば元本は全額返済される。売らなければ損失は確定しない。預金基盤が安定しているメガバンクが債券を強制売却に追い込まれるリスクは極めて低く、評価損がメガバンクの構造的な利益成長を揺るがす要因にはなりにくい。</p>
+    <h3>誤読5：利上げ後に株価が急騰したなら、もう織り込み済みで旨味はない</h3>
+    <p>→ 正解：株価はPER拡大で先行しただけ。EPSの実態はまだ上がっていない。</p>
+    <p>6/12→6/18の株価上昇は「EPSが増えたから」ではなく「将来EPSが増えると市場が判断したからPERが上がった」に過ぎない。EPSが実際に上昇してくるのは1〜2年後だ。構造を理解した投資家は、この時間軸を知った上で判断している。</p>
+    <h3>誤読6：銀行株は短期ショック（円高・外債評価損）で壊れる</h3>
+    <p>→ 正解：短期ショックは“PLの一部”を歪めるだけで、構造そのものは壊れない。</p>
+    <p>円高 → 外債評価損、金利上昇 → 債券評価損。これらは一時的なノイズであり、中期的には再投資利回りの上昇が利益を押し上げる構造が勝つ。</p>
+
+    <h2>総括</h2>
+    <p>政策金利が1.5%に到達し、その効果が浸透した先で──みずほのEPSは試算上650円水準に達する。株価 ＝ EPS × PER という式で考えれば、EPSが上昇すれば株価はそれを支える構造になる。では今の株価水準は構造的に割安なのか、それとも適正なのか。あなたはどう読むだろうか。</p>
+    <p>多くの投資家が画面上の「アプリ（景気）」の挙動に一喜一憂する中で、真に注視すべきは、すべてを規定する「OS（構造）」のアップデートだ。金利というOSがアップデートされれば、銀行の収益構造は自動的に書き換わる。ただしその書き換わりは、株価が先行し、EPSが1〜2年かけて後からついてくる。この順序を知っているかどうかが、ノイズに踊らされるかどうかの分岐点だ。</p>
+    <p>金融を構造・因果・心理の三層で捉える視点は、ノイズだらけの嵐の中で、正確な羅針盤を手に入れることに等しい。</p>
+    <p>荒れ狂う波の下には、常に変わることのない、静かな構造の海が広がっている。</p>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">ORIGINAL ARTICLE ／ X</span>
+    <h3>この分析の元記事と、日々の構造分析</h3>
+    <p>本稿はnoteで公開した記事を、Japan Structure Lab のハブ用に再構成したものです。日々のMARKET STRUCTURE REPORTと最新の構造分析はXで発信しています。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821/n/n0d3c2015a211" target="_blank" rel="noopener">noteで元記事を読む</a>
+      <a class="cta-btn" href="https://x.com/StructureLabJP" target="_blank" rel="noopener">Xで最新分析</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="/reports/">REPORTS</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。記載の数値は執筆時点の一次資料（IR資料・決算短信等）に基づく概算を含み、将来の成果を保証するものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

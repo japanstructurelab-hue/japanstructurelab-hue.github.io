@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>グロース型で読み解く、テリロジHD(5133)──「稼ぐ力」が先に変わった瞬間｜Japan Structure Lab</title>
+<meta name="description" content="テリロジHD(5133)が上限2億円の自社株買いを決議。営業利益+101%の裏にはOT/IoTセキュリティ需要と為替対応の二重の構造変化がある。PER16.3倍は成長率に対しまだ保守的──稼ぐ力が先に変わり株価が追いつく局面をグロース型で読む。">
+<meta property="og:title" content="グロース型で読み解く、テリロジHD(5133)──「稼ぐ力」が先に変わった瞬間">
+<meta property="og:description" content="営業利益+101%の正体は、セキュリティ需要の量的拡大と為替対応の質的改善。配当据え置きで株価へ直接還元を選んだ小型グロースの構造を読む。">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://note.com/safe_crane821/n/n348f839efa1e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body h4{
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+    letter-spacing:0.04em;color:var(--gold);margin:30px 0 10px;
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .body ol{counter-reset:li;}
+  .body ol li{counter-increment:li;}
+  .body ol li::before{
+    content:counter(li);position:absolute;left:0;top:0;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  }
+
+  .layer-box{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:26px 28px;margin:28px 0;
+  }
+  .layer-box .lb-num{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+    letter-spacing:0.08em;margin-bottom:8px;
+  }
+  .layer-box h3{margin:0 0 10px;font-size:16px;}
+  .layer-box p{margin:0;font-size:14px;}
+
+  .callout{
+    background:var(--bg-elevated);border-left:3px solid var(--crimson);
+    padding:22px 26px;margin:30px 0;
+  }
+  .callout p{margin:0;color:var(--text-primary);font-size:15.5px;line-height:1.9;}
+
+  .three-layer{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:30px 0;
+  }
+  @media(max-width:640px){.three-layer{grid-template-columns:1fr;}}
+  .tl-cell{background:var(--bg-card);padding:24px 20px;}
+  .tl-cell .tl-kanji{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;margin-bottom:6px;
+  }
+  .tl-cell .tl-en{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:14px;
+  }
+  .tl-cell .tl-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;}
+  .tl-s .tl-kanji{color:var(--gold);}
+  .tl-c .tl-kanji{color:var(--mid);}
+  .tl-p .tl-kanji{color:var(--crimson);}
+
+  .code-model{
+    background:#0f0e11;border:1px solid var(--line-strong);
+    font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;
+    color:var(--text-secondary);padding:24px 26px;margin:28px 0;
+    white-space:pre-wrap;overflow-x:auto;
+  }
+  .code-model .cm-gold{color:var(--gold);}
+
+  /* --- 数表（reportsトークン内で新設） --- */
+  .data-table{
+    width:100%;border-collapse:collapse;margin:26px 0 6px;font-size:13.5px;
+  }
+  .data-table caption{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.08em;
+    color:var(--gold);text-align:left;margin-bottom:12px;
+  }
+  .data-table th,.data-table td{
+    border:1px solid var(--line);padding:11px 14px;text-align:left;
+    color:var(--text-secondary);line-height:1.7;vertical-align:top;
+  }
+  .data-table thead th{
+    background:var(--bg-card);color:var(--gold);
+    font-family:'JetBrains Mono',monospace;font-weight:500;
+    font-size:12.5px;letter-spacing:0.03em;
+  }
+  .data-table tbody th{background:var(--bg-elevated);color:var(--text-primary);font-weight:500;}
+  .data-table strong{color:var(--text-primary);font-weight:500;}
+  .data-table .num{text-align:right;font-family:'JetBrains Mono',monospace;letter-spacing:0.02em;}
+  .table-note{font-size:12px;color:var(--text-tertiary);line-height:1.7;margin:0 0 26px;}
+  .table-scroll{overflow-x:auto;margin:26px 0 6px;}
+  .table-scroll .data-table{margin:0;min-width:480px;}
+
+  /* --- 外部/関連リンク枠 --- */
+  .tool-box{
+    background:var(--bg-card);border:1px solid var(--line-strong);
+    padding:26px 28px;margin:34px 0;
+  }
+  .tool-box .tb-label{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+    color:var(--gold);margin-bottom:10px;
+  }
+  .tool-box h3{font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;margin:0 0 10px;}
+  .tool-box p{font-size:13.5px;color:var(--text-secondary);line-height:1.95;margin:0 0 18px;}
+  .tool-links{display:flex;gap:12px;flex-wrap:wrap;}
+  .tool-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:10px 20px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .tool-link:hover{border-color:var(--gold);color:var(--gold);}
+
+  .signature{
+    font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);
+    text-align:right;margin-top:40px;letter-spacing:0.05em;
+  }
+
+  .art-cta{
+    max-width:720px;margin:70px auto 0;padding:0 32px;
+  }
+  @media(max-width:640px){.art-cta{padding:0 22px;}}
+  .cta-card{
+    background:var(--bg-card);border:1px solid var(--line);
+    padding:36px 32px;text-align:center;
+  }
+  .cta-card .mono-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.12em;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .cta-card h3{
+    font-family:'Shippori Mincho',serif;font-size:19px;font-weight:800;margin-bottom:12px;
+  }
+  .cta-card p{font-size:13.5px;color:var(--text-secondary);margin-bottom:24px;line-height:1.9;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:11px 22px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .cta-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .cta-btn.primary{background:var(--gold);color:#0b0b0d;border-color:var(--gold);}
+  .cta-btn.primary:hover{background:transparent;color:var(--gold);}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">MARKET STRUCTURE ── 個別銘柄 / テリロジHD 5133</div>
+  <h1 class="art-title">グロース型で読み解く、テリロジHD（5133）──「稼ぐ力」が先に変わった瞬間</h1>
+  <div class="art-meta">
+    <span>2026.07.03</span>
+    <span>個別銘柄 / グロース</span>
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">2026年7月2日、テリロジホールディングス（5133）が上限2億円の自己株式取得を決議した。発行済株式数（自己株式控除後）17,106,232株に対し、取得枠は発行済株式数の4%超。2ヶ月弱という短期の取得期間が設定されている。</p>
+
+  <div class="body">
+
+    <p>一見、よくある中小型株の自社株買いニュースだ。だが、この開示を単体で見ると本質を見誤る。構造学の視点で見るべきは「なぜ今、このタイミングで自社株買いに動けたのか」という因果の方だ。</p>
+
+    <h2>構造｜数字に何が起きているか</h2>
+    <p>テリロジHDの2026年3月期（実績）は、売上が2割強伸びる一方で、営業利益は2倍になっている。これは「売上が伸びたから利益も伸びた」という単純な話ではない。利益の伸び率が売上の伸び率を大きく上回る＝<strong>利益率そのものが構造的に改善している</strong>ことを意味する。</p>
+
+    <div class="table-scroll">
+    <table class="data-table">
+      <caption>表｜業績の実績と会社計画</caption>
+      <thead>
+        <tr><th>項目</th><th>2026年3月期（実績）</th><th>2027年3月期（計画）</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>売上高</th><td>106.46億円（+23.0%）</td><td>122億円</td></tr>
+        <tr><th>営業利益</th><td><strong>5.49億円（+101.0%）</strong></td><td>6.62億円</td></tr>
+        <tr><th>経常利益</th><td>─</td><td>7.15億円</td></tr>
+        <tr><th>純利益</th><td>─</td><td>4.29億円</td></tr>
+        <tr><th>年間配当</th><td>5円</td><td>5円（同額維持）</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-note">※出典：2026年3月期 決算短信ほか（下記出典参照）。</p>
+
+    <p>年間配当は1株5円で前期と同額維持。つまり今回の自社株買いは「配当を増やす余力」ではなく<strong>「株価そのものへの直接還元」</strong>を選んだ形だ。現在の株価水準（279円、PER16.3倍、PBR1.58倍）を踏まえると、経営陣は「今の株価は利益成長を織り込みきれていない」と判断したと読める。</p>
+
+    <h2>因果｜なぜ利益率が変わったのか</h2>
+    <p>同社はネットワーク・セキュリティ・ソリューションサービスの3部門を持つが、成長を牽引しているのは明確にセキュリティ部門だ。前年比+30%超という伸び率は、他の2部門を大きく引き離している。</p>
+    <p>背景にあるのは、OT/IoTセキュリティ需要の構造的な拡大だ（OT＝工場やプラントの制御システムそのもののセキュリティ、IoT＝ネットワークに繋がる各種機器のセキュリティを指し、従来のPC・サーバー中心のセキュリティとは防御対象が異なる領域）。工場やインフラ設備のネットワーク化が進むほど、そこを狙うサイバー攻撃のリスクも増える。これは景気循環というより、社会インフラのデジタル化という不可逆な流れに紐づいた需要であり、一過性のブームとは性質が異なる。</p>
+    <p>もう一点見逃せないのが、為替・仕入コストへの対応だ。地政学リスクに伴う資材高や円安による仕入価格上昇という逆風がありながら、為替予約・通貨スワップなどのヘッジと、価格転嫁の両輪で吸収し、通期の各利益指標はいずれも会社の当初予想を上回った。</p>
+    <div class="callout">
+      <p>売上の量的拡大（セキュリティ需要）と、コスト管理の質的改善（為替対応・価格転嫁）が同時に起きたことが、営業利益+101%という数字の正体だ。</p>
+    </div>
+
+    <h2>心理｜市場はまだこの構造を織り込んでいない</h2>
+    <p>PER16.3倍、PBR1.58倍という水準は、営業利益が前年比で2倍になった企業の評価としては、決して高くない。時価総額42億円規模の小型株ということもあり、機関投資家の物色対象になりにくく、個人投資家の間でもまだ十分に認知が広がっていない可能性がある。</p>
+    <p>自社株買いという行動は、多くの場合「経営陣が自社の株価を割安と考えている」というシグナルとして市場に受け取られる。今回のケースでは、それが<strong>利益成長が先に起き、株価評価が追いついていない</strong>という構造の裏付けとセットになっている点が重要だ。</p>
+    <p>グロース型投資で見るべきは、目先の株価の安さではなく「成長率そのものが持続するかどうか」だ。セキュリティ需要が構造的な流れである以上、2027年3月期の増収増益計画が達成されれば、市場評価が段階的に切り上がっていくシナリオは十分にあり得る。</p>
+
+    <h2>まとめ</h2>
+    <ul>
+      <li><strong>利益率の構造変化：</strong>営業利益+101%という劇的な改善が自社株買いの背景にある</li>
+      <li><strong>成長の牽引役：</strong>OT/IoTセキュリティという、不可逆な需要トレンドに紐づく部門が強い</li>
+      <li><strong>割安な評価：</strong>PER16.3倍という数値は、現在の成長率に対してまだ保守的</li>
+      <li><strong>投資局面：</strong>「稼ぐ力が先に変わり、株価が後から追いつく」典型的な局面</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>シナリオが崩れるとすれば</strong>──セキュリティ部門の成長率が鈍化した時、あるいは同社が輸入する製品・機器の仕入コストが円安の進行によって再び上昇し、価格転嫁や為替ヘッジで吸収しきれなくなった時だ（同社は輸入商材を扱う構造上、円高ではなく円安が業績への逆風になる点に注意）。この2点を継続的にモニタリングする価値がある。</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="tb-label">RELATED ／ 投資家タイプ</div>
+      <h3>グロース型投資の実践フレーム</h3>
+      <p>グロース型投資の考え方や、TAM・NRR・PEGレシオといった判断軸をより体系的に知りたい方は、こちらの記事もあわせてどうぞ。</p>
+      <div class="tool-links">
+        <a class="tool-link" href="https://note.com/safe_crane821/n/n7eda923d0d5b" target="_blank" rel="noopener">グロース型投資家の実践note ↗</a>
+      </div>
+    </div>
+
+    <div class="signature">── Japan Structure Lab</div>
+
+  </div>
+</article>
+
+<div class="art-cta">
+  <div class="cta-card">
+    <span class="mono-label">ORIGINAL ARTICLE ／ X</span>
+    <h3>この分析の元記事と、日々の構造分析</h3>
+    <p>本稿はnoteで公開した記事を、Japan Structure Lab のハブ用に再構成したものです。日々のMARKET STRUCTURE REPORTと最新の構造分析はXで発信しています。</p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://note.com/safe_crane821/n/n348f839efa1e" target="_blank" rel="noopener">noteで元記事を読む</a>
+      <a class="cta-btn" href="https://x.com/StructureLabJP" target="_blank" rel="noopener">Xで最新分析</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="/reports/">REPORTS</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。本記事は特定銘柄の売買を推奨するものではありません。記事内の数値は各種適時開示・決算資料（自己株式取得に関するお知らせ 2026年7月2日開示、2026年3月期決算短信 2026年5月14日発表、連結業績予想の修正 2025年5月13日発表、第3四半期決算短信 2026年2月13日発表、株価・株式指標は2026年7月2日終値時点）をもとに構成していますが、最新情報は各社IR・TDnetの一次情報をご確認ください。投資判断はご自身の責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
