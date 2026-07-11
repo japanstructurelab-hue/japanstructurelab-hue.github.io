@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー | Japan Structure Lab</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LERQO79F6P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LERQO79F6P');
+</script>
+<meta name="description" content="Japan Structure Labのプライバシーポリシー。アクセス解析ツール(Google Analytics 4)の利用、広告配信、免責事項について説明します。">
+<meta property="og:title" content="プライバシーポリシー | Japan Structure Lab">
+<meta property="og:description" content="Japan Structure Labのプライバシーポリシー。アクセス解析ツールの利用、広告配信、免責事項について説明します。">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-elevated:#141317;
+    --bg-card:#18171b;
+    --text-primary:#f5f2ea;
+    --text-secondary:#aca79c;
+    --text-tertiary:#918b7f;
+    --gold:#c6a15b;
+    --gold-dim:#8a7442;
+    --crimson:#8a3a3a;
+    --mid:#b58a55;
+    --line:rgba(198,161,91,0.14);
+    --line-strong:rgba(198,161,91,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold-dim);color:#0b0b0d;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
+  }
+  .back-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    letter-spacing:0.04em;color:var(--text-secondary);
+    display:inline-flex;align-items:center;gap:8px;transition:color .25s;
+  }
+  .back-link::before{content:'\2190';}
+  .back-link:hover{color:var(--gold);}
+  .brand-mark{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:15px;letter-spacing:0.04em;
+  }
+  .brand-mark span{color:var(--gold);}
+  @media(max-width:640px){
+    .nav-wrap{padding:0 20px;}
+    .brand-mark{display:none;}
+  }
+
+  .article{
+    max-width:720px;margin:0 auto;padding:130px 32px 80px;
+  }
+  @media(max-width:640px){.article{padding:104px 22px 64px;}}
+
+  .art-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.14em;color:var(--gold);margin-bottom:22px;
+  }
+  .art-title{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(26px,4.4vw,38px);line-height:1.45;letter-spacing:0.01em;
+    margin-bottom:26px;
+  }
+  .art-meta{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--text-tertiary);letter-spacing:0.05em;
+    padding-bottom:30px;margin-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .art-lead{
+    font-size:16px;color:var(--text-secondary);line-height:2;
+    margin:40px 0 10px;
+  }
+
+  .body h2{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:clamp(20px,2.8vw,25px);line-height:1.5;
+    margin:64px 0 24px;padding-left:18px;
+    border-left:3px solid var(--gold);
+  }
+  .body h3{
+    font-family:'Shippori Mincho',serif;font-weight:800;
+    font-size:17px;line-height:1.6;margin:38px 0 14px;color:var(--text-primary);
+  }
+  .body p{
+    font-size:15px;color:var(--text-secondary);line-height:2.05;margin-bottom:20px;
+  }
+  .body strong{color:var(--text-primary);font-weight:500;}
+  .body ul,.body ol{margin:0 0 22px;padding-left:4px;list-style:none;}
+  .body li{
+    font-size:15px;color:var(--text-secondary);line-height:1.95;
+    margin-bottom:10px;padding-left:22px;position:relative;
+  }
+  .body ul li::before{
+    content:'';position:absolute;left:2px;top:13px;
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+
+  footer{
+    border-top:1px solid var(--line);margin-top:80px;padding:44px 0 60px;
+  }
+  .foot-wrap{max-width:720px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.foot-wrap{padding:0 22px;}}
+  .foot-brand{
+    font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;
+    letter-spacing:0.04em;margin-bottom:20px;
+  }
+  .foot-brand span{color:var(--gold);}
+  .foot-nav{
+    display:flex;gap:22px;font-size:13px;color:var(--text-secondary);
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .foot-nav a{font-family:'JetBrains Mono',monospace;font-size:12px;transition:color .25s;}
+  .foot-nav a:hover{color:var(--gold);}
+  .disclosure{
+    font-size:12px;color:var(--text-tertiary);line-height:1.85;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="back-link" href="/">Japan Structure Lab に戻る</a>
+    <div class="brand-mark">JAPAN <span>STRUCTURE</span> LAB</div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="art-eyebrow">SITE POLICY</div>
+  <h1 class="art-title">プライバシーポリシー</h1>
+  <div class="art-meta">
+    <span>Japan Structure Lab</span>
+  </div>
+
+  <p class="art-lead">Japan Structure Lab（以下「当サイト」）は、利用者の個人情報の重要性を認識し、以下の方針に基づき適切に取り扱います。</p>
+
+  <div class="body">
+
+    <h2>アクセス解析ツールについて</h2>
+    <p>当サイトはアクセス解析のためにGoogle Analytics 4（GA4）を利用しています。GA4は、利用状況を把握するためにCookieを使用してデータを収集しますが、この情報は匿名で収集されており、個人を特定するものではありません。</p>
+    <p>Cookieの使用を望まない場合は、ブラウザの設定でCookieを無効にすることで、データ収集を無効にすることができます。設定方法は、お使いのブラウザのヘルプページをご確認ください。</p>
+
+    <h2>広告の配信について</h2>
+    <p>当サイトは、Amazonアソシエイト・プログラムをはじめとするアフィリエイトプログラムに参加しており、これにより収益を得ることがあります。当サイトはAmazon.co.jpを宣伝しリンクすることによって収益を得ることができる、Amazonアソシエイト・プログラムの参加者です。</p>
+    <ul>
+      <li>第三者配信の広告サービスが、Cookieを使用して利用者の興味に応じた広告を表示することがあります。</li>
+      <li>Cookieを無効にする方法や広告配信の詳細については、各広告配信事業者やGoogleの案内ページをご確認ください。</li>
+    </ul>
+
+    <h2>免責事項</h2>
+    <p>当サイトのコンテンツは情報提供を目的としており、投資勧誘・助言を目的としたものではありません。掲載情報の正確性・完全性を保証するものではなく、これらの情報に基づいて被ったいかなる損害についても、当サイトは責任を負いません。投資に関する最終決定はご自身の判断と責任において行ってください。</p>
+
+    <h2>お問い合わせ</h2>
+    <p>本ポリシーに関するお問い合わせは、Xアカウント（@StructureLabJP）宛にご連絡ください。</p>
+
+  </div>
+</article>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-brand">JAPAN <span>STRUCTURE</span> LAB</div>
+    <nav class="foot-nav">
+      <a href="/">HOME</a>
+      <a href="https://x.com/StructureLabJP" target="_blank" rel="noopener">X</a>
+      <a href="https://note.com/safe_crane821" target="_blank" rel="noopener">note</a>
+    </nav>
+    <div class="disclosure">
+      このサイトはアフィリエイト広告（Amazonアソシエイトを含む）を利用しています。掲載しているツール・記事は投資情報の提供を目的としたものであり、投資勧誘や助言を目的としたものではありません。投資判断は自己責任で行ってください。<br>
+      © Japan Structure Lab
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
