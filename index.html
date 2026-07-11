@@ -242,6 +242,22 @@
     color:var(--text-tertiary);border:1px solid var(--line-strong);
     padding:2px 8px;border-radius:20px;display:inline-block;margin-top:10px;width:fit-content;
   }
+  .tool-box{
+    background:var(--bg-card);border:1px solid var(--line-strong);
+    padding:26px 28px;margin:34px 0 0;
+  }
+  .tool-box .tb-label{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;
+    color:var(--gold);margin-bottom:10px;
+  }
+  .tool-box h3{font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px;margin:0 0 10px;}
+  .tool-box p{font-size:13.5px;color:var(--text-secondary);line-height:1.95;margin:0 0 18px;}
+  .tool-link{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.05em;
+    border:1px solid var(--line-strong);padding:10px 20px;display:inline-block;
+    transition:border-color .25s,color .25s;
+  }
+  .tool-link:hover{border-color:var(--gold);color:var(--gold);}
 
   /* ---------- content / report archive ---------- */
   .archive-list{border-top:1px solid var(--line);}
@@ -474,6 +490,13 @@
         <p>10のチャートパターンを構造・因果・心理の三層で解説。ランク制で実戦力を鍛えるVol.3。</p>
         <div class="go">ドリルを始める</div>
       </a>
+    </div>
+
+    <div class="tool-box">
+      <div class="tb-label">TOOL 04 ／ プロンプトOS</div>
+      <h3>構造学プロンプトOS</h3>
+      <p>AIに「どう思う？」と聞いても要約しか返ってこない。構造学の思考手順をそのままプロンプトにしたツールで、問いの形を変えて世界を読み解く。</p>
+      <a class="tool-link" href="/prompts/">プロンプトOSを使う ↗</a>
     </div>
   </div>
 </section>

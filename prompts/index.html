@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>構造学プロンプトOS｜Japan Structure Lab</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LERQO79F6P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LERQO79F6P');
+</script>
+<!-- OGP / Twitter Card -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="構造学プロンプトOS｜Japan Structure Lab">
+<meta property="og:description" content="ニュースを読む前に、構造を読む。構造→因果→心理の思考手順を、そのままコピーして使えるAIプロンプトにしました。">
+<meta property="og:url" content="https://japanstructurelab-hue.github.io/prompts/">
+<meta property="og:image" content="https://bespoke-frangipane-872317.netlify.app/ogp.png">
+<meta property="og:site_name" content="Japan Structure Lab">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="構造学プロンプトOS｜Japan Structure Lab">
+<meta name="twitter:description" content="ニュースを読む前に、構造を読む。構造→因果→心理の思考手順を、そのままコピーして使えるAIプロンプトにしました。">
+<meta name="twitter:image" content="https://bespoke-frangipane-872317.netlify.app/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d;
+  --panel:#141417;
+  --panel-2:#1c1c21;
+  --line:#2c2c33;
+  --gold:#c9a227;
+  --gold-dim:#8a7220;
+  --enji:#9e3a3a;
+  --text:#e8e6e1;
+  --muted:#9a978f;
+  --mincho:"Shippori Mincho",serif;
+  --sans:"Noto Sans JP",sans-serif;
+  --mono:"JetBrains Mono",monospace;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--sans);line-height:1.8;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px 80px}
+
+/* ---- hero ---- */
+header{padding:56px 0 32px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--gold-dim);text-transform:uppercase;margin:0 0 14px}
+h1{font-family:var(--mincho);font-weight:700;font-size:30px;line-height:1.45;margin:0 0 16px;letter-spacing:.02em}
+h1 .g{color:var(--gold)}
+.lede{color:var(--muted);font-size:14px;margin:0}
+
+/* ---- spine (signature) ---- */
+.spine{display:flex;align-items:stretch;gap:0;margin:28px 0 8px;border:1px solid var(--line);background:var(--panel)}
+.spine button{
+  flex:1;background:none;border:none;border-right:1px solid var(--line);
+  color:var(--muted);font-family:var(--mincho);font-size:15px;font-weight:700;
+  padding:14px 4px 12px;cursor:pointer;position:relative;transition:color .2s;
+}
+.spine button:last-child{border-right:none}
+.spine button .n{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--gold-dim);font-weight:400;margin-bottom:2px}
+.spine button[aria-selected="true"]{color:var(--gold);background:var(--panel-2)}
+.spine button[aria-selected="true"]::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold);
+}
+.spine button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.chain-note{font-family:var(--mono);font-size:11px;color:var(--muted);margin:0 0 32px;letter-spacing:.05em}
+
+/* ---- card ---- */
+.card{border:1px solid var(--line);background:var(--panel);padding:24px 20px;margin-bottom:28px}
+.card h2{font-family:var(--mincho);font-size:20px;margin:0 0 6px;color:var(--text)}
+.purpose{color:var(--muted);font-size:13px;margin:0 0 20px;padding-bottom:18px;border-bottom:1px dashed var(--line)}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gold);display:block;margin:18px 0 6px}
+.hint{font-size:12px;color:var(--muted);margin:0 0 6px}
+textarea,input[type=text]{
+  width:100%;background:#0d0d10;border:1px solid var(--line);color:var(--text);
+  font-family:var(--sans);font-size:14px;padding:10px 12px;border-radius:2px;resize:vertical;
+}
+textarea:focus,input:focus{outline:none;border-color:var(--gold-dim)}
+textarea{min-height:88px}
+
+/* ---- output ---- */
+.out-head{display:flex;align-items:center;justify-content:space-between;margin:26px 0 8px}
+.out-head .label{margin:0}
+.copy{
+  background:var(--gold);color:#0b0b0d;border:none;font-family:var(--sans);font-weight:700;
+  font-size:13px;padding:9px 20px;cursor:pointer;border-radius:2px;letter-spacing:.06em;
+  transition:background .15s;
+}
+.copy:hover{background:#e0b62c}
+.copy:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.copy.done{background:var(--enji);color:var(--text)}
+pre.prompt{
+  margin:0;background:#0d0d10;border:1px solid var(--line);border-left:3px solid var(--gold-dim);
+  padding:16px;font-family:var(--mono);font-size:12.5px;line-height:1.75;
+  white-space:pre-wrap;word-break:break-word;color:#d5d2cb;max-height:340px;overflow-y:auto;
+}
+pre.prompt .fill{color:var(--gold);}
+.caution{margin:22px 0 0;padding:12px 14px;border-left:3px solid var(--enji);background:rgba(158,58,58,.08);font-size:12.5px;color:#cfc9c2}
+.caution b{color:var(--enji);font-family:var(--mono);font-size:11px;letter-spacing:.1em;display:block;margin-bottom:4px}
+footer{border-top:1px solid var(--line);padding-top:24px;font-size:12px;color:var(--muted)}
+footer a{color:var(--gold-dim)}
+@media(max-width:520px){
+  h1{font-size:23px}
+  .spine button{font-size:12px;padding:11px 2px 9px}
+  .card{padding:18px 14px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Japan Structure Lab / Prompt OS</p>
+  <h1>ニュースを読む前に、<br><span class="g">構造</span>を読む。</h1>
+  <p class="lede">AIに「どう思う？」と聞いても、要約しか返ってこない。<br>問いの形を変えれば、返ってくるものが変わる。構造学の思考手順をそのままプロンプトにしたツールです。</p>
+</header>
+
+<nav class="spine" role="tablist" aria-label="プロンプトを選ぶ">
+  <button role="tab" aria-selected="true" data-i="0"><span class="n">01</span>構造</button>
+  <button role="tab" aria-selected="false" data-i="1"><span class="n">02</span>因果</button>
+  <button role="tab" aria-selected="false" data-i="2"><span class="n">03</span>心理</button>
+  <button role="tab" aria-selected="false" data-i="3"><span class="n">04</span>反証</button>
+  <button role="tab" aria-selected="false" data-i="4"><span class="n">05</span>重複</button>
+</nav>
+<p class="chain-note">01 → 02 → 03 は連鎖します。前の出力を次の入力に貼ってください。</p>
+
+<div class="card">
+  <h2 id="p-title"></h2>
+  <p class="purpose" id="p-purpose"></p>
+  <div id="p-fields"></div>
+
+  <div class="out-head">
+    <span class="label">プロンプト</span>
+    <button class="copy" id="copyBtn">コピー</button>
+  </div>
+  <pre class="prompt" id="p-out"></pre>
+
+  <div class="caution"><b>注意</b><span id="p-caution"></span></div>
+</div>
+
+<footer>
+  <p>数値・株価・決算はAIに思い出させず、必ず自分で貼り付けてください。AIは平然と数字を捏造します。出力は投資判断ではなく、判断の材料を構造化したものです。最終判断はご自身で。</p>
+  <p><a href="../">← Japan Structure Lab に戻る</a></p>
+</footer>
+
+</div>
+
+<script>
+const PROMPTS = [
+{
+  title:"構造抽出プロンプト",
+  purpose:"ニュースの表層（誰が何をしたか）を剥がし、その下で動いている不変の構造と変数を取り出す。",
+  fields:[
+    {id:"news", label:"ニュース本文", hint:"記事を丸ごと貼り付け（要約しない）", type:"textarea", ph:"例：〇〇社が増配を発表。配当性向は…"}
+  ],
+  caution:"出力の「不変構造」が毎回違うなら、貼った情報が足りていない合図です。要約ではなく原文を貼ってください。",
+  build:f=>`あなたは市場構造アナリストです。以下のニュースを「表層」と「構造」に分解してください。
+
+【ニュース】
+${f.news}
+
+【手順】
+1. 表層事象：報じられている事実だけを、解釈を混ぜずに列挙する
+2. 動いた変数：この事象で実際に変化した数値・制度・力関係は何か
+3. 不変構造：その変数を動かしている、ニュース以前から存在する構造は何か（1〜2文で言い切る）
+4. 時間軸：その構造は何年スケールで効くものか（数日／四半期／数年／十年）
+
+【出力形式】厳守
+■表層事象
+- 
+■動いた変数
+- 変数名：変化の方向と幅
+■不変構造
+（1〜2文で断定的に）
+■時間軸
+（数日／四半期／数年／十年 のいずれか＋理由1文）
+
+【禁止】
+- ニュース本文に無い数値を補わない。不明なら「不明」と書く
+- 投資判断・売買推奨を書かない`
+},
+{
+  title:"因果連鎖プロンプト",
+  purpose:"構造から出発して、誰の何が、どの順番で、どれだけの時差で動くかを追う。二次三次の波及こそが本命。",
+  fields:[
+    {id:"structure", label:"不変構造", hint:"01の出力「■不変構造」をそのまま貼る", type:"textarea", ph:"例：日本企業の資本効率改革は、東証の要請という外圧を…"},
+    {id:"scope", label:"追跡したい領域", hint:"自分の関心（業種・資産クラス・国など）", type:"text", ph:"例：日本の高配当株、円、エネルギー"}
+  ],
+  caution:"AIは一次波及（当たり前の話）で止まりがち。二次・三次が薄い出力は捨てて、もう一度「三次まで」と押し込んでください。",
+  build:f=>`あなたは因果連鎖の分析者です。以下の構造から波及を追ってください。
+
+【構造】
+${f.structure}
+
+【関心領域】
+${f.scope}
+
+【手順】
+一次→二次→三次の順に、それぞれ「誰の」「何が」「どちらに」動くかを書く。二次・三次を最低3本ずつ出すこと。
+
+【出力形式】厳守
+■一次波及（即時〜数週）
+- 主体｜変化する変数｜方向｜理由
+■二次波及（数ヶ月）
+- 主体｜変化する変数｜方向｜理由
+■三次波及（1年以上・ここが本命）
+- 主体｜変化する変数｜方向｜理由
+■連鎖が切れる条件
+（この因果が成立しなくなる前提を2つ）
+
+【禁止】
+- 「〜の可能性がある」で逃げない。方向を必ず断定し、根拠を1文で添える
+- 銘柄名の推奨はしない（動く変数までで止める）`
+},
+{
+  title:"集団心理の測定プロンプト",
+  purpose:"今の価格が「構造」で説明できる部分と、「恐怖・強欲」で説明できる部分を切り分ける。",
+  fields:[
+    {id:"nums", label:"現在の数値", hint:"自分で調べて貼る（AIに聞かない）", type:"textarea", ph:"例：VIX 18.4 / 日経VI 21.0 / 米10年 4.2% / ドル円 155 / 対象銘柄 PER 14倍・年初来+12%"},
+    {id:"target", label:"対象", hint:"銘柄・指数・資産", type:"text", ph:"例：日経平均"}
+  ],
+  caution:"数値は必ず自分で調べたものを貼ること。ここでAIに「今のVIXは？」と聞いた瞬間、この道具は嘘生成機になります。",
+  build:f=>`あなたは市場心理の観測者です。以下の数値のみを根拠に、集団心理の位置を判定してください。
+
+【対象】
+${f.target}
+
+【観測値】※これ以外の数値を使わないこと
+${f.nums}
+
+【手順】
+1. 各数値を「恐怖寄り／中立／強欲寄り」に分類する
+2. 数値どうしの矛盾（例：低VIXなのに高金利）を指摘する。矛盾こそ情報である
+3. 現在地を4フェーズのどこかに置く：諦め／懐疑／楽観／陶酔
+4. その心理が剥がれたとき、価格のうち何%が構造で支えられ、何%が心理で浮いているかを言語化する
+
+【出力形式】厳守
+■指標別の判定
+- 指標｜値｜恐怖／中立／強欲
+■矛盾点
+- 
+■現在のフェーズ
+（諦め／懐疑／楽観／陶酔＋根拠2文）
+■心理が剥がれた場合に残るもの
+（構造で説明できる部分／心理で浮いている部分）
+
+【禁止】
+- 観測値に無い数値を推測で補わない
+- 目標株価・売買タイミングを書かない`
+},
+{
+  title:"自己反証プロンプト",
+  purpose:"自分の仮説を守るためではなく、壊すために使う。壊れなければ、その仮説は本物。",
+  fields:[
+    {id:"thesis", label:"自分の投資仮説", hint:"結論だけでなく「なぜそう思うか」まで書く", type:"textarea", ph:"例：〇〇は増配継続が可能だと考える。理由は…"}
+  ],
+  caution:"AIに同意されて安心したなら、それは失敗です。反論が弱いときは「もっと厳しく」と3回押してください。",
+  build:f=>`あなたは私の投資仮説を破壊する役割です。同意も励ましも不要です。
+
+【私の仮説】
+${f.thesis}
+
+【手順】
+1. 仮説が暗黙に置いている前提を、本人が気づいていないものも含めて洗い出す
+2. 各前提が崩れる現実的なシナリオを示す
+3. この仮説が「すでに市場に織り込まれている」可能性を検討する
+4. 最後に、それでも仮説が生き残る条件を1つだけ挙げる
+
+【出力形式】厳守
+■隠れた前提
+- 前提｜これが崩れる条件
+■最も可能性の高い破綻シナリオ
+（1つに絞り、経路を3ステップで）
+■織り込み度
+（未織り込み／半分／完全に織り込み済み＋根拠）
+■この仮説が生き残る唯一の条件
+（1文）
+
+【禁止】
+- 私の仮説を褒めない。反論の後に「とはいえ良い視点です」と付け足さない`
+},
+{
+  title:"構造重複プロンプト",
+  purpose:"銘柄数を増やしても、同じ変数に賭けていれば分散ではない。見かけの分散を剥がす。",
+  fields:[
+    {id:"holdings", label:"保有銘柄・資産", hint:"銘柄名と、できれば比率", type:"textarea", ph:"例：商社2社 30% / 銀行 20% / 高配当ETF 30% / 現金 20%"}
+  ],
+  caution:"業種分散＝分散、ではありません。出力が業種の話で終わっていたら、それは失敗した出力です。",
+  build:f=>`あなたはポートフォリオの構造分析者です。業種分類ではなく「共通因子」で見てください。
+
+【保有】
+${f.holdings}
+
+【手順】
+1. 各資産が本質的に賭けている変数（金利／為替／資源価格／国内消費／米景気 等）を特定する
+2. 複数の資産が同じ変数に賭けていないか、重複を洗い出す
+3. 1つの変数が逆に振れたとき、同時に何%が毀損するかを概算する
+4. 空白（どの変数にも賭けていない領域）を指摘する
+
+【出力形式】厳守
+■資産別の本質因子
+- 資産｜賭けている変数｜方向
+■重複している賭け
+- 変数｜重複している資産｜合計比率
+■単一変数ショックの影響
+- 変数が逆行した場合｜同時に沈む比率
+■空白領域
+- 
+
+【禁止】
+- 「分散されています」という結論で終わらせない。必ず重複を最低1つ指摘する
+- 具体的な買い増し銘柄を推奨しない`
+}
+];
+
+const $=id=>document.getElementById(id);
+let cur=0;
+const vals={};
+
+function render(){
+  const p=PROMPTS[cur];
+  $("p-title").textContent=p.title;
+  $("p-purpose").textContent=p.purpose;
+  $("p-caution").textContent=p.caution;
+
+  const box=$("p-fields");
+  box.innerHTML="";
+  p.fields.forEach(f=>{
+    const key=cur+"_"+f.id;
+    const l=document.createElement("span");
+    l.className="label";l.textContent=f.label;
+    const h=document.createElement("p");
+    h.className="hint";h.textContent=f.hint;
+    const el=document.createElement(f.type==="text"?"input":"textarea");
+    if(f.type==="text")el.type="text";
+    el.placeholder=f.ph;
+    el.value=vals[key]||"";
+    el.addEventListener("input",e=>{vals[key]=e.target.value;update();});
+    box.appendChild(l);box.appendChild(h);box.appendChild(el);
+  });
+  update();
+}
+
+function current(){
+  const p=PROMPTS[cur],f={};
+  p.fields.forEach(x=>{
+    f[x.id]=vals[cur+"_"+x.id]||"（ここに"+x.label+"を貼り付け）";
+  });
+  return p.build(f);
+}
+
+function update(){
+  const p=PROMPTS[cur];
+  let t=current();
+  const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  let html=esc(t);
+  p.fields.forEach(x=>{
+    const ph=esc("（ここに"+x.label+"を貼り付け）");
+    html=html.split(ph).join('<span class="fill">'+ph+'</span>');
+  });
+  $("p-out").innerHTML=html;
+  const b=$("copyBtn");b.classList.remove("done");b.textContent="コピー";
+}
+
+$("copyBtn").addEventListener("click",async()=>{
+  const b=$("copyBtn");
+  try{
+    await navigator.clipboard.writeText(current());
+  }catch(e){
+    const ta=document.createElement("textarea");
+    ta.value=current();document.body.appendChild(ta);ta.select();
+    document.execCommand("copy");ta.remove();
+  }
+  b.textContent="コピーしました";b.classList.add("done");
+});
+
+document.querySelectorAll('.spine button').forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll('.spine button').forEach(b=>b.setAttribute("aria-selected","false"));
+    btn.setAttribute("aria-selected","true");
+    cur=+btn.dataset.i;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>

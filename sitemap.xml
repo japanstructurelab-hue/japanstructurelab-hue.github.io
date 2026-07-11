@@ -76,4 +76,10 @@
     <loc>https://japanstructurelab-hue.github.io/privacy.html</loc>
     <lastmod>2026-07-12</lastmod>
   </url>
+  <url>
+    <loc>https://japanstructurelab-hue.github.io/prompts/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
