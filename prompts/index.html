@@ -96,6 +96,10 @@ textarea{min-height:88px}
 .copy:hover{background:#e0b62c}
 .copy:focus-visible{outline:2px solid var(--text);outline-offset:2px}
 .copy.done{background:var(--enji);color:var(--text)}
+.copy:disabled{background:#2a2a30;color:#6d6a63;cursor:not-allowed}
+.copy:disabled:hover{background:#2a2a30}
+.need{font-family:var(--mono);font-size:11px;color:var(--muted);margin:8px 0 0;letter-spacing:.04em}
+.need.hide{display:none}
 pre.prompt{
   margin:0;background:#0d0d10;border:1px solid var(--line);border-left:3px solid var(--gold-dim);
   padding:16px;font-family:var(--mono);font-size:12.5px;line-height:1.75;
@@ -104,6 +108,35 @@ pre.prompt{
 pre.prompt .fill{color:var(--gold);}
 .caution{margin:22px 0 0;padding:12px 14px;border-left:3px solid var(--enji);background:rgba(158,58,58,.08);font-size:12.5px;color:#cfc9c2}
 .caution b{color:var(--enji);font-family:var(--mono);font-size:11px;letter-spacing:.1em;display:block;margin-bottom:4px}
+
+/* ---- handoff: appears after copy ---- */
+.handoff{display:none;margin-top:22px;padding:18px 16px;border:1px solid var(--gold-dim);background:rgba(201,162,39,.06)}
+.handoff.show{display:block}
+.handoff .h-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gold);margin:0 0 4px}
+.handoff .h-lede{font-size:13px;color:var(--muted);margin:0 0 14px}
+.ai-row{display:flex;gap:8px;flex-wrap:wrap}
+.ai-row a{
+  flex:1;min-width:96px;text-align:center;text-decoration:none;
+  border:1px solid var(--line);background:#0d0d10;color:var(--text);
+  font-family:var(--mono);font-size:12.5px;padding:11px 6px;
+  transition:border-color .2s,color .2s;
+}
+.ai-row a:hover{border-color:var(--gold);color:var(--gold)}
+.ai-row a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.keep{font-family:var(--mono);font-size:11px;color:var(--gold-dim);margin:14px 0 0;line-height:1.7}
+
+/* ---- exit (bottom) ---- */
+.exit{display:none;border:1px solid var(--line);border-top:2px solid var(--enji);background:var(--panel);padding:22px 20px;margin:0 0 32px}
+.exit.show{display:block}
+.exit .e-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--enji);margin:0 0 8px}
+.exit h3{font-family:var(--mincho);font-size:17px;margin:0 0 10px}
+.exit p{font-size:13px;color:var(--muted);margin:0 0 16px}
+.exit a.e-link{
+  display:inline-block;text-decoration:none;border:1px solid var(--line);
+  color:var(--text);font-family:var(--mono);font-size:12.5px;padding:10px 18px;margin:0 8px 8px 0;
+  transition:border-color .2s,color .2s;
+}
+.exit a.e-link:hover{border-color:var(--gold);color:var(--gold)}
 footer{border-top:1px solid var(--line);padding-top:24px;font-size:12px;color:var(--muted)}
 footer a{color:var(--gold-dim)}
 @media(max-width:520px){
@@ -130,7 +163,7 @@ footer a{color:var(--gold-dim)}
   <button role="tab" aria-selected="false" data-i="3"><span class="n">04</span>反証</button>
   <button role="tab" aria-selected="false" data-i="4"><span class="n">05</span>重複</button>
 </nav>
-<p class="chain-note">01 → 02 → 03 は連鎖します。前の出力を次の入力に貼ってください。</p>
+<p class="chain-note">01 → 02 → 03 → 04 で一本の連鎖です。前の出力を次の入力に貼る。<br>04（反証）で壊れなければ本物。ここを飛ばした分析は、ただの確信です。<br>05 は応用（保有資産の点検）。</p>
 
 <div class="card">
   <h2 id="p-title"></h2>
@@ -142,8 +175,28 @@ footer a{color:var(--gold-dim)}
     <button class="copy" id="copyBtn">コピー</button>
   </div>
   <pre class="prompt" id="p-out"></pre>
+  <p class="need" id="p-need">↑ 金色の箇所を埋めるとコピーできます</p>
+
+  <div class="handoff" id="handoff">
+    <p class="h-label">次にやること</p>
+    <p class="h-lede">AIを開いて、そのまま貼り付けてください。</p>
+    <div class="ai-row">
+      <a href="https://claude.ai/new" target="_blank" rel="noopener">Claude</a>
+      <a href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
+      <a href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a>
+    </div>
+    <p class="keep">※ このタブは閉じないでください。<br>AIの出力を、次のプロンプト（02 因果 → 03 心理）の入力欄に貼り戻します。</p>
+  </div>
 
   <div class="caution"><b>注意</b><span id="p-caution"></span></div>
+</div>
+
+<div class="exit" id="exit">
+  <p class="e-label">出力が出たあとに</p>
+  <h3>その「不変構造」、読み解けましたか。</h3>
+  <p>プロンプトは構造を取り出すところまでしかやりません。取り出したものをどう読むかは、人間の仕事です。実際の出力と、その読み方の実例を記事にしています。</p>
+  <a class="e-link" href="https://note.com/safe_crane821" target="_blank" rel="noopener">読み方の実例を見る ↗</a>
+  <a class="e-link" href="https://x.com/StructureLabJP" target="_blank" rel="noopener">毎朝の市場構造レポート ↗</a>
 </div>
 
 <footer>
@@ -157,11 +210,11 @@ footer a{color:var(--gold-dim)}
 const PROMPTS = [
 {
   title:"構造抽出プロンプト",
-  purpose:"ニュースの表層（誰が何をしたか）を剥がし、その下で動いている不変の構造と変数を取り出す。",
+  purpose:"ニュースの表層（誰が何をしたか）を剥がし、その下で動いている不変の構造と変数を取り出す。同時に、その構造が誤りうる点を自分で吐かせる。",
   fields:[
     {id:"news", label:"ニュース本文", hint:"記事を丸ごと貼り付け（要約しない）", type:"textarea", ph:"例：〇〇社が増配を発表。配当性向は…"}
   ],
-  caution:"出力の「不変構造」が毎回違うなら、貼った情報が足りていない合図です。要約ではなく原文を貼ってください。",
+  caution:"AIは「もっともらしい構造」をいくらでも作れます。■反証条件 が薄い出力は、捏造を疑ってください。断定調に流暢さが加わると、人はそれを正しさと錯覚します。",
   build:f=>`あなたは市場構造アナリストです。以下のニュースを「表層」と「構造」に分解してください。
 
 【ニュース】
@@ -171,7 +224,8 @@ ${f.news}
 1. 表層事象：報じられている事実だけを、解釈を混ぜずに列挙する
 2. 動いた変数：この事象で実際に変化した数値・制度・力関係は何か
 3. 不変構造：その変数を動かしている、ニュース以前から存在する構造は何か（1〜2文で言い切る）
-4. 時間軸：その構造は何年スケールで効くものか（数日／四半期／数年／十年）
+4. 反証条件：その構造が「実は誤り」だとしたら、どこが誤りうるか。観測すれば判定できる事実の形で書く
+5. 時間軸：その構造は何年スケールで効くものか
 
 【出力形式】厳守
 ■表層事象
@@ -180,21 +234,25 @@ ${f.news}
 - 変数名：変化の方向と幅
 ■不変構造
 （1〜2文で断定的に）
+■反証条件（必須・省略禁止）
+- この構造が誤りだと分かるのは、〇〇が観測されたとき
+- 根拠が弱い箇所：
 ■時間軸
 （数日／四半期／数年／十年 のいずれか＋理由1文）
 
 【禁止】
 - ニュース本文に無い数値を補わない。不明なら「不明」と書く
+- 構造が読み取れないなら「この材料からは構造を特定できない」と書く。無理に物語を作らない
 - 投資判断・売買推奨を書かない`
 },
 {
   title:"因果連鎖プロンプト",
-  purpose:"構造から出発して、誰の何が、どの順番で、どれだけの時差で動くかを追う。二次三次の波及こそが本命。",
+  purpose:"構造から出発して、誰の何が、どの順番で、どれだけの時差で動くかを追う。二次三次の波及こそが本命。ただし「無いものは無い」と言わせる。",
   fields:[
-    {id:"structure", label:"不変構造", hint:"01の出力「■不変構造」をそのまま貼る", type:"textarea", ph:"例：日本企業の資本効率改革は、東証の要請という外圧を…"},
+    {id:"structure", label:"不変構造", hint:"01の出力「■不変構造」と「■反証条件」を貼る", type:"textarea", ph:"例：日本企業の資本効率改革は、東証の要請という外圧を…"},
     {id:"scope", label:"追跡したい領域", hint:"自分の関心（業種・資産クラス・国など）", type:"text", ph:"例：日本の高配当株、円、エネルギー"}
   ],
-  caution:"AIは一次波及（当たり前の話）で止まりがち。二次・三次が薄い出力は捨てて、もう一度「三次まで」と押し込んでください。",
+  caution:"数を強制すると、AIは必ずその数だけひねり出します。無い波及まで作られると、以降の分析が全部汚染される。「なし」と書かれた出力のほうが信用できます。",
   build:f=>`あなたは因果連鎖の分析者です。以下の構造から波及を追ってください。
 
 【構造】
@@ -204,20 +262,25 @@ ${f.structure}
 ${f.scope}
 
 【手順】
-一次→二次→三次の順に、それぞれ「誰の」「何が」「どちらに」動くかを書く。二次・三次を最低3本ずつ出すこと。
+一次→二次→三次の順に、「誰の」「何が」「どちらに」動くかを書く。
+ただし本数のノルマはない。存在しない波及を作るくらいなら「なし」と書くこと。
 
 【出力形式】厳守
 ■一次波及（即時〜数週）
-- 主体｜変化する変数｜方向｜理由
+- 主体｜変化する変数｜方向｜理由｜確度（高／中／低）
 ■二次波及（数ヶ月）
-- 主体｜変化する変数｜方向｜理由
-■三次波及（1年以上・ここが本命）
-- 主体｜変化する変数｜方向｜理由
+- 主体｜変化する変数｜方向｜理由｜確度（高／中／低）
+■三次波及（1年以上）
+- 主体｜変化する変数｜方向｜理由｜確度（高／中／低）
+※該当が無ければ「なし」と書く
 ■連鎖が切れる条件
 （この因果が成立しなくなる前提を2つ）
+■最も弱い環
+（この連鎖のうち、最も根拠が薄い1本を名指しする）
 
 【禁止】
-- 「〜の可能性がある」で逃げない。方向を必ず断定し、根拠を1文で添える
+- 本数の帳尻合わせをしない。「なし」は正当な回答である
+- 確度「低」のものを、確度「高」と混ぜて並べない
 - 銘柄名の推奨はしない（動く変数までで止める）`
 },
 {
@@ -238,54 +301,65 @@ ${f.nums}
 
 【手順】
 1. 各数値を「恐怖寄り／中立／強欲寄り」に分類する
-2. 数値どうしの矛盾（例：低VIXなのに高金利）を指摘する。矛盾こそ情報である
+2. 数値どうしの矛盾（例：低VIXなのに高金利）を指摘する。矛盾こそ情報である。無ければ「矛盾なし」と書く
 3. 現在地を4フェーズのどこかに置く：諦め／懐疑／楽観／陶酔
-4. その心理が剥がれたとき、価格のうち何%が構造で支えられ、何%が心理で浮いているかを言語化する
+4. その心理が剥がれたとき、価格のうち何が構造で支えられ、何が心理で浮いているかを言語化する
 
 【出力形式】厳守
 ■指標別の判定
 - 指標｜値｜恐怖／中立／強欲
 ■矛盾点
-- 
+- （無ければ「矛盾なし」）
 ■現在のフェーズ
 （諦め／懐疑／楽観／陶酔＋根拠2文）
+■この判定に足りない情報
+（フェーズを確定するために、本来あと何の数値が要るか）
 ■心理が剥がれた場合に残るもの
 （構造で説明できる部分／心理で浮いている部分）
 
 【禁止】
 - 観測値に無い数値を推測で補わない
+- 与えられた指標が少なすぎる場合は「判定不能」と書く。無理にフェーズを決めない
 - 目標株価・売買タイミングを書かない`
 },
 {
-  title:"自己反証プロンプト",
-  purpose:"自分の仮説を守るためではなく、壊すために使う。壊れなければ、その仮説は本物。",
+  title:"自己反証プロンプト【最終工程】",
+  purpose:"01〜03で組み立てた構造を、最後に自分で壊しにいく。壊れなければ本物。ここを飛ばした分析は、ただの確信である。",
   fields:[
-    {id:"thesis", label:"自分の投資仮説", hint:"結論だけでなく「なぜそう思うか」まで書く", type:"textarea", ph:"例：〇〇は増配継続が可能だと考える。理由は…"}
+    {id:"chain", label:"01〜03の出力", hint:"構造・因果・心理の出力をまとめて貼る（一部だけでも可）", type:"textarea", ph:"■不変構造 … ■三次波及 … ■現在のフェーズ …"},
+    {id:"thesis", label:"そこから出した自分の結論", hint:"どう動くつもりか、なぜそう思うか", type:"textarea", ph:"例：この構造なら〇〇は買い場だと考える。理由は…"}
   ],
-  caution:"AIに同意されて安心したなら、それは失敗です。反論が弱いときは「もっと厳しく」と3回押してください。",
-  build:f=>`あなたは私の投資仮説を破壊する役割です。同意も励ましも不要です。
+  caution:"AIに同意されて安心したなら、それは失敗です。ここで壊れる仮説なら、金を入れる前に壊れたほうが安い。反論が弱いときは「もっと厳しく」と3回押してください。",
+  build:f=>`あなたは私の分析を破壊する役割です。同意も励ましも要りません。
 
-【私の仮説】
+【私が組み立てた分析】
+${f.chain}
+
+【そこから出した結論】
 ${f.thesis}
 
 【手順】
-1. 仮説が暗黙に置いている前提を、本人が気づいていないものも含めて洗い出す
-2. 各前提が崩れる現実的なシナリオを示す
-3. この仮説が「すでに市場に織り込まれている」可能性を検討する
-4. 最後に、それでも仮説が生き残る条件を1つだけ挙げる
+1. この分析が暗黙に置いている前提を、私が気づいていないものも含めて洗い出す
+2. 連鎖のどの環が最も脆いかを特定し、そこが折れた場合に結論がどう変わるかを示す
+3. 同じ事実から導ける、正反対の結論を1つ構築する（本気で構築すること）
+4. この結論が「すでに市場に織り込まれている」可能性を検討する
+5. 最後に、それでも結論が生き残る条件を1つだけ挙げる
 
 【出力形式】厳守
 ■隠れた前提
 - 前提｜これが崩れる条件
-■最も可能性の高い破綻シナリオ
-（1つに絞り、経路を3ステップで）
+■最も脆い環
+（1つ名指しし、折れた場合の結論の変化）
+■正反対の結論
+（同じ材料から、逆を主張する。手を抜かない）
 ■織り込み度
 （未織り込み／半分／完全に織り込み済み＋根拠）
-■この仮説が生き残る唯一の条件
+■この結論が生き残る唯一の条件
 （1文）
 
 【禁止】
-- 私の仮説を褒めない。反論の後に「とはいえ良い視点です」と付け足さない`
+- 私の分析を褒めない。反論の後に「とはいえ良い視点です」と付け足さない
+- 「バランスの取れた見方」に逃げない。壊す側に立ち切る`
 },
 {
   title:"構造重複プロンプト",
@@ -317,6 +391,7 @@ ${f.holdings}
 
 【禁止】
 - 「分散されています」という結論で終わらせない。必ず重複を最低1つ指摘する
+- 銘柄が不明で因子を特定できない場合は「特定不能」と書く。憶測で埋めない
 - 具体的な買い増し銘柄を推奨しない`
 }
 ];
@@ -357,6 +432,10 @@ function current(){
   return p.build(f);
 }
 
+function isReady(){
+  return PROMPTS[cur].fields.every(x=>(vals[cur+"_"+x.id]||"").trim().length>0);
+}
+
 function update(){
   const p=PROMPTS[cur];
   let t=current();
@@ -367,11 +446,20 @@ function update(){
     html=html.split(ph).join('<span class="fill">'+ph+'</span>');
   });
   $("p-out").innerHTML=html;
-  const b=$("copyBtn");b.classList.remove("done");b.textContent="コピー";
+  const ready=isReady();
+  const b=$("copyBtn");
+  b.classList.remove("done");b.textContent="コピー";b.disabled=!ready;
+  $("p-need").classList.toggle("hide",ready);
+  const h=$("handoff");if(h)h.classList.remove("show");
+}
+
+function track(name,params){
+  if(typeof gtag==="function"){gtag("event",name,params||{});}
 }
 
 $("copyBtn").addEventListener("click",async()=>{
   const b=$("copyBtn");
+  if(!isReady())return;
   try{
     await navigator.clipboard.writeText(current());
   }catch(e){
@@ -380,6 +468,10 @@ $("copyBtn").addEventListener("click",async()=>{
     document.execCommand("copy");ta.remove();
   }
   b.textContent="コピーしました";b.classList.add("done");
+  track("prompt_copy",{prompt_id:(cur+1<10?"0":"")+(cur+1),prompt_name:PROMPTS[cur].title});
+  $("handoff").classList.add("show");
+  $("exit").classList.add("show");
+  $("handoff").scrollIntoView({behavior:"smooth",block:"nearest"});
 });
 
 document.querySelectorAll('.spine button').forEach(btn=>{
@@ -388,6 +480,19 @@ document.querySelectorAll('.spine button').forEach(btn=>{
     btn.setAttribute("aria-selected","true");
     cur=+btn.dataset.i;
     render();
+    track("prompt_view",{prompt_id:(cur+1<10?"0":"")+(cur+1),prompt_name:PROMPTS[cur].title});
+  });
+});
+
+document.querySelectorAll('.ai-row a').forEach(a=>{
+  a.addEventListener("click",()=>{
+    track("ai_handoff",{ai:a.textContent.trim(),prompt_name:PROMPTS[cur].title});
+  });
+});
+
+document.querySelectorAll('.exit a.e-link').forEach(a=>{
+  a.addEventListener("click",()=>{
+    track("exit_click",{destination:a.href.indexOf("note.com")>-1?"note":"x"});
   });
 });
 
