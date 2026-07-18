@@ -2,718 +2,81 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>構造学プロンプトOS ── 記事の「読む場所」を色分けする｜Japan Structure Lab</title>
-
-<!-- ===== GA4 (measurement ID: G-LERQ079F6P) ===== -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LERQ079F6P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LERQ079F6P');
-</script>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ニュース記事を貼ってAIに投げ、結果を貼り戻すと、記事のどこを読むべきか（因果）とどこを読まなくていいか（ノイズ・予定）が色分けされます。構造学というレンズによる分類ツール。">
-
-<!-- OGP -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="構造学プロンプトOS ── 記事の「読む場所」を色分けする">
-<meta property="og:description" content="記事を貼る → AIに投げる → 結果を貼り戻すと、読む場所だけが色で残る。">
-<meta property="og:url" content="https://japanstructurelab-hue.github.io/prompts/">
-<!-- TODO(大さん): OGP画像は現状 診断アプリ流用。専用画像ができたら差し替え -->
-<meta property="og:image" content="https://japanstructurelab-hue.github.io/ogp.png">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>構造学プロンプトOS｜調整中 - Japan Structure Lab</title>
+<meta name="description" content="構造学プロンプトOSは現在、精度の検証中です。">
+<meta name="robots" content="noindex">
 <style>
-/* ===== Lab palette (mockup 実物合わせ) =====
-   TODO(大さん): ハブの :root と厳密に揃えたい場合はここだけ差し替え。
-   モック structure_lab_dark_theme_v2.html の値をそのまま採用している。 */
-:root{
-  --bg:#0b0b0d;
-  --gold:#c6a15b;
-  --gold-bright:#d9b978;
-  --crimson:#d66a5a;
-  --crimson-soft:#e59a8a;
-  --amber-soft:#b8895f;
-  --ink:#f5f2ea;
-  --text:#e8e4da;
-  --text-2:#d8d3c8;
-  --text-3:#aca79c;
-  --muted:#8a8478;
-  --faint:#726d64;
-  --seg-scheduled:#3a372f;
-  --seg-noise:#1f1e22;
-  --hair:rgba(198,161,91,0.22);
-  --hair-strong:rgba(198,161,91,0.4);
-  --hair-soft:rgba(255,255,255,0.08);
-  --serif:'Shippori Mincho',serif;
-  --sans:'Noto Sans JP',sans-serif;
-  --mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:var(--sans);font-weight:400;line-height:1.75;
-  font-size:15px;letter-spacing:.01em;
-  -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:640px;margin:0 auto;padding:52px 22px 96px}
-::selection{background:rgba(198,161,91,.28);color:var(--ink)}
-
-/* --- masthead --- */
-.eyebrow{font-size:11.5px;color:var(--gold);letter-spacing:.22em;margin:0 0 14px}
-h1{
-  font-family:var(--serif);font-weight:600;color:var(--ink);
-  font-size:27px;line-height:1.5;margin:0 0 18px;letter-spacing:.01em;
-}
-.lede{color:var(--text-2);font-size:14.5px;margin:0 0 6px}
-.lede b{color:var(--ink);font-weight:500}
-.rule{height:1px;background:var(--hair);border:0;margin:34px 0}
-
-/* --- step scaffold --- */
-.step-no{
-  font-family:var(--serif);font-size:12px;color:var(--gold);
-  letter-spacing:.18em;margin-bottom:9px;
-}
-h2{
-  font-family:var(--serif);font-weight:600;color:var(--ink);
-  font-size:18px;margin:0 0 8px;letter-spacing:.01em;
-}
-.hint{color:var(--text-3);font-size:13px;margin:0 0 16px}
-.hint code{
-  font-family:var(--mono);font-size:12px;color:var(--gold);
-  background:rgba(198,161,91,.08);padding:1px 5px;border-radius:2px;
-}
-
-/* --- target field --- */
-.target{margin:0 0 18px}
-.target label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;letter-spacing:.04em}
-.target input{
-  width:100%;background:#101013;border:1px solid var(--hair);border-radius:3px;
-  color:var(--text);font-family:var(--sans);font-size:14px;padding:10px 12px;
-}
-.target input:focus{outline:none;border-color:var(--hair-strong)}
-.target input::placeholder{color:var(--faint)}
-
-/* --- prompt box --- */
-.promptbox{
-  position:relative;background:#08080a;border:1px solid var(--hair);
-  border-radius:4px;padding:18px 18px 16px;margin:0 0 14px;
-}
-.promptbox pre{
-  margin:0;max-height:230px;overflow:auto;
-  font-family:var(--mono);font-size:11.5px;line-height:1.85;
-  color:var(--text-3);white-space:pre-wrap;word-break:break-word;
-}
-.promptbox pre::-webkit-scrollbar{width:8px}
-.promptbox pre::-webkit-scrollbar-thumb{background:var(--seg-scheduled);border-radius:4px}
-.fade{
-  position:absolute;left:1px;right:9px;bottom:49px;height:34px;pointer-events:none;
-  background:linear-gradient(to bottom,rgba(8,8,10,0),#08080a);
-}
-
-/* --- buttons --- */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  font-family:var(--sans);font-weight:500;font-size:14px;cursor:pointer;
-  border-radius:3px;padding:12px 20px;border:1px solid transparent;
-  transition:background .15s,border-color .15s,color .15s;
-}
-.btn-primary{
-  width:100%;background:var(--gold);color:#0b0b0d;border-color:var(--gold);font-weight:700;
-}
-.btn-primary:hover{background:var(--gold-bright);border-color:var(--gold-bright)}
-.btn-primary.done{background:transparent;color:var(--gold);border-color:var(--hair-strong);font-weight:500}
-.btn-ghost{
-  background:transparent;color:var(--text-2);border-color:var(--hair);flex:1;min-width:0;
-}
-.btn-ghost:hover{border-color:var(--hair-strong);color:var(--ink)}
-.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-
-/* --- AI handoff (hidden until copy) --- */
-.handoff{margin-top:14px;display:none}
-.handoff.show{display:block;animation:rise .35s ease both}
-.handoff .cap{font-size:12px;color:var(--muted);margin-bottom:9px;letter-spacing:.03em}
-.handoff .row{display:flex;gap:8px}
-
-/* --- paste field --- */
-textarea#paste{
-  width:100%;min-height:150px;resize:vertical;background:#08080a;
-  border:1px solid var(--hair);border-radius:4px;color:var(--text);
-  font-family:var(--mono);font-size:12px;line-height:1.7;padding:14px;margin-bottom:12px;
-}
-textarea#paste:focus{outline:none;border-color:var(--hair-strong)}
-textarea#paste::placeholder{color:var(--faint);font-family:var(--sans)}
-
-/* --- result --- */
-#result{margin-top:30px;display:none}
-#result.show{display:block;animation:rise .4s ease both}
-.result-card{
-  background:#0b0b0d;border:1px solid var(--hair);border-radius:4px;padding:26px 24px;
-}
-.r-eyebrow{font-size:11.5px;color:var(--gold);letter-spacing:.15em;margin-bottom:6px}
-.r-target{font-family:var(--serif);font-size:19px;color:var(--ink);font-weight:500;margin-bottom:24px}
-.summary{font-size:13px;color:var(--text-2);margin-bottom:14px}
-.summary b{color:var(--ink);font-weight:500}
-
-.bar{
-  display:flex;height:44px;border-radius:3px;overflow:hidden;
-  border:1px solid rgba(198,161,91,.15);margin-bottom:12px;
-}
-.bar .seg{transition:width .5s ease}
-.bar .gap{width:2px;background:#0b0b0d;flex:none}
-
-.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12px;color:var(--text-2);margin-bottom:26px}
-.legend .item{display:flex;align-items:center;gap:6px}
-.legend .sw{width:10px;height:10px;flex:none;border-radius:1px}
-
-.tier{
-  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
-  padding:20px 0;margin-bottom:24px;
-}
-.tier .cap{font-size:13px;color:var(--text-2);margin-bottom:12px}
-.tier .big{display:flex;align-items:baseline;gap:12px}
-.tier .num{font-family:var(--serif);font-size:50px;line-height:1;color:var(--gold)}
-.tier .num.sub{font-size:25px;color:var(--muted)}
-.tier .lab{font-size:15px;color:var(--ink)}
-.tier .lab .out{color:var(--crimson);font-weight:700}
-.tier .lab.small{font-size:14px;color:var(--text-3)}
-.tier .big+.big{margin-top:8px}
-
-.rows-h{font-size:13px;color:var(--gold);letter-spacing:.05em;margin-bottom:6px}
-.row-item{
-  display:flex;gap:11px;align-items:center;padding:11px 0;
-  border-top:1px solid var(--hair-soft);
-}
-.row-item:last-child{border-bottom:1px solid var(--hair-soft)}
-.row-item .no{
-  font-family:var(--mono);font-size:11px;color:var(--muted);
-  min-width:30px;flex:none;
-}
-.badge{
-  font-size:10.5px;padding:2px 8px;border-radius:2px;white-space:nowrap;flex:none;
-}
-.badge.out{background:rgba(214,106,90,.2);color:var(--crimson-soft)}
-.badge.in{background:rgba(198,161,91,.15);color:var(--gold)}
-.badge.struct{background:rgba(217,185,120,.16);color:var(--gold-bright)}
-.badge.psy{background:rgba(184,137,95,.16);color:var(--amber-soft)}
-.badge.rev{background:rgba(214,106,90,.16);color:var(--crimson)}
-.row-item .tx{font-size:13.5px;color:var(--text);line-height:1.6}
-.none-line{font-size:13px;color:var(--muted);padding:12px 0;border-top:1px solid var(--hair-soft)}
-
-.disclaimer{font-size:11.5px;color:var(--faint);margin-top:22px;line-height:1.75}
-.parse-note{font-size:12px;color:var(--crimson-soft);margin-bottom:14px;display:none}
-.parse-note.show{display:block}
-
-/* --- exit card (hidden until first copy) --- */
-.exit{margin-top:44px;display:none}
-.exit.show{display:block;animation:rise .4s ease both}
-.exit a{
-  display:block;text-decoration:none;background:#0b0b0d;
-  border:1px solid var(--hair);border-radius:4px;padding:20px 22px;
-  transition:border-color .15s;
-}
-.exit a:hover{border-color:var(--hair-strong)}
-.exit .k{font-size:11px;color:var(--gold);letter-spacing:.16em;margin-bottom:7px}
-.exit .t{font-family:var(--serif);font-size:16px;color:var(--ink);font-weight:500}
-.exit .t .arrow{color:var(--gold);margin-left:6px}
-.exit .d{font-size:12.5px;color:var(--text-3);margin-top:6px}
-
-footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--hair-soft);font-size:12px;color:var(--faint)}
-footer a{color:var(--muted);text-decoration:none}
-footer a:hover{color:var(--gold)}
-footer .sep{margin:0 8px;color:var(--seg-scheduled)}
-
-@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media (max-width:440px){
-  .wrap{padding:38px 16px 80px}
-  h1{font-size:23px}
-  .handoff .row{flex-wrap:wrap}
-  .btn-ghost{flex:1 1 40%}
-  .tier .num{font-size:42px}
-}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  :root{
+    --bg:#0b0b0d;
+    --gold:#c6a15b;
+    --ivory:#e8e2d5;
+    --muted:#8f887a;
+    --rule:#26221e;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ivory);
+    font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:2rem 1.5rem;
+    line-height:1.9;
+  }
+  main{max-width:34rem;width:100%;}
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.18em;
+    color:var(--gold);
+    margin:0 0 1rem;
+  }
+  h1{
+    font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+    font-weight:500;
+    font-size:1.6rem;
+    letter-spacing:.04em;
+    margin:0 0 1.6rem;
+    color:#f2ecdf;
+  }
+  .rule{
+    height:1px;
+    background:var(--rule);
+    border:0;
+    margin:0 0 1.6rem;
+  }
+  p{
+    margin:0 0 1rem;
+    font-size:.94rem;
+    color:#c9c2b3;
+  }
+  .back{
+    display:inline-block;
+    margin-top:1.4rem;
+    font-size:.86rem;
+    color:var(--gold);
+    text-decoration:none;
+    border-bottom:1px solid rgba(198,161,91,.35);
+    padding-bottom:2px;
+  }
+  .back:hover,.back:focus-visible{border-bottom-color:var(--gold);}
+  .back:focus-visible{outline:2px solid var(--gold);outline-offset:4px;}
+  @media (max-width:480px){
+    h1{font-size:1.35rem;}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-
+<main>
   <p class="eyebrow">JAPAN STRUCTURE LAB ／ TOOL 04</p>
-  <h1>記事の「読む場所」を、色で残す。</h1>
-  <p class="lede">ニュース記事を貼ってAIに投げ、返ってきた分類を下に貼り戻すと、<b>読む価値のある行（因果）</b>だけが色で残ります。</p>
-  <p class="lede">大半は灰色に沈む――<b>まだ動いていない予定</b>と、<b>読まなくていいノイズ</b>です。</p>
-
+  <h1>構造学プロンプトOSは、精度の検証中です</h1>
   <hr class="rule">
-
-  <!-- ===== STEP 1 ===== -->
-  <div class="step-no">STEP 1</div>
-  <h2>プロンプトをコピーして、AIに記事ごと渡す</h2>
-  <p class="hint">下のプロンプトをコピー → AIに貼り付け → 末尾の「（ここに記事本文を貼る）」を<b>記事本文</b>に差し替えて送信します。株価などの数値は必ずあなたが貼ってください（AIに思い出させると捏造します）。</p>
-
-  <div class="target">
-    <label for="target">分析対象（任意・記事が扱う市場や主体）</label>
-    <input id="target" type="text" placeholder="例：日経平均" autocomplete="off">
-  </div>
-
-  <div class="promptbox">
-    <pre id="promptText"></pre>
-    <div class="fade"></div>
-  </div>
-  <button class="btn btn-primary" id="copyBtn">プロンプトをコピー</button>
-
-  <div class="handoff" id="handoff">
-    <div class="cap">コピーしました。AIを別タブで開いて貼り付けてください。</div>
-    <div class="row">
-      <button class="btn btn-ghost" data-ai="claude" data-url="https://claude.ai/new">Claude</button>
-      <button class="btn btn-ghost" data-ai="chatgpt" data-url="https://chatgpt.com/">ChatGPT</button>
-      <button class="btn btn-ghost" data-ai="gemini" data-url="https://gemini.google.com/app">Gemini</button>
-    </div>
-  </div>
-
-  <hr class="rule">
-
-  <!-- ===== STEP 2 ===== -->
-  <div class="step-no">STEP 2</div>
-  <h2>返ってきた分類を貼る</h2>
-  <p class="hint">AIが出した <code>行番号｜タグ｜冒頭</code> の一覧と <code>【集計】</code> を、まるごと下に貼り付けてください。</p>
-
-  <textarea id="paste" placeholder="ここにAIの出力（工程2の表＋工程3の集計）を貼り付け
-
-例：
-| L2 | [因果／外] | 週初は、先週末の米国株… |
-| L6 | [因果／外] | 韓国半導体株の下げが… |
-| L21 | [因果／内] | 高市政権の財政拡張的な… |
-
-総行数：36行
-[構造]：0行
-[因果]：4行（外3／内1）
-[予定]：19行
-[ノイズ]：13行"></textarea>
-  <button class="btn btn-primary" id="renderBtn">結果を見る</button>
-
-  <!-- ===== RESULT ===== -->
-  <div id="result" aria-live="polite">
-    <div class="parse-note" id="parseNote"></div>
-    <div class="result-card">
-      <div class="r-eyebrow">分析対象</div>
-      <div class="r-target" id="rTarget">分析対象</div>
-
-      <div class="summary" id="rSummary"></div>
-      <div class="bar" id="rBar"></div>
-      <div class="legend" id="rLegend"></div>
-
-      <div class="tier" id="rTier">
-        <div class="cap" id="rTierCap"></div>
-        <div class="big"><span class="num" id="rOut">0</span><span class="lab" id="rOutLab"></span></div>
-        <div class="big"><span class="num sub" id="rIn">0</span><span class="lab small" id="rInLab"></span></div>
-      </div>
-
-      <div class="rows-h">読む価値のある行</div>
-      <div id="rRows"></div>
-
-      <div class="disclaimer">これは構造学というレンズによる分類であり、記事の正誤の判定ではない。別のレンズを使えば、別の分類になる。</div>
-    </div>
-  </div>
-
-  <!-- ===== EXIT CARD (hidden until first copy) ===== -->
-  <div class="exit" id="exit">
-    <a href="#" id="exitLink" target="_blank" rel="noopener">
-      <div class="k">読み方の実例</div>
-      <div class="t">この分類を、どう読むのか<span class="arrow">→</span></div>
-      <div class="d">3つのAIに同じ記事を投げて、判定がどう割れたかの記録。</div>
-    </a>
-  </div>
-
-  <footer>
-    <a href="/">Japan Structure Lab</a>
-    <span class="sep">／</span>
-    <a href="/privacy.html">プライバシー</a>
-    <span class="sep">／</span>
-    貼り付けた記事や結果は、このページの外に送信されません。
-  </footer>
-
-</div>
-
-<script>
-/* =====================================================================
-   PROMPT_V10_7 ──  ★ここだけ差し替えれば動きます★
-   大さんへ：canonical な prompt_v10.7_structure_tagging.txt を、
-   下のバッククォート（`）の中に丸ごと貼り替えてください。
-   canonical: prompt_v10.7_structure_tagging.txt を反映済み。
-   出力は Markdown 表（| 行番号 | タグ | 冒頭 |）。パーサは表形式・｜形式の両方に対応。
-   ===================================================================== */
-const PROMPT_V10_7 = `あなたは構造学の分析OSに基づいて文章を分類するAIです。
-以下に挿入する記事本文を読み、工程1→2→3→4の順に処理してください。
-
-━━━━━━━━━━━━━━━━━━
-【行の定義（最初に必ず実行せよ）】
-
-**記事本文を、句点「。」で区切って行に分割せよ。句点1つ＝1行。**
-
-・句点以外（読点「、」・箇条書きの「・」・改行）で行を区切ることを**禁じる**。
-・箇条書きの1項目に句点が無ければ、その項目全体で1行と数えよ。
-・分割した行に、先頭から通し番号を振れ（L1, L2, L3 …）。
-・**この番号と総数は、句点を数えるだけの機械的作業である。** 解釈を入れるな。
-
-━━━━━━━━━━━━━━━━━━
-【タグ一覧】
-
-[構造] 繰り返し現れる関係。地勢・資源・制度OS・取引慣行・歴史の反復など
-[因果] すでに実際に起きた「AがBを動かした」という一回の出来事
-[予定] まだ何も動かしていない記述（発表予定・観測・見方・「〜そうだ」「〜すれば」「〜可能性」「〜余地がある」「〜だろう」）
-[心理] 恐怖・楽観・群衆心理など、構造の歪みとして発生する心理
-[ノイズ] 上記のいずれでもないもの。感想・レトリック・単なる数字の羅列・日程の告知・起点のない結果・分析対象を動かしていない出来事
-[逆流] 因果の順序が逆転している記述（心理→結果、OS→地勢など）
-
-━━━━━━━━━━━━━━━━━━
-【[構造] の判定（2つのテストを順に通せ）】
-
-**テスト1｜出来事か、関係か**
-　(a) 一回きりの出来事 → [構造] ではない
-　(b) 「AほどBになる」「Aである限りBが続く」という繰り返し現れる関係 → [構造] の候補
-　※数字が変動していても、関係が続いているなら [構造] である（「傾向がみられるが差は縮小」も関係は続いている）
-
-**テスト2｜固有名詞・日付に依存していないか**
-　特定の人物・政権・企業・日付がないと成立しない記述は [構造] ではない。
-　✗「高市政権の財政拡張的な政策から、国内金利の押し上げ圧力は強く…」→ [因果／内]
-　✓「取引階層が深くなるにつれて価格転嫁の割合が低くなる」→ [構造]
-
-両方を通ったときだけ [構造] とし、行末に「→命題◯」を必ず添えよ。
-　1.地勢は長期の因果を規定する／2.資源は国家の選択肢を制約する／3.制度OSは資源の配分を決定する／4.歴史は構造の反復である／5.心理は構造の歪みとして発生する／6.因果は「構造→資源→OS→心理」の順で流れる
-どの命題にも当てはめられなければ [構造] と書くな。**[構造] が 0行であることは正当な結果である。**
-
-━━━━━━━━━━━━━━━━━━
-【[因果] の3条件（すべて満たすときだけ [因果]）】
-
-**条件1｜起点を示す語があること（機械的に照合せよ。印象で判断するな）**
-その行の中に、原因を示す次のいずれかの語があるか：
-　「〜を受けて」「〜によって」「〜により」「〜から」「〜ため」「〜ことで」「〜たことで」「〜たことも」「〜となり」「〜を背景に」「〜で」
-これらが1つも無ければ、その行は**結果だけ**を述べている。[ノイズ] とせよ。
-　✗「価格転嫁率は、前回から約1ポイント増の53.5％となった。」→ 原因を示す語なし → [ノイズ]
-　✗「2日は1741円安と大幅安。」→ 原因を示す語なし → [ノイズ]
-　✓「韓国半導体株の下げが大きくなったことで、日経平均も下げ幅を広げる動きとなった。」→「〜ことで」あり → [因果]
-
-**条件2｜着点が分析対象であること**
-その行の【着点】が分析対象そのものでなければ [ノイズ] とせよ。
-　✗「欧州株は総じて上昇、米国の早期利上げ懸念後退などが安心材料となった。」→ 着点は欧州株 → [ノイズ]
-
-**条件3｜すでに動いたこと**
-「〜した」「〜となった」→ [因果]／「〜そうだ」「〜すれば」「〜可能性」「〜余地がある」→ [予定]
-
-━━━━━━━━━━━━━━━━━━
-【工程1｜内部処理（結果を出力するな）】
-
-全行にタグを1つずつ付けよ。行を飛ばすことを禁じる。
-**この工程の結果は出力するな。** 頭の中で行え。出力してよいのは総行数だけである。
-
-━━━━━━━━━━━━━━━━━━
-【工程2｜出力】
-
-まず一行で書け：「この記事の分析対象は ＿＿＿ である」
-
-次に、**[ノイズ] 以外の行**を、以下の形式で表にせよ。
-
-**原文をそのまま書き写すことを禁じる。冒頭15字程度だけを識別用に載せよ。**
-
-| 行番号 | タグ | 冒頭（15字程度） |
-
-・[ノイズ] の行は表に載せるな。数えるだけでよい
-・[因果] の行のタグは、起点が分析対象の外なら [因果／外]、内なら [因果／内] と書け
-・[構造] の行のタグには「[構造] →命題◯」と書け
-
-例：
-| L6 | [因果／外] | 韓国半導体株の下げが大きく… |
-| L21 | [因果／内] | 高市政権の財政拡張的な政策や… |
-| L12 | [構造] →命題3 | 受注企業の取引階層が深く… |
-
-━━━━━━━━━━━━━━━━━━
-【工程3｜集計】
-
-**割合（％）・分数を書くことを禁じる。数えた本数だけを書け。割り算をするな。**
-
-総行数：◯行（句点の数と一致すること）
-
-　[構造] ：◯行
-　[因果] ：◯行（そのうち 起点が外：◯行／起点が内：◯行）
-　[予定] ：◯行
-　[心理] ：◯行
-　[ノイズ] ：◯行
-　[逆流] ：◯行
-
-※ [構造]＋[因果]＋[予定]＋[心理]＋[ノイズ]＋[逆流] が 総行数 と一致することを確認せよ。一致しなければ数え直せ。
-
-━━━━━━━━━━━━━━━━━━
-【工程4｜注記（一字一句そのまま出力せよ）】
-
-「これは構造学というレンズによる分類であり、記事の正誤の判定ではない。別のレンズを使えば、別の分類になる。」
-
-━━━━━━━━━━━━━━━━━━
-===== ARTICLE START =====
-（ここに記事本文を貼る）
-===== ARTICLE END =====
-`;
-
-/* 出口カードの飛び先。
-   TODO(大さん)：記事「AIには、疑う理由が見つからない」公開後、その記事URLに差し替え。 */
-const EXIT_URL = "https://note.com/";
-
-/* ===== state ===== */
-let copied = false;
-
-/* ===== render prompt into the page ===== */
-function currentPrompt(){
-  const t = (document.getElementById('target').value || '').trim();
-  return PROMPT_V10_7.replace('{{TARGET}}', t || '（記事が扱う市場・主体）');
-}
-function refreshPromptView(){
-  document.getElementById('promptText').textContent = currentPrompt();
-}
-document.getElementById('target').addEventListener('input', refreshPromptView);
-refreshPromptView();
-
-/* ===== copy ===== */
-const copyBtn = document.getElementById('copyBtn');
-copyBtn.addEventListener('click', async () => {
-  const text = currentPrompt();
-  try{
-    await navigator.clipboard.writeText(text);
-  }catch(e){
-    const ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    try{document.execCommand('copy');}catch(_){}
-    document.body.removeChild(ta);
-  }
-  copyBtn.textContent = 'コピーしました';
-  copyBtn.classList.add('done');
-  document.getElementById('handoff').classList.add('show');
-  if(!copied){
-    copied = true;
-    document.getElementById('exit').classList.add('show');
-  }
-  gtag('event','prompt_copy',{prompt_id:'v10.7',prompt_name:'structure_tagging'});
-});
-
-/* ===== AI handoff ===== */
-document.querySelectorAll('.handoff [data-ai]').forEach(b=>{
-  b.addEventListener('click',()=>{
-    gtag('event','ai_handoff',{ai:b.dataset.ai});
-    window.open(b.dataset.url,'_blank','noopener');
-  });
-});
-
-/* ===== exit ===== */
-const exitLink = document.getElementById('exitLink');
-exitLink.href = EXIT_URL;
-exitLink.addEventListener('click',()=>{gtag('event','exit_click',{destination:'reading_example'});});
-
-/* =====================================================================
-   PARSER  ──  読者が貼った v10.7 の出力を解釈する
-   拾うもの：各タグの本数 / 因果の外・内 / 総行数 / [構造][因果]の行
-   ===================================================================== */
-const TAG_KEYS = ['構造','因果','予定','心理','ノイズ','逆流'];
-const COL_SPLIT = /[｜|│┃\t]+/;   // ← ／(全角スラッシュ)では割らない（因果／外を保つ）
-
-function normTag(field){
-  const f = field.replace(/[\[\]【】()（）\s]/g,'');
-  for(const k of TAG_KEYS){ if(f.includes(k)) return k; }
-  return null;
-}
-function subOf(field){
-  if(field.includes('外')) return '外';
-  if(field.includes('内')) return '内';
-  return null;
-}
-
-function parse(raw){
-  const lines = raw.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-
-  const rows = [];                       // {no, tag, sub, text, prop}
-  const rowCount = {構造:0,因果:0,予定:0,心理:0,ノイズ:0,逆流:0};
-  const rowSub = {外:0,内:0};
-
-  // --- pass A: classification rows（Markdown表 | … | と ｜区切りの両対応）---
-  for(const ln of lines){
-    if(!COL_SPLIT.test(ln)) continue;
-    // 先頭/末尾のパイプが生む空セルを落とす
-    const cols = ln.split(COL_SPLIT).map(c=>c.trim()).filter(c=>c.length>0);
-    if(cols.length < 2) continue;
-    // タグ列を位置に依存せず探す（表では 行番号→タグ→冒頭 の順で来る）
-    let tag=null, tagIdx=-1;
-    for(let i=0;i<cols.length;i++){ const t=normTag(cols[i]); if(t){ tag=t; tagIdx=i; break; } }
-    if(!tag) continue;
-    const tagCol = cols[tagIdx];
-    // 行番号：Lつき/裸の数字セルを拾う。無ければ行全体から拾う
-    let no='';
-    for(const c of cols){ const m=c.match(/^L?\s*(\d+)$/); if(m){ no='L'+m[1]; break; } }
-    if(!no){ const m=ln.match(/L\s*(\d+)/); if(m) no='L'+m[1]; }
-    // 冒頭テキスト：タグでも番号でもないセルのうち最長を採る
-    const rest = cols.filter((c,i)=> i!==tagIdx && !/^L?\s*\d+$/.test(c));
-    const text = rest.sort((a,b)=>b.length-a.length)[0] || cols[cols.length-1];
-    const sub = tag==='因果' ? subOf(tagCol) : null;
-    const prop = tag==='構造' ? (tagCol.match(/命題\s*([０-９0-9]+)/)||[])[1] : null;
-    rows.push({no,tag,sub,text,prop});
-    rowCount[tag]++;
-    if(tag==='因果' && sub) rowSub[sub]++;
-  }
-
-  // --- pass B: 集計 block (authoritative counts, incl. ノイズ not printed as rows) ---
-  const aggIdx = lines.findIndex(l=>/集計|総行数|合計/.test(l));
-  const aggText = aggIdx>=0 ? lines.slice(aggIdx).join('\n') : '';
-  const agg = {};
-  if(aggText){
-    for(const k of TAG_KEYS){
-      const m = aggText.match(new RegExp(k+'\\s*\\]?\\s*[:：]?\\s*(\\d+)'));
-      if(m) agg[k] = parseInt(m[1],10);
-    }
-  }
-  const totM = aggText.match(/総行数\s*[:：]?\s*(\d+)/);
-  const totalAgg = totM ? parseInt(totM[1],10) : null;
-  const extM = aggText.match(/外\s*[:：]?\s*(\d+)/);
-  const intM = aggText.match(/内\s*[:：]?\s*(\d+)/);
-
-  // --- reconcile ---
-  const count = {};
-  for(const k of TAG_KEYS){
-    count[k] = (agg[k] !== undefined) ? agg[k] : rowCount[k];
-  }
-  const ext = extM ? parseInt(extM[1],10) : rowSub.外;
-  const intt = intM ? parseInt(intM[1],10) : rowSub.内;
-
-  let total = totalAgg;
-  if(total === null){
-    total = TAG_KEYS.reduce((s,k)=>s+count[k],0);
-  }
-  // ノイズが集計に無く、総行数だけある場合は差分で補う
-  if(agg['ノイズ'] === undefined && totalAgg !== null){
-    const others = TAG_KEYS.filter(k=>k!=='ノイズ').reduce((s,k)=>s+count[k],0);
-    if(totalAgg - others > count['ノイズ']) count['ノイズ'] = totalAgg - others;
-  }
-
-  const readableRows = rows.filter(r=>r.tag==='構造'||r.tag==='因果');
-  const parsedAny = total>0 || readableRows.length>0;
-  return {count,ext,intt,total,rows:readableRows,parsedAny};
-}
-
-/* ===== render ===== */
-const SEG = [   // 表示順（価値が高い順）と配色
-  {k:'構造', label:'構造',   color:'var(--gold-bright)'},
-  {k:'因果', label:'因果',   color:'var(--gold)'},
-  {k:'心理', label:'心理',   color:'var(--amber-soft)'},
-  {k:'逆流', label:'逆流',   color:'var(--crimson)'},
-  {k:'予定', label:'予定',   color:'var(--seg-scheduled)'},
-  {k:'ノイズ',label:'ノイズ', color:'var(--seg-noise)'},
-];
-
-function render(data){
-  const {count,ext,intt,total,rows} = data;
-  const target = (document.getElementById('target').value||'').trim();
-
-  document.getElementById('rTarget').textContent = target || '分析対象';
-
-  const cause = count['因果'];
-  const readable = count['構造']+count['因果']+count['心理']+count['逆流'];
-  document.getElementById('rSummary').innerHTML =
-    `全<b>${total}行</b>のうち、読む価値のある行（構造・因果ほか）は<b>${readable}行</b>。残りは、まだ動いていない予定と、読まなくていいノイズ。`;
-
-  // bar
-  const bar = document.getElementById('rBar');
-  bar.innerHTML = '';
-  const segs = SEG.filter(s=>count[s.k]>0);
-  segs.forEach((s,i)=>{
-    if(i>0){const g=document.createElement('div');g.className='gap';bar.appendChild(g);}
-    const d=document.createElement('div');
-    d.className='seg';
-    d.style.width = (count[s.k]/total*100)+'%';
-    d.style.background = s.color;
-    d.title = `${s.label} ${count[s.k]}行`;
-    bar.appendChild(d);
-  });
-
-  // legend
-  const leg = document.getElementById('rLegend');
-  leg.innerHTML = '';
-  segs.forEach(s=>{
-    const el=document.createElement('span');
-    el.className='item';
-    const border = (s.k==='ノイズ')?'border:1px solid var(--seg-scheduled)':'';
-    el.innerHTML = `<span class="sw" style="background:${s.color};${border}"></span>${s.label} ${count[s.k]}行`;
-    leg.appendChild(el);
-  });
-
-  // tier (crimson) — 因果があるときだけ
-  const tier = document.getElementById('rTier');
-  if(cause>0){
-    tier.style.display='';
-    const place = target ? `${target}の外` : '分析対象の外';
-    document.getElementById('rTierCap').innerHTML =
-      `実際に${target||'市場'}を動かしたのは <b style="color:var(--ink)">${cause}行</b>。その起点は――`;
-    document.getElementById('rOut').textContent = ext;
-    document.getElementById('rOutLab').innerHTML = `行が<span class="out">${place}</span>で起きたこと`;
-    document.getElementById('rIn').textContent = intt;
-    document.getElementById('rInLab').textContent = '行が国内';
-  }else{
-    tier.style.display='none';
-  }
-
-  // rows
-  const box = document.getElementById('rRows');
-  box.innerHTML = '';
-  if(rows.length===0){
-    const expected = count['構造']+count['因果'];
-    if(expected>0){
-      // 集計では読む価値のある行があるはずなのに、各行(工程2の表)が取れていない
-      box.innerHTML = '<div class="none-line">集計では読む価値のある行が'+expected+'行あるはずですが、各行（工程2の表）を読み取れませんでした。工程2の表も一緒に貼ってください。</div>';
-    }else{
-      box.innerHTML = '<div class="none-line">この記事に、読む価値のある因果・構造は分類されなかった。</div>';
-    }
-  }else{
-    rows.forEach(r=>{
-      const item=document.createElement('div');
-      item.className='row-item';
-      let badge='';
-      if(r.tag==='構造')      badge=`<span class="badge struct">構造${r.prop?'→命題'+r.prop:''}</span>`;
-      else if(r.sub==='外')   badge=`<span class="badge out">国外</span>`;
-      else if(r.sub==='内')   badge=`<span class="badge in">国内</span>`;
-      else                    badge=`<span class="badge in">因果</span>`;
-      item.innerHTML = `<span class="no">${r.no||''}</span>${badge}<span class="tx">${escapeHtml(r.text)}</span>`;
-      box.appendChild(item);
-    });
-  }
-}
-function escapeHtml(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-
-/* ===== wire STEP 2 ===== */
-document.getElementById('renderBtn').addEventListener('click',()=>{
-  const raw = document.getElementById('paste').value;
-  const note = document.getElementById('parseNote');
-  const result = document.getElementById('result');
-  const data = parse(raw);
-  if(!data.parsedAny){
-    note.textContent = '結果を読み取れませんでした。AIが出した「行番号｜タグ｜冒頭」の一覧と【集計】を、まるごと貼ってください。';
-    note.classList.add('show');
-    result.classList.add('show');
-    // 中身は空のまま。カードは薄く出す
-    document.getElementById('rBar').innerHTML='';
-    document.getElementById('rLegend').innerHTML='';
-    document.getElementById('rTier').style.display='none';
-    document.getElementById('rRows').innerHTML='<div class="none-line">—</div>';
-    document.getElementById('rSummary').textContent='';
-    document.getElementById('rTarget').textContent=(document.getElementById('target').value||'分析対象');
-    return;
-  }
-  note.classList.remove('show');
-  render(data);
-  result.classList.add('show');
-  result.scrollIntoView({behavior:(matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'),block:'start'});
-  gtag('event','result_render',{total:data.total,cause:data.count['因果'],cause_ext:data.ext});
-});
-</script>
+  <p>記事を数えて構成比を示す道具です。数え方そのものに揺れが見つかったため、いまは公開を止めて検証しています。</p>
+  <p>検証が終わり次第、このページで再公開します。</p>
+  <a class="back" href="../">ラボのトップへ戻る</a>
+</main>
 </body>
 </html>
