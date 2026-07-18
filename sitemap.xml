@@ -82,4 +82,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://japanstructurelab-hue.github.io/investor-type/</loc>
+    <lastmod>2026-07-19</lastmod>
+  </url>
 </urlset>
