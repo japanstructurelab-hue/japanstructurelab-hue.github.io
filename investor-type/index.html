@@ -475,7 +475,8 @@ function showResult(){
     var klv=calcKlv();
     var klLine=qs.locked?'\n知識 '+makeStars(klv)+' Lv.'+(klv+1)+'（'+KNOW_LEVELS[klv]+'）':'\n知識 ――― 未測定';
     var shareText='【🔬 Japan Structure Lab】投資家タイプ診断\n私は「'+T.name+'」／'+T.title+'\n経験 '+expStars+' Lv.'+(lv+1)+'（'+LEVELS[lv]+'）'+klLine+'\n\n'+T.copy+'\n\n━━━━━━━━━━\n6タイプ×5レベルで診断👇\nhttps://japanstructurelab-hue.github.io/investor-type/\n\n#JapanStructureLab #投資家タイプ診断 #日本株 #資産運用';
-    if(navigator.share){
+    var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if(isMobile && navigator.share){
       navigator.share({text:shareText}).catch(function(){});
     }else{
       window.open('https://x.com/intent/tweet?text='+encodeURIComponent(shareText),'_blank');
