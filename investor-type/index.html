@@ -320,7 +320,7 @@ const QUIZ_POOL={
     {id:"Q11",q:"「ファクター投資」の「バリューファクター」とは？",opts:["成長率の高い株を選ぶ","PBRやPERが低い割安株が高リターンを出す傾向を利用する","ボラティリティの低い株を選ぶ","規模の小さい株を選ぶ"],ans:1,exp:"バリューファクターは低PBR・低PERなど割安指標で銘柄を選ぶと長期的に市場平均を上回る傾向があるというファクター。フレンチ＝ファーマモデルの主要ファクターの一つ。"},
     {id:"Q12",q:"「クオンツ戦略」でよく使われる「アルファ」とは？",opts:["市場平均のリターン","市場全体の動きを除いた超過リターン","リスクフリーレート","ベータとの掛け算"],ans:1,exp:"アルファは市場全体の動き（ベータ）では説明できない超過リターン。クオンツ戦略はシステマティックに正のアルファを生み出す要因（ファクター）を発見・活用する。"},
     {id:"Q13",q:"「ペアトレード」とはどのような戦略か？",opts:["2銘柄を同時に買う","相関の高い2銘柄の価格差を利用してロング・ショートする","2つの市場に分散投資する","2回に分けて買い増しする"],ans:1,exp:"ペアトレードは通常高い相関を持つ2銘柄の価格差が拡大した時、割安な方をロング・割高な方をショートし、価格差の縮小でリターンを得る市場中立戦略。"},
-    {id:"Q14",q:"「統計的有意性」をp値で確認する際、一般的な基準値は？",opts:["p<0.5","p<0.05","p<0.5","p<5"],ans:1,exp:"p値は帰無仮説が正しい場合に観測結果が得られる確率。p<0.05（5%）が統計的有意の一般的な基準。投資戦略のバックテストでもこの基準が用いられる。"},
+    {id:"Q14",q:"「統計的有意性」をp値で確認する際、一般的な基準値は？",opts:["p<0.5","p<0.05","p<0.005","p<5"],ans:1,exp:"p値は帰無仮説が正しい場合に観測結果が得られる確率。p<0.05（5%）が統計的有意の一般的な基準。投資戦略のバックテストでもこの基準が用いられる。"},
     {id:"Q15",q:"「リスクパリティ」戦略とは何か？",opts:["全資産に均等額を投資する","各資産のリスク寄与度が均等になるように配分する","リスクの高い資産に集中投資する","リスクゼロの資産のみに投資する"],ans:1,exp:"リスクパリティはポートフォリオの各資産のリスク寄与度（ボラティリティ×配分）を均等にする手法。債券などの低ボラティリティ資産のウェイトを高めることが多い。レイ・ダリオのオールウェザー戦略が有名。"}
   ],
   common:[
@@ -474,10 +474,12 @@ function showResult(){
   document.getElementById('btn-share').onclick=function(){
     var klv=calcKlv();
     var klLine=qs.locked?'\n知識 '+makeStars(klv)+' Lv.'+(klv+1)+'（'+KNOW_LEVELS[klv]+'）':'\n知識 ――― 未測定';
-    var shareText='【🔬 Japan Structure Lab】投資家タイプ診断\n私は「'+T.name+'」／'+T.title+'\n経験 '+expStars+' Lv.'+(lv+1)+'（'+LEVELS[lv]+'）'+klLine+'\n\n'+T.copy+'\n\n━━━━━━━━━━\n6タイプ×5レベルで診断👇\nhttps://japanstructurelab-hue.github.io/investor-type/\n\n#JapanStructureLab #投資家タイプ診断 #日本株 #資産運用';
+    var shareUrl='https://japanstructurelab-hue.github.io/investor-type/';
+    var shareBody='【🔬 Japan Structure Lab】投資家タイプ診断\n私は「'+T.name+'」／'+T.title+'\n経験 '+expStars+' Lv.'+(lv+1)+'（'+LEVELS[lv]+'）'+klLine+'\n\n'+T.copy+'\n\n━━━━━━━━━━\n6タイプ×5レベルで診断👇\n\n#JapanStructureLab #投資家タイプ診断 #日本株 #資産運用';
+    var shareText='【🔬 Japan Structure Lab】投資家タイプ診断\n私は「'+T.name+'」／'+T.title+'\n経験 '+expStars+' Lv.'+(lv+1)+'（'+LEVELS[lv]+'）'+klLine+'\n\n'+T.copy+'\n\n━━━━━━━━━━\n6タイプ×5レベルで診断👇\n'+shareUrl+'\n\n#JapanStructureLab #投資家タイプ診断 #日本株 #資産運用';
     var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     if(isMobile && navigator.share){
-      navigator.share({text:shareText}).catch(function(){});
+      navigator.share({text:shareBody,url:shareUrl}).catch(function(){});
     }else{
       window.open('https://x.com/intent/tweet?text='+encodeURIComponent(shareText),'_blank');
     }
