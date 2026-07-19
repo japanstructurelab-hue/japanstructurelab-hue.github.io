@@ -476,7 +476,7 @@ function showResult(){
     var klLine=qs.locked?'\n知識 '+makeStars(klv)+' Lv.'+(klv+1)+'（'+KNOW_LEVELS[klv]+'）':'\n知識 ――― 未測定';
     var shareUrl='https://japanstructurelab-hue.github.io/investor-type/';
     var shareBody='【🔬 Japan Structure Lab】投資家タイプ診断\n私は「'+T.name+'」／'+T.title+'\n経験 '+expStars+' Lv.'+(lv+1)+'（'+LEVELS[lv]+'）'+klLine+'\n\n'+T.copy+'\n\n━━━━━━━━━━\n6タイプ×5レベルで診断👇\n\n#JapanStructureLab #投資家タイプ診断 #日本株 #資産運用';
-    var shareText='【🔬 Japan Structure Lab】投資家タイプ診断\n私は「'+T.name+'」／'+T.title+'\n経験 '+expStars+' Lv.'+(lv+1)+'（'+LEVELS[lv]+'）'+klLine+'\n\n'+T.copy+'\n\n━━━━━━━━━━\n6タイプ×5レベルで診断👇\n'+shareUrl+'\n\n#JapanStructureLab #投資家タイプ診断 #日本株 #資産運用';
+    var shareText='私は「'+T.name+'」／'+T.title+'\n経験 '+expStars+' Lv.'+(lv+1)+'（'+LEVELS[lv]+'）'+klLine+'\n\nhttps://japanstructurelab-hue.github.io/investor-type/\n#投資家タイプ診断';
     var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     if(isMobile && navigator.share){
       navigator.share({text:shareBody,url:shareUrl}).catch(function(){});
