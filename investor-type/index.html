@@ -23,7 +23,7 @@
 :root{--bg:#0b0b0d;--card:#131316;--card-2:#17171b;--gold:#c6a15b;--gold-lt:rgba(198,161,91,.08);--gold-bd:rgba(198,161,91,.35);--dark:#0b0b0d;--ivory:#e8e2d5;--mid:#c9c2b3;--light:#8f887a;--border:#26221e;--green:#6fbf7a;--red:#e08a8a;--mincho:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;}
 body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic UI',sans-serif;color:var(--ivory);font-size:15px;min-height:100vh;}
 #app{max-width:480px;margin:0 auto;padding:0 12px 40px;}
-@media(min-width:768px){#app{max-width:640px;padding:0 24px 56px;}body{font-size:16px;}}
+@media(min-width:768px){#app{max-width:560px;padding:0 24px 56px;}body{font-size:16px;}}
 .screen{display:none;}.screen.active{display:block;}
 .hdr{padding:20px 0 16px;text-align:center;border-bottom:1px solid var(--border);margin-bottom:16px;}
 .hdr-logo{font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:6px;}
@@ -31,7 +31,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Hiragino
 .hdr-sub{font-size:11px;color:var(--light);margin-top:4px;letter-spacing:.5px;}
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;}
 .card-gold{background:var(--gold-lt);border-color:var(--gold-bd);}
-.btn{width:100%;padding:15px;font-size:15px;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:opacity .15s;-webkit-tap-highlight-color:transparent;letter-spacing:.3px;}
+.btn{width:100%;padding:15px;font-size:15px;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:opacity .15s;-webkit-tap-highlight-color:transparent;letter-spacing:.3px;white-space:nowrap;}
 .btn:active{opacity:.8;}
 .btn-primary{background:var(--gold);color:#0b0b0d;}
 .btn-ghost{background:transparent;color:var(--mid);border:1px solid var(--border);}
@@ -69,6 +69,9 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Hiragino
 .lv-stars{font-size:18px;letter-spacing:2px;margin-bottom:6px;color:var(--gold);}
 .lv-name{font-family:var(--mincho);font-size:16px;font-weight:500;margin-bottom:6px;color:#f2ecdf;}
 .lv-desc{font-size:12px;color:var(--light);line-height:1.6;}
+.lv-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;}
+.lv-col{min-width:0;}
+.lv-empty{color:#4a4238;}
 .qz-wrap{margin-bottom:12px;}
 .qz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
 .qz-title{font-size:12px;color:var(--light);letter-spacing:1px;}
@@ -123,7 +126,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Hiragino
   </div>
   <div class="card card-gold" style="margin-bottom:12px;">
     <div style="font-size:11px;color:var(--light);margin-bottom:6px;">あなたはどのタイプ？</div>
-    <div style="font-size:13px;color:var(--mid);line-height:1.7;">15問の質問に答えるだけで、あなたの投資スタイルとレベルを診断。タイプ別の戦略コラムも読めます。</div>
+    <div style="font-size:13px;color:var(--mid);line-height:1.7;">15問であなたの投資スタイルと経験レベルを診断。続けて市場用語のクイズに答えると、知識レベルも測れます。所要時間は1〜2分。タイプ別の戦略コラムも無料です。</div>
   </div>
   <div class="type-grid">
     <div class="type-item"><strong>バリュー型</strong>割安・高配当・長期</div>
@@ -134,7 +137,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Hiragino
     <div class="type-item"><strong>クオンツ型</strong>データ・逆張り・定量</div>
   </div>
   <button class="btn btn-primary" onclick="startDiag()">診断スタート →</button>
-  <button class="btn btn-ghost" style="margin-top:10px;" onclick="showLibrary()">📚 コラム・記事一覧を読む</button>
+  <button class="btn btn-ghost" style="margin-top:10px;" onclick="showLibrary()">コラム・記事一覧を読む</button>
   <div style="margin-top:12px;text-align:center;">
     <a href="https://note.com/safe_crane821/n/n9a6c9d159b50" target="_blank" style="font-size:12px;color:var(--light);text-decoration:none;border-bottom:1px solid var(--border);">このアプリについて（note記事）</a>
   </div>
@@ -154,7 +157,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Hiragino
     <div class="opts" id="opts"></div>
   </div>
   <div class="nav">
-    <button class="btn btn-ghost" style="flex:0 0 80px" onclick="prevQ()">← 戻る</button>
+    <button class="btn btn-ghost" style="flex:0 0 120px" onclick="prevQ()">← 戻る</button>
     <button class="btn btn-primary" id="btn-next" onclick="nextQ()" disabled>次へ</button>
   </div>
 </div>
@@ -187,12 +190,12 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Hiragino
 </div>
 <script>
 const TYPES={
-  V:{name:"バリュー型",title:"割安の狩人",copy:"数字の奥にある本質的価値を見抜く。市場が見落とした宝を静かに積み上げる。",color:"#2e7d32",compat:"クオンツ型",compatReason:"データで裏付けを取りながら割安銘柄を絞り込む",weak:"成長トレンド",weakReason:"イノベーションの波を過小評価しがち",books:[{t:"株式投資の未来",a:"ジェレミー・シーゲル"},{t:"賢明なる投資家",a:"ベンジャミン・グレアム"}],next:"財務分析の深化・DCFモデルの実践"},
-  G:{name:"グロース型",title:"成長の先読み師",copy:"まだ世界が気づいていない未来を見る。爆発的成長の波に乗るために、今日も市場を読み続ける。",color:"#1565c0",compat:"マクロ型",compatReason:"市場環境とセクターの追い風を組み合わせると最強",weak:"バリュエーション規律",weakReason:"高値掴みのリスクを過小評価しがち",books:[{t:"株式投資で普通でない利益を得る",a:"フィリップ・フィッシャー"},{t:"ピーター・リンチの株で勝つ",a:"ピーター・リンチ"}],next:"財務モデリング・競争優位性の定性分析"},
-  M:{name:"マクロ・トレーダー型",title:"相場の風読み師",copy:"金利・為替・地政学を読む大局観の持ち主。相場の変化に素早く対応し、市場の転換点を狙う。",color:"#6a1b9a",compat:"グロース型",compatReason:"マクロで選んだ強いセクターにグロース銘柄を当てはめると精度が上がる",weak:"個別銘柄選択",weakReason:"大局は正しくても銘柄選びで取りこぼすことがある",books:[{t:"大いなる収縮",a:"ジョージ・ソロス"},{t:"グローバル・マクロ投資の原理",a:"ジャック・D・シュワッガー"}],next:"FCI・クレジットスプレッド・BEIの活用"},
-  Ac:{name:"アクティビスト型",title:"変革の触媒",copy:"企業の潜在価値を解放するために株主として行動する。静かに保有するのではなく、変化を起こしに行く。",color:"#bf360c",compat:"バリュー型",compatReason:"割安銘柄を見つけてアクティビストとして動く黄金パターン",weak:"流動性・スピード",weakReason:"集中投資になりがちで機動力が落ちる",books:[{t:"コーポレート・ガバナンス",a:"宮島英昭"},{t:"物言う株主",a:"村上世彰"}],next:"株主提案の実務・IR戦略の分析"},
-  A:{name:"オルタナティブ型",title:"実物資産の守護者",copy:"金融資産に依存しない多様な資産を組み合わせる。インフレと通貨リスクを実物資産でヘッジする。",color:"#e65100",compat:"マクロ型",compatReason:"マクロ環境の変化に合わせて実物資産を機動的に動かせる",weak:"流動性管理",weakReason:"換金しにくい資産に偏りやすい",books:[{t:"変化する世界秩序",a:"レイ・ダリオ"},{t:"金を買え",a:"ジム・リカーズ"}],next:"REITの構造分析・商品市況の読み方"},
-  Q:{name:"クオンツ・コントラリアン型",title:"逆張りの設計者",copy:"群衆が見逃した非効率を、データと論理で発掘する。感情ではなく、再現性のある優位性を追い求める。",color:"#00695c",compat:"バリュー型",compatReason:"クオンツで候補を絞りバリュー視点で最終判断する",weak:"質的・物語的判断",weakReason:"数値化できない要素を過小評価しがち",books:[{t:"マーケットの魔術師",a:"ジャック・D・シュワッガー"},{t:"ファクター投資入門",a:"アンドリュー・L・ベルキン"}],next:"統計的有意性の検証・バックテストの実装"}
+  V:{name:"バリュー型",title:"割安の狩人",copy:"数字の奥にある本質的価値を見抜く。市場が見落とした宝を静かに積み上げる。",color:"#6fbf7a",compat:"クオンツ型",compatReason:"データで裏付けを取りながら割安銘柄を絞り込む",weak:"成長トレンド",weakReason:"イノベーションの波を過小評価しがち",books:[{t:"株式投資の未来",a:"ジェレミー・シーゲル"},{t:"賢明なる投資家",a:"ベンジャミン・グレアム"}],next:"財務分析の深化・DCFモデルの実践"},
+  G:{name:"グロース型",title:"成長の先読み師",copy:"まだ世界が気づいていない未来を見る。爆発的成長の波に乗るために、今日も市場を読み続ける。",color:"#6aa8e8",compat:"マクロ型",compatReason:"市場環境とセクターの追い風を組み合わせると最強",weak:"バリュエーション規律",weakReason:"高値掴みのリスクを過小評価しがち",books:[{t:"株式投資で普通でない利益を得る",a:"フィリップ・フィッシャー"},{t:"ピーター・リンチの株で勝つ",a:"ピーター・リンチ"}],next:"財務モデリング・競争優位性の定性分析"},
+  M:{name:"マクロ・トレーダー型",title:"相場の風読み師",copy:"金利・為替・地政学を読む大局観の持ち主。相場の変化に素早く対応し、市場の転換点を狙う。",color:"#b98fe0",compat:"グロース型",compatReason:"マクロで選んだ強いセクターにグロース銘柄を当てはめると精度が上がる",weak:"個別銘柄選択",weakReason:"大局は正しくても銘柄選びで取りこぼすことがある",books:[{t:"大いなる収縮",a:"ジョージ・ソロス"},{t:"グローバル・マクロ投資の原理",a:"ジャック・D・シュワッガー"}],next:"FCI・クレジットスプレッド・BEIの活用"},
+  Ac:{name:"アクティビスト型",title:"変革の触媒",copy:"企業の潜在価値を解放するために株主として行動する。静かに保有するのではなく、変化を起こしに行く。",color:"#e8845a",compat:"バリュー型",compatReason:"割安銘柄を見つけてアクティビストとして動く黄金パターン",weak:"流動性・スピード",weakReason:"集中投資になりがちで機動力が落ちる",books:[{t:"コーポレート・ガバナンス",a:"宮島英昭"},{t:"物言う株主",a:"村上世彰"}],next:"株主提案の実務・IR戦略の分析"},
+  A:{name:"オルタナティブ型",title:"実物資産の守護者",copy:"金融資産に依存しない多様な資産を組み合わせる。インフレと通貨リスクを実物資産でヘッジする。",color:"#e8a94f",compat:"マクロ型",compatReason:"マクロ環境の変化に合わせて実物資産を機動的に動かせる",weak:"流動性管理",weakReason:"換金しにくい資産に偏りやすい",books:[{t:"変化する世界秩序",a:"レイ・ダリオ"},{t:"金を買え",a:"ジム・リカーズ"}],next:"REITの構造分析・商品市況の読み方"},
+  Q:{name:"クオンツ・コントラリアン型",title:"逆張りの設計者",copy:"群衆が見逃した非効率を、データと論理で発掘する。感情ではなく、再現性のある優位性を追い求める。",color:"#57c4ad",compat:"バリュー型",compatReason:"クオンツで候補を絞りバリュー視点で最終判断する",weak:"質的・物語的判断",weakReason:"数値化できない要素を過小評価しがち",books:[{t:"マーケットの魔術師",a:"ジャック・D・シュワッガー"},{t:"ファクター投資入門",a:"アンドリュー・L・ベルキン"}],next:"統計的有意性の検証・バックテストの実装"}
 };
 const LEVELS=["見習い","学習者","実践者","リスク管理者","市場の賢者"];
 const LEVEL_COPY=["投資の世界に踏み出した第一歩。まずは基礎的な考え方を身につけるフェーズ。","原則を学び、実際の相場で試している段階。失敗から学ぶことが最大の武器。","自分なりのルールが見え始めた段階。再現性のある判断ができるようになってきた。","リスク管理と規律が身についた段階。市場の荒波でも軸がぶれない。","自分だけの哲学を持ち、長期的に成果を出し続けるステージ。"];
@@ -423,6 +426,23 @@ function prevQ(){if(cur>0){cur--;renderQ();}}
 
 function makeStars(n){var s='';for(var i=0;i<5;i++)s+=i<=n?'★':'☆';return s;}
 
+function renderLevelPairInner(){
+  var lv=Math.min(4,Math.floor(lvScore/3));
+  var T=TYPES[resultType];
+  var known=qs.locked;
+  var klv=calcKlv();
+  var right=known
+    ? '<div class="lv-stars">'+makeStars(klv)+'</div><div class="lv-name">Lv.'+(klv+1)+'　'+KNOW_LEVELS[klv]+'</div>'
+    : '<div class="lv-stars lv-empty">☆☆☆☆☆</div><div class="lv-name lv-empty">―― 未測定</div>';
+  var tail=known
+    ? '<br><br><span style="color:var(--gold)">次のステージへ：</span>'+T.next
+    : '<br><br>知識レベルは、下の用語クイズ10問で測れます。';
+  return '<div class="lv-pair">'+
+    '<div class="lv-col"><div class="lv-label">経験レベル</div><div class="lv-stars">'+makeStars(lv)+'</div><div class="lv-name">Lv.'+(lv+1)+'　'+LEVELS[lv]+'</div></div>'+
+    '<div class="lv-col"><div class="lv-label">知識レベル</div>'+right+'</div>'+
+  '</div><div class="lv-desc">'+LEVEL_COPY[lv]+tail+'</div>';
+}
+
 function showResult(){
   var top='V',max=0;
   Object.keys(scores).forEach(function(k){if(scores[k]>max){max=scores[k];top=k;}});
@@ -444,9 +464,9 @@ function showResult(){
     '<div class="result-badge"><div class="result-type-label">YOUR INVESTOR TYPE</div><div class="result-type-name" style="color:'+T.color+'">'+T.name+'</div><div class="result-title">称号：'+T.title+'</div><div class="result-copy">'+T.copy+'</div></div>'+
     '<div class="card" style="margin-bottom:12px"><div style="font-size:11px;color:var(--light);margin-bottom:10px">あなたの投資スタイル分布</div>'+barRows+'</div>'+
     '<div class="two-col"><div class="card"><div class="mini-label">最強の相棒タイプ</div><div class="mini-val" style="color:var(--green)">'+T.compat+'</div><div class="mini-reason">'+T.compatReason+'</div></div><div class="card"><div class="mini-label">あなたの弱点</div><div class="mini-val" style="color:var(--red)">'+T.weak+'</div><div class="mini-reason">'+T.weakReason+'</div></div></div>'+
-    '<div class="lv-card"><div class="lv-label">EXPERIENCE LEVEL</div><div class="lv-stars">'+expStars+'</div><div class="lv-name">Lv.'+(lv+1)+'　'+LEVELS[lv]+'</div><div class="lv-desc">'+LEVEL_COPY[lv]+'<br><br><span style="color:var(--gold)">次のステージへ：</span>'+T.next+'</div></div>'+
+    '<div class="lv-card" id="lv-pair">'+renderLevelPairInner()+'</div>'+
     quizH+
-    '<div class="card" style="margin-bottom:12px"><div style="font-size:11px;color:var(--light);margin-bottom:12px">'+T.name+'におすすめの本</div><div class="books-list">'+T.books.map(function(b){return '<div class="book-item"><div class="book-icon">📖</div><div><div class="book-t">'+b.t+'</div><div class="book-a">'+b.a+'</div></div></div>';}).join('')+'</div></div>'+
+    '<div class="card" style="margin-bottom:12px"><div style="font-size:11px;color:var(--light);margin-bottom:12px">'+T.name+'におすすめの本</div><div class="books-list">'+T.books.map(function(b){return '<div class="book-item"><div class="book-icon">本</div><div><div class="book-t">'+b.t+'</div><div class="book-a">'+b.a+'</div></div></div>';}).join('')+'</div></div>'+
     '<div class="card card-gold" style="margin-bottom:12px"><div style="font-size:11px;color:var(--light);margin-bottom:8px;letter-spacing:.5px">'+T.name+'専用コラム</div><div style="font-size:14px;font-weight:700;margin-bottom:12px;line-height:1.5">'+getColTitle(top)+'</div><button class="btn btn-primary" onclick="showColumn(\''+top+'\')">無料コラムを読む →</button></div>'+
     getNoteBtn(top)+
     '<div class="share-row"><button class="btn btn-primary" id="btn-share">X でシェア</button><button class="btn btn-ghost" onclick="startDiag()">もう一度診断</button></div>';
@@ -455,7 +475,11 @@ function showResult(){
     var klv=calcKlv();
     var klLine=qs.locked?'\n知識 '+makeStars(klv)+' Lv.'+(klv+1)+'（'+KNOW_LEVELS[klv]+'）':'\n知識 ――― 未測定';
     var shareText='【🔬 Japan Structure Lab】投資家タイプ診断\n私は「'+T.name+'」／'+T.title+'\n経験 '+expStars+' Lv.'+(lv+1)+'（'+LEVELS[lv]+'）'+klLine+'\n\n'+T.copy+'\n\n━━━━━━━━━━\n6タイプ×5レベルで診断👇\nhttps://japanstructurelab-hue.github.io/investor-type/\n\n#JapanStructureLab #投資家タイプ診断 #日本株 #資産運用';
-    window.open('https://x.com/intent/tweet?text='+encodeURIComponent(shareText),'_blank');
+    if(navigator.share){
+      navigator.share({text:shareText}).catch(function(){});
+    }else{
+      window.open('https://x.com/intent/tweet?text='+encodeURIComponent(shareText),'_blank');
+    }
   };
   show('s-result');
 }
@@ -472,7 +496,7 @@ const NOTE_URLS={
 };
 function getNoteBtn(key){
   var url=NOTE_URLS[key];
-  return '<div class="card" style="border-color:#41c9b488;background:#f0fdf9;margin-bottom:12px"><div style="font-size:11px;color:var(--light);margin-bottom:6px">'+TYPES[key].name+' 有料note（通常980円）</div><div style="font-size:13px;font-weight:700;margin-bottom:10px;line-height:1.5">実践フレームワーク・チェックリスト付き完全版</div><a href="'+url+'" target="_blank" style="display:block;text-align:center;padding:13px;background:#41c9b4;color:#fff;font-weight:700;font-size:14px;border-radius:12px;text-decoration:none">noteで読む →</a></div>';
+  return '<div class="card" style="border-color:#41c9b488;background:#f0fdf9;margin-bottom:12px"><div style="font-size:11px;color:var(--light);margin-bottom:6px">'+TYPES[key].name+' 有料note（通常980円）</div><div style="font-size:13px;font-weight:700;margin-bottom:10px;line-height:1.5">実践フレームワーク・チェックリスト付き完全版</div><a href="'+url+'" target="_blank" style="display:block;text-align:center;padding:13px;background:transparent;color:var(--gold);border:1px solid var(--gold);font-weight:700;font-size:14px;border-radius:12px;text-decoration:none">noteで読む →</a></div>';
 }
 
 // ── クイズ重複防止: シャッフル済みキューで管理 ──
@@ -554,6 +578,8 @@ function updateQuizUI(){
   var tmp=document.createElement('div');
   tmp.innerHTML=renderQuizBlock(resultType);
   el.parentNode.replaceChild(tmp.firstChild,el);
+  var lp=document.getElementById('lv-pair');
+  if(lp)lp.innerHTML=renderLevelPairInner();
 }
 
 function showColumn(key){
@@ -561,7 +587,7 @@ function showColumn(key){
   var url=NOTE_URLS[key];
   document.getElementById('col-content').innerHTML=
     '<div class="col-eyebrow">'+C.eyebrow+'</div><div class="col-headline">'+C.headline+'</div><div class="col-by">'+C.by+' · Japan Structure Lab</div><div class="col-body">'+C.body+'</div>'+
-    '<div class="col-cta"><div class="col-cta-label">この続き（実践編）はnoteで公開中</div><a href="'+url+'" target="_blank" style="display:block;text-align:center;padding:14px;background:#41c9b4;color:#fff;font-weight:700;font-size:14px;border-radius:12px;text-decoration:none;margin-bottom:10px">実践編をnoteで読む →</a><button class="btn btn-ghost" onclick="backToResult()">← 診断結果に戻る</button></div>';
+    '<div class="col-cta"><div class="col-cta-label">この続き（実践編）はnoteで公開中</div><a href="'+url+'" target="_blank" style="display:block;text-align:center;padding:14px;background:transparent;color:var(--gold);border:1px solid var(--gold);font-weight:700;font-size:14px;border-radius:12px;text-decoration:none;margin-bottom:10px">実践編をnoteで読む →</a><button class="btn btn-ghost" onclick="backToResult()">← 診断結果に戻る</button></div>';
   show('s-col');
 }
 
@@ -595,7 +621,7 @@ function showTypeColumn(key){
   document.getElementById('col-content').innerHTML=
     '<div class="col-back" onclick="showLibrary()"><span>←</span> 一覧に戻る</div>'+
     '<div class="col-eyebrow">'+C.eyebrow+'</div><div class="col-headline">'+C.headline+'</div><div class="col-by">'+C.by+' · Japan Structure Lab</div><div class="col-body">'+C.body+'</div>'+
-    '<div class="col-cta"><div class="col-cta-label">この続き（実践編）はnoteで公開中</div><a href="'+url+'" target="_blank" style="display:block;text-align:center;padding:14px;background:#41c9b4;color:#fff;font-weight:700;font-size:14px;border-radius:12px;text-decoration:none;margin-bottom:10px">実践編をnoteで読む →</a><button class="btn btn-ghost" onclick="showLibrary()">← 一覧に戻る</button></div>';
+    '<div class="col-cta"><div class="col-cta-label">この続き（実践編）はnoteで公開中</div><a href="'+url+'" target="_blank" style="display:block;text-align:center;padding:14px;background:transparent;color:var(--gold);border:1px solid var(--gold);font-weight:700;font-size:14px;border-radius:12px;text-decoration:none;margin-bottom:10px">実践編をnoteで読む →</a><button class="btn btn-ghost" onclick="showLibrary()">← 一覧に戻る</button></div>';
   show('s-col');
 }
 

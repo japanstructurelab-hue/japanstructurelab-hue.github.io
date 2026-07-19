@@ -844,7 +844,11 @@ function showResult(){
   document.getElementById('shareBtn').onclick=()=>{
     const text=`チャートパターン構造学ドリル\n\n${score}/10問正解（正答率${Math.round(score/10*100)}%）\n称号：${rank.name} ${'★'.repeat(rank.stars)}\n\n形の「なぜ」を三層で読む訓練アプリ\n#JapanStructureLab #構造学 #投資`;
     const url='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);
-    window.open(url,'_blank');
+    if(navigator.share){
+      navigator.share({text:text}).catch(function(){});
+    }else{
+      window.open(url,'_blank');
+    }
   };
 }
 </script>
