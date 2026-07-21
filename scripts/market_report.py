@@ -134,7 +134,7 @@ def load_manual_overrides():
 
 def build_nikkei_vi_result():
     """日経VIは nikkei_vi.get_nikkei_vi() 経由で取得する(自動取得 or 手動値へのフォールバック)。"""
-    label = "日経VI (手動入力)"
+    label = "日経VI"
 
     try:
         vi_value, vi_prev, vi_source, vi_date = get_nikkei_vi()
