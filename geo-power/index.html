@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パワーバランス・ゲーム | Japan Structure Lab</title>
+<meta name="description" content="資源はどこに依存し、どこで詰まるのか。ホルムズ・台湾海峡・スエズの三つのシナリオを追い、地勢の五因子のうちどこが読めていないかを診断します。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LERQ079F6P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LERQ079F6P');</script>
+<link rel="canonical" href="https://japanstructurelab-hue.github.io/geo-power/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://japanstructurelab-hue.github.io/geo-power/">
+<meta property="og:title" content="パワーバランス・ゲーム | Japan Structure Lab">
+<meta property="og:description" content="資源はどこに依存し、どこで詰まるのか。三つのシナリオで地勢の因果を追う。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@StructureLabJP">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0b0b0d;--card:#131316;--card-2:#17171b;
+  --gold:#c6a15b;--gold-lt:rgba(198,161,91,.08);--gold-bd:rgba(198,161,91,.35);
+  --ivory:#e8e2d5;--mid:#c9c2b3;--light:#8f887a;--border:#26221e;
+  --ok:#6fbf7a;--ng:#e08a8a;
+  --mincho:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+}
+body{background:var(--bg);color:var(--ivory);font-size:15px;line-height:1.7;
+  font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic UI',sans-serif;}
+#app{max-width:480px;margin:0 auto;padding:0 14px 48px;}
+@media(min-width:768px){#app{max-width:560px;padding:0 24px 56px;}body{font-size:16px;}}
+.screen{display:none;}.screen.active{display:block;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+.hdr{padding:26px 0 18px;text-align:center;border-bottom:1px solid var(--border);margin-bottom:20px;}
+.hdr-logo{font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:8px;}
+.hdr-title{font-family:var(--mincho);font-size:23px;font-weight:500;letter-spacing:2px;color:#f2ecdf;}
+.hdr-sub{font-size:11px;color:var(--light);margin-top:6px;letter-spacing:1px;}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;}
+.card-gold{background:var(--gold-lt);border-color:var(--gold-bd);}
+.lead{font-size:13px;color:var(--mid);line-height:1.85;}
+
+.btn{width:100%;padding:15px;font-size:15px;font-weight:700;border:none;border-radius:10px;
+  cursor:pointer;letter-spacing:.5px;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.btn-primary{background:var(--gold);color:#0b0b0d;}
+.btn-ghost{background:transparent;color:var(--mid);border:1px solid var(--border);}
+.btn+.btn{margin-top:10px;}
+
+.factors{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.fac{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:9px 11px;font-size:11px;color:var(--light);}
+.fac strong{display:block;font-family:var(--mincho);font-size:14px;color:var(--ivory);margin-bottom:2px;font-weight:500;letter-spacing:1px;}
+
+.prog{display:flex;justify-content:space-between;font-size:11px;color:var(--light);margin-bottom:6px;}
+.prog-bg{height:3px;background:var(--border);border-radius:2px;margin-bottom:18px;}
+.prog-bar{height:3px;background:var(--gold);border-radius:2px;transition:width .3s;}
+
+.sc-eyebrow{font-size:10px;letter-spacing:2.5px;color:var(--gold);margin-bottom:10px;}
+.sc-title{font-family:var(--mincho);font-size:21px;font-weight:500;line-height:1.5;color:#f2ecdf;margin-bottom:12px;letter-spacing:1px;}
+
+.q-tag{display:inline-block;font-size:10px;letter-spacing:2px;color:var(--gold);
+  border:1px solid var(--gold-bd);border-radius:3px;padding:2px 8px;margin-bottom:12px;}
+.q-text{font-size:16px;font-weight:700;line-height:1.6;color:#f2ecdf;margin-bottom:16px;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{padding:13px 14px;background:var(--card-2);border:1px solid var(--border);border-radius:9px;
+  font-size:14px;color:var(--mid);text-align:left;line-height:1.5;cursor:pointer;
+  transition:border-color .15s,background .15s;-webkit-tap-highlight-color:transparent;}
+.opt:hover{border-color:var(--gold-bd);}
+.opt.correct{border-color:var(--ok);background:rgba(111,191,122,.12);color:var(--ok);}
+.opt.wrong{border-color:var(--ng);background:rgba(224,138,138,.12);color:var(--ng);}
+.opt.locked{cursor:default;}
+.exp{font-size:13px;color:var(--mid);line-height:1.85;background:var(--card-2);
+  border-left:2px solid var(--gold);border-radius:0 8px 8px 0;padding:13px 14px;margin-top:12px;}
+.more{margin-top:11px;}
+.more summary{cursor:pointer;font-size:12px;color:var(--gold);letter-spacing:1px;list-style:none;}
+.more summary::-webkit-details-marker{display:none;}
+.more summary::before{content:"＋ ";}
+.more[open] summary::before{content:"− ";}
+.more-body{margin-top:9px;padding-top:9px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--light);line-height:1.9;}
+
+.score{text-align:center;padding:22px 0 10px;}
+.score-num{font-family:var(--mincho);font-size:46px;color:var(--gold);letter-spacing:2px;line-height:1;}
+.score-den{font-size:13px;color:var(--light);margin-top:6px;}
+.rank{font-family:var(--mincho);font-size:22px;color:#f2ecdf;margin-top:14px;letter-spacing:2px;}
+.rank-desc{font-size:13px;color:var(--mid);margin-top:8px;line-height:1.8;}
+
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.bar-label{font-family:var(--mincho);font-size:14px;color:var(--ivory);width:44px;flex-shrink:0;letter-spacing:1px;}
+.bar-track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.bar-fill{height:100%;background:var(--gold);border-radius:3px;}
+.bar-val{font-size:11px;color:var(--light);width:34px;text-align:right;flex-shrink:0;}
+
+.weak{font-size:13px;color:var(--mid);line-height:1.85;}
+.weak b{color:var(--gold);font-weight:400;font-family:var(--mincho);font-size:15px;}
+
+.read{display:block;padding:13px 14px;background:var(--card-2);border:1px solid var(--border);
+  border-radius:9px;margin-bottom:8px;text-decoration:none;}
+.read:hover{border-color:var(--gold-bd);}
+.read-lab{font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:4px;}
+.read-t{font-size:13px;color:var(--ivory);line-height:1.5;}
+.read-off{opacity:.45;}
+
+.sec-label{font-size:10px;letter-spacing:2.5px;color:var(--light);margin:22px 0 10px;}
+.foot{text-align:center;padding:26px 0 0;font-size:12px;}
+.foot a{color:var(--light);text-decoration:none;}
+</style>
+</head>
+<body>
+<div id="app">
+
+<div class="screen active" id="s-start">
+  <div class="hdr">
+    <div class="hdr-logo">JAPAN STRUCTURE LAB</div>
+    <div class="hdr-title">パワーバランス・ゲーム</div>
+    <div class="hdr-sub">地政学 × 資源リテラシー ・ 3シナリオ / 9問</div>
+  </div>
+
+  <div class="card card-gold">
+    <div class="lead">
+      ホルムズ海峡が閉じたら、日本ではどの産業から先に止まるのか。<br>
+      五つのシナリオのうち三つが毎回選ばれ、それぞれを三問で追います。
+      点数のほかに、<strong style="color:var(--ivory);font-weight:400">どの層を読み落としたか</strong>が残ります。
+    </div>
+  </div>
+
+  <div class="sec-label">地勢を読む五つの因子</div>
+  <div class="factors">
+    <div class="fac"><strong>地形</strong>海・山脈・海峡</div>
+    <div class="fac"><strong>資源</strong>石油・鉱物・水</div>
+    <div class="fac"><strong>人口</strong>年齢構造・密度</div>
+    <div class="fac"><strong>文明</strong>宗教・価値観・歴史</div>
+    <div class="fac"><strong>技術</strong>軍事・AI・エネルギー</div>
+  </div>
+
+  <button class="btn btn-primary" onclick="start()">はじめる</button>
+  <div class="foot"><a href="/">← Japan Structure Lab に戻る</a></div>
+</div>
+
+<div class="screen" id="s-play">
+  <div class="prog"><span id="p-count">1 / 9</span><span id="p-sc"></span></div>
+  <div class="prog-bg"><div class="prog-bar" id="p-bar" style="width:0%"></div></div>
+  <div id="play-body"></div>
+</div>
+
+<div class="screen" id="s-result">
+  <div class="hdr" style="padding:20px 0 14px;">
+    <div class="hdr-logo">RESULT</div>
+  </div>
+  <div id="result-body"></div>
+</div>
+
+</div>
+<script>
+/* ── note記事のURL：ここに貼ってください ───────────────── */
+var NOTE={
+  base:'https://note.com/safe_crane821/n/nab1486278565',   /* 地勢の因果 第1回 地勢の因果とは何か */
+  me:'https://note.com/safe_crane821/n/ne77ac350b16b',     /* 地勢の因果 第2回 中東 */
+  cn:'https://note.com/safe_crane821/n/nc378a9eb3331'      /* 地勢の因果 第3回 中国 */
+};
+/* ──────────────────────────────────────────────── */
+
+var FAC=['地形','資源','人口','文明','技術'];
+
+var FACDESC={
+  '地形':'どこで詰まるかが見えます。海峡も平野も、国家が選べる手を先に狭めています。',
+  '資源':'誰が誰に握られているかが見えます。持たざる側の行動は、そこから決まります。',
+  '人口':'国家の時間が見えます。人口は二十年先の輪郭を、いまの時点で示しています。',
+  '文明':'相手の物差しが見えます。同じ地形でも、価値観が違えば動き方が変わります。',
+  '技術':'何が上書きされ、何が残るかが見えます。技術は因果を書き換えますが、地勢は消せません。'
+};
+
+var SC=[
+  {eyebrow:'SCENARIO 01',title:'ホルムズ海峡が止まる',
+   lead:'世界の原油輸送の要が閉じたとき、何が、どの順で動くのか。',
+   read:'me',
+   qs:[
+   {f:'地形',q:'ホルムズ海峡の封鎖が現実味を帯びたとき、原油価格より先に動くものは？',
+    o:['中東航路のタンカーの戦争保険料と傭船料','日本の電気料金','産油国の生産計画'],a:0,
+    e:'海峡は代替の効かない一点で、まず値がつくのは「通れるかどうか」です。戦争保険料と傭船料が先に跳ね、原油価格の上昇はその後から来ます。地勢の一点性は、価格ではなく通航のコストから効き始めます。',
+    x:'市場でも同じ順で出ます。封鎖が話題になった段階で先に動くのは用船料と戦争保険料、次にタンカー各社の収益見通し、原油先物が動くのはその後。「原油が上がったから海運が動く」と読むと順序を取り違えます。実際にはしばしば逆で、通航のコストのほうが先行します。'},
+   {f:'資源',q:'日本が輸入する原油のうち、中東に依存している割合はおよそ？',
+    o:['約3割','約6割','約9割'],a:2,
+    e:'日本の原油輸入は中東依存が9割前後で、その大半がホルムズを通ります。持たざる国は、自国では動かせない他所の地勢に生命線を預けることになります。国内で先に効くのは電力（火力）、石油化学、そして海運です。',
+    x:'家計まで届く経路は三段です。まず燃料費調整を通じて電気料金に、次に石油化学の原料コストを通じて製品価格に、そして輸入額が膨らむと貿易収支が悪化して円安圧力になります。資源の偏在は、最後に為替の形で戻ってくる——輸入国の物価が為替と連動しやすいのは、この経路があるためです。'},
+   {f:'技術',q:'世界の脱炭素の進展は、中東の緊張にどう働くか？',
+    o:['石油の価値が下がるので緊張は和らぐ','「石油が通貨である時代が終わる」焦燥が緊張を高める','エネルギー転換とは無関係に推移する'],a:1,
+    e:'脱炭素は石油の価値を下げるどころか、失われる前に守らねばならないという圧力に変わります。呪いは消えるのではなく、形を変えて残ります。技術は因果を上書きしますが、地勢を無効にはできません。',
+    x:'投資の側では、脱炭素は「需要の消滅」より先に「供給側の投資抑制」として効くことがあります。新規開発が細ると、需要が残ったまま供給余力だけが落ちる。転換期に価格が下がるどころか振れやすくなるのは、この時間差のためです。移行は直線ではなく、途中に荒れる区間を持ちます。'}
+  ]},
+  {eyebrow:'SCENARIO 02',title:'台湾海峡と半導体',
+   lead:'一つの島に集中した生産能力は、地勢とどう噛み合うのか。',
+   read:'cn',
+   qs:[
+   {f:'技術',q:'先端半導体の生産が台湾に集中していることが生む構造は？',
+    o:['価格競争が激しくなり単価が下がる','一つの島の情勢が世界中の生産計画を左右する','各国が短期間で自給に切り替えられる'],a:1,
+    e:'集中は効率を生みますが、同時に一点性を生みます。工場は数年では移せないため、島の情勢がそのまま自動車・電機の生産計画に届きます。技術が新しい地勢をつくった例です。',
+    x:'台湾海峡の緊張は、半導体株だけの話になりません。部品が一つ欠ければ完成品の組立が止まるため、影響がいちばん大きく出るのは川下の側になりがちです。過去の供給制約でも、減産の発表が続いたのは半導体メーカーではなく完成車メーカーのほうでした。集中は効率と脆さを同時に持ちます。'},
+   {f:'地形',q:'中国が第一列島線だけでなく第二列島線までを安全圏として扱わざるを得ない理由は？',
+    o:['沿岸部に富が集中し、戦略上の重心が海側へせり出したから','海軍の規模が世界最大になったから','海底資源の採掘権を確保したいから'],a:0,
+    e:'工業と富が沿岸に偏ったことで、国家の急所が海に近づきました。重心が浅くなったぶん、遠くに緩衝地帯を求めることになります。防衛線の位置は意思ではなく、富の置き場所が決めています。',
+    x:'投資家にとっては、緊張の「場所」より「距離」を見る手がかりになります。第一列島線の内側で起きる摩擦と、第二列島線にまで及ぶ動きでは、想定される期間も影響範囲も違う。地図の上でどこまで来ているかが、そのままリスクの深さの目安になります。ニュースの強さではなく、位置で測る。'},
+   {f:'人口',q:'中国の人口減少は、秩序を最優先する行動原理にどう作用するか？',
+    o:['圧力が弱まり、対外行動は穏やかになる','圧力の向きが変わり、かえって過敏に反応する','人口は行動原理と関係しない'],a:1,
+    e:'圧力が消えるのではなく、向きが変わります。内部の統一を守る力は過剰に働き、外への行動は硬直し、長期の安定を重んじる原理が短期の安定策へ傾く。減ることが穏健化を意味するとは限りません。',
+    x:'「人口が減るのだから脅威も減る」と読むと、逆を踏みます。内需の弱さは輸出圧力に転じ、統治の不安は対外的な強硬さに転じうる。人口動態は需要の話であると同時に、行動原理の話でもあります。長期の見通しを立てるとき、人口を需要の数字としてだけ扱うと、行動の側を読み落とします。'}
+  ]},
+  {eyebrow:'SCENARIO 03',title:'スエズ危機・1956',
+   lead:'国家の意思が地勢に抗おうとして、何が起きたのか。',
+   read:'base',
+   qs:[
+   {f:'資源',q:'スエズ運河が止まったとき、世界に最も強く効いた打撃は？',
+    o:['欧州の石油供給の危機','米国の穀物輸出の停止','アジアの製造業の全面停止'],a:0,
+    e:'当時、石油輸送の約3割がこの運河を通っていました。代替は喜望峰まわりで距離はおよそ2倍。止まった瞬間に欧州の供給が危うくなり、それが米ソを動かす圧力になりました。',
+    x:'一点が閉じると、迂回のコストが世界の物流に上乗せされます。距離が二倍になれば運賃も保険料も上がり、同じ荷物を運ぶのに必要な船腹そのものが不足する。近年の紅海での混乱でも同じ形が観測されました——航路の変更が運賃指数を押し上げ、そこから川下の在庫計画が狂っていく。'},
+   {f:'文明',q:'ナセルによる運河国有化を支えた価値の枠組みは？',
+    o:['アラブ民族主義','冷戦下の中立主義','宗派対立の解消'],a:0,
+    e:'動機は三つ——英仏の影響力の排除、運河収入の開発への投入、そしてアラブ世界に自立を示すこと。国有化は経済政策であると同時に、文明の層から出た宣言でした。',
+    x:'市場は政策を読むとき、しばしば採算だけで測ります。しかし国有化や資源の国内優先のような決定は、経済合理性ではなく正統性の要求から出ることがある。「損なのになぜやるのか」と見える一手が出たときは、動機が文明の層にある可能性を疑うほうが当たります。'},
+   {f:'文明',q:'スエズ危機の結末が示している構造は？',
+    o:['国家の意思が地勢の条件を書き換えた','政治的には勝ったが、海峡の一点性は変わらなかった','外部大国が退き、緊張そのものが解消した'],a:1,
+    e:'ナセルは英仏を撤退させ、管理権を取り戻し、象徴としての支持も得ました。それでも運河が世界の喉元である事実は動かず、その後も緊張の中心であり続けます。勝敗と構造は別の層にあります。',
+    x:'投資判断でも同じ区別が要ります。ある国が「勝った」ことと、その国を縛る条件が変わったことは別です。停戦や合意のニュースで持ち高を戻す前に、通れる場所が増えたのか、依存の相手が替わったのかを確かめる。勝敗は心理の層で、条件は構造の層で決まります。'}
+  ]},
+  {eyebrow:'SCENARIO 04',title:'明朝の海禁',
+   lead:'守るために海を閉じた国家に、何が起きたのか。',
+   read:'cn',
+   qs:[
+   {f:'文明',q:'明朝が民間の海上貿易を禁じた、いちばんの動機は？',
+    o:['沿岸の混乱を遮断し、内陸の安定を守るため','交易の利益を朝廷が独占するため','外国船の造船技術が流入するのを防ぐため'],a:0,
+    e:'倭寇が増え、沿岸の治安が崩れていました。内陸では農村の安定こそ国家の根幹という発想が強く、外との接触は最小限に抑えたかった。閉じることが守ることだと考えたわけです。',
+    x:'閉じる決定は、いまも形を変えて出ます。輸出規制、資本規制、対内投資の審査。動機はたいてい防衛的で、短期には実際に効きます。読むべきはその先で、閉じたあとに何が地下へ潜り、どこへ経路が移るか。規制のニュースを「その市場が消えた」と読むと、たいてい早すぎます。'},
+   {f:'資源',q:'海禁の結果、実際に起きたことは？',
+    o:['密貿易が増え、沿岸の経済がむしろ衰弱した','沿岸の治安が安定し、倭寇はほぼ消えた','内陸の農業生産が急増し、財政が好転した'],a:0,
+    e:'禁じても交易は消えず、地下に潜っただけでした。ポルトガルやオランダは閉じた海をこじ開けるように近づき、世界から流れ込む銀の流れも、海禁を静かに突き破っていきます。',
+    x:'規制は取引を消さず、経路を変えるだけということが少なくありません。規制された品目が第三国を経由して流れる、というのは現代でも観測されます。だから規制の発表で需要が消えたと読むのは早計で、見るべきは「どこを通るようになったか」。経路が変われば、恩恵を受ける国も企業も入れ替わります。'},
+   {f:'地形',q:'この事例が示している構造は？',
+    o:['海を閉じても、交易の地勢が国家を外へ結びつけ続けた','強い意思があれば地勢の条件は書き換えられる','海禁は成功したが、後の王朝が方針を捨てた'],a:0,
+    e:'スエズと同じ場所に着きます。あちらは抗って政治的には勝ち、こちらは守ろうとして逆を招いた。抗い方が違っても、構造は動きませんでした。',
+    x:'長期の投資判断で効くのは、この「押し戻される力」です。制度は数年で変わりますが、地理が生む交易の必然は変わらない。制度が地勢に逆らっている局面は、いずれ制度の側が折れる可能性を織り込んでおく価値があります。逆に、地勢に沿った制度は長持ちします。'}
+  ]},
+  {eyebrow:'SCENARIO 05',title:'長城から、情報の壁へ',
+   lead:'守る対象が土地から情報へ移っても、同じ形の行動が繰り返される。',
+   read:'cn',
+   qs:[
+   {f:'地形',q:'中国北部の平野が、国家に強いてきた条件は？',
+    o:['広く開かれ、外から繰り返し侵入されやすい','山脈に分断され、統治が内陸まで届かない','海に面しており、交易が自然に発達する'],a:0,
+    e:'遼東から華北へ続く平野は、匈奴・契丹・女真・モンゴル・満州が繰り返し入ってきた開かれた扉でした。守るより出て制圧するほうが合理的——この地勢が、外へ出る戦略の原型をつくります。',
+    x:'守りにくい地形は、防衛費と対外行動の両方を押し上げます。国境が閉じない国は、外に出るか内を締めるかを選び続けることになる。地形は最終的に、財政の癖と外交の癖として市場に現れます。国防関連の支出が景気に関係なく積み上がる国は、たいてい地勢の側に理由があります。'},
+   {f:'人口',q:'この国が、秩序の乱れを何よりも嫌う行動原理を持つに至った背景は？',
+    o:['北から侵入されやすく、周縁が不安定で、巨大な人口が常に安定を要求したから','海洋交易で富を得た商人層が安定を望んだから','宗教が国家の統一を強く求めたから'],a:0,
+    e:'人口は国家の選択肢を狭めます。食糧・雇用・都市化・社会保障——巨大な人口は「成長し続けなければ不安定になる」という圧力を生み、秩序を最優先する原理を強制しました。',
+    x:'「成長し続けなければ不安定になる」という制約は、政策の読み方を変えます。景気が減速したときにその国が刺激策を取るかどうかは、経済合理性より秩序維持の必要から決まることがある。政策予想が外れるとき、原因はしばしばここです。経済モデルではなく、何を恐れているかで読む。'},
+   {f:'技術',q:'万里の長城とグレート・ファイアウォールの関係を、構造として言うと？',
+    o:['守る場所が土地から情報へ移っても、壁を築く行動様式は引き継がれた','技術が地勢を無効にし、壁は不要になった','情報統制は歴史と無関係な、近年だけの現象である'],a:0,
+    e:'長城の軍事的効果は限定的でしたが、王朝が変わっても北に壁を築き続けました。守るために壁を築くという形は、地勢が土地から情報へ移っても同じ方向に働きます。技術は因果を上書きしますが、地勢を無効にはできません。',
+    x:'情報を囲う政策は、産業構造にそのまま出ます。国内向けのサービスが独自に育ち、外の企業は入れない。投資家から見れば、市場規模の数字がそのまま参入可能な市場ではない、ということです。壁の位置が、投資できる範囲を決めている。人口や所得だけで市場を見積もると、この線を見落とします。'}
+  ]}
+];
+
+var RANKS=[
+  {min:0,n:'見習い観測者',d:'まずは地図の上に、資源と海峡を置くところから。'},
+  {min:4,n:'海図の読み手',d:'どこが詰まるかは見えている。次は詰まった先の順番。'},
+  {min:6,n:'因果の追跡者',d:'一点の停止が、どの産業へ何番目に届くかを追えている。'},
+  {min:8,n:'地勢の分析家',d:'意思と構造を分けて読めている。'},
+  {min:9,n:'地勢の読者',d:'国家の行動を、感情ではなく檻から読んでいる。'}
+];
+
+var READS={
+  base:{lab:'地勢の因果 第1回',t:'地勢の因果とは何か'},
+  me:{lab:'地勢の因果 第2回',t:'中東 ― 地勢が「呪い」を生む場所'},
+  cn:{lab:'地勢の因果 第3回',t:'中国 ―「圧力」が国家を形づくる場所'}
+};
+
+var flat=[],idx=0,hit=0,byFac={},asked={},done=false,picked=-1,ORDER=[];
+
+function pick3(){
+  var a=[];
+  for(var i=0;i<SC.length;i++)a.push(i);
+  for(var i=a.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;
+  }
+  return a.slice(0,3);
+}
+function build(){
+  flat=[];
+  for(var k=0;k<ORDER.length;k++){
+    var i=ORDER[k];
+    flat.push({type:'intro',sc:i});
+    for(var j=0;j<SC[i].qs.length;j++)flat.push({type:'q',sc:i,q:j});
+  }
+}
+function show(id){
+  var s=document.querySelectorAll('.screen');
+  for(var i=0;i<s.length;i++)s[i].classList.remove('active');
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function start(){
+  ORDER=pick3();build();idx=0;hit=0;byFac={};asked={};done=false;picked=-1;
+  for(var i=0;i<FAC.length;i++){byFac[FAC[i]]=0;asked[FAC[i]]=0;}
+  show('s-play');render();
+}
+function qNo(){
+  var n=0;
+  for(var i=0;i<=idx&&i<flat.length;i++)if(flat[i].type==='q')n++;
+  return n;
+}
+function render(){
+  var it=flat[idx],b=document.getElementById('play-body');
+  var n=qNo();
+  document.getElementById('p-count').textContent=(n||1)+' / 9';
+  document.getElementById('p-sc').textContent=SC[it.sc].eyebrow;
+  document.getElementById('p-bar').style.width=(((n-(it.type==='q'?1:0))/9)*100)+'%';
+
+  if(it.type==='intro'){
+    var s=SC[it.sc];
+    b.innerHTML='<div class="card"><div class="sc-eyebrow">'+s.eyebrow+'</div>'+
+      '<div class="sc-title">'+s.title+'</div>'+
+      '<div class="lead">'+s.lead+'</div></div>'+
+      '<button class="btn btn-primary" onclick="next()">3問を追う</button>';
+    return;
+  }
+  var q=SC[it.sc].qs[it.q],h='';
+  h+='<div class="card"><div class="q-tag">'+q.f+'</div>'+
+     '<div class="q-text">'+q.q+'</div><div class="opts">';
+  for(var i=0;i<q.o.length;i++){
+    var cl='opt';
+    if(done){cl+=' locked';if(i===q.a)cl+=' correct';else if(i===picked)cl+=' wrong';}
+    h+='<button class="'+cl+'" onclick="pick('+i+')"'+(done?' disabled':'')+'>'+q.o[i]+'</button>';
+  }
+  h+='</div>';
+  if(done)h+='<div class="exp">'+q.e+
+    (q.x?'<details class="more"><summary>市場ではどう出るか</summary><div class="more-body">'+q.x+'</div></details>':'')+
+    '</div>';
+  h+='</div>';
+  if(done)h+='<button class="btn btn-primary" onclick="next()">'+(idx>=flat.length-1?'結果を見る':'次へ')+'</button>';
+  b.innerHTML=h;
+}
+function pick(i){
+  if(done)return;
+  var it=flat[idx],q=SC[it.sc].qs[it.q];
+  done=true;picked=i;
+  asked[q.f]++;
+  if(i===q.a){hit++;byFac[q.f]++;}
+  render();
+}
+function next(){
+  done=false;picked=-1;
+  if(idx>=flat.length-1){result();return;}
+  idx++;render();
+}
+function rankOf(s){
+  var r=RANKS[0];
+  for(var i=0;i<RANKS.length;i++)if(s>=RANKS[i].min)r=RANKS[i];
+  return r;
+}
+function weakest(){
+  var w=[],lo=2;
+  for(var i=0;i<FAC.length;i++){
+    var f=FAC[i];if(!asked[f])continue;
+    var r=byFac[f]/asked[f];
+    if(r<lo){lo=r;w=[f];}else if(r===lo){w.push(f);}
+  }
+  return{list:w,ratio:lo};
+}
+function result(){
+  var r=rankOf(hit),w=weakest(),h='';
+  h+='<div class="score"><div class="score-num">'+hit+'</div>'+
+     '<div class="score-den">9問中</div>'+
+     '<div class="rank">'+r.n+'</div>'+
+     '<div class="rank-desc">'+r.d+'</div></div>';
+
+  h+='<div class="sec-label">因子ごとの読み</div><div class="card">';
+  for(var i=0;i<FAC.length;i++){
+    var f=FAC[i];
+    if(!asked[f]){
+      h+='<div class="bar-row"><div class="bar-label">'+f+'</div>'+
+         '<div class="bar-track"></div><div class="bar-val">—</div></div>';
+      continue;
+    }
+    var pct=Math.round((byFac[f]/asked[f])*100);
+    h+='<div class="bar-row"><div class="bar-label">'+f+'</div>'+
+       '<div class="bar-track"><div class="bar-fill" style="width:'+pct+'%"></div></div>'+
+       '<div class="bar-val">'+byFac[f]+'/'+asked[f]+'</div></div>';
+  }
+  h+='</div>';
+
+  if(w.list.length&&w.ratio<1){
+    var lines='';
+    for(var v=0;v<w.list.length;v++){
+      lines+='<div style="margin-top:10px;">'+FACDESC[w.list[v]]+'</div>';
+    }
+    h+='<div class="card card-gold"><div class="weak">読み落としが多かったのは <b>'+w.list.join('・')+'</b> の層です。'+
+       lines+'</div></div>';
+  }else{
+    h+='<div class="card card-gold"><div class="weak">五つの層すべてで落としがありません。'+
+       '次は、同じ型で別の海峡を読んでみてください。</div></div>';
+  }
+
+  h+='<div class="sec-label">この続きを読む</div>';
+  var keys=['base','me','cn'];
+  for(var k=0;k<keys.length;k++){
+    var key=keys[k],u=NOTE[key],d=READS[key];
+    if(u){
+      h+='<a class="read" href="'+u+'" target="_blank" rel="noopener">'+
+         '<div class="read-lab">'+d.lab+'</div><div class="read-t">'+d.t+' →</div></a>';
+    }else{
+      h+='<div class="read read-off"><div class="read-lab">'+d.lab+'</div>'+
+         '<div class="read-t">'+d.t+'</div></div>';
+    }
+  }
+
+  h+='<div style="margin-top:16px;"><button class="btn btn-primary" id="btn-share">X でシェアする</button>'+
+     '<button class="btn btn-ghost" onclick="start()">もう一度</button></div>'+
+     '<div class="foot"><a href="/">← Japan Structure Lab に戻る</a></div>';
+
+  document.getElementById('result-body').innerHTML=h;
+  document.getElementById('btn-share').onclick=function(){
+    var t='パワーバランス・ゲーム\n'+hit+'/9問 ／ '+r.n+
+      '\n読み落としが多かったのは「'+(w.list.length&&w.ratio<1?w.list.join('・'):'なし')+'」の層'+
+      '\n\nhttps://japanstructurelab-hue.github.io/geo-power/\n#地勢の因果';
+    var m=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if(m&&navigator.share){navigator.share({text:t}).catch(function(){});}
+    else{window.open('https://x.com/intent/tweet?text='+encodeURIComponent(t),'_blank');}
+  };
+  show('s-result');
+}
+</script>
+</body>
+</html>
