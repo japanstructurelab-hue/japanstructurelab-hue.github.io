@@ -562,25 +562,42 @@ let currentServings = 2;
 // 分数表記が自然な「数え単位」。大さじ・小さじ・ml・gなどの計量単位は対象外(1.5などの小数表記が普通のため)
 const COUNT_UNITS = new Set(["本","個","枚","束","玉","片","缶","袋","パック","切れ","丁","尾"]);
 
+// 小数(0〜1未満)に最も近い、料理で自然に使う分数(分母2,3,4,5,6,8)を探す
+const ALLOWED_DENOMS = [2, 3, 4, 5, 6, 8];
+function bestFraction(frac){
+  let best = { num: 0, den: 1, err: frac };
+  for(const den of ALLOWED_DENOMS){
+    const num = Math.round(frac * den);
+    if(num === 0 || num === den) continue; // 0や1(整数)になるものは対象外
+    const err = Math.abs(frac - num / den);
+    if(err < best.err){
+      const g = gcd(num, den);
+      best = { num: num / g, den: den / g, err };
+    }
+  }
+  return best;
+}
+function gcd(a, b){ return b === 0 ? a : gcd(b, a % b); }
+
 function formatAmount(n, unit){
   if(n === null) return "";
   const rounded = Math.round(n * 1000) / 1000;
   if(Number.isInteger(rounded)) return String(rounded);
 
+  // 0.99や3.02のような「実質整数」に近い値は、無理に分数/小数にせず丸める
+  const nearestInt = Math.round(rounded);
+  if(Math.abs(rounded - nearestInt) < 0.03){
+    return String(nearestInt);
+  }
+
   if(unit && COUNT_UNITS.has(unit)){
     const whole = Math.floor(rounded);
     const frac = rounded - whole;
-    const fractionMap = [
-      [0.125, "1/8"], [0.166, "1/6"], [0.167, "1/6"],
-      [0.2, "1/5"],   [0.25, "1/4"],  [0.33, "1/3"], [0.333, "1/3"],
-      [0.4, "2/5"],   [0.5, "1/2"],   [0.6, "3/5"],
-      [0.666, "2/3"], [0.667, "2/3"], [0.7, "7/10"],
-      [0.75, "3/4"],  [0.8, "4/5"],   [0.833, "5/6"], [0.875, "7/8"]
-    ];
-    for(const [val, label] of fractionMap){
-      if(Math.abs(frac - val) < 0.04){
-        return whole > 0 ? `${whole}と${label}` : label;
-      }
+    const best = bestFraction(frac);
+    // 分数として十分近ければ分数表記、そうでなければ小数にフォールバック
+    if(best.err < 0.04){
+      const label = `${best.num}/${best.den}`;
+      return whole > 0 ? `${whole}と${label}` : label;
     }
   }
   // 計量単位、または該当する分数がない場合は小数のまま(丸めて見やすく)
