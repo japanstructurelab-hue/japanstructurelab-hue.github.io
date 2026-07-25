@@ -559,8 +559,10 @@ const modalMedia = document.querySelector(".modal-media");
 let currentRecipe = null;
 let currentServings = 2;
 
-// 分数表記が自然な「数え単位」。大さじ・小さじ・ml・gなどの計量単位は対象外(1.5などの小数表記が普通のため)
+// 分数表記が自然な「数え単位」。本・個などは常に分数対象。
 const COUNT_UNITS = new Set(["本","個","枚","束","玉","片","缶","袋","パック","切れ","丁","尾"]);
+// 大さじ・小さじは「1未満の時だけ」分数表記が自然(例:小さじ1/3)。1以上は小数のままが普通(例:大さじ1.5)。
+const SPOON_UNITS = new Set(["大さじ", "小さじ"]);
 
 // 小数(0〜1未満)に最も近い、料理で自然に使う分数(分母2,3,4,5,6,8)を探す
 const ALLOWED_DENOMS = [2, 3, 4, 5, 6, 8];
@@ -590,8 +592,9 @@ function formatAmount(n, unit){
     return String(nearestInt);
   }
 
-  if(unit && COUNT_UNITS.has(unit)){
-    const whole = Math.floor(rounded);
+  const whole = Math.floor(rounded);
+  const isFractionEligible = (unit && COUNT_UNITS.has(unit)) || (unit && SPOON_UNITS.has(unit) && whole === 0);
+  if(isFractionEligible){
     const frac = rounded - whole;
     const best = bestFraction(frac);
     // 分数として十分近ければ分数表記、そうでなければ小数にフォールバック
