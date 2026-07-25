@@ -578,7 +578,7 @@ function formatAmount(n, unit){
       [0.75, "3/4"],  [0.8, "4/5"],   [0.833, "5/6"], [0.875, "7/8"]
     ];
     for(const [val, label] of fractionMap){
-      if(Math.abs(frac - val) < 0.02){
+      if(Math.abs(frac - val) < 0.04){
         return whole > 0 ? `${whole}と${label}` : label;
       }
     }
