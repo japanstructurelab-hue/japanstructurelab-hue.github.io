@@ -1,0 +1,3180 @@
+[
+  {
+    "id": "r001",
+    "name": "揚げない油淋鶏(ユーリンチー)",
+    "genre": "主菜(肉)",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r001.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "枚",
+        "name": "鶏もも肉",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "こしょう 少々",
+        "scalable": false
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "ごま油(焼き用)",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "醤油(たれ用)",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 0.3,
+        "unit": "本",
+        "name": "長ねぎ(みじん切り)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "しょうが(みじん切り)",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "鶏もも肉を一口大に切り、塩とこしょうをもみ込む。10分ほど置く。",
+      "水気を軽く拭き取り、片栗粉を全体にまぶす。",
+      "フライパンにごま油を熱し、鶏肉を皮目から中火で焼く。両面カリッとするまで焼く。",
+      "小皿で醤油、酢、はちみつ、長ねぎ、しょうがを混ぜ合わせる。",
+      "焼き上がった鶏肉を食べやすく切り、たれをかけて完成。"
+    ],
+    "tip": "唐揚げが食べたい時、揚げずに片栗粉を薄くまぶして焼くだけで、カリッとした食感と満足感を再現できます。たれの甘みははちみつで、精製糖は使っていません。"
+  },
+  {
+    "id": "r002",
+    "name": "揚げない南蛮風照り焼きぶり",
+    "genre": "主菜(魚)",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r002.jpg",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "切れ",
+        "name": "鰤(切り身)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 1.5,
+        "unit": "大さじ",
+        "name": "醤油(たれ用)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "みりん(たれ用)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "しょうがすりおろし",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "鰤の水気を拭き取り、片栗粉を薄く両面にまぶす。",
+      "フライパンにごま油を熱し、鰤を皮目から中火で焼く。",
+      "軽く色づいたら裏返し、弱めの中火で中まで火を通す。",
+      "醤油、みりん、はちみつを小皿で混ぜておく。",
+      "鰤の両面が焼けたら余分な油を拭き、たれを入れて弱火で照りがでるまで絡める。",
+      "器に盛り、しょうがすりおろしを添えて完成。"
+    ],
+    "tip": "加工調味料なしでたれから手作り。片栗粉を薄くまぶすことでたれが絡みやすく、身も崩れにくくなる。"
+  },
+  {
+    "id": "r003",
+    "name": "ほうれん草のすりごま和え",
+    "genre": "副菜",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r003.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "束",
+        "name": "ほうれん草",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "すりごま",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "みりん",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "ほうれん草を洗い、耐熱皿に入れてラップをかけ、電子レンジ(600W)で2分加熱する。",
+      "粗熱を取り、水でしめて水気をしっかり絞る。",
+      "食べやすい長さに切る。",
+      "ボウルですりごま、醤油、みりん、ごま油を混ぜ合わせ、ほうれん草を入れてあえる。"
+    ],
+    "tip": "すりごまの油分とコクで、砂糖なしでも満足感のある味に仕上がる。"
+  },
+  {
+    "id": "r004",
+    "name": "大根と油揚げの味噌汁(一番出汁仕立て)",
+    "genre": "汁物",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r004.jpg",
+    "ingredients": [
+      {
+        "amount": 400,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "昆布 5cm角",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "削り節 ひとつかみ",
+        "scalable": false
+      },
+      {
+        "amount": 0.25,
+        "unit": "本",
+        "name": "だいこん",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "枚",
+        "name": "油揚げ",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "わかめ ひとつかみ",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "味噌 大さじ1.5〜2",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "青ねぎ(小口切り) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "鍋に水400mlと昆布5cm角を入れ、10分ほどつけておく。",
+      "中火にかけ、泡が出る直前で昆布を取り出す。",
+      "泡が出たら削り節ひとつかみを入れて一旦火を止め、30秒ほど置き、ザルで漉す。",
+      "出汁を鍋に戻し、いちょう切りのだいこん1/4本と湯通しした油揚げ1/2枚を入れて中火で5分ほど煮る。",
+      "ワカメひとつかみを入れ、火を弱めて味噌大さじ1.5〜2を溶かし入れる。沸騰させないように注意。",
+      "器に盛り、青ねぎ(小口切り)少々を散らして完成。"
+    ],
+    "tip": "昆布と削り節の一番出汁で顆粒だしに頼らない分、味噌の量で味を決める。"
+  },
+  {
+    "id": "r005",
+    "name": "ごぼうと人参のきんぴら",
+    "genre": "作り置き",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r005.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "本",
+        "name": "ごぼう",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "本",
+        "name": "人参",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "みりん",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "白ごま",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "一味唐辛子(お好みで) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "ごぼうと人参をせん切りにする。ごぼうは水に5分ほどさらしてアクを抜く。",
+      "フライパンにごま油小さじ1を熱し、水気を拭いたごぼうと人参を中火で炒める。",
+      "全体に油が回ったら醤油大さじ1とみりん大さじ1を入れ、水分が飛ぶまで中火で炒める。",
+      "火を止め、白ごま小さじ1と好みで一味唐辛子少々を加えて混ぜる。",
+      "完全に冷めてから密閉容器に入れ、冷蔵庫で保存。"
+    ],
+    "tip": "市販のきんぴらの素やめんつゆを使わず、醤油とみりんだけで味を決める。冷蔵で4〜5日ほど日持ち。"
+  },
+  {
+    "id": "r006",
+    "name": "揚げない酢豚",
+    "genre": "主菜(肉)",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r006.jpg",
+    "ingredients": [
+      {
+        "amount": 200,
+        "unit": "g",
+        "name": "豚もも肉(一口大)",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "こしょう 少々",
+        "scalable": false
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "個",
+        "name": "ピーマン",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "個",
+        "name": "玉ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "本",
+        "name": "人参",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "ごま油(焼き用)",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "醤油(たれ用)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "豚肉を一口大に切り、塩とこしょうをもみ込む。10分ほど置く。",
+      "水気を拭き取り、片栗粉を全体にまぶす。ピーマンと玉ねぎ、人参は一口大に切る。",
+      "フライパンにごま油を熱し、豚肉を中火で表面がカリッとするまで焼いて取り出す。",
+      "同じフライパンで人参、玉ねぎ、ピーマンの順に中火でさっと炒める。",
+      "豚肉を戻し、酢、醤油、はちみつを入れて全体を絡めながら中火でとろみをつける。"
+    ],
+    "tip": "片栗粉をまぶして焼くことで、揚げなくても満足感のある食べ応えに。"
+  },
+  {
+    "id": "r007",
+    "name": "精製糖不使用のバナナパンケーキ",
+    "genre": "おやつ",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r007.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "本",
+        "name": "バナナ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "個",
+        "name": "卵",
+        "scalable": true
+      },
+      {
+        "amount": 100,
+        "unit": "g",
+        "name": "薄力粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "米油(または無香料オリーブオイル)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "ベーキングパウダー",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "シナモンパウダー(あれば) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "ボウルでバナナをフォークでつぶし、卵とはちみつを加えて混ぜる。",
+      "薄力粉とベーキングパウダー、シナモンパウダーを入れ、粉っぽさがなくなるまでさっくり混ぜる。",
+      "フライパンに米油を弱火で熱し、生地をスプーン1杯分ずつ流し入れる。",
+      "表面に泡が出てきたら裏返し、さらに2分ほど焼く。"
+    ],
+    "tip": "バナナの熟れ具合で甘さが変わるので、完熟バナナを使うとはちみつを控えめにできる。"
+  },
+  {
+    "id": "r008",
+    "name": "もやしとキュウリの練りごま和え",
+    "genre": "副菜",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r008.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "袋",
+        "name": "もやし(200g目安)",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "本",
+        "name": "キュウリ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "練りごま",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "もやしは表示通りにレンジで加熱し、冷ます。キュウリは薄切りにして塩もみ(分量外)しておく。",
+      "ボウルで練りごま、醤油、酢、はちみつ、ごま油を滑らかになるまで混ぜる。",
+      "水気を拭いたもやしとキュウリを入れてあえる。"
+    ],
+    "tip": "練りごまのコクで、市販のごまドレッシングに近い満足感をはちみつだけで再現。"
+  },
+  {
+    "id": "r009",
+    "name": "ひじきと油揚げの煮物",
+    "genre": "作り置き",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r009.jpg",
+    "ingredients": [
+      {
+        "amount": 15,
+        "unit": "g",
+        "name": "乾燥ひじき",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "本",
+        "name": "人参",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "枚",
+        "name": "油揚げ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 150,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 1.5,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "白ごま",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "乾燥ひじきを表示通りの時間水で戻し、よく洗って水気を切る。",
+      "人参は短めの短冊切り、油揚げは湯通しして短めに切る。",
+      "鍋にごま油小さじ1を熱し、ひじきと人参を中火でさっと炒める。",
+      "水150mlと油揚げを入れ、醤油大さじ1.5とはちみつ大さじ1を加えて中火で10分ほど煮る。",
+      "水分がほぼなくなるまで煮詰め、火を止めて白ごま小さじ1を混ぜる。",
+      "完全に冷めてから密閉容器に入れ、冷蔵庫で保存。"
+    ],
+    "tip": "市販のひじきの煮物パックやめんつゆを使わず、醤油とはちみつだけで味を決める。冷蔵で4〜5日ほど日持ち。"
+  },
+  {
+    "id": "r010",
+    "name": "野菜たっぷりミネストローネ",
+    "genre": "汁物",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r010.jpg",
+    "ingredients": [
+      {
+        "amount": 30,
+        "unit": "g",
+        "name": "ベーコン(加工度の低いもの)",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "個",
+        "name": "玉ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "本",
+        "name": "人参",
+        "scalable": true
+      },
+      {
+        "amount": 0.125,
+        "unit": "玉",
+        "name": "キャベツ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "オリーブオイル",
+        "scalable": true
+      },
+      {
+        "amount": 400,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 200,
+        "unit": "g",
+        "name": "トマト缶詰め",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "こしょう 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "ベーコンは1cm幅、野菜はすべて1.5cm角に切る。",
+      "鍋にオリーブオイルを熱し、ベーコンを中火で炒める。",
+      "野菜を全て入れ、油が回るまで中火で炒める。",
+      "水とトマト缶詰めを入れ、煮立ったら弱火にして蓋をして10分ほど煮る。",
+      "塩とこしょうで味を整えて完成。"
+    ],
+    "tip": "コンソメ顆粒を使わず、ベーコンの旨みと野菜の甘みだけで味を決める。"
+  },
+  {
+    "id": "r011",
+    "name": "揚げない鮭の南蛮漬け",
+    "genre": "主菜(魚)",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r011.jpg",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "切れ",
+        "name": "鮭(切り身)",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": 2,
+        "unit": "小さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "個",
+        "name": "玉ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 0.2,
+        "unit": "本",
+        "name": "人参",
+        "scalable": true
+      },
+      {
+        "amount": 3,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "赤とうがらし(お好みで) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "鮭の水気を拭き、塩を振り、食べやすい大きさに切って片栗粉をもみ込む。",
+      "玉ねぎと人参は薄切りにする。",
+      "フライパンにごま油を熱し、鮭を中火で両面カリッとするまで焼く。",
+      "小鉢で酢、醤油、はちみつを混ぜ、玉ねぎと人参を漬けておく。",
+      "焼きたての鮭をタレに入れ、5分以上漬ける。器に盛り、好みで赤とうがらしを散らす。"
+    ],
+    "tip": "片栗粉をまぶして焼くことで、揚げなくてもたれがよく絡み、南蛮漬けらしい満足感になる。冷蔵で2〜3日ほど日持ち。"
+  },
+  {
+    "id": "r012",
+    "name": "揚げない棒々鶏風サラダ",
+    "genre": "主菜(肉)",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r012.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "枚",
+        "name": "鶏むね肉(250g目安)",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "本",
+        "name": "キュウリ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "個",
+        "name": "トマト",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "練りごま",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "鶏むね肉はフォークで全体を数箇所刺し、塩をもみ込み片栗粉を全体にまぶす。",
+      "鍋で水を沸騰させ、鶏むね肉を入れて中火で10分ほど茹でて火を通す。",
+      "茹でている間にキュウリをせん切りにし、トマトはくし形に切る。",
+      "小鉢で練りごま、醤油、酢、ごま油を滑らかになるまで混ぜ、タレを作る。",
+      "鶏むね肉を食べやすい大きさに裂き、野菜と一緒に盛り付けてタレをかける。"
+    ],
+    "tip": "片栗粉をまぶして茹でることで、鶏むね肉がしっとり仕上がりパサつきにくくなる。"
+  },
+  {
+    "id": "r013",
+    "name": "さばの塩こうじ焼き",
+    "genre": "主菜(魚)",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r013.jpg",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "切れ",
+        "name": "さば(切り身)",
+        "scalable": true
+      },
+      {
+        "amount": 1.5,
+        "unit": "大さじ",
+        "name": "塩こうじ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "大根おろし 適量",
+        "scalable": false
+      },
+      {
+        "amount": 0.5,
+        "unit": "本",
+        "name": "スダチ",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "さばの両面に塩こうじをすり込み、ポリ袋に入れて冷蔵庫で30分〜一晩置く。",
+      "塩こうじを軽く拭いておく(焦げやすいため)。",
+      "フライパンにごま油を熱し、さばを皮目から弱めの中火で焼く。",
+      "軽く色づいたら裏返し、弱めの中火で中まで火を通す。",
+      "器に盛り、大根おろしとすだちを添えて完成。"
+    ],
+    "tip": "塩こうじの発酵の力でさばの臭みが和らぎ、身もふっくら仕上がる。たれ不要で洗い物も少ない。"
+  },
+  {
+    "id": "r014",
+    "name": "豆乳はちみつプリン",
+    "genre": "おやつ",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r014.jpg",
+    "ingredients": [
+      {
+        "amount": 200,
+        "unit": "ml",
+        "name": "無調整豆乳",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 5,
+        "unit": "g",
+        "name": "ゼラチンパウダー",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "本",
+        "name": "バナナ(盛り付け用・お好みで)",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "小鉢に水大さじ2を入れ、ゼラチンパウダー5gを振り入れてふやかす(5分ほど)。",
+      "鍋に無調整豆乳200mlとはちみつ大さじ2を入れ、弱火で温める(沸騰させない)。",
+      "火を止め、ふやかしたゼラチンを入れてよく溶かす。",
+      "容器に注ぎ分け、粗熱を取ったら冷蔵庫で2時間以上冷やし固める。",
+      "固まったらバナナをスライスして上に盛り付ける。"
+    ],
+    "tip": "ゼラチンパウダーは温めた豆乳に溶かし込む。直接入れるとダマになるので、水でふやかしてから使う。"
+  },
+  {
+    "id": "r015",
+    "name": "レンジ蒸しなすの手作りポン酢がけ",
+    "genre": "副菜",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r015.jpg",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "本",
+        "name": "なす",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ゆずまたはレモンの絞り汁",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "かつお節 ひとつかみ",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "青ねぎ(小口切り) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "なすはヘタを取り、ラップに包んで電子レンジ(600W)で4分ほど加熱する。",
+      "粗熱が取れたら手で裂き、器に盛り付ける。",
+      "小皿で酢、醤油、ゆずまたはレモンの絞り汁を混ぜ、手作りポン酢を作る。",
+      "なすにたれをかけ、かつお節と青ねぎを散らして完成。"
+    ],
+    "tip": "なすをレンジで蒸すことで油を使わず、さっぱりとした副菜になる。"
+  },
+  {
+    "id": "r016",
+    "name": "切り干し大根の煮物",
+    "genre": "作り置き",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r016.jpg",
+    "ingredients": [
+      {
+        "amount": 30,
+        "unit": "g",
+        "name": "切り干し大根(乾燥)",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "本",
+        "name": "人参",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "枚",
+        "name": "油揚げ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 150,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 1.5,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "切り干し大根を表示通りの時間水で戻し、よく洗って水気を絞る。",
+      "人参は短めの短冊切り、油揚げは湯通しして短めに切る。",
+      "鍋にごま油を熱し、切り干し大根と人参を中火でさっと炒める。",
+      "水と油揚げを入れ、醤油とはちみつを加えて中火で10分ほど煮る。",
+      "水分がほぼなくなるまで煮詰めて完成。",
+      "完全に冷めてから密閉容器に入れ、冷蔵庫で保存。"
+    ],
+    "tip": "市販の切り干し大根の煮物パックを使わず、醤油とはちみつだけで味を決める。冷蔵で4〜5日ほど日持ち。"
+  },
+  {
+    "id": "r017",
+    "name": "豚汁(だし要らず・具の旨みだけで作る)",
+    "genre": "汁物",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r017.jpg",
+    "ingredients": [
+      {
+        "amount": 80,
+        "unit": "g",
+        "name": "豚バラ肉(薄切り)",
+        "scalable": true
+      },
+      {
+        "amount": 0.166,
+        "unit": "本",
+        "name": "大根",
+        "scalable": true
+      },
+      {
+        "amount": 0.2,
+        "unit": "本",
+        "name": "人参",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "本",
+        "name": "ごぼう",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "枚",
+        "name": "こんにゃく",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "本",
+        "name": "長ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 400,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "味噌 大さじ1.5〜2",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "豚肉は3cm幅に切る。大根・人参はいちょう切り、ごぼうは斜め薄切りにして水にさらす。こんにゃくは手でちぎって下茹でしておく。長ねぎは小口切り。",
+      "鍋にごま油を熱し、豚肉を中火で炒める。",
+      "大根・人参・ごぼう・こんにゃくを加え、油が回るまで炒める。",
+      "水を入れ、沸騰したらアクを取り、弱めの中火で10分ほど煮る。",
+      "火を弱めて味噌を溶かし入れ、沸騰させないように注意する。",
+      "器に盛り、長ねぎを散らして完成。"
+    ],
+    "tip": "だし顆粒を使わず、豚肉の旨みと野菜の甘みだけで味を決める。具だくさんなので、これ一品でも主菜がわりになるボリューム。"
+  },
+  {
+    "id": "r018",
+    "name": "肉じゃが(精製糖不使用)",
+    "genre": "主菜(肉)",
+    "time": 25,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r018.jpg",
+    "ingredients": [
+      {
+        "amount": 150,
+        "unit": "g",
+        "name": "豚こま切れ肉",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "個",
+        "name": "じゃがいも",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "個",
+        "name": "玉ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "本",
+        "name": "人参",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "袋",
+        "name": "しらたき",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 200,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1.5,
+        "unit": "大さじ",
+        "name": "みりん",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "じゃがいもは一口大に切って水にさらす。玉ねぎはくし切り、人参は乱切りにする。しらたきは食べやすく切って下茹でする。",
+      "鍋にごま油を熱し、豚肉を中火で炒める。",
+      "色が変わったら玉ねぎ、人参、じゃがいも、しらたきを加えてさっと炒める。",
+      "水を加え、沸騰したらアクを取り、醤油、みりん、はちみつを入れて落とし蓋をし、弱めの中火で15分ほど煮る。",
+      "じゃがいもに火が通ったら火を止め、そのまま少し置いて味を含ませる。"
+    ],
+    "tip": "精製糖を使わず、はちみつとみりんの甘みだけで作る定番の家庭料理。冷めても味が染みて美味しい。"
+  },
+  {
+    "id": "r019",
+    "name": "豆腐と黒ごまの蒸しパン",
+    "genre": "おやつ",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r019.jpg",
+    "ingredients": [
+      {
+        "amount": 100,
+        "unit": "g",
+        "name": "絹豆腐",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "個",
+        "name": "卵",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 100,
+        "unit": "g",
+        "name": "薄力粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ベーキングパウダー",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "黒ごま",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "ボウルで絹豆腐をなめらかになるまで潰し、卵とはちみつを加えてよく混ぜる。",
+      "薄力粉とベーキングパウダーをふるい入れ、黒ごまも加えてさっくり混ぜる。",
+      "生地をカップに均等に流し入れる。",
+      "蒸し器(または深めのフライパンに水を張って)で中火で15分ほど蒸す。",
+      "竹串を刺して生地がついてこなければ完成。"
+    ],
+    "tip": "豆腐を使うことでしっとりとした食感になり、精製糖不使用でも満足感のある甘さに仕上がる。"
+  },
+  {
+    "id": "r020",
+    "name": "豆腐と塩昆布の簡単サラダ",
+    "genre": "副菜",
+    "time": 5,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r020.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "丁",
+        "name": "絹豆腐(300g)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "塩昆布",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "白ごま",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "青ねぎ(小口切り) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "豆腐はキッチンペーパーで軽く水気を切り、食べやすい大きさに切る。",
+      "器に盛り、塩昆布を散らす。",
+      "ごま油をかけ、白ごまと青ねぎを散らして完成。"
+    ],
+    "tip": "市販のドレッシングを使わず、塩昆布の塩気とごま油だけで味を決める。切って和えるだけの5分メニュー。"
+  },
+  {
+    "id": "r021",
+    "name": "鶏むね肉の味噌マヨ焼き",
+    "genre": "主菜(肉)",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r021.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "枚",
+        "name": "鶏むね肉(250g目安)",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "味噌",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "マヨネーズ(無糖・添加控えめのもの)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "みりん",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "白ごま",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油(焼き用)",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "鶏むね肉はそぎ切りにし、塩をもみ込んで片栗粉を薄くまぶす。",
+      "小皿で味噌、マヨネーズ、みりんを混ぜ、たれを作る。",
+      "フライパンにごま油を熱し、鶏肉を中火で両面焼く。",
+      "火が通ったら、たれを加えて弱火で絡める。",
+      "器に盛り、白ごまを散らして完成。"
+    ],
+    "tip": "マヨネーズと味噌を合わせることで、精製糖を使わなくてもコクのある味に仕上がる。"
+  },
+  {
+    "id": "r022",
+    "name": "冷やしトマトのすまし汁",
+    "genre": "汁物",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r022.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "個",
+        "name": "トマト",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "昆布 5cm角",
+        "scalable": false
+      },
+      {
+        "amount": 400,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "小さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "大葉(せん切り) 2枚分",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "鍋に水と昆布を入れ、30分ほどつけておく。",
+      "弱火にかけ、沸騰直前で昆布を取り出す。",
+      "出汁に醤油と塩を加えて味を調え、粗熱を取る。",
+      "トマトは湯むきして一口大に切る。",
+      "器に出汁とトマトを盛り、冷蔵庫で冷やす。食べる直前に大葉を散らして完成。"
+    ],
+    "tip": "昆布出汁だけのすっきりとした味に、トマトの酸味と甘みを合わせる。冷蔵で冷やして食べる、暑い時期向けの一品。"
+  },
+  {
+    "id": "r023",
+    "name": "大豆とツナのマリネ",
+    "genre": "作り置き",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r023.jpg",
+    "ingredients": [
+      {
+        "amount": 100,
+        "unit": "g",
+        "name": "蒸し大豆",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "缶",
+        "name": "ツナ缶(水煮・食塩無添加・70g)",
+        "scalable": true
+      },
+      {
+        "amount": 0.125,
+        "unit": "個",
+        "name": "玉ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "オリーブオイル",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "こしょう 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "玉ねぎはみじん切りにし、水にさらして辛みを抜き、水気を絞る。",
+      "ツナ缶は軽く油(または水)を切る。",
+      "ボウルで蒸し大豆、ツナ、玉ねぎを合わせる。",
+      "酢、オリーブオイル、塩、こしょうを加えて混ぜる。",
+      "冷蔵庫で30分ほど味を馴染ませてから食べる。"
+    ],
+    "tip": "火を使わず、和えるだけで作れる作り置き。冷蔵で2〜3日ほど日持ちする。"
+  },
+  {
+    "id": "r024",
+    "name": "揚げないえびチリ",
+    "genre": "主菜(魚)",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r024.jpg",
+    "ingredients": [
+      {
+        "amount": 150,
+        "unit": "g",
+        "name": "えび(殻を剥いたもの)",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "本",
+        "name": "長ねぎ(みじん切り)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "しょうが(みじん切り)",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "トマトケチャップ(無糖に近いもの)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "水",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "えびは塩をもみ込み、片栗粉を薄くまぶす。",
+      "フライパンにごま油を熱し、えびを中火で両面焼いて取り出す。",
+      "同じフライパンで長ねぎとしょうがを弱火で香りが立つまで炒める。",
+      "トマトケチャップ、醤油、はちみつ、水を加えて中火で軽く煮詰める。",
+      "えびを戻し、たれを絡めて完成。"
+    ],
+    "tip": "市販のチリソースの素を使わず、ケチャップと調味料だけで作る。ケチャップは糖分の少ないものを選ぶと精製糖控えめの軸に近づく。"
+  },
+  {
+    "id": "r025",
+    "name": "わかめと新玉ねぎの酢の物",
+    "genre": "副菜",
+    "time": 5,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r025.jpg",
+    "ingredients": [
+      {
+        "amount": 5,
+        "unit": "g",
+        "name": "乾燥わかめ",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "個",
+        "name": "新玉ねぎ(または玉ねぎ)",
+        "scalable": true
+      },
+      {
+        "amount": 1.5,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "白ごま",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "乾燥わかめを水で戻し、水気を絞る。",
+      "新玉ねぎは薄切りにし、水にさらして辛みを抜き、水気を絞る。",
+      "ボウルで酢、はちみつ、醤油を混ぜ、合わせ酢を作る。",
+      "わかめと新玉ねぎを入れて和える。",
+      "器に盛り、白ごまを散らして完成。"
+    ],
+    "tip": "市販の三杯酢を使わず、酢とはちみつと醤油だけで作る。火を使わず5分で完成する副菜。"
+  },
+  {
+    "id": "r026",
+    "name": "豆腐とわかめの卵とじ汁",
+    "genre": "汁物",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r026.jpg",
+    "ingredients": [
+      {
+        "amount": 100,
+        "unit": "g",
+        "name": "絹豆腐",
+        "scalable": true
+      },
+      {
+        "amount": 3,
+        "unit": "g",
+        "name": "乾燥わかめ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "個",
+        "name": "卵",
+        "scalable": true
+      },
+      {
+        "amount": 400,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "昆布 5cm角",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "削り節 ひとつかみ",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "味噌 大さじ1.5",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "鍋に水と昆布を入れ、10分ほどつけておく。",
+      "中火にかけ、泡が出る直前で昆布を取り出す。",
+      "泡が出たら削り節を入れて一旦火を止め、30秒ほど置き、ザルで漉す。",
+      "出汁を鍋に戻し、さいの目に切った豆腐とわかめを入れて中火で2分ほど煮る。",
+      "火を弱めて味噌を溶かし入れる。",
+      "溶き卵を細く流し入れ、卵がふわっと固まったら完成。"
+    ],
+    "tip": "卵でとじることでとろみが出て、少ない具でも満足感のある一杯になる。"
+  },
+  {
+    "id": "r027",
+    "name": "厚揚げと大根おろしのさっぱり和え",
+    "genre": "作り置き",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r027.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "枚",
+        "name": "厚揚げ",
+        "scalable": true
+      },
+      {
+        "amount": 100,
+        "unit": "g",
+        "name": "大根おろし",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "ポン酢(手作り・酢と醤油と柑橘)",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "青ねぎ(小口切り) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "厚揚げは魚焼きグリルまたはトースターで表面が香ばしくなるまで焼く。",
+      "食べやすい大きさに切って器に盛る。",
+      "大根おろしをのせ、手作りポン酢をかける。",
+      "青ねぎを散らして完成。"
+    ],
+    "tip": "市販の焼き肉のたれやポン酢を使わず、酢・醤油・柑橘の絞り汁で作る。冷蔵で2日ほど日持ちする(食べる直前に大根おろしとポン酢をかける形がおすすめ)。"
+  },
+  {
+    "id": "r028",
+    "name": "きのこの塩昆布蒸し",
+    "genre": "副菜",
+    "time": 5,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r028.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "パック",
+        "name": "しめじ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "袋",
+        "name": "えのき",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "塩昆布",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "青ねぎ(小口切り) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "しめじとえのきは石づきを取り、ほぐす。",
+      "耐熱皿にきのこを入れ、塩昆布とごま油を混ぜる。",
+      "ラップをかけて電子レンジ(600W)で3分ほど加熱する。",
+      "よく混ぜて器に盛り、青ねぎを散らして完成。"
+    ],
+    "tip": "市販のめんつゆやきのこの素を使わず、塩昆布の旨みとごま油だけで味を決める。レンジ任せの5分メニュー。"
+  },
+  {
+    "id": "r029",
+    "name": "中華風たまごスープ",
+    "genre": "汁物",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r029.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "個",
+        "name": "卵",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "パック",
+        "name": "しめじ",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "本",
+        "name": "長ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 400,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "小さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "片栗粉(水大さじ1で溶く)",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "しめじは石づきを取りほぐす。長ねぎは斜め薄切りにする。",
+      "鍋にごま油を熱し、しめじと長ねぎを中火でさっと炒める。",
+      "水を加え、沸騰したら醤油と塩で味を調える。",
+      "水溶き片栗粉を回し入れ、とろみをつける。",
+      "溶き卵を細く流し入れ、卵がふわっと固まったら完成。"
+    ],
+    "tip": "中華だしの素を使わず、ごま油の香りと醤油だけで味を決める。とろみをつけることで冷めにくく、少ない量でも満足感が出る。"
+  },
+  {
+    "id": "r030",
+    "name": "豚肉と小松菜のオイスターソース炒め",
+    "genre": "主菜(肉)",
+    "time": 10,
+    "tags": [
+      "揚げない"
+    ],
+    "baseServings": 2,
+    "image": "images/r030.jpg",
+    "ingredients": [
+      {
+        "amount": 150,
+        "unit": "g",
+        "name": "豚こま切れ肉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "束",
+        "name": "小松菜",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "片",
+        "name": "にんにく(みじん切り)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "オイスターソース",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "水",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "小松菜は4cm幅に切り、茎と葉を分けておく。",
+      "フライパンにごま油とにんにくを入れ、弱火で香りが立つまで炒める。",
+      "豚肉を加え、中火で色が変わるまで炒める。",
+      "小松菜の茎を加えて炒め、しんなりしたら葉を加える。",
+      "オイスターソース、醤油、水を混ぜて回し入れ、さっと絡めて完成。"
+    ],
+    "tip": "市販の中華あわせ調味料を使わず、オイスターソースと醤油だけで味を決める。フライパン1つ・10分で作れる時短メイン。"
+  },
+  {
+    "id": "r031",
+    "name": "卵とほうれん草のミニオムレツ",
+    "genre": "副菜",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r031.jpg",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "個",
+        "name": "卵",
+        "scalable": true
+      },
+      {
+        "amount": 30,
+        "unit": "g",
+        "name": "ほうれん草(茹でたもの)",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "塩 少々",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "こしょう 少々",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "バター",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "ほうれん草は食べやすい長さに刻む。",
+      "ボウルで卵を溶き、ほうれん草、塩、こしょうを混ぜる。",
+      "フライパンにバターを熱し、卵液を薄く流し入れる。",
+      "半熟のうちに端から巻き、形を整えながら焼く。",
+      "粗熱を取り、食べやすい大きさに切る。"
+    ],
+    "tip": "市販の卵焼きの素を使わず、塩とこしょうだけのシンプルな味付け。お弁当や朝食に添えやすい一品。"
+  },
+  {
+    "id": "r032",
+    "name": "野菜と米粉はちみつの水キムチ",
+    "genre": "作り置き",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r032.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "本",
+        "name": "きゅうり",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "個",
+        "name": "パプリカ(赤)",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "個",
+        "name": "パプリカ(黄)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "本",
+        "name": "なす",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "片",
+        "name": "にんにく(薄切り)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "本",
+        "name": "鷹の爪(種を取る)",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "米粉",
+        "scalable": true
+      },
+      {
+        "amount": 500,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "塩",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "小鍋に米粉と水100ml(分量外・水500mlから取り分け)を入れ、よく溶かしながら弱火で加熱し、とろみがついたら火を止めて冷ます(米粉のり)。",
+      "きゅうり、パプリカ、なすは一口大に切る。なすは変色を防ぐため水にさらしておく。",
+      "保存容器に野菜、にんにく、鷹の爪を入れる。",
+      "米粉のりに残りの水、塩、はちみつ、酢を混ぜ溶かし、容器に注ぐ。",
+      "常温に置いて発酵させる。目安は夏は半日〜1日、冬は2〜3日。小さな泡が出て酸味が感じられたら発酵完了のサイン。その後は冷蔵庫で保存する。"
+    ],
+    "tip": "米粉のりと酢の両方で酸味のベースを作るので、発酵が浅くても美味しく食べられる。精製糖の代わりにはちみつで甘みを出す。仕込みの作業時間は15分ほど。冷蔵で4〜5日ほど日持ち。"
+  },
+  {
+    "id": "r033",
+    "name": "たらと白菜の重ね蒸し",
+    "genre": "主菜(魚)",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r033.jpg",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "切れ",
+        "name": "たら(切り身)",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": 2,
+        "unit": "枚",
+        "name": "白菜",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "しょうが(せん切り) 少々",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "酒",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "ポン酢(手作り・酢と醤油と柑橘)",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "たらは塩を振り、10分ほど置いて出た水気を拭く。",
+      "白菜は食べやすい大きさに切る。",
+      "耐熱皿に白菜、たら、白菜の順に重ね、しょうがをのせて酒を回しかける。",
+      "ラップをかけて電子レンジ(600W)で7分ほど加熱する。",
+      "ポン酢をかけて完成。"
+    ],
+    "tip": "レンジで完結する、油をほとんど使わない蒸し料理。たらの淡白な味わいと白菜の甘みが合う、やさしい一品。"
+  },
+  {
+    "id": "r034",
+    "name": "あじの梅煮",
+    "genre": "主菜(魚)",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r034.jpg",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "尾",
+        "name": "あじ(切り身または小さめ一尾)",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "個",
+        "name": "梅干し",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "しょうが(薄切り) 数枚",
+        "scalable": false
+      },
+      {
+        "amount": 150,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 1.5,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "みりん",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "はちみつ",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "あじは鱗を取り、表面に飾り切り目を入れる。",
+      "鍋に水、醤油、みりん、はちみつを入れて中火にかける。",
+      "沸騰したらあじと梅干し、しょうがを入れ、落とし蓋をして弱めの中火で10分ほど煮る。",
+      "煮汁が少なくなりとろみがついたら完成。"
+    ],
+    "tip": "梅干しの酸味とはちみつの甘みで、砂糖を使わない甘辛煮にする。"
+  },
+  {
+    "id": "r035",
+    "name": "りんごのはちみつコンポート",
+    "genre": "おやつ",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r035.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "個",
+        "name": "りんご",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 100,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "シナモンパウダー(あれば) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "りんごは皮をむき、8等分のくし切りにする。",
+      "鍋にりんご、はちみつ、水を入れて中火にかける。",
+      "沸騰したら弱火にし、蓋をして10分ほど煮る。",
+      "りんごが透き通ってきたら火を止め、シナモンパウダーを振って完成。"
+    ],
+    "tip": "精製糖を使わず、はちみつだけで作るコンポート。温かいままでも、冷やしてヨーグルトに添えても美味しい。"
+  },
+  {
+    "id": "r036",
+    "name": "れんこんのきんぴら",
+    "genre": "副菜",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r036.jpg",
+    "ingredients": [
+      {
+        "amount": 150,
+        "unit": "g",
+        "name": "れんこん",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "みりん",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "一味唐辛子(お好みで) 少々",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "白ごま",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "れんこんは薄い半月切りにし、水にさらしてアクを抜く。",
+      "フライパンにごま油を熱し、水気を切ったれんこんを中火で炒める。",
+      "全体に油が回ったら醤油とみりんを入れ、汁気がなくなるまで炒める。",
+      "火を止め、白ごまと好みで一味唐辛子を加えて混ぜる。"
+    ],
+    "tip": "市販のきんぴらの素を使わず、醤油とみりんだけで味を決める。れんこんのシャキシャキとした食感が楽しめる副菜。"
+  },
+  {
+    "id": "r037",
+    "name": "かぼちゃの豆乳ポタージュ",
+    "genre": "汁物",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r037.jpg",
+    "ingredients": [
+      {
+        "amount": 200,
+        "unit": "g",
+        "name": "かぼちゃ",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "個",
+        "name": "玉ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "オリーブオイル",
+        "scalable": true
+      },
+      {
+        "amount": 200,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 200,
+        "unit": "ml",
+        "name": "無調整豆乳",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "こしょう 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "かぼちゃは皮を取り、薄切りにする。玉ねぎは薄切りにする。",
+      "鍋にオリーブオイルを熱し、玉ねぎを弱火で透き通るまで炒める。",
+      "かぼちゃと水を加え、蓋をして中火で10分ほど、かぼちゃが柔らかくなるまで煮る。",
+      "粗熱を取り、ブレンダーまたはミキサーでなめらかにする。",
+      "鍋に戻し、豆乳を加えて弱火で温める。塩とこしょうで味を調えて完成。"
+    ],
+    "tip": "コンソメ顆粒や生クリームを使わず、かぼちゃの甘みと豆乳のコクだけで仕上げる。冷やしても美味しい。"
+  },
+  {
+    "id": "r038",
+    "name": "小松菜と人参の白和え",
+    "genre": "作り置き",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r038.jpg",
+    "ingredients": [
+      {
+        "amount": 150,
+        "unit": "g",
+        "name": "木綿豆腐",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "束",
+        "name": "小松菜",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "本",
+        "name": "人参",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "すりごま",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "塩 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "木綿豆腐はキッチンペーパーに包み、重しをのせて15分ほど水切りする。",
+      "小松菜は茹でて食べやすい長さに切る。人参は細切りにして茹でる。",
+      "すり鉢またはボウルで水切りした豆腐をなめらかにつぶし、すりごま、醤油、はちみつ、塩を混ぜる。",
+      "小松菜と人参を加えて和える。"
+    ],
+    "tip": "市販の白和えの素を使わず、豆腐とすりごまだけで作る。冷蔵で2日ほど日持ちする。"
+  },
+  {
+    "id": "r039",
+    "name": "豚のしょうが焼き",
+    "genre": "主菜(肉)",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r039.jpg",
+    "ingredients": [
+      {
+        "amount": 200,
+        "unit": "g",
+        "name": "豚ロース肉(生姜焼き用)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "米油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "しょうがすりおろし",
+        "scalable": true
+      },
+      {
+        "amount": 1.5,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "みりん",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "キャベツ(せん切り) 適量",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "豚ロース肉に片栗粉を薄くまぶす。",
+      "フライパンに米油を熱し、豚肉を中火で両面焼く。",
+      "しょうがすりおろし、醤油、みりん、はちみつを混ぜてたれを作り、回し入れる。",
+      "弱火で照りがでるまで絡め、器に盛ってせん切りキャベツを添える。"
+    ],
+    "tip": "市販のしょうが焼きのたれを使わず、しょうがと醤油だけで作る。片栗粉をまぶすことでたれが絡みやすくなり、肉も柔らかく仕上がる。"
+  },
+  {
+    "id": "r040",
+    "name": "はちみつグラノーラバー",
+    "genre": "おやつ",
+    "time": 20,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r040.jpg",
+    "ingredients": [
+      {
+        "amount": 80,
+        "unit": "g",
+        "name": "オートミール",
+        "scalable": true
+      },
+      {
+        "amount": 30,
+        "unit": "g",
+        "name": "ミックスナッツ(無塩)",
+        "scalable": true
+      },
+      {
+        "amount": 3,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "無香料オリーブオイル",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "塩 一つまみ",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "ミックスナッツは大まかに切る。",
+      "小鍋にはちみつとオリーブオイルを入れ、弱火でフツフツするまで一緒に加熱する。",
+      "火を止め、オートミールとナッツ、塩を入れてよく混ぜる。",
+      "クッキングシートを敷いたバットに平らに広げ、しっかり押し固める。",
+      "冷蔵庫で30分以上冷やし固め、食べやすい大きさに切る。"
+    ],
+    "tip": "はちみつとオイルを煮詰めてから混ぜることで、オーブンなしでも固まりやすくなる。"
+  },
+  {
+    "id": "r041",
+    "name": "かじきのガーリックソテー",
+    "genre": "主菜(魚)",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r041.jpg",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "切れ",
+        "name": "かじき(切り身)",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "こしょう 少々",
+        "scalable": false
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "片",
+        "name": "にんにく(薄切り)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "オリーブオイル",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "パセリ(あれば) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "かじきに塩とこしょうを振り、片栗粉を薄くまぶす。",
+      "フライパンにオリーブオイルとにんにくを入れ、弱火で香りを引き出す。",
+      "にんにくを取り出し、かじきを中火で両面焼く。",
+      "醤油を回し入れ、にんにくを戻してさっと絡める。",
+      "器に盛り、あればパセリを散らして完成。"
+    ],
+    "tip": "片栗粉をまぶして焼くことでかじきがパサつきにくくなる。"
+  },
+  {
+    "id": "r042",
+    "name": "厚揚げの甘辛照り煮",
+    "genre": "作り置き",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r042.jpg",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "枚",
+        "name": "厚揚げ",
+        "scalable": true
+      },
+      {
+        "amount": 3,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "みりん",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "しょうがすりおろし",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "厚揚げを魚焼きグリルまたはトースターで両面香ばしくなるまで焼く。",
+      "小鍋で醤油、みりん、はちみつ、しょうがすりおろしを混ぜ、一度沸騰させてタレを作る。",
+      "焼きたての厚揚げを食べやすい大きさに切り、タレに漬ける。",
+      "密閉容器に入れ、冷蔵庫で30分以上冷やして味を含ませる。"
+    ],
+    "tip": "焼いてから漬けることでたれがしっかり染み込む。冷蔵で3日ほど日持ち。"
+  },
+  {
+    "id": "r043",
+    "name": "豆苗のガーリック炒め",
+    "genre": "副菜",
+    "time": 5,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r043.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "パック",
+        "name": "豆苗",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "片",
+        "name": "にんにく(みじん切り)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "こしょう 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "豆苗は根を切り落とし、半分の長さに切る。",
+      "フライパンにごま油とにんにくを入れ、弱火で香りを引き出す。",
+      "豆苗を入れ、強めの中火で短時間でさっと炒める。",
+      "塩とこしょうで味を整えて完成。"
+    ],
+    "tip": "豆苗は炒めすぎないことでシャキッとした食感を残せる。"
+  },
+  {
+    "id": "r044",
+    "name": "あさりの潮汁",
+    "genre": "汁物",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r044.jpg",
+    "ingredients": [
+      {
+        "amount": 200,
+        "unit": "g",
+        "name": "あさり(砂抜き済み)",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "昆布 5cm角",
+        "scalable": false
+      },
+      {
+        "amount": 400,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "酒",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "三つ葉(あれば) 少々",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "鍋に水と昆布を入れ、10分ほどつけておく。",
+      "中火にかけ、泡が出る直前で昆布を取り出す。",
+      "あさりと酒を入れ、貝が開くまで中火で煮る。アクを取る。",
+      "塩で味を整え、器に盛って三つ葉を添える。"
+    ],
+    "tip": "あさりの旨みと昆布の出汁だけで、だし顆粒を使わずに澄んだ味わいに仕上げる。"
+  },
+  {
+    "id": "r045",
+    "name": "牛肉と玉ねぎのすき煮風炒め",
+    "genre": "主菜(肉)",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r045.jpg",
+    "ingredients": [
+      {
+        "amount": 200,
+        "unit": "g",
+        "name": "牛肉(焼肉用・薄切り)",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "個",
+        "name": "玉ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "米油",
+        "scalable": true
+      },
+      {
+        "amount": 1.5,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "みりん",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "白ごま",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "玉ねぎは薄切りにする。",
+      "フライパンに米油を熱し、玉ねぎを中火でしんなりするまで炒める。",
+      "牛肉を入れ、色が変わるまで中火で炒める。",
+      "醤油、みりん、はちみつを入れ、全体に絡めながら炒める。",
+      "器に盛り、白ごまを散らして完成。"
+    ],
+    "tip": "牛肉と玉ねぎだけのシンプルな組み合わせで、たれの味をしっかり感じられる。"
+  },
+  {
+    "id": "r046",
+    "name": "ヨーグルトはちみつアイス",
+    "genre": "おやつ",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r046.jpg",
+    "ingredients": [
+      {
+        "amount": 200,
+        "unit": "g",
+        "name": "プレーンヨーグルト",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "大さじ",
+        "name": "はちみつ",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "本",
+        "name": "バナナ",
+        "scalable": true
+      },
+      {
+        "amount": null,
+        "unit": "",
+        "name": "ブルーベリー(あれば) 適量",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "バナナをフォークでつぶす。",
+      "ボウルでプレーンヨーグルト、はちみつ、バナナを混ぜる。",
+      "あればブルーベリーを加えて軽く混ぜる。",
+      "容器に入れ、冷凍庫で2時間以上凍らせる。",
+      "食べる前に10分ほど常温に戻し、スプーンですくうと食べやすい。"
+    ],
+    "tip": "バナナのつぶつぶがアクセントになり、はちみつだけでも十分な甘さになる。"
+  },
+  {
+    "id": "r047",
+    "name": "いわしの梅しそ焼き",
+    "genre": "主菜(魚)",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r047.jpg",
+    "ingredients": [
+      {
+        "amount": 4,
+        "unit": "尾",
+        "name": "いわし(開き)",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "個",
+        "name": "梅干し",
+        "scalable": true
+      },
+      {
+        "amount": 4,
+        "unit": "枚",
+        "name": "大葉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "片栗粉",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "梅干しは種を取り、包丁でたたく。",
+      "開いたいわしの片面に大葉を一枚のせ、梅干しを薄くのばす。",
+      "もう一尾のいわしで挟むように重ね、周りに片栗粉を薄くまぶす。",
+      "フライパンにごま油を熱し、両面を中火でこんがりと焼く。"
+    ],
+    "tip": "梅干しの酸味と大葉の香りで、たれを作らなくても十分な味わいになる。"
+  },
+  {
+    "id": "r048",
+    "name": "トマトとわかめの酢の物",
+    "genre": "副菜",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r048.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "個",
+        "name": "トマト",
+        "scalable": true
+      },
+      {
+        "amount": 3,
+        "unit": "g",
+        "name": "乾燥わかめ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 0.5,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      }
+    ],
+    "steps": [
+      "乾燥わかめを水で戻し、水気を絞る。",
+      "トマトは一口大に切る。",
+      "ボウルで酢、醤油、ごま油を混ぜ、トマトとわかめを入れてあえる。"
+    ],
+    "tip": "トマトの酸味とわかめの食感で、火を使わずさっぱり食べられる。"
+  },
+  {
+    "id": "r049",
+    "name": "もやしとハムのナムル",
+    "genre": "作り置き",
+    "time": 10,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r049.jpg",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "袋",
+        "name": "もやし(200g目安)",
+        "scalable": true
+      },
+      {
+        "amount": 2,
+        "unit": "枚",
+        "name": "ハム(無添加タイプあれば)",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "酢",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "大さじ",
+        "name": "醤油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "ごま油",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "白ごま",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "もやしは耐熱皿に入れてラップをかけ、電子レンジ(600W)で2分加熱する。",
+      "粗熱を取り、水気をしっかり絞る。",
+      "ハムは細切りにする。",
+      "ボウルで酢、醤油、ごま油を混ぜ、もやしとハムを入れてあえる。",
+      "器に盛り、白ごまを散らして完成。"
+    ],
+    "tip": "冷蔵で2日ほど日持ちする、時短で作れる常備菜。"
+  },
+  {
+    "id": "r050",
+    "name": "とうもろこしの豆乳スープ",
+    "genre": "汁物",
+    "time": 15,
+    "tags": [
+      "揚げない",
+      "精製糖控えめ",
+      "加工食品控えめ"
+    ],
+    "baseServings": 2,
+    "image": "images/r050.jpg",
+    "ingredients": [
+      {
+        "amount": 150,
+        "unit": "g",
+        "name": "とうもろこし(粒、冷凍でも可)",
+        "scalable": true
+      },
+      {
+        "amount": 0.25,
+        "unit": "個",
+        "name": "玉ねぎ",
+        "scalable": true
+      },
+      {
+        "amount": 1,
+        "unit": "小さじ",
+        "name": "オリーブオイル",
+        "scalable": true
+      },
+      {
+        "amount": 150,
+        "unit": "ml",
+        "name": "水",
+        "scalable": true
+      },
+      {
+        "amount": 200,
+        "unit": "ml",
+        "name": "無調整豆乳",
+        "scalable": true
+      },
+      {
+        "amount": 0.33,
+        "unit": "小さじ",
+        "name": "塩",
+        "scalable": false
+      }
+    ],
+    "steps": [
+      "玉ねぎは薄切りにする。",
+      "鍋にオリーブオイルを熱し、玉ねぎを弱火で透き通るまで炒める。",
+      "とうもろこしと水を入れ、蓋をして中火で5分ほど煮る。",
+      "粗熱を取り、ブレンダーまたはミキサーでなめらかにする。",
+      "鍋に戻し、豆乳を加えて弱火で温める。塩で味を整えて完成。"
+    ],
+    "tip": "とうもろこしの自然な甘みだけで、コンソメ顆粒に頼らず美味しく仕上がる。50品目の締めくくり。"
+  }
+]
