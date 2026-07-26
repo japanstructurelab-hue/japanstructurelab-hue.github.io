@@ -259,6 +259,7 @@
   <!-- 画面2：メイン -->
   <section id="screen-quit" class="screen">
     <div class="counter-hero">
+      <div id="mascot-box" style="text-align:center; margin-bottom:6px;"></div>
       <div class="label">最後に吸ってから</div>
       <div class="time-display">
         <div class="time-unit"><div class="num" id="q-days">0</div><div class="unit">日</div></div>
@@ -293,10 +294,58 @@
     </div>
   </div>
 
+  <div id="celebrate-overlay" class="modal-overlay">
+    <div class="modal-box" style="text-align:center;">
+      <div id="celebrate-mascot" style="margin-bottom:4px;"></div>
+      <div style="font-size:13px; color:var(--text-soft); margin-top:10px;" id="celebrate-stage">若木まで育ちました</div>
+      <div style="font-size:18px; font-weight:800; color:var(--green-deep); margin-top:4px;" id="celebrate-title">達成です</div>
+      <div style="font-size:12px; color:var(--text-soft); margin-top:10px; line-height:1.6;">ここまでの節約額は<br><span style="color:var(--gold); font-weight:700;" id="celebrate-amount">¥0</span>です</div>
+      <button class="btn" style="margin-top:18px;" id="celebrate-close">閉じる</button>
+    </div>
+  </div>
+
 </div>
 
 <script>
 const KEY = 'quitSmokingData_v2';
+
+const STAGES = [
+  { id:'seed', minDays:0, name:'種' },
+  { id:'sprout', minDays:3, name:'芽' },
+  { id:'sapling', minDays:14, name:'若木' },
+  { id:'bloom', minDays:30, name:'開花' }
+];
+
+function mascotSvg(stageId){
+  const pot = '<rect x="50" y="150" width="40" height="30" rx="3" fill="#b8892b"/><rect x="46" y="146" width="48" height="10" rx="3" fill="#a5762a"/><ellipse cx="70" cy="150" rx="19" ry="5" fill="#3d2d1f"/>';
+  const svgs = {
+    seed: pot + '<circle cx="70" cy="144" r="5" fill="#8a6a3f"/>',
+    sprout: pot + '<path d="M70,148 L70,120" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,128 Q52,120 58,105 Q78,112 70,128 Z" fill="#5c7a45"/><path d="M70,122 Q88,116 84,100 Q64,105 70,122 Z" fill="#5c7a45"/>',
+    sapling: pot + '<path d="M70,150 L70,90" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,120 Q40,112 48,88 Q78,96 70,120 Z" fill="#5c7a45"/><path d="M70,110 Q100,100 94,76 Q64,86 70,110 Z" fill="#364e28"/><path d="M70,100 Q44,92 50,68 Q78,78 70,100 Z" fill="#5c7a45"/>',
+    bloom: pot + '<path d="M70,150 L70,80" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,120 Q38,112 46,86 Q78,94 70,120 Z" fill="#5c7a45"/><path d="M70,108 Q102,98 96,72 Q64,82 70,108 Z" fill="#364e28"/><path d="M70,96 Q42,88 48,62 Q78,72 70,96 Z" fill="#5c7a45"/><g transform="translate(70,70)"><circle cx="0" cy="-10" r="7" fill="#f2c14e"/><circle cx="9" cy="-3" r="7" fill="#f2c14e"/><circle cx="6" cy="8" r="7" fill="#f2c14e"/><circle cx="-6" cy="8" r="7" fill="#f2c14e"/><circle cx="-9" cy="-3" r="7" fill="#f2c14e"/><circle cx="0" cy="0" r="6" fill="#b8892b"/></g>'
+  };
+  return '<svg width="80" height="100" viewBox="0 0 140 200">' + svgs[stageId] + '</svg>';
+}
+
+function stageForDays(days){
+  let current = STAGES[0];
+  for(const s of STAGES){ if(days >= s.minDays) current = s; }
+  return current;
+}
+
+function showCelebration(stage, savingsYen){
+  document.getElementById('celebrate-mascot').innerHTML = mascotSvg(stage.id);
+  document.getElementById('celebrate-stage').textContent = stage.name + 'まで育ちました';
+  document.getElementById('celebrate-title').textContent = '達成です';
+  document.getElementById('celebrate-amount').textContent = '¥' + Math.floor(savingsYen).toLocaleString();
+  document.getElementById('celebrate-overlay').classList.add('active');
+}
+document.addEventListener('DOMContentLoaded', function(){
+  const btn = document.getElementById('celebrate-close');
+  if(btn) btn.addEventListener('click', function(){
+    document.getElementById('celebrate-overlay').classList.remove('active');
+  });
+});
 
 function showConfirm(message, onOk){
   const overlay = document.getElementById('confirm-overlay');
@@ -366,6 +415,7 @@ function smokedAgain(){
     const data = loadData();
     if(data){
       data.startedAt = Date.now();
+      data.lastCelebratedStage = null;
       saveData(data);
       render();
     }
@@ -393,6 +443,8 @@ function renderQuit(data){
   document.getElementById('q-startdate').textContent =
     (started.getMonth()+1) + '/' + started.getDate();
 
+  let lastStageId = data.lastCelebratedStage || null;
+
   function tick(){
     const elapsedMs = Date.now() - data.startedAt;
     const elapsedSec = Math.max(0, Math.floor(elapsedMs/1000));
@@ -411,6 +463,18 @@ function renderQuit(data){
     document.getElementById('q-savings').textContent = Math.floor(savings).toLocaleString();
     document.getElementById('q-count-avoided').textContent =
       '吸わずに済んだ本数：約' + Math.floor(avoidedCigs) + '本';
+
+    const stage = stageForDays(days);
+    document.getElementById('mascot-box').innerHTML = mascotSvg(stage.id);
+
+    if(stage.id !== lastStageId){
+      if(lastStageId !== null){
+        showCelebration(stage, savings);
+      }
+      lastStageId = stage.id;
+      data.lastCelebratedStage = stage.id;
+      saveData(data);
+    }
   }
   tick();
   if(tickTimer) clearInterval(tickTimer);
