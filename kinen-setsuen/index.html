@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>禁煙・節煙カウンター｜社内健康改善提案</title>
+<style>
+  :root{
+    --surface: #ffffff;
+    --surface-2: #eef0e4;
+    --bg: #faf8f2;
+    --text: #2b2f26;
+    --text-soft: #5b6156;
+    --green-deep: #364e28;
+    --green-soft: #5c7a45;
+    --amber-soft: #f3e2c8;
+    --gold: #b8892b;
+    --line: #ddd9c8;
+    --danger: #a4432f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:480px;
+    margin:0 auto;
+    min-height:100vh;
+    background:var(--surface);
+    box-shadow:0 0 40px rgba(0,0,0,0.04);
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--amber-soft);
+    color:var(--green-deep);
+    font-size:11px;
+    font-weight:600;
+    padding:5px 12px;
+    border-radius:999px;
+    letter-spacing:.02em;
+  }
+  header.top{
+    padding:28px 24px 20px;
+    border-bottom:1px solid var(--line);
+  }
+  h1{
+    font-size:26px;
+    margin:14px 0 6px;
+    letter-spacing:.01em;
+  }
+  .sub{
+    color:var(--text-soft);
+    font-size:13.5px;
+    line-height:1.6;
+    margin:0;
+  }
+
+  /* ---------- 画面切り替え ---------- */
+  .screen{ display:none; padding:28px 24px 48px; }
+  .screen.active{ display:block; }
+
+  /* ---------- ランディング（モード選択） ---------- */
+  .mode-grid{
+    display:grid;
+    gap:14px;
+    margin-top:24px;
+  }
+  .mode-card{
+    display:block;
+    width:100%;
+    text-align:left;
+    border:1px solid var(--line);
+    background:var(--surface);
+    border-radius:16px;
+    padding:20px;
+    cursor:pointer;
+    transition:border-color .15s ease, transform .15s ease;
+    font-family:inherit;
+  }
+  .mode-card:hover{ border-color:var(--green-deep); transform:translateY(-1px); }
+  .mode-card .icon{ font-size:26px; }
+  .mode-card .title{ font-size:17px; font-weight:700; margin:10px 0 4px; color:var(--green-deep); }
+  .mode-card .desc{ font-size:13px; color:var(--text-soft); line-height:1.6; }
+
+  /* ---------- 設定フォーム ---------- */
+  .field{ margin-bottom:18px; }
+  .field label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--text-soft);
+    margin-bottom:6px;
+  }
+  .field input{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:15px;
+    background:var(--bg);
+    color:var(--text);
+  }
+  .field input:focus{ outline:2px solid var(--green-soft); outline-offset:1px; }
+  .field .hint{ font-size:11.5px; color:var(--text-soft); margin-top:5px; }
+  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:var(--green-deep);
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:6px;
+  }
+  .btn:hover{ opacity:.9; }
+  .btn.secondary{
+    background:transparent;
+    color:var(--text-soft);
+    border:1px solid var(--line);
+    font-weight:600;
+  }
+  .link-btn{
+    background:none;
+    border:none;
+    color:var(--text-soft);
+    font-size:12.5px;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:0;
+  }
+
+  /* ---------- メイン（カウンター）画面 ---------- */
+  .counter-hero{
+    text-align:center;
+    padding:20px 0 8px;
+  }
+  .counter-hero .label{
+    font-size:12.5px;
+    color:var(--text-soft);
+    letter-spacing:.05em;
+  }
+  .clock{
+    font-variant-numeric: tabular-nums;
+    font-size:15px;
+    color:var(--text-soft);
+    margin-top:6px;
+  }
+  .time-display{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:18px 0 6px;
+    flex-wrap:wrap;
+  }
+  .time-unit{
+    background:var(--surface-2);
+    border-radius:14px;
+    padding:14px 10px;
+    min-width:64px;
+  }
+  .time-unit .num{
+    font-size:30px;
+    font-weight:800;
+    color:var(--green-deep);
+    font-variant-numeric: tabular-nums;
+    line-height:1;
+  }
+  .time-unit .unit{
+    font-size:11px;
+    color:var(--text-soft);
+    margin-top:4px;
+  }
+
+  .savings-card{
+    margin-top:26px;
+    background:linear-gradient(135deg, var(--green-deep), #24371a);
+    border-radius:20px;
+    padding:26px 22px;
+    color:#fff;
+    text-align:center;
+  }
+  .savings-card .label{
+    font-size:12.5px;
+    opacity:.85;
+    letter-spacing:.04em;
+  }
+  .savings-card .amount{
+    font-size:40px;
+    font-weight:800;
+    margin-top:8px;
+    font-variant-numeric: tabular-nums;
+    color:#f6e6b8;
+    letter-spacing:.01em;
+  }
+  .savings-card .sub{
+    font-size:12px;
+    opacity:.8;
+    margin-top:6px;
+    color:#fff;
+  }
+
+  .stat-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:20px;
+  }
+  .stat-box{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px 16px;
+    text-align:center;
+  }
+  .stat-box .n{ font-size:20px; font-weight:800; color:var(--green-deep); }
+  .stat-box .t{ font-size:11.5px; color:var(--text-soft); margin-top:3px; }
+
+  /* ---------- 節煙モード：本日入力 ---------- */
+  .today-card{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px;
+    margin-top:22px;
+  }
+  .today-card .title{ font-size:13.5px; font-weight:700; color:var(--text-soft); margin-bottom:12px; }
+  .stepper{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+  }
+  .stepper button{
+    width:44px; height:44px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--surface);
+    font-size:20px;
+    font-weight:700;
+    color:var(--green-deep);
+    cursor:pointer;
+  }
+  .stepper .val{
+    font-size:32px;
+    font-weight:800;
+    min-width:70px;
+    text-align:center;
+    font-variant-numeric: tabular-nums;
+  }
+  .baseline-note{
+    text-align:center;
+    font-size:12px;
+    color:var(--text-soft);
+    margin-top:10px;
+  }
+
+  footer.foot{
+    padding:20px 24px 32px;
+    text-align:center;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    * { transition:none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <span class="badge">● 社内健康改善提案 PILOT</span>
+    <h1>禁煙・節煙カウンター</h1>
+    <p class="sub">吸わなかった時間と、そのぶん浮いた金額を見える化します。値段はすべてあなたが入力した数字だけを使い、どこにも送信・保存されません（この端末のブラウザ内だけに残ります）。</p>
+  </header>
+
+  <!-- 画面1：モード選択 -->
+  <section id="screen-select" class="screen active">
+    <div class="mode-grid">
+      <button class="mode-card" onclick="goSetup('quit')">
+        <div class="icon">🚭</div>
+        <div class="title">禁煙モード</div>
+        <div class="desc">もう吸わないと決めた人向け。最後に吸ってからの経過時間と、節約できた金額をカウントアップ表示します。</div>
+      </button>
+      <button class="mode-card" onclick="goSetup('reduce')">
+        <div class="icon">📉</div>
+        <div class="title">節煙モード</div>
+        <div class="desc">本数を減らしたい人向け。今日吸った本数を記録して、以前より減らせた分の節約額を積み上げます。</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- 画面2：初期設定 -->
+  <section id="screen-setup" class="screen">
+    <div class="field">
+      <label>1箱の値段（円）</label>
+      <input type="number" id="set-price" inputmode="numeric" placeholder="例：600">
+    </div>
+    <div class="field">
+      <label>1箱の本数</label>
+      <input type="number" id="set-perbox" inputmode="numeric" placeholder="例：20">
+    </div>
+    <div class="field" id="set-daily-wrap">
+      <label id="set-daily-label">1日に吸っていた本数</label>
+      <input type="number" id="set-daily" inputmode="numeric" placeholder="例：10">
+      <div class="hint" id="set-daily-hint"></div>
+    </div>
+    <button class="btn" onclick="saveSetup()">この内容で始める</button>
+    <button class="btn secondary" onclick="showScreen('screen-select')" style="margin-top:10px;">戻る</button>
+  </section>
+
+  <!-- 画面3：禁煙モード メイン -->
+  <section id="screen-quit" class="screen">
+    <div class="counter-hero">
+      <div class="label">最後に吸ってから</div>
+      <div class="time-display">
+        <div class="time-unit"><div class="num" id="q-days">0</div><div class="unit">日</div></div>
+        <div class="time-unit"><div class="num" id="q-hours">00</div><div class="unit">時間</div></div>
+        <div class="time-unit"><div class="num" id="q-mins">00</div><div class="unit">分</div></div>
+        <div class="time-unit"><div class="num" id="q-secs">00</div><div class="unit">秒</div></div>
+      </div>
+    </div>
+
+    <div class="savings-card">
+      <div class="label">節約できた金額</div>
+      <div class="amount">¥<span id="q-savings">0</span></div>
+      <div class="sub" id="q-count-avoided">吸わずに済んだ本数：0本</div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box"><div class="n" id="q-perday">¥0</div><div class="t">1日あたりの節約</div></div>
+      <div class="stat-box"><div class="n" id="q-startdate">-</div><div class="t">禁煙開始日</div></div>
+    </div>
+
+    <button class="btn secondary" style="margin-top:24px;" onclick="resetAll()">設定をリセットする</button>
+  </section>
+
+  <!-- 画面4：節煙モード メイン -->
+  <section id="screen-reduce" class="screen">
+    <div class="today-card">
+      <div class="title">今日吸った本数</div>
+      <div class="stepper">
+        <button onclick="changeToday(-1)">−</button>
+        <div class="val" id="r-today">0</div>
+        <button onclick="changeToday(1)">＋</button>
+      </div>
+      <div class="baseline-note">以前の目安：1日<span id="r-baseline">0</span>本</div>
+    </div>
+
+    <div class="savings-card">
+      <div class="label">これまでの節約累計</div>
+      <div class="amount">¥<span id="r-savings">0</span></div>
+      <div class="sub" id="r-count-avoided">減らせた本数の合計：0本</div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box"><div class="n" id="r-today-savings">¥0</div><div class="t">今日の節約額</div></div>
+      <div class="stat-box"><div class="n" id="r-days-logged">0日</div><div class="t">記録した日数</div></div>
+    </div>
+
+    <button class="btn secondary" style="margin-top:24px;" onclick="resetAll()">設定をリセットする</button>
+  </section>
+
+  <footer class="foot">
+    <span class="link-btn" onclick="showScreen('screen-select')">▶ モードを選び直す</span>
+  </footer>
+
+</div>
+
+<script>
+const KEY = 'quitSmokingData_v1';
+
+function loadData(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    return raw ? JSON.parse(raw) : null;
+  }catch(e){ return null; }
+}
+function saveData(data){
+  try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){}
+}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+let pendingMode = null;
+function goSetup(mode){
+  pendingMode = mode;
+  const dailyLabel = document.getElementById('set-daily-label');
+  const dailyHint = document.getElementById('set-daily-hint');
+  if(mode === 'quit'){
+    dailyLabel.textContent = '禁煙前、1日に吸っていた本数';
+    dailyHint.textContent = 'この本数をもとに、吸わずに済んだ本数と節約額を計算します。';
+  }else{
+    dailyLabel.textContent = '以前、1日に吸っていた本数（目安）';
+    dailyHint.textContent = 'この本数より減らせた分だけ、節約額としてカウントします。';
+  }
+  showScreen('screen-setup');
+}
+
+function saveSetup(){
+  const price = parseFloat(document.getElementById('set-price').value);
+  const perbox = parseFloat(document.getElementById('set-perbox').value);
+  const daily = parseFloat(document.getElementById('set-daily').value);
+  if(!price || !perbox || !daily || price<=0 || perbox<=0 || daily<=0){
+    alert('すべての項目に、0より大きい数字を入力してください。');
+    return;
+  }
+  const data = {
+    mode: pendingMode,
+    price, perbox, daily,
+    startedAt: Date.now(),
+    log: {}
+  };
+  saveData(data);
+  render();
+}
+
+function resetAll(){
+  if(confirm('保存されている設定と記録をすべて消去します。よろしいですか？')){
+    localStorage.removeItem(KEY);
+    showScreen('screen-select');
+  }
+}
+
+function pricePerCig(data){ return data.price / data.perbox; }
+
+function pad(n){ return String(n).padStart(2,'0'); }
+
+let tickTimer = null;
+
+function renderQuit(data){
+  showScreen('screen-quit');
+  const perCig = pricePerCig(data);
+  const perDayYen = Math.round(perCig * data.daily);
+  document.getElementById('q-perday').textContent = '¥' + perDayYen.toLocaleString();
+  const started = new Date(data.startedAt);
+  document.getElementById('q-startdate').textContent =
+    (started.getMonth()+1) + '/' + started.getDate();
+
+  function tick(){
+    const elapsedMs = Date.now() - data.startedAt;
+    const elapsedSec = Math.max(0, Math.floor(elapsedMs/1000));
+    const days = Math.floor(elapsedSec / 86400);
+    const hours = Math.floor((elapsedSec % 86400) / 3600);
+    const mins = Math.floor((elapsedSec % 3600) / 60);
+    const secs = elapsedSec % 60;
+    document.getElementById('q-days').textContent = days;
+    document.getElementById('q-hours').textContent = pad(hours);
+    document.getElementById('q-mins').textContent = pad(mins);
+    document.getElementById('q-secs').textContent = pad(secs);
+
+    const elapsedDaysFloat = elapsedSec / 86400;
+    const avoidedCigs = elapsedDaysFloat * data.daily;
+    const savings = avoidedCigs * perCig;
+    document.getElementById('q-savings').textContent = Math.floor(savings).toLocaleString();
+    document.getElementById('q-count-avoided').textContent =
+      '吸わずに済んだ本数：約' + Math.floor(avoidedCigs) + '本';
+  }
+  tick();
+  if(tickTimer) clearInterval(tickTimer);
+  tickTimer = setInterval(tick, 1000);
+}
+
+function todayKey(){
+  const d = new Date();
+  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+
+function renderReduce(data){
+  showScreen('screen-reduce');
+  if(tickTimer){ clearInterval(tickTimer); tickTimer = null; }
+  const perCig = pricePerCig(data);
+  document.getElementById('r-baseline').textContent = data.daily;
+
+  const tk = todayKey();
+  if(!(tk in data.log)) data.log[tk] = 0;
+
+  function renderNumbers(){
+    document.getElementById('r-today').textContent = data.log[tk];
+    const todayReduced = Math.max(0, data.daily - data.log[tk]);
+    const todaySavings = Math.round(todayReduced * perCig);
+    document.getElementById('r-today-savings').textContent = '¥' + todaySavings.toLocaleString();
+
+    let totalReducedCigs = 0;
+    let daysLogged = 0;
+    Object.keys(data.log).forEach(k=>{
+      daysLogged++;
+      const reduced = Math.max(0, data.daily - data.log[k]);
+      totalReducedCigs += reduced;
+    });
+    const totalSavings = Math.round(totalReducedCigs * perCig);
+    document.getElementById('r-savings').textContent = totalSavings.toLocaleString();
+    document.getElementById('r-count-avoided').textContent =
+      '減らせた本数の合計：約' + Math.floor(totalReducedCigs) + '本';
+    document.getElementById('r-days-logged').textContent = daysLogged + '日';
+  }
+  renderNumbers();
+
+  window.changeToday = function(delta){
+    data.log[tk] = Math.max(0, (data.log[tk]||0) + delta);
+    saveData(data);
+    renderNumbers();
+  };
+}
+
+function render(){
+  const data = loadData();
+  if(!data){
+    showScreen('screen-select');
+    return;
+  }
+  if(data.mode === 'quit'){
+    renderQuit(data);
+  }else{
+    renderReduce(data);
+  }
+}
+
+render();
+</script>
+</body>
+</html>
