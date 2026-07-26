@@ -310,7 +310,8 @@
       <div style="font-size:13px; color:var(--text-soft); margin-top:10px;" id="celebrate-stage">若木まで育ちました</div>
       <div style="font-size:18px; font-weight:800; color:var(--green-deep); margin-top:4px;" id="celebrate-title">達成です</div>
       <div style="font-size:12px; color:var(--text-soft); margin-top:10px; line-height:1.6;">ここまでの節約額は<br><span style="color:var(--gold); font-weight:700;" id="celebrate-amount">¥0</span>です</div>
-      <button class="btn" style="margin-top:18px;" id="celebrate-close">閉じる</button>
+      <button class="btn" style="margin-top:18px; background:#000;" id="celebrate-share">𝕏 でシェアする</button>
+      <button class="btn secondary" style="margin-top:8px;" id="celebrate-close">閉じる</button>
     </div>
   </div>
 
@@ -328,10 +329,10 @@ function toggleSub(){
 }
 
 const STAGES = [
-  { id:'seed', minDays:0, name:'種' },
-  { id:'sprout', minDays:3, name:'芽' },
-  { id:'sapling', minDays:14, name:'若木' },
-  { id:'bloom', minDays:30, name:'開花' }
+  { id:'seed', minDays:0, name:'種', duration:'' },
+  { id:'sprout', minDays:3, name:'芽', duration:'禁煙3日' },
+  { id:'sapling', minDays:14, name:'若木', duration:'禁煙2週間' },
+  { id:'bloom', minDays:30, name:'開花', duration:'禁煙1ヶ月' }
 ];
 
 function mascotSvg(stageId){
@@ -355,8 +356,16 @@ function showCelebration(stage, savingsYen){
   document.getElementById('celebrate-mascot').innerHTML = mascotSvg(stage.id);
   document.getElementById('celebrate-stage').textContent = stage.name + 'まで育ちました';
   document.getElementById('celebrate-title').textContent = '達成です';
-  document.getElementById('celebrate-amount').textContent = '¥' + Math.floor(savingsYen).toLocaleString();
+  const amount = Math.floor(savingsYen).toLocaleString();
+  document.getElementById('celebrate-amount').textContent = '¥' + amount;
   document.getElementById('celebrate-overlay').classList.add('active');
+
+  const shareBtn = document.getElementById('celebrate-share');
+  shareBtn.onclick = function(){
+    const text = stage.duration + '、達成しました🌱\nここまでの節約額は¥' + amount + 'です。';
+    const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
+    window.open(url, '_blank');
+  };
 }
 document.addEventListener('DOMContentLoaded', function(){
   const btn = document.getElementById('celebrate-close');
