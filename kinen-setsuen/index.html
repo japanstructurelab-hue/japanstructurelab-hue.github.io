@@ -122,7 +122,7 @@
     padding:6px 0 4px;
   }
   .counter-hero .label{
-    font-size:11.5px;
+    font-size:14.5px;
     color:var(--text-soft);
     letter-spacing:.05em;
   }
@@ -274,7 +274,6 @@
   <!-- 画面2：メイン -->
   <section id="screen-quit" class="screen">
     <div class="counter-hero">
-      <div id="mascot-box" style="text-align:center; margin-bottom:6px;"></div>
       <div class="label">最後に吸ってから</div>
       <div class="time-display">
         <div class="time-unit"><div class="num" id="q-days">0</div><div class="unit">日</div></div>
@@ -291,7 +290,7 @@
     </div>
 
     <div class="stat-row">
-      <div class="stat-box"><div class="n" id="q-perday">¥0</div><div class="t">1日あたりの節約</div></div>
+      <div class="stat-box"><div class="n" id="q-peryear">¥0</div><div class="t">このペースだと1年で</div></div>
       <div class="stat-box"><div class="n" id="q-startdate">-</div><div class="t">禁煙開始日</div></div>
     </div>
 
@@ -507,7 +506,7 @@ function renderQuit(data){
   showScreen('screen-quit');
   const perCig = pricePerCig(data);
   const perDayYen = Math.round(perCig * data.daily);
-  document.getElementById('q-perday').textContent = '¥' + perDayYen.toLocaleString();
+  document.getElementById('q-peryear').textContent = '¥' + (perDayYen * 365).toLocaleString();
   const started = new Date(data.startedAt);
   document.getElementById('q-startdate').textContent =
     (started.getMonth()+1) + '/' + started.getDate();
@@ -532,11 +531,6 @@ function renderQuit(data){
     document.getElementById('q-savings').textContent = Math.floor(savings).toLocaleString();
     document.getElementById('q-count-avoided').textContent =
       '吸わずに済んだ本数：約' + Math.floor(avoidedCigs) + '本';
-
-    const flowerLabel = days <= 0
-      ? '<div style="font-size:11.5px; color:var(--text-soft);">禁煙、スタート地点です</div>'
-      : '';
-    document.getElementById('mascot-box').innerHTML = days <= 0 ? flowerLabel : (vaseSvg(days, 90, 112) + flowerLabel);
 
     if(days !== lastCelebratedDays){
       if(lastCelebratedDays !== null && days > lastCelebratedDays){
