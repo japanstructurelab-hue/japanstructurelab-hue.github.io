@@ -107,6 +107,15 @@
     border:1px solid var(--line);
     font-weight:600;
   }
+  .link-btn{
+    background:none;
+    border:none;
+    color:var(--green-soft);
+    text-decoration:underline;
+    cursor:pointer;
+    padding:0;
+    font:inherit;
+  }
 
   .counter-hero{
     text-align:center;
@@ -235,7 +244,8 @@
   <header class="top">
     <span class="badge">● 社内健康改善提案 PILOT</span>
     <h1>禁煙カウンター</h1>
-    <p class="sub">吸わなかった時間と、そのぶん浮いた金額を見える化します。値段はすべてあなたが入力した数字だけを使い、どこにも送信・保存されません（この端末のブラウザ内だけに残ります）。</p>
+    <p class="sub">吸わなかった時間と、浮いた金額を見える化します。<button class="link-btn" id="sub-toggle" onclick="toggleSub()" style="font-size:12px;">詳しく見る</button></p>
+    <p class="sub" id="sub-detail" style="display:none; margin-top:6px;">値段はすべてあなたが入力した数字だけを使い、どこにも送信・保存されません（この端末のブラウザ内だけに残ります）。</p>
   </header>
 
   <!-- 画面1：初期設定 -->
@@ -308,6 +318,14 @@
 
 <script>
 const KEY = 'quitSmokingData_v2';
+
+function toggleSub(){
+  const detail = document.getElementById('sub-detail');
+  const btn = document.getElementById('sub-toggle');
+  const isHidden = detail.style.display === 'none';
+  detail.style.display = isHidden ? 'block' : 'none';
+  btn.textContent = isHidden ? '閉じる' : '詳しく見る';
+}
 
 const STAGES = [
   { id:'seed', minDays:0, name:'種' },
