@@ -46,22 +46,22 @@
     letter-spacing:.02em;
   }
   header.top{
-    padding:28px 24px 20px;
+    padding:18px 20px 14px;
     border-bottom:1px solid var(--line);
   }
   h1{
-    font-size:26px;
-    margin:14px 0 6px;
+    font-size:21px;
+    margin:8px 0 4px;
     letter-spacing:.01em;
   }
   .sub{
     color:var(--text-soft);
-    font-size:13.5px;
-    line-height:1.6;
+    font-size:12px;
+    line-height:1.55;
     margin:0;
   }
 
-  .screen{ display:none; padding:28px 24px 48px; }
+  .screen{ display:none; padding:18px 20px 28px; }
   .screen.active{ display:block; }
 
   .field{ margin-bottom:18px; }
@@ -110,85 +110,85 @@
 
   .counter-hero{
     text-align:center;
-    padding:20px 0 8px;
+    padding:6px 0 4px;
   }
   .counter-hero .label{
-    font-size:12.5px;
+    font-size:11.5px;
     color:var(--text-soft);
     letter-spacing:.05em;
   }
   .time-display{
     display:flex;
     justify-content:center;
-    gap:10px;
-    margin:18px 0 6px;
+    gap:8px;
+    margin:10px 0 4px;
     flex-wrap:wrap;
   }
   .time-unit{
     background:var(--surface-2);
-    border-radius:14px;
-    padding:14px 10px;
-    min-width:64px;
+    border-radius:12px;
+    padding:9px 8px;
+    min-width:56px;
   }
   .time-unit .num{
-    font-size:30px;
+    font-size:23px;
     font-weight:800;
     color:var(--green-deep);
     font-variant-numeric: tabular-nums;
     line-height:1;
   }
   .time-unit .unit{
-    font-size:11px;
+    font-size:10px;
     color:var(--text-soft);
-    margin-top:4px;
+    margin-top:3px;
   }
 
   .savings-card{
-    margin-top:26px;
+    margin-top:16px;
     background:linear-gradient(135deg, var(--green-deep), #24371a);
-    border-radius:20px;
-    padding:26px 22px;
+    border-radius:16px;
+    padding:16px 18px;
     color:#fff;
     text-align:center;
   }
   .savings-card .label{
-    font-size:12.5px;
+    font-size:11.5px;
     opacity:.85;
     letter-spacing:.04em;
   }
   .savings-card .amount{
-    font-size:40px;
+    font-size:30px;
     font-weight:800;
-    margin-top:8px;
+    margin-top:5px;
     font-variant-numeric: tabular-nums;
     color:#f6e6b8;
     letter-spacing:.01em;
   }
   .savings-card .sub{
-    font-size:12px;
+    font-size:11px;
     opacity:.8;
-    margin-top:6px;
+    margin-top:4px;
     color:#fff;
   }
 
   .stat-row{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
-    margin-top:20px;
+    gap:10px;
+    margin-top:14px;
   }
   .stat-box{
     background:var(--bg);
     border:1px solid var(--line);
-    border-radius:14px;
-    padding:14px 16px;
+    border-radius:12px;
+    padding:10px 12px;
     text-align:center;
   }
-  .stat-box .n{ font-size:20px; font-weight:800; color:var(--green-deep); }
-  .stat-box .t{ font-size:11.5px; color:var(--text-soft); margin-top:3px; }
+  .stat-box .n{ font-size:17px; font-weight:800; color:var(--green-deep); }
+  .stat-box .t{ font-size:10.5px; color:var(--text-soft); margin-top:2px; }
 
   footer.foot{
-    padding:20px 24px 32px;
+    padding:14px 20px 22px;
     text-align:center;
   }
 
@@ -280,8 +280,8 @@
       <div class="stat-box"><div class="n" id="q-startdate">-</div><div class="t">禁煙開始日</div></div>
     </div>
 
-    <button class="btn" style="margin-top:24px; background:var(--danger);" onclick="smokedAgain()">また吸ってしまった（時計だけリセット）</button>
-    <button class="btn secondary" style="margin-top:10px;" onclick="resetAll()">設定をリセットする</button>
+    <button class="btn" style="margin-top:16px; background:var(--danger);" onclick="smokedAgain()">また吸ってしまった（時計だけリセット）</button>
+    <button class="btn secondary" style="margin-top:8px;" onclick="resetAll()">設定をリセットする</button>
   </section>
 
   <div id="confirm-overlay" class="modal-overlay">
@@ -324,7 +324,7 @@ function mascotSvg(stageId){
     sapling: pot + '<path d="M70,150 L70,90" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,120 Q40,112 48,88 Q78,96 70,120 Z" fill="#5c7a45"/><path d="M70,110 Q100,100 94,76 Q64,86 70,110 Z" fill="#364e28"/><path d="M70,100 Q44,92 50,68 Q78,78 70,100 Z" fill="#5c7a45"/>',
     bloom: pot + '<path d="M70,150 L70,80" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,120 Q38,112 46,86 Q78,94 70,120 Z" fill="#5c7a45"/><path d="M70,108 Q102,98 96,72 Q64,82 70,108 Z" fill="#364e28"/><path d="M70,96 Q42,88 48,62 Q78,72 70,96 Z" fill="#5c7a45"/><g transform="translate(70,70)"><circle cx="0" cy="-10" r="7" fill="#f2c14e"/><circle cx="9" cy="-3" r="7" fill="#f2c14e"/><circle cx="6" cy="8" r="7" fill="#f2c14e"/><circle cx="-6" cy="8" r="7" fill="#f2c14e"/><circle cx="-9" cy="-3" r="7" fill="#f2c14e"/><circle cx="0" cy="0" r="6" fill="#b8892b"/></g>'
   };
-  return '<svg width="80" height="100" viewBox="0 0 140 200">' + svgs[stageId] + '</svg>';
+  return '<svg width="56" height="70" viewBox="0 0 140 200">' + svgs[stageId] + '</svg>';
 }
 
 function stageForDays(days){
