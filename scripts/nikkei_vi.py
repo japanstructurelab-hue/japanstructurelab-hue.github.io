@@ -12,6 +12,7 @@
 
 import json
 import os
+from datetime import datetime, timezone
 
 import requests
 
@@ -25,20 +26,26 @@ VI_MIN, VI_MAX = 5.0, 150.0
 
 
 def _fetch_yahoo(ticker):
-    """(最新終値, 前日終値) を返す。取れなければ (None, None)。"""
+    """(最新終値, 前日終値, 最新の取引日) を返す。取れなければ (None, None, None)。"""
     url = CHART_URL.format(ticker)
     params = {"range": "5d", "interval": "1d"}
     headers = {"User-Agent": "Mozilla/5.0"}  # UA なしだと弾かれることがある
     r = requests.get(url, params=params, headers=headers, timeout=10)
     r.raise_for_status()
-    closes = r.json()["chart"]["result"][0]["indicators"]["quote"][0]["close"]
-    valid = [c for c in closes if c is not None]  # null（休場・欠損）を除く
-    if len(valid) < 2:
-        return (None, None)
-    latest, prev = round(valid[-1], 2), round(valid[-2], 2)
+    result = r.json()["chart"]["result"][0]
+    closes = result["indicators"]["quote"][0]["close"]
+    timestamps = result["timestamp"]
+    gmtoffset = result["meta"].get("gmtoffset", 0)
+
+    pairs = [(ts, c) for ts, c in zip(timestamps, closes) if c is not None]  # null（休場・欠損）を除く
+    if len(pairs) < 2:
+        return (None, None, None)
+    (latest_ts, latest_close), (_, prev_close) = pairs[-1], pairs[-2]
+    latest, prev = round(latest_close, 2), round(prev_close, 2)
     if not (VI_MIN <= latest <= VI_MAX):  # 壊れた値なら手動へ回す
-        return (None, None)
-    return (latest, prev)
+        return (None, None, None)
+    latest_date = datetime.fromtimestamp(latest_ts + gmtoffset, tz=timezone.utc).strftime("%Y-%m-%d")
+    return (latest, prev, latest_date)
 
 
 def _read_override():
@@ -58,9 +65,9 @@ def _read_override():
 def get_nikkei_vi():
     """日経VIの (value, prev_value, source, date) を返す。両方ダメなら例外で停止。"""
     try:
-        value, prev = _fetch_yahoo(VI_TICKER)
+        value, prev, date = _fetch_yahoo(VI_TICKER)
         if value is not None:
-            return value, prev, "yahoo:auto", None
+            return value, prev, "yahoo:auto", date
         print("[日経VI] Yahoo が有効値を返しませんでした → 手動値へフォールバック")
     except Exception as e:
         print(f"[日経VI] Yahoo 取得に失敗: {e} → 手動値へフォールバック")

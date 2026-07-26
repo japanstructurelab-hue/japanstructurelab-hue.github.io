@@ -140,12 +140,11 @@ def build_nikkei_vi_result():
         vi_value, vi_prev, vi_source, vi_date = get_nikkei_vi()
         pct = (vi_value - vi_prev) / vi_prev * 100 if vi_prev else None
 
+        latest_date = datetime.strptime(vi_date, "%Y-%m-%d").date()
         if vi_source == "yahoo:auto":
             flags = ["(自動)"]
-            latest_date = datetime.now(timezone(timedelta(hours=9))).date()
         else:
             flags = [f"(手動 {vi_date})"]
-            latest_date = datetime.strptime(vi_date, "%Y-%m-%d").date()
 
         age_days = check_staleness(latest_date)
         if pct is not None and abs(pct) > ABNORMAL_PCT_THRESHOLD:
