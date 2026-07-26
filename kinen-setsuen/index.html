@@ -276,6 +276,39 @@
   @media (prefers-reduced-motion: reduce){
     * { transition:none !important; }
   }
+
+  /* ---------- 確認モーダル ---------- */
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(43,47,38,0.45);
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+    padding:20px;
+  }
+  .modal-overlay.active{ display:flex; }
+  .modal-box{
+    background:var(--surface);
+    border-radius:18px;
+    padding:24px 22px;
+    max-width:340px;
+    width:100%;
+    box-shadow:0 12px 40px rgba(0,0,0,0.18);
+  }
+  .modal-msg{
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--text);
+    margin:0 0 18px;
+  }
+  .modal-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .modal-actions .btn{ margin-top:0; }
 </style>
 </head>
 <body>
@@ -378,11 +411,56 @@
   <footer class="foot">
     <span class="link-btn" onclick="showScreen('screen-select')">▶ モードを選び直す</span>
   </footer>
+  <!-- 確認モーダル -->
+  <div id="confirm-overlay" class="modal-overlay">
+    <div class="modal-box">
+      <p id="confirm-message" class="modal-msg"></p>
+      <div class="modal-actions">
+        <button class="btn secondary" id="confirm-cancel">キャンセル</button>
+        <button class="btn" id="confirm-ok">OK</button>
+      </div>
+    </div>
+  </div>
 
 </div>
 
 <script>
 const KEY = 'quitSmokingData_v1';
+
+function showConfirm(message, onOk){
+  const overlay = document.getElementById('confirm-overlay');
+  document.getElementById('confirm-message').textContent = message;
+  overlay.classList.add('active');
+  const okBtn = document.getElementById('confirm-ok');
+  const cancelBtn = document.getElementById('confirm-cancel');
+  function cleanup(){
+    overlay.classList.remove('active');
+    okBtn.removeEventListener('click', onOkClick);
+    cancelBtn.removeEventListener('click', onCancelClick);
+  }
+  function onOkClick(){ cleanup(); onOk(); }
+  function onCancelClick(){ cleanup(); }
+  okBtn.addEventListener('click', onOkClick);
+  cancelBtn.addEventListener('click', onCancelClick);
+}
+
+function showAlert(message){
+  const overlay = document.getElementById('confirm-overlay');
+  document.getElementById('confirm-message').textContent = message;
+  overlay.classList.add('active');
+  const okBtn = document.getElementById('confirm-ok');
+  const cancelBtn = document.getElementById('confirm-cancel');
+  cancelBtn.style.display = 'none';
+  okBtn.style.gridColumn = '1 / 3';
+  function cleanup(){
+    overlay.classList.remove('active');
+    okBtn.removeEventListener('click', onOkClick);
+    cancelBtn.style.display = '';
+    okBtn.style.gridColumn = '';
+  }
+  function onOkClick(){ cleanup(); }
+  okBtn.addEventListener('click', onOkClick);
+}
 
 function loadData(){
   try{
@@ -419,7 +497,7 @@ function saveSetup(){
   const perbox = parseFloat(document.getElementById('set-perbox').value);
   const daily = parseFloat(document.getElementById('set-daily').value);
   if(!price || !perbox || !daily || price<=0 || perbox<=0 || daily<=0){
-    alert('すべての項目に、0より大きい数字を入力してください。');
+    showAlert('すべての項目に、0より大きい数字を入力してください。');
     return;
   }
   const data = {
@@ -433,21 +511,21 @@ function saveSetup(){
 }
 
 function smokedAgain(){
-  if(confirm('経過時間と節約額の時計を0からやり直します。値段などの設定はそのまま残ります。よろしいですか？')){
+  showConfirm('経過時間と節約額の時計を0からやり直します。値段などの設定はそのまま残ります。よろしいですか？', function(){
     const data = loadData();
     if(data){
       data.startedAt = Date.now();
       saveData(data);
       render();
     }
-  }
+  });
 }
 
 function resetAll(){
-  if(confirm('保存されている設定と記録をすべて消去します。よろしいですか？')){
+  showConfirm('保存されている設定と記録をすべて消去します。よろしいですか？', function(){
     localStorage.removeItem(KEY);
     showScreen('screen-select');
-  }
+  });
 }
 
 function pricePerCig(data){ return data.price / data.perbox; }
