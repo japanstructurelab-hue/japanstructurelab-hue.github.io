@@ -328,41 +328,70 @@ function toggleSub(){
   btn.textContent = isHidden ? '閉じる' : '詳しく見る';
 }
 
-const STAGES = [
-  { id:'seed', minDays:0, name:'種', duration:'' },
-  { id:'sprout', minDays:3, name:'芽', duration:'禁煙3日' },
-  { id:'sapling', minDays:14, name:'若木', duration:'禁煙2週間' },
-  { id:'bloom', minDays:30, name:'開花', duration:'禁煙1ヶ月' }
-];
+const FLOWER_CAP = 10;
 
-function mascotSvg(stageId){
-  const pot = '<rect x="50" y="150" width="40" height="30" rx="3" fill="#b8892b"/><rect x="46" y="146" width="48" height="10" rx="3" fill="#a5762a"/><ellipse cx="70" cy="150" rx="19" ry="5" fill="#3d2d1f"/>';
-  const svgs = {
-    seed: pot + '<circle cx="70" cy="144" r="5" fill="#8a6a3f"/>',
-    sprout: pot + '<path d="M70,148 L70,120" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,128 Q52,120 58,105 Q78,112 70,128 Z" fill="#5c7a45"/><path d="M70,122 Q88,116 84,100 Q64,105 70,122 Z" fill="#5c7a45"/>',
-    sapling: pot + '<path d="M70,150 L70,90" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,120 Q40,112 48,88 Q78,96 70,120 Z" fill="#5c7a45"/><path d="M70,110 Q100,100 94,76 Q64,86 70,110 Z" fill="#364e28"/><path d="M70,100 Q44,92 50,68 Q78,78 70,100 Z" fill="#5c7a45"/>',
-    bloom: pot + '<path d="M70,150 L70,80" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,120 Q38,112 46,86 Q78,94 70,120 Z" fill="#5c7a45"/><path d="M70,108 Q102,98 96,72 Q64,82 70,108 Z" fill="#364e28"/><path d="M70,96 Q42,88 48,62 Q78,72 70,96 Z" fill="#5c7a45"/><g transform="translate(70,70)"><circle cx="0" cy="-10" r="7" fill="#f2c14e"/><circle cx="9" cy="-3" r="7" fill="#f2c14e"/><circle cx="6" cy="8" r="7" fill="#f2c14e"/><circle cx="-6" cy="8" r="7" fill="#f2c14e"/><circle cx="-9" cy="-3" r="7" fill="#f2c14e"/><circle cx="0" cy="0" r="6" fill="#b8892b"/></g>'
-  };
-  return '<svg width="68" height="85" viewBox="0 0 140 200">' + svgs[stageId] + '</svg>';
+function flowerGroup(x, y, color){
+  return '<g transform="translate(' + x + ',' + y + ')">'
+    + '<circle cx="0" cy="-5" r="5" fill="' + color + '"/>'
+    + '<circle cx="4" cy="-2" r="5" fill="' + color + '"/>'
+    + '<circle cx="2" cy="4" r="5" fill="' + color + '"/>'
+    + '<circle cx="-2" cy="4" r="5" fill="' + color + '"/>'
+    + '<circle cx="-4" cy="-2" r="5" fill="' + color + '"/>'
+    + '<circle cx="0" cy="0" r="3.2" fill="#b8892b"/>'
+    + '</g>';
 }
 
-function stageForDays(days){
-  let current = STAGES[0];
-  for(const s of STAGES){ if(days >= s.minDays) current = s; }
-  return current;
+function vaseInner(days){
+  const count = Math.min(days, FLOWER_CAP);
+  const vase = '<path d="M60,150 Q55,120 65,110 L95,110 Q105,120 100,150 Z" fill="#7d9370" opacity="0.85"/>';
+  if(count <= 0){
+    return vase;
+  }
+  const baseX = 78, baseY = 112;
+  let stems = '', flowers = '';
+  for(let i=0; i<count; i++){
+    const t = count===1 ? 0.5 : i/(count-1);
+    const angleDeg = count===1 ? 0 : -65 + t*130;
+    const angleRad = angleDeg * Math.PI/180;
+    const edgeFactor = Math.abs(angleDeg)/65;
+    const stemLen = 70 - edgeFactor*20;
+    const tipX = baseX + Math.sin(angleRad)*stemLen*0.55;
+    const tipY = baseY - Math.cos(angleRad)*stemLen;
+    stems += '<path d="M' + baseX + ',' + (baseY+2) + ' L' + tipX + ',' + tipY + '" stroke="#4a6b34" stroke-width="2.5" fill="none"/>';
+    const color = i % 2 === 0 ? '#e0708a' : '#f2c14e';
+    flowers += flowerGroup(tipX, tipY - 4, color);
+  }
+  let badge = '';
+  if(days > FLOWER_CAP){
+    badge = '<g transform="translate(115,30)"><circle r="16" fill="#364e28"/>'
+      + '<text x="0" y="4" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#f6e6b8">' + days + '</text></g>';
+  }
+  return vase + stems + flowers + badge;
 }
 
-function showCelebration(stage, savingsYen){
-  document.getElementById('celebrate-mascot').innerHTML = mascotSvg(stage.id);
-  document.getElementById('celebrate-stage').textContent = stage.name + 'まで育ちました';
-  document.getElementById('celebrate-title').textContent = '達成です';
+function vaseSvg(days, width, height){
+  return '<svg width="' + width + '" height="' + height + '" viewBox="0 0 150 190">' + vaseInner(days) + '</svg>';
+}
+
+function daysLabel(days){
+  if(days <= 0) return '禁煙、はじめました';
+  if(days === 1) return '禁煙1日';
+  if(days % 7 === 0) return '禁煙' + (days/7) + '週間';
+  if(days % 30 === 0) return '禁煙' + (days/30) + 'ヶ月';
+  return '禁煙' + days + '日';
+}
+
+function showCelebration(days, savingsYen){
+  document.getElementById('celebrate-mascot').innerHTML = vaseSvg(days, 90, 112);
+  document.getElementById('celebrate-stage').textContent = '花が' + Math.min(days, FLOWER_CAP) + '本になりました';
+  document.getElementById('celebrate-title').textContent = daysLabel(days) + '、達成です';
   const amount = Math.floor(savingsYen).toLocaleString();
   document.getElementById('celebrate-amount').textContent = '¥' + amount;
   document.getElementById('celebrate-overlay').classList.add('active');
 
   const shareBtn = document.getElementById('celebrate-share');
   shareBtn.onclick = function(){
-    const text = stage.duration + '、達成しました🌱\nここまでの節約額は¥' + amount + 'です。';
+    const text = daysLabel(days) + '、達成しました🌱\nここまでの節約額は¥' + amount + 'です。';
     const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
     window.open(url, '_blank');
   };
@@ -442,7 +471,7 @@ function smokedAgain(){
     const data = loadData();
     if(data){
       data.startedAt = Date.now();
-      data.lastCelebratedStage = null;
+      data.lastCelebratedDays = null;
       saveData(data);
       render();
     }
@@ -470,7 +499,7 @@ function renderQuit(data){
   document.getElementById('q-startdate').textContent =
     (started.getMonth()+1) + '/' + started.getDate();
 
-  let lastStageId = data.lastCelebratedStage || null;
+  let lastCelebratedDays = (typeof data.lastCelebratedDays === 'number') ? data.lastCelebratedDays : null;
 
   function tick(){
     const elapsedMs = Date.now() - data.startedAt;
@@ -491,16 +520,15 @@ function renderQuit(data){
     document.getElementById('q-count-avoided').textContent =
       '吸わずに済んだ本数：約' + Math.floor(avoidedCigs) + '本';
 
-    const stage = stageForDays(days);
-    const stageLabel = stage.id === 'seed' ? '<div style="font-size:10.5px; color:var(--text-soft); margin-top:2px;">まだ土の中です</div>' : '';
-    document.getElementById('mascot-box').innerHTML = mascotSvg(stage.id) + stageLabel;
+    const flowerLabel = days <= 0 ? '<div style="font-size:10.5px; color:var(--text-soft); margin-top:2px;">まだ花瓶だけです</div>' : '';
+    document.getElementById('mascot-box').innerHTML = vaseSvg(days, 90, 112) + flowerLabel;
 
-    if(stage.id !== lastStageId){
-      if(lastStageId !== null){
-        showCelebration(stage, savings);
+    if(days !== lastCelebratedDays){
+      if(lastCelebratedDays !== null && days > lastCelebratedDays){
+        showCelebration(days, savings);
       }
-      lastStageId = stage.id;
-      data.lastCelebratedStage = stage.id;
+      lastCelebratedDays = days;
+      data.lastCelebratedDays = days;
       saveData(data);
     }
   }
