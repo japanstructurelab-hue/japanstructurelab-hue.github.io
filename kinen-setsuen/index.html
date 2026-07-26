@@ -342,7 +342,7 @@ function mascotSvg(stageId){
     sapling: pot + '<path d="M70,150 L70,90" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,120 Q40,112 48,88 Q78,96 70,120 Z" fill="#5c7a45"/><path d="M70,110 Q100,100 94,76 Q64,86 70,110 Z" fill="#364e28"/><path d="M70,100 Q44,92 50,68 Q78,78 70,100 Z" fill="#5c7a45"/>',
     bloom: pot + '<path d="M70,150 L70,80" stroke="#4a6b34" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M70,120 Q38,112 46,86 Q78,94 70,120 Z" fill="#5c7a45"/><path d="M70,108 Q102,98 96,72 Q64,82 70,108 Z" fill="#364e28"/><path d="M70,96 Q42,88 48,62 Q78,72 70,96 Z" fill="#5c7a45"/><g transform="translate(70,70)"><circle cx="0" cy="-10" r="7" fill="#f2c14e"/><circle cx="9" cy="-3" r="7" fill="#f2c14e"/><circle cx="6" cy="8" r="7" fill="#f2c14e"/><circle cx="-6" cy="8" r="7" fill="#f2c14e"/><circle cx="-9" cy="-3" r="7" fill="#f2c14e"/><circle cx="0" cy="0" r="6" fill="#b8892b"/></g>'
   };
-  return '<svg width="56" height="70" viewBox="0 0 140 200">' + svgs[stageId] + '</svg>';
+  return '<svg width="68" height="85" viewBox="0 0 140 200">' + svgs[stageId] + '</svg>';
 }
 
 function stageForDays(days){
@@ -483,7 +483,8 @@ function renderQuit(data){
       '吸わずに済んだ本数：約' + Math.floor(avoidedCigs) + '本';
 
     const stage = stageForDays(days);
-    document.getElementById('mascot-box').innerHTML = mascotSvg(stage.id);
+    const stageLabel = stage.id === 'seed' ? '<div style="font-size:10.5px; color:var(--text-soft); margin-top:2px;">まだ土の中です</div>' : '';
+    document.getElementById('mascot-box').innerHTML = mascotSvg(stage.id) + stageLabel;
 
     if(stage.id !== lastStageId){
       if(lastStageId !== null){
