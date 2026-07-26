@@ -263,6 +263,11 @@
       <input type="number" id="set-daily" inputmode="numeric" placeholder="例：10" min="1" step="1">
       <div class="hint">この本数をもとに、吸わずに済んだ本数と節約額を計算します。</div>
     </div>
+    <div class="field">
+      <label>禁煙開始日</label>
+      <input type="date" id="set-startdate">
+      <div class="hint">すでに禁煙を始めている場合は、実際に吸うのをやめた日を選んでください。今日から始める場合はそのままで大丈夫です。</div>
+    </div>
     <button class="btn" onclick="saveSetup()">この内容で始める</button>
   </section>
 
@@ -457,11 +462,19 @@ function saveSetup(){
   const price = parseFloat(document.getElementById('set-price').value);
   const perbox = parseFloat(document.getElementById('set-perbox').value);
   const daily = parseFloat(document.getElementById('set-daily').value);
+  const startdateStr = document.getElementById('set-startdate').value;
   if(!price || !perbox || !daily || price<=0 || perbox<=0 || daily<=0){
     showAlert('すべての項目に、0より大きい数字を入力してください。');
     return;
   }
-  const data = { price, perbox, daily, startedAt: Date.now() };
+  let startedAt = Date.now();
+  if(startdateStr){
+    const picked = new Date(startdateStr + 'T00:00:00');
+    if(!isNaN(picked.getTime()) && picked.getTime() <= Date.now()){
+      startedAt = picked.getTime();
+    }
+  }
+  const data = { price, perbox, daily, startedAt };
   saveData(data);
   render();
 }
@@ -520,8 +533,10 @@ function renderQuit(data){
     document.getElementById('q-count-avoided').textContent =
       '吸わずに済んだ本数：約' + Math.floor(avoidedCigs) + '本';
 
-    const flowerLabel = days <= 0 ? '<div style="font-size:10.5px; color:var(--text-soft); margin-top:2px;">まだ花瓶だけです</div>' : '';
-    document.getElementById('mascot-box').innerHTML = vaseSvg(days, 90, 112) + flowerLabel;
+    const flowerLabel = days <= 0
+      ? '<div style="font-size:11.5px; color:var(--text-soft);">禁煙、スタート地点です</div>'
+      : '';
+    document.getElementById('mascot-box').innerHTML = days <= 0 ? flowerLabel : (vaseSvg(days, 90, 112) + flowerLabel);
 
     if(days !== lastCelebratedDays){
       if(lastCelebratedDays !== null && days > lastCelebratedDays){
@@ -540,6 +555,15 @@ function renderQuit(data){
 function render(){
   const data = loadData();
   if(!data){
+    const dateInput = document.getElementById('set-startdate');
+    if(dateInput && !dateInput.value){
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth()+1).padStart(2,'0');
+      const dd = String(now.getDate()).padStart(2,'0');
+      dateInput.value = yyyy + '-' + mm + '-' + dd;
+      dateInput.max = yyyy + '-' + mm + '-' + dd;
+    }
     showScreen('screen-setup');
     return;
   }
