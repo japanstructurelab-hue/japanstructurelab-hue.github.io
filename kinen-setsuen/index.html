@@ -490,9 +490,23 @@ function smokedAgain(){
   });
 }
 
+function resetSetupFields(){
+  document.getElementById('set-price').value = '';
+  document.getElementById('set-perbox').value = '';
+  document.getElementById('set-daily').value = '';
+  const dateInput = document.getElementById('set-startdate');
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth()+1).padStart(2,'0');
+  const dd = String(now.getDate()).padStart(2,'0');
+  dateInput.value = yyyy + '-' + mm + '-' + dd;
+  dateInput.max = yyyy + '-' + mm + '-' + dd;
+}
+
 function resetAll(){
   showConfirm('保存されている設定と記録をすべて消去します。よろしいですか？', function(){
     localStorage.removeItem(KEY);
+    resetSetupFields();
     showScreen('screen-setup');
   });
 }
@@ -551,12 +565,7 @@ function render(){
   if(!data){
     const dateInput = document.getElementById('set-startdate');
     if(dateInput && !dateInput.value){
-      const now = new Date();
-      const yyyy = now.getFullYear();
-      const mm = String(now.getMonth()+1).padStart(2,'0');
-      const dd = String(now.getDate()).padStart(2,'0');
-      dateInput.value = yyyy + '-' + mm + '-' + dd;
-      dateInput.max = yyyy + '-' + mm + '-' + dd;
+      resetSetupFields();
     }
     showScreen('screen-setup');
     return;
