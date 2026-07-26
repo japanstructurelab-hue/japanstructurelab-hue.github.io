@@ -345,7 +345,8 @@
       <div class="stat-box"><div class="n" id="q-startdate">-</div><div class="t">禁煙開始日</div></div>
     </div>
 
-    <button class="btn secondary" style="margin-top:24px;" onclick="resetAll()">設定をリセットする</button>
+    <button class="btn" style="margin-top:24px; background:var(--danger);" onclick="smokedAgain()">また吸ってしまった（時計だけリセット）</button>
+    <button class="btn secondary" style="margin-top:10px;" onclick="resetAll()">設定をリセットする</button>
   </section>
 
   <!-- 画面4：節煙モード メイン -->
@@ -429,6 +430,17 @@ function saveSetup(){
   };
   saveData(data);
   render();
+}
+
+function smokedAgain(){
+  if(confirm('経過時間と節約額の時計を0からやり直します。値段などの設定はそのまま残ります。よろしいですか？')){
+    const data = loadData();
+    if(data){
+      data.startedAt = Date.now();
+      saveData(data);
+      render();
+    }
+  }
 }
 
 function resetAll(){
